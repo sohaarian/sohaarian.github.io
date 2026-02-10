@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Group Project",
+    "section": "",
+    "text": "Soha Arian"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -7,10 +14,73 @@
     "text": "Hi, I’m Soha Arian.\nI am a graduate student interested in cybersecurity, technology, and policy."
   },
   {
+    "objectID": "assignment2.html",
+    "href": "assignment2.html",
+    "title": "assignment2",
+    "section": "",
+    "text": "Soha Arian"
+  },
+  {
+    "objectID": "assignment3.html",
+    "href": "assignment3.html",
+    "title": "assignment3",
+    "section": "",
+    "text": "Soha Arian"
+  },
+  {
+    "objectID": "assignment1.html",
+    "href": "assignment1.html",
+    "title": "assignment1",
+    "section": "",
+    "text": "Soha Arian"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Soha Arian’s Research",
+    "section": "",
+    "text": "Soha Arian"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Soha Arian",
     "section": "",
     "text": "Hello! This website will show my coursework, projects, and notes."
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Resume 2026",
+    "section": "",
+    "text": "Irving, TX 75063\n(214) 235-2006\nsohaarian1802@gmail.com\nLinkedIn\n\n\n\nThe University of Texas at Dallas\nB.S. Quantitative Finance (GPA: 3.5)\nAugust 2023 – December 2025\nConcentration: Risk Management and Cybersecurity\nM.S. Cybersecurity, Technology & Policy\nJanuary 2026 – May 2027\n\n\n\n\nBusiness Lines Underwriting Intern\nLiberty Mutual Insurance | May 2025 – August 2025\n\nEnsured compliance with training deadlines and retention requirements\n\nMonitored certificates of insurance and digital documentation for policy renewals\n\nReviewed underwriting documentation to identify errors and manage risk exposure\n\nPresident, Gamma Iota Sigma – Beta Phi Chapter\nUniversity of Texas at Dallas | April 2024 – January 2025\n\nLed initiatives connecting students with professionals in risk management and insurance\n\nRepresented UT Dallas at RiskWorld 2025 and the Houston Marine & Energy Conference\n\nHelped organize an RMI Career Fair supporting students pursuing insurance careers\n\nInvestor Relations Intern\nLionchase North America | May 2024 – August 2024\n\nOrganized investment agreements and managed deadlines and renewals\n\nCollaborated with legal teams to resolve contract issues\n\nUpdated CRM systems and internal communication logs\n\nLegal Intern\nOpening Doors | August 2023 – May 2024\n\nOrganized sensitive legal documents in compliance with retention guidelines\n\nReviewed supporting documentation for immigration cases\n\nCommunicated professionally and confidentially with clients\n\n\n\n\n\nGoogle & IBM Project Management\n\nDeveloped risk registers and project timelines, improving team efficiency by 20%\n\nGoogle Cybersecurity\n\nIdentified cybersecurity risks relevant to claims investigation and risk assessment\n\n\n\n\n\nRelevant Coursework\nPrinciples of Risk Management & Insurance Commercial Property Risk Management Enterprise Risk Management Operational Risk Management Cybersecurity Risk Management\nBusiness Liability Risk Management and Insurance\nFinance & Risk Management\nFinancial Analysis, Risk Assessment, Claims Evaluation\nTechnical Skills\nPython, Java, Tableau, SIEM Tools, CRM Systems"
+  },
+  {
+    "objectID": "cv.html#academic-experience",
+    "href": "cv.html#academic-experience",
+    "title": "Resume 2026",
+    "section": "",
+    "text": "The University of Texas at Dallas\nB.S. Quantitative Finance (GPA: 3.5)\nAugust 2023 – December 2025\nConcentration: Risk Management and Cybersecurity\nM.S. Cybersecurity, Technology & Policy\nJanuary 2026 – May 2027"
+  },
+  {
+    "objectID": "cv.html#professional-experience",
+    "href": "cv.html#professional-experience",
+    "title": "Resume 2026",
+    "section": "",
+    "text": "Business Lines Underwriting Intern\nLiberty Mutual Insurance | May 2025 – August 2025\n\nEnsured compliance with training deadlines and retention requirements\n\nMonitored certificates of insurance and digital documentation for policy renewals\n\nReviewed underwriting documentation to identify errors and manage risk exposure\n\nPresident, Gamma Iota Sigma – Beta Phi Chapter\nUniversity of Texas at Dallas | April 2024 – January 2025\n\nLed initiatives connecting students with professionals in risk management and insurance\n\nRepresented UT Dallas at RiskWorld 2025 and the Houston Marine & Energy Conference\n\nHelped organize an RMI Career Fair supporting students pursuing insurance careers\n\nInvestor Relations Intern\nLionchase North America | May 2024 – August 2024\n\nOrganized investment agreements and managed deadlines and renewals\n\nCollaborated with legal teams to resolve contract issues\n\nUpdated CRM systems and internal communication logs\n\nLegal Intern\nOpening Doors | August 2023 – May 2024\n\nOrganized sensitive legal documents in compliance with retention guidelines\n\nReviewed supporting documentation for immigration cases\n\nCommunicated professionally and confidentially with clients"
+  },
+  {
+    "objectID": "cv.html#certifications",
+    "href": "cv.html#certifications",
+    "title": "Resume 2026",
+    "section": "",
+    "text": "Google & IBM Project Management\n\nDeveloped risk registers and project timelines, improving team efficiency by 20%\n\nGoogle Cybersecurity\n\nIdentified cybersecurity risks relevant to claims investigation and risk assessment"
+  },
+  {
+    "objectID": "cv.html#skills",
+    "href": "cv.html#skills",
+    "title": "Resume 2026",
+    "section": "",
+    "text": "Relevant Coursework\nPrinciples of Risk Management & Insurance Commercial Property Risk Management Enterprise Risk Management Operational Risk Management Cybersecurity Risk Management\nBusiness Liability Risk Management and Insurance\nFinance & Risk Management\nFinancial Analysis, Risk Assessment, Claims Evaluation\nTechnical Skills\nPython, Java, Tableau, SIEM Tools, CRM Systems"
   }
 ]
