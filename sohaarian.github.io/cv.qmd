@@ -1,0 +1,84 @@
+---
+title: "Resume 2026"
+format: html
+---
+
+::: cv-frame
+# Soha Arian
+
+**Irving, TX 75063**\
+(214) 235-2006\
+[sohaarian1802\@gmail.com](mailto:sohaarian1802@gmail.com)
+
+[LinkedIn](https://www.linkedin.com/in/sohaarian)
+
+------------------------------------------------------------------------
+
+## Academic Experience
+
+**The University of Texas at Dallas**\
+**B.S. Quantitative Finance** (GPA: 3.5)\
+*August 2023 – December 2025*\
+Concentration: Risk Management and Cybersecurity
+
+**M.S. Cybersecurity, Technology & Policy**\
+*January 2026 – May 2027*
+
+------------------------------------------------------------------------
+
+## Professional Experience
+
+**Business Lines Underwriting Intern**\
+*Liberty Mutual Insurance* \| *May 2025 – August 2025*
+
+-   Ensured compliance with training deadlines and retention requirements\
+-   Monitored certificates of insurance and digital documentation for policy renewals\
+-   Reviewed underwriting documentation to identify errors and manage risk exposure
+
+**President, Gamma Iota Sigma – Beta Phi Chapter**\
+*University of Texas at Dallas* \| *April 2024 – January 2025*
+
+-   Led initiatives connecting students with professionals in risk management and insurance\
+-   Represented UT Dallas at RiskWorld 2025 and the Houston Marine & Energy Conference\
+-   Helped organize an RMI Career Fair supporting students pursuing insurance careers
+
+**Investor Relations Intern**\
+*Lionchase North America* \| *May 2024 – August 2024*
+
+-   Organized investment agreements and managed deadlines and renewals\
+-   Collaborated with legal teams to resolve contract issues\
+-   Updated CRM systems and internal communication logs
+
+**Legal Intern**\
+*Opening Doors* \| *August 2023 – May 2024*
+
+-   Organized sensitive legal documents in compliance with retention guidelines\
+-   Reviewed supporting documentation for immigration cases\
+-   Communicated professionally and confidentially with clients
+
+------------------------------------------------------------------------
+
+## Certifications
+
+**Google & IBM Project Management**
+
+-   Developed risk registers and project timelines, improving team efficiency by 20%
+
+**Google Cybersecurity**
+
+-   Identified cybersecurity risks relevant to claims investigation and risk assessment
+
+------------------------------------------------------------------------
+
+## Skills
+
+**Relevant Coursework**\
+Principles of Risk Management & Insurance Commercial Property Risk Management Enterprise Risk Management Operational Risk Management Cybersecurity Risk Management\
+Business Liability Risk Management and Insurance
+
+**Finance & Risk Management**\
+Financial Analysis, Risk Assessment, Claims Evaluation
+
+**Technical Skills**\
+Python, Java, Tableau, SIEM Tools, CRM Systems
+:::

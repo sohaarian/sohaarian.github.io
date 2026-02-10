@@ -1,0 +1,8 @@
+---
+title: "Soha Arian's Research"
+format: html
+---
+
+::: cv-frame
+# Soha Arian
+:::
