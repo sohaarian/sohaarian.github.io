@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>assignment1 – sohaarian.github.io</title>
+<title>Assignment 1 – Brush up R and Quarto – sohaarian.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -164,7 +199,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#soha-arian" id="toc-soha-arian" class="nav-link active" data-scroll-target="#soha-arian">Soha Arian</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#import-the-dataset" id="toc-import-the-dataset" class="nav-link" data-scroll-target="#import-the-dataset">Import the dataset</a></li>
+  <li><a href="#problems-i-see-in-the-dataset" id="toc-problems-i-see-in-the-dataset" class="nav-link" data-scroll-target="#problems-i-see-in-the-dataset">Problems I See In The Dataset</a></li>
+  <li><a href="#dealing-with-missing-values" id="toc-dealing-with-missing-values" class="nav-link" data-scroll-target="#dealing-with-missing-values">Dealing With Missing Values</a>
+  <ul class="collapse">
+  <li><a href="#check-for-missing-values" id="toc-check-for-missing-values" class="nav-link" data-scroll-target="#check-for-missing-values">Check For Missing Values</a></li>
+  <li><a href="#remove-incomplete-rows" id="toc-remove-incomplete-rows" class="nav-link" data-scroll-target="#remove-incomplete-rows">Remove Incomplete Rows</a></li>
+  </ul></li>
+  <li><a href="#relationship-between-tondu-and-other-variables" id="toc-relationship-between-tondu-and-other-variables" class="nav-link" data-scroll-target="#relationship-between-tondu-and-other-variables">Relationship Between Tondu And Other Variables</a>
+  <ul class="collapse">
+  <li><a href="#use-facets-from-r-for-data-science-section-3.5." id="toc-use-facets-from-r-for-data-science-section-3.5." class="nav-link" data-scroll-target="#use-facets-from-r-for-data-science-section-3.5.">Use Facets From R For Data Science (Section 3.5).</a></li>
+  </ul></li>
+  <li><a href="#looking-at-votetsai" id="toc-looking-at-votetsai" class="nav-link" data-scroll-target="#looking-at-votetsai">Looking At Votetsai</a>
+  <ul class="collapse">
+  <li><a href="#find-the-correct-votesai-column-name" id="toc-find-the-correct-votesai-column-name" class="nav-link" data-scroll-target="#find-the-correct-votesai-column-name">Find the correct votesai column name</a></li>
+  </ul></li>
+  <li><a href="#frequency-table-and-bar-chart-for-tondu" id="toc-frequency-table-and-bar-chart-for-tondu" class="nav-link" data-scroll-target="#frequency-table-and-bar-chart-for-tondu">8. Frequency Table And Bar Chart For Tondu</a>
+  <ul class="collapse">
+  <li><a href="#assign-labels" id="toc-assign-labels" class="nav-link" data-scroll-target="#assign-labels">Assign labels</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -173,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">assignment1</h1>
+<h1 class="title">Assignment 1 – Brush up R and Quarto</h1>
 </div>
 
 
@@ -190,11 +246,189 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="soha-arian" class="level1 cv-frame">
-<h1>Soha Arian</h1>
+<section id="exploratory-data-analysis" class="level1">
+<h1>Exploratory Data Analysis</h1>
+<p>I reviewed Chapters 3 to 7 in R4DS, Section 3.5 in Data Programming. Using this information, I will run an exploratory data analysis with R using the TEDS2016 dataset.</p>
+<section id="import-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-dataset">Import the dataset</h2>
+<p>This code downloads the TEDS2016 file in Stata format and loads it into R.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>TEDS_2016 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
+<section id="problems-i-see-in-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="problems-i-see-in-the-dataset">Problems I See In The Dataset</h2>
+<p>I noticed that some variables are stored as coded numbers instead of clear words, which makes them harder to interpret until labels are added. I also found missing values in multiple columns, which can change results if they are not handled. Finally, some answers are non substantive, such as no response.</p>
+</section>
+<section id="dealing-with-missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="dealing-with-missing-values">Dealing With Missing Values</h2>
+<p>Missing values can be handled by removing rows that have missing values for the variables being analyzed or by replacing missing numeric values with a reasonable value such as the mean. For this assignment, I remove rows where Tondu is missing because Tondu is required for the next steps. I also replace missing age values with the average age so age can still be used.</p>
+<section id="check-for-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="check-for-missing-values">Check For Missing Values</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(TEDS_2016))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       District             Sex             Age             Edu           Arear 
+              0               0               0               0               0 
+         Career         Career8          Ethnic           Party         PartyID 
+              0               0               0               0               0 
+          Tondu          Tondu3             nI2        votetsai           green 
+              0               0               0             429               0 
+    votetsai_nm    votetsai_all    Independence     Unification              sq 
+            429             248               0               0               0 
+      Taiwanese             edu          female     whitecollar       lowincome 
+              0              10               0               0               0 
+         income       income_nm             age             KMT             DPP 
+              0             330               0               0               0 
+            npp         noparty             pfp           South           north 
+              0               0               0               0               0 
+  Minnan_father Mainland_father      Econ_worse      Inequality     inequality5 
+              0               0               0               0               0 
+     econworse5 Govt_for_public        pubwelf5  Govt_dont_care      highincome 
+              0               0               0               0             330 
+        votekmt      votekmt_nm            Blue           Green        No_Party 
+              0             429               0               0               0 
+       voteblue     voteblue_nm       votedpp_1       votekmt_1 
+              0             429             187             187 </code></pre>
+</div>
+</div>
+</section>
+<section id="remove-incomplete-rows" class="level3">
+<h3 class="anchored" data-anchor-id="remove-incomplete-rows">Remove Incomplete Rows</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>TEDS_clean <span class="ot">&lt;-</span> TEDS_2016[, <span class="fu">c</span>(<span class="st">"Tondu"</span>,<span class="st">"female"</span>,<span class="st">"DPP"</span>,<span class="st">"age"</span>,<span class="st">"income"</span>,<span class="st">"edu"</span>,<span class="st">"Taiwanese"</span>,<span class="st">"Econ_worse"</span>)]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>TEDS_clean <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(TEDS_clean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="relationship-between-tondu-and-other-variables" class="level2">
+<h2 class="anchored" data-anchor-id="relationship-between-tondu-and-other-variables">Relationship Between Tondu And Other Variables</h2>
+<p>To explore Tondu with categorical variables such as female, DPP, Taiwanese, and Econ_worse, I use cross tabulations and proportions to compare group patterns. To explore Tondu with numeric or ordered variables such as age, income, and education, I compare averages by Tondu category. These methods provide a clear first look at differences across groups.</p>
+<section id="use-facets-from-r-for-data-science-section-3.5." class="level3">
+<h3 class="anchored" data-anchor-id="use-facets-from-r-for-data-science-section-3.5.">Use Facets From R For Data Science (Section 3.5).</h3>
+<section id="tondu-by-female" class="level4">
+<h4 class="anchored" data-anchor-id="tondu-by-female">Tondu by Female</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_clean, <span class="fu">aes</span>(<span class="at">x =</span> Tondu)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"deeppink"</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> female)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tondu-by-female-and-dpp" class="level4">
+<h4 class="anchored" data-anchor-id="tondu-by-female-and-dpp">Tondu by Female and DPP</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_clean, <span class="fu">aes</span>(<span class="at">x =</span> Tondu)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"deeppink"</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(female <span class="sc">~</span> DPP)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="looking-at-votetsai" class="level2">
+<h2 class="anchored" data-anchor-id="looking-at-votetsai">Looking At Votetsai</h2>
+<p>The votetsai variable shows whether a respondent voted for Tsai Ing wen. I first check the overall counts for votetsai, then compare it with Tondu using a cross tabulation to see how voting relates to Tondu attitudes.</p>
+<section id="find-the-correct-votesai-column-name" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-correct-votesai-column-name">Find the correct votesai column name</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(TEDS_2016)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "District"        "Sex"             "Age"             "Edu"            
+ [5] "Arear"           "Career"          "Career8"         "Ethnic"         
+ [9] "Party"           "PartyID"         "Tondu"           "Tondu3"         
+[13] "nI2"             "votetsai"        "green"           "votetsai_nm"    
+[17] "votetsai_all"    "Independence"    "Unification"     "sq"             
+[21] "Taiwanese"       "edu"             "female"          "whitecollar"    
+[25] "lowincome"       "income"          "income_nm"       "age"            
+[29] "KMT"             "DPP"             "npp"             "noparty"        
+[33] "pfp"             "South"           "north"           "Minnan_father"  
+[37] "Mainland_father" "Econ_worse"      "Inequality"      "inequality5"    
+[41] "econworse5"      "Govt_for_public" "pubwelf5"        "Govt_dont_care" 
+[45] "highincome"      "votekmt"         "votekmt_nm"      "Blue"           
+[49] "Green"           "No_Party"        "voteblue"        "voteblue_nm"    
+[53] "votedpp_1"       "votekmt_1"      </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="frequency-table-and-bar-chart-for-tondu" class="level2">
+<h2 class="anchored" data-anchor-id="frequency-table-and-bar-chart-for-tondu">8. Frequency Table And Bar Chart For Tondu</h2>
+<section id="assign-labels" class="level3">
+<h3 class="anchored" data-anchor-id="assign-labels">Assign labels</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>TEDS_2016<span class="sc">$</span>Tondu <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  TEDS_2016<span class="sc">$</span>Tondu,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Unification now"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Status quo, unif. in future"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Status quo, decide later"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Status quo forever"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Status quo, indep. in future"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Independence now"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No response"</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(TEDS_2016<span class="sc">$</span>Tondu)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5   6   9 
+ 27 180 546 328 380 108 121 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_2016, <span class="fu">aes</span>(<span class="at">x =</span> Tondu)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"deeppink"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>TEDS_2016 <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">"https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>TEDS_clean <span class="ot">&lt;-</span> TEDS_2016[, <span class="fu">c</span>(<span class="st">"Tondu"</span>,<span class="st">"female"</span>,<span class="st">"DPP"</span>,<span class="st">"age"</span>,<span class="st">"income"</span>,<span class="st">"edu"</span>,<span class="st">"Taiwanese"</span>,<span class="st">"Econ_worse"</span>,<span class="st">"votetsai"</span>)]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>TEDS_clean <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(TEDS_clean)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TEDS_clean, <span class="fu">aes</span>(<span class="at">x =</span> Tondu)) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"deeppink"</span>) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> votetsai)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
