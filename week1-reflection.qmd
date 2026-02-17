@@ -1,0 +1,24 @@
+---
+title: "Weekly Reflections"
+format: html
+---
+
+## WEEK 1 REFLECTION
+
+## AI and originality
+
+This week, I learned how AI can enhance learning without replacing original thought. AI is beneficial for me when used as a support tool for understanding concepts, while originality comes from how ideas are interpreted and communicated by me. I use AI to help me study! For example,it is beneficial for me to break down difficult concepts so that I can understand them in more simple terms and real-world scenario examples.
+
+## What is AGI? How does AGI affect scientific research?
+
+I learned that Artificial General Intelligence (AGI) refers to systems capable of performing human level tasks. AGI could help enhance scientific research through faster data analysis, but it also causes ethical concerns in regards to responsible use.
+
+## WEEK 2 REFLECTION
+
+## How to start using AI for your project?
+
+I believe I can use AI in my project by helping me turn our STATA data zip file to help us use it in R studio. AI can help us let the data be read in R studio.
+
+## Which two AI models are you using? How can you leverage them to help your research?
+
+I am using CHATGPT and Google Gemini for my project. I am new to using R, so I will ask it to help me if I run into any errors uploading the STATA zip file to R studio.
