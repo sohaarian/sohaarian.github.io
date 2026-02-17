@@ -1,0 +1,114 @@
+---
+title: "Assignment 1 – Brush up R and Quarto"
+format: html
+---
+
+# Exploratory Data Analysis
+
+I reviewed Chapters 3 to 7 in R4DS, Section 3.5 in Data Programming. Using this information, I will run an exploratory data analysis with R using the TEDS2016 dataset.
+
+## Import the dataset
+
+This code downloads the TEDS2016 file in Stata format and loads it into R.
+
+```{r}
+library(haven)
+library(ggplot2)
+
+TEDS_2016 <- haven::read_dta("https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true")
+```
+
+## Problems I See In The Dataset
+
+I noticed that some variables are stored as coded numbers instead of clear words, which makes them harder to interpret until labels are added. I also found missing values in multiple columns, which can change results if they are not handled. Finally, some answers are non substantive, such as no response.
+
+## Dealing With Missing Values
+
+Missing values can be handled by removing rows that have missing values for the variables being analyzed or by replacing missing numeric values with a reasonable value such as the mean. For this assignment, I remove rows where Tondu is missing because Tondu is required for the next steps. I also replace missing age values with the average age so age can still be used.
+
+### Check For Missing Values
+
+```{r}
+colSums(is.na(TEDS_2016))
+```
+
+### Remove Incomplete Rows
+
+```{r}
+TEDS_clean <- TEDS_2016[, c("Tondu","female","DPP","age","income","edu","Taiwanese","Econ_worse")]
+TEDS_clean <- na.omit(TEDS_clean)
+```
+
+## Relationship Between Tondu And Other Variables
+
+To explore Tondu with categorical variables such as female, DPP, Taiwanese, and Econ_worse, I use cross tabulations and proportions to compare group patterns. To explore Tondu with numeric or ordered variables such as age, income, and education, I compare averages by Tondu category. These methods provide a clear first look at differences across groups.
+
+### Use Facets From R For Data Science (Section 3.5).
+
+#### Tondu by Female
+
+```{r}
+ggplot(TEDS_clean, aes(x = Tondu)) +
+  geom_bar(fill = "deeppink") +
+  facet_wrap(~ female)
+```
+
+#### Tondu by Female and DPP
+
+```{r}
+ggplot(TEDS_clean, aes(x = Tondu)) +
+  geom_bar(fill = "deeppink") +
+  facet_grid(female ~ DPP)
+```
+
+## Looking At Votetsai
+
+The votetsai variable shows whether a respondent voted for Tsai Ing wen. I first check the overall counts for votetsai, then compare it with Tondu using a cross tabulation to see how voting relates to Tondu attitudes.
+
+### Find the correct votesai column name
+
+```{r}
+names(TEDS_2016)
+```
+
+## Frequency Table And Bar Chart For Tondu
+
+### Assign labels
+
+```{r}
+TEDS_2016$Tondu <- as.numeric(
+  TEDS_2016$Tondu,
+  labels = c(
+    "Unification now",
+    "Status quo, unif. in future",
+    "Status quo, decide later",
+    "Status quo forever",
+    "Status quo, indep. in future",
+    "Independence now",
+    "No response"
+  )
+)
+```
+
+```{r}
+table(TEDS_2016$Tondu)
+```
+
+```{r}
+ggplot(TEDS_2016, aes(x = Tondu)) +
+  geom_bar(fill = "deeppink")
+```
+
+```{r}
+library(haven)
+library(ggplot2)
+
+TEDS_2016 <- haven::read_dta("https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true")
+
+TEDS_clean <- TEDS_2016[, c("Tondu","female","DPP","age","income","edu","Taiwanese","Econ_worse","votetsai")]
+TEDS_clean <- na.omit(TEDS_clean)
+
+ggplot(TEDS_clean, aes(x = Tondu)) +
+  geom_bar(fill = "deeppink") +
+  facet_wrap(~ votetsai)
+```

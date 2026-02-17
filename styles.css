@@ -1,20 +1,20 @@
 /* css styles */
 .cv-frame {
-  border: 4px solid #f4a6c1;   /* soft pink */
+  border: 4px solid #f4a6c1;   /* soft pink is so barbie and I love barbieee */
   border-radius: 18px;
   padding: 12px;
-  background-color: #ff4a6c1;  /* very light pink background */
+  background-color: #ff4a6c1;  /* live laugh love light pink */
   box-shadow: 0 6px 18px rgba(244, 166, 193, 0.35);
 }
 
 .cv-frame iframe {
   border-radius: 12px;
 }
-/* 🌸 Global pink theme 🌸 */
+/* Global pink theme */
 
 /* Page background */
 body {
-  background-color: #ff4a6c1;  /* soft blush pink */
+  background-color: #ff4a6c1;  /* soft pink is my favorite colorrrr */
 }
 
 /* Main content area */
@@ -42,7 +42,7 @@ main, .content {
 
 /* Headings */
 h1, h2, h3, h4 {
-  color: #d63384; /* deep rosy pink */
+  color: #d63384; /* deep rosy pink like Barbie princesses is my childhood */
 }
 
 /* Links */
@@ -54,7 +54,7 @@ a:hover {
   color: #a61e5c;
 }
 
-/* CV frame (your cute border) */
+/* CV frame (cutest border everrrr for me duhhh) */
 .cv-frame {
   border: 4px solid #f4a6c1;
   border-radius: 18px;
@@ -64,7 +64,7 @@ a:hover {
   
   /* Dropdown (Assignments) — make it pink + readable */
 .navbar .dropdown-menu {
-  background-color: #d63384 !important;   /* darker pink */
+  background-color: #d63384 !important;   /* darker pink i needdd contrasttt */
   border: 2px solid #f4a6c1 !important;
   border-radius: 14px !important;
   padding: 0.5rem !important;

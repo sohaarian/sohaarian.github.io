@@ -1,0 +1,45 @@
+project:
+  type: website
+  resources:
+    - cv.pdf
+
+website:
+  title: "sohaarian.github.io"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: research.qmd
+        text: Research
+      - href: project.qmd
+        text: Project
+      - href: cv.qmd
+        text: CV
+      - text: Weekly Reflections
+        menu:
+         - href: week1-reflection.qmd
+           text: All Weekly Reflections
+      - text: Assignments
+        menu:
+          - href: assignment1.qmd
+            text: Soha Arian Assignment 1
+          - href: assignment2.qmd
+            text: Soha Arian Assignment 2
+          - href: assignment3.qmd
+            text: Soha Arian Assignment 3
+          - href: lab1.qmd
+            text: Soha Arian Lab 01
+          - href: lab2.qmd
+            text: Soha Arian Lab 02
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+editor: visual
