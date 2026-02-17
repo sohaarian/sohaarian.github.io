@@ -1,0 +1,112 @@
+---
+title: "Assignment 2 – Prompt Exercise"
+format: html
+---
+
+## Objective
+
+This assignment shows how different AI models respond to the same research task. The goal is to design prompts, evaluate model outputs, refine instructions, and understand how prompt structure impacts response quality.
+
+## **Design Prompt**
+
+For the first test, I submitted the following prompt to multiple AI models:
+
+Write a 1,500 word literature review that reads like an analytical discussion rather than a textbook summary. Start by explaining the purpose and scope of the review. Include a methodology section describing how ideas, themes, and findings are compared across studies. Add key insights by identifying patterns, similarities, and differences. Highlight important trends, challenges, and meaningful research gaps. Finish by suggesting one realistic and testable hypothesis that logically follows from the discussion. Maintain a formal but clear writing style, prioritizing explanation and reasoning over definitions or lists.
+
+The prompt was submitted to ChatGPT, Copilot, and Grok 3.
+
+## **Model Response Analysis**
+
+Each model response was evaluated using the following criteria:
+
+**Structure**\
+Did it include a methodology section and follow a
+systematic review format?
+
+**Synthesis**\
+Were key findings from data mining and machine learning
+applications well-summarized?
+
+**Trends and Gaps**\
+Did it identify meaningful trends and research
+gaps?
+
+**Hypothesis Quality**\
+Was the proposed hypothesis testable and relevant?
+
+**References**\
+Are the citations accurate (check using Google Scholar or
+Semantic Scholar)
+
+## **Analyze Model Responses**
+
+**Structure**
+
+Regarding the structure, ChatGPT did a great job because it included a specific section explaining its methodology and followed a professional format. Copilot was also very organized and used clear headings that made the report easy to navigate. Grok 3 included a methodology paragraph as well, but the overall response felt more like one long essay rather than a structured review with clear sections.
+
+**Synthesis**
+
+When it comes to summarizing data mining and machine learning, ChatGPT was the only model that successfully stayed on topic. It explained how researchers are trying to balance making models accurate while also making them easy for humans to understand. Copilot completely missed the mark here because it wrote about technology in classrooms instead of data mining. Grok 3 focused almost entirely on how AI affects jobs and the economy, which was interesting but didn't cover enough of the technical machine learning details.
+
+**Trends and Gaps**
+
+All three models tried to identify trends, but ChatGPT was the most relevant to the prompt by pointing out that researchers are moving away from simple predictions and looking for deeper causes. Copilot identified gaps in how technology affects different students, which was good but for the wrong subject. Grok 3 identified a very modern trend regarding "agentic AI" and noted that we still don't have enough long-term data on how these systems behave.
+
+**Hypothesis Quality**
+
+The hypotheses provided were a bit of a mixed bag. ChatGPT created a strong, testable guess about whether adaptive models work better than static ones over a long period of time. Copilot also wrote a clear hypothesis about student learning, but it wasn't relevant to the actual assignment topic of data mining. Grok 3 failed this part entirely because the response cut off at the end, so it never actually provided a hypothesis to test.
+
+**References**
+
+For the references and citations, all of the models struggled. None of them provided a list of specific papers, authors, or links that could be double-checked on Google Scholar or Semantic Scholar. They all spoke about "the literature" in a general way without giving credit to specific researchers, which makes it hard to verify if the information is coming from a real study.
+
+**Strengths and Weaknesses**
+
+In summary, ChatGPT’s main strength was following the instructions perfectly and staying on the right topic, but its weakness was the lack of real citations. Copilot’s strength was its very clean and easy-to-read structure, but its major weakness was hallucinating the wrong topic for the review. Grok 3’s strength was providing very deep and unique thoughts about current AI trends, but its biggest weakness was being incomplete and cutting off before finishing the task.
+
+## **Refined Prompts**
+
+After reviewing weaknesses, I revised the prompts.
+
+**Refined Prompt for ChatGPT**
+
+The biggest problem with ChatGPT’s first answer was that it did not name any real scientists or papers. It spoke in a very general way, which makes it hard to prove the information is true. This new prompt tells ChatGPT that it must include specific names and dates for its sources. It also asks for a bibliography at the end so we can check the work using Google Scholar or Semantic Scholar to make sure the citations are accurate.
+
+**New Prompt for ChatGPT:**
+
+Write a 1,500-word literature review about data mining and machine learning. You must include real in-text citations from academic studies, such as (Author, Year), to support your points. Include a methodology section that explains how you compared different studies. At the very end, provide a full list of references and one realistic, testable hypothesis that researchers could use for a new study.
+
+**Refined Prompt for Microsoft Copilot**
+
+Microsoft Copilot failed the first time because it wrote about the wrong topic, focusing on education instead of computer science. To fix this, the new prompt uses very strict instructions to stay on the subject of data mining and machine learning. Since Copilot is good at making things look neat, the prompt asks for a clear structure with specific sections for trends and gaps. This will help the model stay focused on the technical requirements of the assignment.
+
+**New Prompt for Copilot:**
+
+Write an analytical literature review of exactly 1,500 words about the technical applications of Data Mining and Machine Learning. Do not write about "human learning" or "education"; you must focus only on computer science topics like algorithm performance and data patterns. Organize the review with clear sections for methodology, key findings, and research gaps. End the discussion with a formal, testable hypothesis.
+
+**Refined Prompt for Grok 3**
+
+Grok 3’s first response was smart, but it was too short and it cut off before it could finish the job. It also focused too much on jobs and money instead of the actual technology. The new prompt tells Grok 3 to act like a data scientist and write a much longer review. It also tells the model to balance its time better so that it does not stop talking before it gets to the hypothesis at the very end.
+
+**New Prompt for Grok 3:**
+
+Imagine you are a data scientist writing a 2,000-word systematic literature review on data mining and machine learning in fields like healthcare and finance. You must provide a clear methodology and focus on the technical side of how models work, such as their accuracy and how they handle complex data. Ensure you manage the length of your response so it is complete. You must finish with a bold and testable hypothesis and a final conclusion.
+
+## **Final Prompt**
+
+After testing the new prompts, the results were much better because each AI finally followed the specific rules it missed the first time. ChatGPT became more trustworthy by adding real names and dates of scientists to support its ideas, while Copilot finally stopped talking about the wrong topic and stayed focused only on computer science. Grok 3 also did a better job by finishing its entire report and providing a smart "science guess" or hypothesis at the end instead of cutting off early. This shows that when you give an AI very clear instructions and fix its past mistakes, it can write a much more professional and complete paper for your project.
+
+After collecting revised outputs, I used this synthesis prompt:
+
+I am giving you three different drafts for a literature review on Data Mining and Machine Learning. Please combine them into one final 2,000-word systematic review. Use the real-world citations and the methodology from the first draft, the clear headings and organization from the second draft, and the modern technical insights from the third draft. Make sure the final document flows smoothly, maintains a formal tone, and ends with the most realistic and testable hypothesis. \[I insert the three model outputs here.\]
+
+## **Reflection** 
+
+**How did the models respond differently?\
+**Each model handled the systematic review in a different way. ChatGPT focused on the technical history and professional structure of data mining, making sure to connect old methods with new ones. Microsoft Copilot focused more on the layout and organization of the report, though it struggled to stay on the correct topic at the beginning. Grok 3 focused on the newest trends and how AI affects the real world right now, but it had a hard time finishing long responses and often stopped before the end.
+
+**Which refinements worked best?**\
+The prompt refinements that worked best were the ones that added very specific requirements. For ChatGPT, telling it to include real-world citations with authors and dates made the review much more accurate. For Copilot, the most helpful change was using bold instructions to stay strictly on the topic of computer science so it wouldn't talk about other subjects. For Grok 3, the best fix was asking it to be more concise and watch its length, which helped it complete the final sections and the hypothesis.
+
+**What did this exercise demonstrate?**\
+I learned that using AI for academic reviews requires a lot of back-and-forth work to get a good result. You cannot just use the first answer the AI gives you; you have to check for missing parts and fix the instructions to get better details. I also learned that it is best to use multiple models because one might be better at organizing while another is better at finding modern trends. The most important lesson is that a human must guide the AI and verify all the facts to make sure the final paper is correct and complete.

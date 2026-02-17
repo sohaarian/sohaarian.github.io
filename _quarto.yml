@@ -19,7 +19,7 @@ website:
         text: CV
       - text: Weekly Reflections
         menu:
-         - href: week1-reflection.qmd
+         - href: weekly-reflections.qmd
            text: All Weekly Reflections
       - text: Assignments
         menu:
