@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Soha Arian">
 
-<title>Soha Arian’s Research – sohaarian.github.io</title>
+<title>Cyber Insurance Research – sohaarian.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -167,8 +203,23 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
-  <ul>
-  <li><a href="#soha-arian" id="toc-soha-arian" class="nav-link active" data-scroll-target="#soha-arian">Soha Arian</a></li>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1</span> Overview</a></li>
+  <li><a href="#data-and-workflow" id="toc-data-and-workflow" class="nav-link" data-scroll-target="#data-and-workflow"><span class="header-section-number">2</span> Data and Workflow</a></li>
+  <li><a href="#software-and-references" id="toc-software-and-references" class="nav-link" data-scroll-target="#software-and-references"><span class="header-section-number">3</span> Software and References</a></li>
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages"><span class="header-section-number">4</span> Load Packages</a></li>
+  <li><a href="#read-the-pdf" id="toc-read-the-pdf" class="nav-link" data-scroll-target="#read-the-pdf"><span class="header-section-number">5</span> Read the PDF</a></li>
+  <li><a href="#split-the-pdf-into-individual-records" id="toc-split-the-pdf-into-individual-records" class="nav-link" data-scroll-target="#split-the-pdf-into-individual-records"><span class="header-section-number">6</span> Split the PDF into Individual Records</a></li>
+  <li><a href="#create-simple-metadata" id="toc-create-simple-metadata" class="nav-link" data-scroll-target="#create-simple-metadata"><span class="header-section-number">7</span> Create Simple Metadata</a></li>
+  <li><a href="#build-the-corpus-and-document-feature-matrix" id="toc-build-the-corpus-and-document-feature-matrix" class="nav-link" data-scroll-target="#build-the-corpus-and-document-feature-matrix"><span class="header-section-number">8</span> Build the Corpus and Document-Feature Matrix</a></li>
+  <li><a href="#graph-1-most-common-words" id="toc-graph-1-most-common-words" class="nav-link" data-scroll-target="#graph-1-most-common-words"><span class="header-section-number">9</span> Graph 1: Most Common Words</a></li>
+  <li><a href="#graph-2-incident-type-distribution" id="toc-graph-2-incident-type-distribution" class="nav-link" data-scroll-target="#graph-2-incident-type-distribution"><span class="header-section-number">10</span> Graph 2: Incident Type Distribution</a></li>
+  <li><a href="#graph-3-total-affected-individuals-by-incident-type" id="toc-graph-3-total-affected-individuals-by-incident-type" class="nav-link" data-scroll-target="#graph-3-total-affected-individuals-by-incident-type"><span class="header-section-number">11</span> Graph 3: Total Affected Individuals by Incident Type</a></li>
+  <li><a href="#graph-4-mitigation-actions-mentioned" id="toc-graph-4-mitigation-actions-mentioned" class="nav-link" data-scroll-target="#graph-4-mitigation-actions-mentioned"><span class="header-section-number">12</span> Graph 4: Mitigation Actions Mentioned</a></li>
+  <li><a href="#graph-5-most-frequently-mentioned-phi-categories" id="toc-graph-5-most-frequently-mentioned-phi-categories" class="nav-link" data-scroll-target="#graph-5-most-frequently-mentioned-phi-categories"><span class="header-section-number">13</span> Graph 5: Most Frequently Mentioned PHI Categories</a></li>
+  <li><a href="#graph-6-most-common-two-word-phrases" id="toc-graph-6-most-common-two-word-phrases" class="nav-link" data-scroll-target="#graph-6-most-common-two-word-phrases"><span class="header-section-number">14</span> Graph 6: Most Common Two-Word Phrases</a></li>
+  <li><a href="#graph-7-word-cloud" id="toc-graph-7-word-cloud" class="nav-link" data-scroll-target="#graph-7-word-cloud"><span class="header-section-number">15</span> Graph 7: Word Cloud</a></li>
+  <li><a href="#save-output" id="toc-save-output" class="nav-link" data-scroll-target="#save-output"><span class="header-section-number">16</span> Save Output</a></li>
   </ul>
 </nav>
     </div>
@@ -177,13 +228,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Soha Arian’s Research</h1>
+<h1 class="title">Cyber Insurance Research</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Soha Arian </p>
+          </div>
+  </div>
     
   
     
@@ -194,8 +251,388 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="soha-arian" class="level1">
-<h1>Soha Arian</h1>
+<section id="overview" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1</span> Overview</h2>
+<p>This project for my senior capstone analyzes a PDF collection of breach descriptions as a text corpus. The goal is to identify the most common claim language, incident types, PHI categories, and mitigation actions mentioned across the records.</p>
+<p>The workflow follows a text-mining structure that moves from raw text to a corpus, then to tokens, and then to a document-feature matrix for visual analysis. This makes it possible to compare repeated language patterns across breach descriptions.</p>
+</section>
+<section id="data-and-workflow" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="data-and-workflow"><span class="header-section-number">2</span> Data and Workflow</h2>
+<p>The analysis proceeds in six steps:</p>
+<ol type="1">
+<li>Read the PDF into R.</li>
+<li>Split the combined text into individual breach records.</li>
+<li>Create simple metadata from the text, such as incident type and number of affected individuals.</li>
+<li>Build a quanteda corpus and document-feature matrix.</li>
+<li>Generate visualizations for word frequency, incident patterns, PHI categories, and common phrases.</li>
+<li>Save a clean extracted dataset for future use.</li>
+</ol>
+</section>
+<section id="software-and-references" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="software-and-references"><span class="header-section-number">3</span> Software and References</h2>
+<p>This project used the following tools and references:</p>
+<ul>
+<li><a href="https://tutorials.quanteda.io/">Quanteda Tutorials</a></li>
+<li><a href="https://www.r-project.org/">R Project for Statistical Computing</a></li>
+<li><a href="https://quarto.org/">Quarto Documentation</a></li>
+<li><a href="https://quarto.org/docs/publishing/github-pages.html">Quarto Publishing to GitHub Pages</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages Documentation</a></li>
+</ul>
+</section>
+<section id="load-packages" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="load-packages"><span class="header-section-number">4</span> Load Packages</h2>
+<p>This section loads the R packages used for text extraction, cleaning, corpus construction, and plotting.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="read-the-pdf" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="read-the-pdf"><span class="header-section-number">5</span> Read the PDF</h2>
+<p>This section reads the PDF into R and combines all pages into one text object.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pdf_file <span class="ot">&lt;-</span> <span class="st">"WebDescription - Copy.pdf"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pdf_pages <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(pdf_file)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>full_text <span class="ot">&lt;-</span> <span class="fu">paste</span>(pdf_pages, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Pages loaded:"</span>, <span class="fu">length</span>(pdf_pages), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pages loaded: 1 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Characters loaded:"</span>, <span class="fu">nchar</span>(full_text), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Characters loaded: 50093 </code></pre>
+</div>
+</div>
+</section>
+<section id="split-the-pdf-into-individual-records" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="split-the-pdf-into-individual-records"><span class="header-section-number">6</span> Split the PDF into Individual Records</h2>
+<p>Each breach description is treated as its own document. This makes the dataset easier to analyze because each row becomes one claim record.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>full_text_clean <span class="ot">&lt;-</span> full_text <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">r"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">n+"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>marked_text <span class="ot">&lt;-</span> full_text_clean <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=The covered entity </span><span class="sc">\\</span><span class="st">(CE</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=The business associate </span><span class="sc">\\</span><span class="st">(BA</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=[A-Z][A-Za-z&amp;'.,</span><span class="sc">\\</span><span class="st">- ]+, the covered entity </span><span class="sc">\\</span><span class="st">(CE</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=[A-Z][A-Za-z&amp;'.,</span><span class="sc">\\</span><span class="st">- ]+, the business associate </span><span class="sc">\\</span><span class="st">(BA</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>records <span class="ot">&lt;-</span> marked_text <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|REC</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|"</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>()</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>records <span class="ot">&lt;-</span> records[records <span class="sc">!=</span> <span class="st">""</span>]</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>records <span class="ot">&lt;-</span> records[<span class="fu">str_detect</span>(records, <span class="st">"reported that"</span>)]</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>claims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">doc_id =</span> <span class="fu">paste0</span>(<span class="st">"claim_"</span>, <span class="fu">seq_along</span>(records)),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> records</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Extracted"</span>, <span class="fu">nrow</span>(claims), <span class="st">"records</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Extracted 89 records</code></pre>
+</div>
+</div>
+</section>
+<section id="create-simple-metadata" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="create-simple-metadata"><span class="header-section-number">7</span> Create Simple Metadata</h2>
+<p>This section creates basic variables directly from the text. These variables help summarize the kinds of incidents and the level of impact described in the records.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>claims <span class="ot">&lt;-</span> claims <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">incident_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"ransomware"</span>) <span class="sc">~</span> <span class="st">"Ransomware"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"phishing"</span>) <span class="sc">~</span> <span class="st">"Phishing"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"wrong recipient|wrong recipients"</span>) <span class="sc">~</span> <span class="st">"Wrong recipient"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"hacking incident"</span>) <span class="sc">~</span> <span class="st">"Hacking"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"cybersecurity incident"</span>) <span class="sc">~</span> <span class="st">"Cybersecurity incident"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"cyber-attack|cyberattack"</span>) <span class="sc">~</span> <span class="st">"Cyberattack"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"viewable over the internet"</span>) <span class="sc">~</span> <span class="st">"Internet exposure"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"lost during transport|mailed"</span>) <span class="sc">~</span> <span class="st">"Mailing / transport"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">affected_raw =</span> <span class="fu">str_extract</span>(text, <span class="st">"</span><span class="sc">\\</span><span class="st">d{1,3}(?:,</span><span class="sc">\\</span><span class="st">d{3})*</span><span class="sc">\\</span><span class="st">s+individuals"</span>),</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">affected_individuals =</span> <span class="fu">str_extract</span>(affected_raw, <span class="st">"</span><span class="sc">\\</span><span class="st">d{1,3}(?:,</span><span class="sc">\\</span><span class="st">d{3})*"</span>),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">affected_individuals =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(affected_individuals, <span class="st">","</span>, <span class="st">""</span>)),</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">credit_monitoring =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"credit monitoring"</span>), <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraining =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"retrained|retraining|training"</span>), <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">technical_safeguards =</span> <span class="fu">if_else</span>(</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"technical safeguards|security safeguards|access controls|encryption"</span>),</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_notice =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"the media|media</span><span class="sc">\\</span><span class="st">b"</span>), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(claims<span class="sc">$</span>incident_type)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+           Cyberattack Cybersecurity incident                Hacking 
+                    14                      6                      8 
+   Mailing / transport                  Other               Phishing 
+                     2                     20                     17 
+            Ransomware        Wrong recipient 
+                    12                     10 </code></pre>
+</div>
+</div>
+</section>
+<section id="build-the-corpus-and-document-feature-matrix" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="build-the-corpus-and-document-feature-matrix"><span class="header-section-number">8</span> Build the Corpus and Document-Feature Matrix</h2>
+<p>This is the main text-mining setup step. The text is converted into a quanteda corpus, tokenized, cleaned, and transformed into a document-feature matrix.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>corp_claims <span class="ot">&lt;-</span> <span class="fu">corpus</span>(claims, <span class="at">text_field =</span> <span class="st">"text"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  corp_claims,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_url =</span> <span class="cn">TRUE</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_tolower</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="fu">stopwords</span>(<span class="st">"english"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="fu">c</span>(</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ce"</span>, <span class="st">"ba"</span>, <span class="st">"phi"</span>, <span class="st">"hhs"</span>, <span class="st">"ocr"</span>, <span class="st">"reported"</span>, <span class="st">"affected"</span>, <span class="st">"individuals"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"information"</span>, <span class="st">"protected"</span>, <span class="st">"health"</span>, <span class="st">"involved"</span>, <span class="st">"included"</span>, <span class="st">"entity"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"covered"</span>, <span class="st">"business"</span>, <span class="st">"associate"</span>, <span class="st">"breach"</span>, <span class="st">"response"</span>, <span class="st">"provided"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"implemented"</span>, <span class="st">"additional"</span>, <span class="st">"notified"</span>, <span class="st">"technical"</span>, <span class="st">"administrative"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"security"</span>, <span class="st">"safeguards"</span>, <span class="st">"media"</span>, <span class="st">"names"</span>, <span class="st">"addresses"</span>, <span class="st">"dates"</span>, <span class="st">"birth"</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>dfmat <span class="ot">&lt;-</span> <span class="fu">dfm</span>(toks)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>dfmat <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(dfmat, <span class="at">min_termfreq =</span> <span class="dv">3</span>, <span class="at">min_docfreq =</span> <span class="dv">2</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"DFM:"</span>, <span class="fu">ndoc</span>(dfmat), <span class="st">"documents,"</span>, <span class="fu">nfeat</span>(dfmat), <span class="st">"features</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DFM: 89 documents, 94 features</code></pre>
+</div>
+</div>
+</section>
+<section id="graph-1-most-common-words" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="graph-1-most-common-words"><span class="header-section-number">9</span> Graph 1: Most Common Words</h2>
+<p>This graph shows the terms that appear most often across all extracted breach descriptions. It provides a broad overview of the dominant language in the dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>topfeat <span class="ot">&lt;-</span> <span class="fu">topfeatures</span>(dfmat, <span class="dv">20</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>top_words <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">term =</span> <span class="fu">names</span>(topfeat),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">as.numeric</span>(topfeat)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_words, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(term, count), <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#d63384"</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Words in Breach Descriptions"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Overall word frequency across all extracted records"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-2-incident-type-distribution" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="graph-2-incident-type-distribution"><span class="header-section-number">10</span> Graph 2: Incident Type Distribution</h2>
+<p>This graph shows how often each type of breach incident appears in the extracted records. It helps identify which incident types are most common in the corpus.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>claims <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(incident_type, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(incident_type, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#e83e8c"</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Incident Types in Breach Descriptions"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Frequency of broad incident categories"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-3-total-affected-individuals-by-incident-type" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="graph-3-total-affected-individuals-by-incident-type"><span class="header-section-number">11</span> Graph 3: Total Affected Individuals by Incident Type</h2>
+<p>This graph moves from record counts to impact. It shows which incident types account for the largest total number of affected individuals.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>claims <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(incident_type) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_affected =</span> <span class="fu">sum</span>(affected_individuals, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_affected)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(incident_type, total_affected), <span class="at">y =</span> total_affected)) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#f06595"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Total Affected Individuals by Incident Type"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Aggregate impact of each incident category"</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total affected individuals"</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-4-mitigation-actions-mentioned" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="graph-4-mitigation-actions-mentioned"><span class="header-section-number">12</span> Graph 4: Mitigation Actions Mentioned</h2>
+<p>This graph summarizes the response actions described in the breach narratives. It shows which mitigation steps appear most often after an incident.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>claims <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Credit monitoring</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(credit_monitoring, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Retraining / training</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(retraining, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Technical safeguards</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(technical_safeguards, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Media notice</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">sum</span>(media_notice, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"action"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(action, count), <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#ff85a1"</span>) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Mitigation Actions"</span>,</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Response measures described in the records"</span>,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-5-most-frequently-mentioned-phi-categories" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="graph-5-most-frequently-mentioned-phi-categories"><span class="header-section-number">13</span> Graph 5: Most Frequently Mentioned PHI Categories</h2>
+<p>This graph focuses on the types of protected health information mentioned in the breach descriptions. It highlights which data categories appear most often in the text.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>phi_terms <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"social security"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"drivers license"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"dates of birth"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"claims information"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"financial information"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"medications"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"diagnoses"</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"lab results"</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"health insurance"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"clinical information"</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"demographic information"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"treatment information"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"email addresses"</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>phi_counts <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">term =</span> phi_terms) <span class="sc">%&gt;%</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">map_int</span>(term, <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(claims<span class="sc">$</span>text), <span class="fu">fixed</span>(.x, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>))))</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(phi_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(term, count), <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#c9184a"</span>) <span class="sc">+</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Frequently Mentioned PHI Categories"</span>,</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Specific data types referenced in the breach records"</span>,</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-6-most-common-two-word-phrases" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="graph-6-most-common-two-word-phrases"><span class="header-section-number">14</span> Graph 6: Most Common Two-Word Phrases</h2>
+<p>Single words are useful, but repeated phrases can show more specific patterns. This graph identifies the most common two-word collocations in the corpus.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>col2 <span class="ot">&lt;-</span> <span class="fu">textstat_collocations</span>(toks, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">min_count =</span> <span class="dv">3</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>top_col2 <span class="ot">&lt;-</span> col2 <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> count, <span class="at">n =</span> <span class="dv">15</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_col2, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(collocation, count), <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#ff99c8"</span>) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Two-Word Phrases"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Frequent collocations across breach descriptions"</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-7-word-cloud" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="graph-7-word-cloud"><span class="header-section-number">15</span> Graph 7: Word Cloud</h2>
+<p>The word cloud offers a quick visual summary of the vocabulary used most often in the corpus. It complements the bar chart by emphasizing overall prominence rather than exact counts.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  dfmat,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_words =</span> <span class="dv">75</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">"#d63384"</span>, <span class="st">"#e83e8c"</span>, <span class="st">"#f06595"</span>, <span class="st">"#ff85a1"</span>, <span class="st">"#ff99c8"</span>, <span class="st">"#c9184a"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="save-output" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="save-output"><span class="header-section-number">16</span> Save Output</h2>
+<p>This final step saves the extracted record-level dataset.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(claims, <span class="st">"claims_extracted_from_pdf.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>AI Disclaimer:</strong> <em>I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.</em></p>
 
 
 </section>
