@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Soha Arian">
+
+<title>Assignment 4 – sohaarian.github.io</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">sohaarian.github.io</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./project.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weekly-reflections" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Weekly Reflections</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-weekly-reflections">    
+        <li>
+    <a class="dropdown-item" href="./weekly-reflections.html">
+ <span class="dropdown-text">All Weekly Reflections</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="./assignment1.html">
+ <span class="dropdown-text">Soha Arian Assignment 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment2.html">
+ <span class="dropdown-text">Soha Arian Assignment 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment3.html">
+ <span class="dropdown-text">Soha Arian Assignment 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignment4.html">
+ <span class="dropdown-text">Soha Arian Assignment 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lab1.html">
+ <span class="dropdown-text">Soha Arian Lab 01</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lab2.html">
+ <span class="dropdown-text">Soha Arian Lab 02</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#assignment-4" id="toc-assignment-4" class="nav-link active" data-scroll-target="#assignment-4">Assignment 4</a>
+  <ul class="collapse">
+  <li><a href="#text-analytics-using-quanteda" id="toc-text-analytics-using-quanteda" class="nav-link" data-scroll-target="#text-analytics-using-quanteda">Text Analytics using quanteda</a></li>
+  <li><a href="#read-tutorial-of-quanteda" id="toc-read-tutorial-of-quanteda" class="nav-link" data-scroll-target="#read-tutorial-of-quanteda">1. Read tutorial of quanteda</a></li>
+  <li><a href="#a.-use-sample-programs-to-analyze-us-presidential-inaugural-speeches" id="toc-a.-use-sample-programs-to-analyze-us-presidential-inaugural-speeches" class="nav-link" data-scroll-target="#a.-use-sample-programs-to-analyze-us-presidential-inaugural-speeches">2a. Use sample programs to analyze US presidential inaugural speeches</a>
+  <ul class="collapse">
+  <li><a href="#similarities-and-differences-among-presidents" id="toc-similarities-and-differences-among-presidents" class="nav-link" data-scroll-target="#similarities-and-differences-among-presidents">Similarities and differences among presidents</a></li>
+  <li><a href="#similarities-and-differences-over-time" id="toc-similarities-and-differences-over-time" class="nav-link" data-scroll-target="#similarities-and-differences-over-time">Similarities and differences over time</a></li>
+  </ul></li>
+  <li><a href="#b.-use-sample-programs-to-analyze-us-department-of-defense-reports" id="toc-b.-use-sample-programs-to-analyze-us-department-of-defense-reports" class="nav-link" data-scroll-target="#b.-use-sample-programs-to-analyze-us-department-of-defense-reports">2b. Use sample programs to analyze US Department of Defense reports</a></li>
+  <li><a href="#what-is-wordfish" id="toc-what-is-wordfish" class="nav-link" data-scroll-target="#what-is-wordfish">3. What is Wordfish?</a></li>
+  <li><a href="#a.-run-wordfish-on-dod-reports" id="toc-a.-run-wordfish-on-dod-reports" class="nav-link" data-scroll-target="#a.-run-wordfish-on-dod-reports">3a. Run Wordfish on DOD reports</a></li>
+  <li><a href="#how-to-compare-positions" id="toc-how-to-compare-positions" class="nav-link" data-scroll-target="#how-to-compare-positions">4. How to compare positions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Assignment 4</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Soha Arian </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="assignment-4" class="level1">
+<h1>Assignment 4</h1>
+<section id="text-analytics-using-quanteda" class="level2">
+<h2 class="anchored" data-anchor-id="text-analytics-using-quanteda">Text Analytics using quanteda</h2>
+</section>
+<section id="read-tutorial-of-quanteda" class="level2">
+<h2 class="anchored" data-anchor-id="read-tutorial-of-quanteda">1. Read tutorial of quanteda</h2>
+<p>The quanteda tutorial provides the workflow used in this assignment: corpus, tokens, and document-feature matrix.</p>
+</section>
+<section id="a.-use-sample-programs-to-analyze-us-presidential-inaugural-speeches" class="level2">
+<h2 class="anchored" data-anchor-id="a.-use-sample-programs-to-analyze-us-presidential-inaugural-speeches">2a. Use sample programs to analyze US presidential inaugural speeches</h2>
+<p>This section uses the built-in inaugural speech corpus in quanteda.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"quanteda"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '4.3.1'</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>corp_inaug <span class="ot">&lt;-</span> data_corpus_inaugural</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(corp_inaug, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 60 documents, showing 5 documents:
+
+            Text Types Tokens Sentences Year  President FirstName
+ 1789-Washington   625   1537        23 1789 Washington    George
+ 1793-Washington    96    147         4 1793 Washington    George
+      1797-Adams   826   2577        37 1797      Adams      John
+  1801-Jefferson   717   1923        41 1801  Jefferson    Thomas
+  1805-Jefferson   804   2380        45 1805  Jefferson    Thomas
+                 Party
+                  none
+                  none
+            Federalist
+ Democratic-Republican
+ Democratic-Republican</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">docvars</span>(corp_inaug))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year  President FirstName                 Party
+1 1789 Washington    George                  none
+2 1793 Washington    George                  none
+3 1797      Adams      John            Federalist
+4 1801  Jefferson    Thomas Democratic-Republican
+5 1805  Jefferson    Thomas Democratic-Republican
+6 1809    Madison     James Democratic-Republican</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>toks_inaug <span class="ot">&lt;-</span> <span class="fu">tokens</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  corp_inaug,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_symbols =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>toks_inaug <span class="ot">&lt;-</span> <span class="fu">tokens_remove</span>(toks_inaug, <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>dfmat_inaug <span class="ot">&lt;-</span> <span class="fu">dfm</span>(toks_inaug)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>dfmat_inaug</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 60 documents, 9,359 features (92.75% sparse) and 4 docvars.
+                 features
+docs              fellow-citizens senate house representatives among
+  1789-Washington               1      1     2               2     1
+  1793-Washington               0      0     0               0     0
+  1797-Adams                    3      1     0               2     4
+  1801-Jefferson                2      0     0               0     1
+  1805-Jefferson                0      0     0               0     7
+  1809-Madison                  1      0     0               0     0
+                 features
+docs              vicissitudes incident life event filled
+  1789-Washington            1        1    1     2      1
+  1793-Washington            0        0    0     0      0
+  1797-Adams                 0        0    2     0      0
+  1801-Jefferson             0        0    1     0      0
+  1805-Jefferson             0        0    2     0      0
+  1809-Madison               0        0    1     0      1
+[ reached max_ndoc ... 54 more documents, reached max_nfeat ... 9,349 more features ]</code></pre>
+</div>
+</div>
+<section id="similarities-and-differences-among-presidents" class="level3">
+<h3 class="anchored" data-anchor-id="similarities-and-differences-among-presidents">Similarities and differences among presidents</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dfmat_pres <span class="ot">&lt;-</span> <span class="fu">dfm_group</span>(dfmat_inaug, <span class="at">groups =</span> President)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(dfmat_pres, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    people government         us        can       must       upon      great 
+       592        575        507        489        377        371        354 
+       may     states      world     nation    country      shall      every 
+       343        343        329        324        323        316        309 
+       one      peace        new      power        now     public 
+       274        259        256        246        238        227 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pres_sim <span class="ot">&lt;-</span> <span class="fu">textstat_simil</span>(dfmat_pres, <span class="at">method =</span> <span class="st">"cosine"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.matrix</span>(pres_sim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Adams     Biden  Buchanan      Bush    Carter Cleveland
+Adams      1.0000000 0.3257184 0.6123686 0.4497324 0.3666068 0.6023122
+Biden      0.3257184 1.0000000 0.2853109 0.6639523 0.5056971 0.3376773
+Buchanan   0.6123686 0.2853109 1.0000000 0.3814575 0.2866914 0.5192144
+Bush       0.4497324 0.6639523 0.3814575 1.0000000 0.5630333 0.4030550
+Carter     0.3666068 0.5056971 0.2866914 0.5630333 1.0000000 0.3674878
+Cleveland  0.6023122 0.3376773 0.5192144 0.4030550 0.3674878 1.0000000
+Clinton    0.3592078 0.6538201 0.2937266 0.6851980 0.5749337 0.4092505
+Coolidge   0.5646879 0.4388558 0.4493398 0.5547192 0.4653517 0.5019619
+Eisenhower 0.4579283 0.4722020 0.4111750 0.6238837 0.4739139 0.4194412
+Garfield   0.6334549 0.3323797 0.6063740 0.4403065 0.3864394 0.5783536
+Grant      0.5551981 0.3600672 0.5268121 0.4380195 0.3469069 0.4839086
+Harding    0.4111752 0.4686366 0.3454640 0.5248942 0.4472569 0.4099757
+Harrison   0.7036327 0.3642062 0.6749131 0.4786133 0.3779933 0.6580098
+Hayes      0.6239370 0.2793696 0.5503493 0.4055387 0.2926481 0.5574977
+Hoover     0.5488342 0.3589633 0.4188645 0.4897744 0.4219873 0.5367050
+Jackson    0.6677138 0.2967916 0.5803637 0.3818968 0.3289756 0.6191770
+Jefferson  0.5738927 0.3841526 0.5141149 0.4721177 0.3510576 0.5187715
+Johnson    0.3629443 0.5262531 0.2902246 0.5547039 0.4700115 0.3456901
+Kennedy    0.2939620 0.4562670 0.2936850 0.5202207 0.4323916 0.2818827
+Lincoln    0.5799963 0.3729918 0.6209119 0.3882600 0.3668776 0.5277842
+Madison    0.5128171 0.2818718 0.4345557 0.3722573 0.3120114 0.3846015
+McKinley   0.6379487 0.3578977 0.6070553 0.4755265 0.3970638 0.6567924
+Monroe     0.6462063 0.3314381 0.6268514 0.4371848 0.3311108 0.5240342
+Nixon      0.3836132 0.6373962 0.3118196 0.6188094 0.5807438 0.3941008
+Obama      0.4120592 0.6757769 0.3457085 0.7160828 0.5824641 0.4433500
+Pierce     0.5877564 0.3744681 0.5147138 0.4444254 0.4087316 0.5360903
+Polk       0.6669771 0.2694266 0.6396948 0.3747015 0.3111840 0.5712474
+Reagan     0.4448136 0.6504379 0.3711415 0.6838193 0.5557983 0.4822962
+Roosevelt  0.5603763 0.5925424 0.4814904 0.6668670 0.5530329 0.5518811
+Taft       0.4775736 0.2899247 0.4739514 0.3785190 0.3092948 0.4782960
+Taylor     0.4894207 0.2354178 0.4948317 0.2747754 0.2261070 0.4783872
+Truman     0.3935579 0.3609480 0.3362044 0.5133063 0.4341225 0.3348802
+Trump      0.4131030 0.5422964 0.3759479 0.6086877 0.4219106 0.3715461
+Van Buren  0.6088538 0.3426741 0.5278199 0.4354566 0.3506874 0.5832196
+Washington 0.5197703 0.3013270 0.4863192 0.3949665 0.3111043 0.5130913
+Wilson     0.4832327 0.4093776 0.4057033 0.5106915 0.4029028 0.4411147
+             Clinton  Coolidge Eisenhower  Garfield     Grant   Harding
+Adams      0.3592078 0.5646879  0.4579283 0.6334549 0.5551981 0.4111752
+Biden      0.6538201 0.4388558  0.4722020 0.3323797 0.3600672 0.4686366
+Buchanan   0.2937266 0.4493398  0.4111750 0.6063740 0.5268121 0.3454640
+Bush       0.6851980 0.5547192  0.6238837 0.4403065 0.4380195 0.5248942
+Carter     0.5749337 0.4653517  0.4739139 0.3864394 0.3469069 0.4472569
+Cleveland  0.4092505 0.5019619  0.4194412 0.5783536 0.4839086 0.4099757
+Clinton    1.0000000 0.4720773  0.5033425 0.4012720 0.3602182 0.5390523
+Coolidge   0.4720773 1.0000000  0.5517841 0.5000270 0.4980863 0.5545097
+Eisenhower 0.5033425 0.5517841  1.0000000 0.4215017 0.4013965 0.5483866
+Garfield   0.4012720 0.5000270  0.4215017 1.0000000 0.5177210 0.3949425
+Grant      0.3602182 0.4980863  0.4013965 0.5177210 1.0000000 0.3816528
+Harding    0.5390523 0.5545097  0.5483866 0.3949425 0.3816528 1.0000000
+Harrison   0.3827652 0.5656387  0.4676475 0.6800254 0.5856632 0.4063603
+Hayes      0.3237945 0.5143236  0.3832813 0.5526753 0.5761025 0.3591864
+Hoover     0.4297320 0.6045544  0.5128716 0.4926401 0.4373363 0.5419928
+Jackson    0.3430248 0.4717001  0.3763949 0.5691349 0.4838003 0.3800298
+Jefferson  0.3999323 0.4731020  0.4506638 0.4609425 0.4807720 0.3939190
+Johnson    0.6061822 0.4249780  0.4674767 0.3716115 0.3725027 0.4190674
+Kennedy    0.5204824 0.3821108  0.4773014 0.3235320 0.3262550 0.3819222
+Lincoln    0.3543690 0.5098559  0.4159748 0.6461152 0.5051774 0.4106162
+Madison    0.2617016 0.4195564  0.3570401 0.4001915 0.4457071 0.3643822
+McKinley   0.4372574 0.6031505  0.4981635 0.6473576 0.5957526 0.4962601
+Monroe     0.3613713 0.5192364  0.3898294 0.5751663 0.5410850 0.3794657
+Nixon      0.7019616 0.5010755  0.5511607 0.4009783 0.3873351 0.5047912
+Obama      0.7464710 0.5109101  0.5685133 0.4288911 0.4314170 0.5139673
+Pierce     0.3783223 0.5304283  0.4644365 0.5519145 0.5193556 0.4285091
+Polk       0.3212306 0.4761570  0.3637174 0.6080738 0.4879679 0.3557491
+Reagan     0.7138856 0.5236703  0.5522304 0.4687701 0.4414339 0.5194159
+Roosevelt  0.6202646 0.5897096  0.6028807 0.5457165 0.4960665 0.5825072
+Taft       0.3372449 0.5323782  0.3860267 0.5194259 0.4803623 0.4370308
+Taylor     0.2413549 0.3425326  0.2860537 0.4238629 0.4264233 0.2935900
+Truman     0.4263694 0.5120719  0.6464071 0.3638019 0.3438063 0.4845046
+Trump      0.5563517 0.4362557  0.3920571 0.3837038 0.4034018 0.4336656
+Van Buren  0.3968471 0.5099477  0.4209197 0.5156743 0.5114717 0.3838768
+Washington 0.3149308 0.4264598  0.3281066 0.4445830 0.4545489 0.3463417
+Wilson     0.4587062 0.5257813  0.5146250 0.4663315 0.4257876 0.4585097
+            Harrison     Hayes    Hoover   Jackson Jefferson   Johnson
+Adams      0.7036327 0.6239370 0.5488342 0.6677138 0.5738927 0.3629443
+Biden      0.3642062 0.2793696 0.3589633 0.2967916 0.3841526 0.5262531
+Buchanan   0.6749131 0.5503493 0.4188645 0.5803637 0.5141149 0.2902246
+Bush       0.4786133 0.4055387 0.4897744 0.3818968 0.4721177 0.5547039
+Carter     0.3779933 0.2926481 0.4219873 0.3289756 0.3510576 0.4700115
+Cleveland  0.6580098 0.5574977 0.5367050 0.6191770 0.5187715 0.3456901
+Clinton    0.3827652 0.3237945 0.4297320 0.3430248 0.3999323 0.6061822
+Coolidge   0.5656387 0.5143236 0.6045544 0.4717001 0.4731020 0.4249780
+Eisenhower 0.4676475 0.3832813 0.5128716 0.3763949 0.4506638 0.4674767
+Garfield   0.6800254 0.5526753 0.4926401 0.5691349 0.4609425 0.3716115
+Grant      0.5856632 0.5761025 0.4373363 0.4838003 0.4807720 0.3725027
+Harding    0.4063603 0.3591864 0.5419928 0.3800298 0.3939190 0.4190674
+Harrison   1.0000000 0.6240848 0.5388761 0.6514887 0.5729371 0.3709377
+Hayes      0.6240848 1.0000000 0.4931524 0.5491334 0.4884353 0.2882060
+Hoover     0.5388761 0.4931524 1.0000000 0.4825348 0.4330005 0.3656264
+Jackson    0.6514887 0.5491334 0.4825348 1.0000000 0.5686925 0.3159878
+Jefferson  0.5729371 0.4884353 0.4330005 0.5686925 1.0000000 0.3830309
+Johnson    0.3709377 0.2882060 0.3656264 0.3159878 0.3830309 1.0000000
+Kennedy    0.3165521 0.2684466 0.3119584 0.3072391 0.4250562 0.3860001
+Lincoln    0.6636865 0.5056646 0.4610525 0.5564108 0.4954456 0.3773897
+Madison    0.4722251 0.4248645 0.3776719 0.4507034 0.4564727 0.2795757
+McKinley   0.7197529 0.6343889 0.5827289 0.6176463 0.4863234 0.3873724
+Monroe     0.6548047 0.5651904 0.4397275 0.6140090 0.5477845 0.3432255
+Nixon      0.3689753 0.3029843 0.4502833 0.3589500 0.4342391 0.5012737
+Obama      0.4432777 0.3799225 0.4467759 0.3878511 0.4576686 0.6009101
+Pierce     0.6410347 0.5393496 0.4863315 0.5487195 0.5055271 0.3650537
+Polk       0.6774984 0.5668003 0.4898035 0.6725957 0.5366801 0.2918604
+Reagan     0.4606146 0.3977663 0.4956958 0.4408235 0.4716116 0.5664399
+Roosevelt  0.5828008 0.4599558 0.5825559 0.4986115 0.5022801 0.5489864
+Taft       0.5664664 0.4842893 0.4991782 0.4632274 0.4242329 0.2875897
+Taylor     0.5222351 0.4472810 0.3204244 0.5108708 0.4440410 0.2133394
+Truman     0.3450102 0.3045112 0.4776435 0.3367065 0.3534853 0.3866471
+Trump      0.4199061 0.3842371 0.3994218 0.3264993 0.3097094 0.4241016
+Van Buren  0.6453859 0.5430194 0.4602279 0.5472567 0.5180486 0.3376866
+Washington 0.5402496 0.4720198 0.3881990 0.5247965 0.4923633 0.2752103
+Wilson     0.5183918 0.4414928 0.4893850 0.3976414 0.4293998 0.4348741
+             Kennedy   Lincoln   Madison  McKinley    Monroe     Nixon
+Adams      0.2939620 0.5799963 0.5128171 0.6379487 0.6462063 0.3836132
+Biden      0.4562670 0.3729918 0.2818718 0.3578977 0.3314381 0.6373962
+Buchanan   0.2936850 0.6209119 0.4345557 0.6070553 0.6268514 0.3118196
+Bush       0.5202207 0.3882600 0.3722573 0.4755265 0.4371848 0.6188094
+Carter     0.4323916 0.3668776 0.3120114 0.3970638 0.3311108 0.5807438
+Cleveland  0.2818827 0.5277842 0.3846015 0.6567924 0.5240342 0.3941008
+Clinton    0.5204824 0.3543690 0.2617016 0.4372574 0.3613713 0.7019616
+Coolidge   0.3821108 0.5098559 0.4195564 0.6031505 0.5192364 0.5010755
+Eisenhower 0.4773014 0.4159748 0.3570401 0.4981635 0.3898294 0.5511607
+Garfield   0.3235320 0.6461152 0.4001915 0.6473576 0.5751663 0.4009783
+Grant      0.3262550 0.5051774 0.4457071 0.5957526 0.5410850 0.3873351
+Harding    0.3819222 0.4106162 0.3643822 0.4962601 0.3794657 0.5047912
+Harrison   0.3165521 0.6636865 0.4722251 0.7197529 0.6548047 0.3689753
+Hayes      0.2684466 0.5056646 0.4248645 0.6343889 0.5651904 0.3029843
+Hoover     0.3119584 0.4610525 0.3776719 0.5827289 0.4397275 0.4502833
+Jackson    0.3072391 0.5564108 0.4507034 0.6176463 0.6140090 0.3589500
+Jefferson  0.4250562 0.4954456 0.4564727 0.4863234 0.5477845 0.4342391
+Johnson    0.3860001 0.3773897 0.2795757 0.3873724 0.3432255 0.5012737
+Kennedy    1.0000000 0.3086007 0.3104186 0.3049528 0.3090558 0.5983802
+Lincoln    0.3086007 1.0000000 0.3943575 0.6009040 0.5389294 0.3846468
+Madison    0.3104186 0.3943575 1.0000000 0.4675106 0.5501726 0.2942126
+McKinley   0.3049528 0.6009040 0.4675106 1.0000000 0.6297663 0.4235365
+Monroe     0.3090558 0.5389294 0.5501726 0.6297663 1.0000000 0.3758495
+Nixon      0.5983802 0.3846468 0.2942126 0.4235365 0.3758495 1.0000000
+Obama      0.5188915 0.4073671 0.3539214 0.4888432 0.4215885 0.6758628
+Pierce     0.3450238 0.5505713 0.4194080 0.5885388 0.5282876 0.3975468
+Polk       0.2587503 0.6160195 0.4457190 0.6165122 0.6423660 0.3204027
+Reagan     0.5201240 0.4339642 0.3042634 0.5140969 0.4372078 0.6960129
+Roosevelt  0.4562620 0.5012508 0.4063400 0.6079568 0.5201639 0.6101458
+Taft       0.2626409 0.5156492 0.3491241 0.6158448 0.5001969 0.3198721
+Taylor     0.2553813 0.4504286 0.3194740 0.5030228 0.4492392 0.2819321
+Truman     0.4171762 0.3421017 0.3495484 0.4235344 0.3457742 0.4943475
+Trump      0.3455602 0.3368078 0.3229163 0.4347788 0.4125937 0.4760352
+Van Buren  0.3155502 0.5047075 0.4662718 0.5867560 0.5827531 0.3786817
+Washington 0.2895627 0.4889163 0.4037897 0.5059838 0.5096479 0.3015462
+Wilson     0.3818995 0.4496175 0.3487920 0.5539778 0.4728589 0.4885900
+               Obama    Pierce      Polk    Reagan Roosevelt      Taft
+Adams      0.4120592 0.5877564 0.6669771 0.4448136 0.5603763 0.4775736
+Biden      0.6757769 0.3744681 0.2694266 0.6504379 0.5925424 0.2899247
+Buchanan   0.3457085 0.5147138 0.6396948 0.3711415 0.4814904 0.4739514
+Bush       0.7160828 0.4444254 0.3747015 0.6838193 0.6668670 0.3785190
+Carter     0.5824641 0.4087316 0.3111840 0.5557983 0.5530329 0.3092948
+Cleveland  0.4433500 0.5360903 0.5712474 0.4822962 0.5518811 0.4782960
+Clinton    0.7464710 0.3783223 0.3212306 0.7138856 0.6202646 0.3372449
+Coolidge   0.5109101 0.5304283 0.4761570 0.5236703 0.5897096 0.5323782
+Eisenhower 0.5685133 0.4644365 0.3637174 0.5522304 0.6028807 0.3860267
+Garfield   0.4288911 0.5519145 0.6080738 0.4687701 0.5457165 0.5194259
+Grant      0.4314170 0.5193556 0.4879679 0.4414339 0.4960665 0.4803623
+Harding    0.5139673 0.4285091 0.3557491 0.5194159 0.5825072 0.4370308
+Harrison   0.4432777 0.6410347 0.6774984 0.4606146 0.5828008 0.5664664
+Hayes      0.3799225 0.5393496 0.5668003 0.3977663 0.4599558 0.4842893
+Hoover     0.4467759 0.4863315 0.4898035 0.4956958 0.5825559 0.4991782
+Jackson    0.3878511 0.5487195 0.6725957 0.4408235 0.4986115 0.4632274
+Jefferson  0.4576686 0.5055271 0.5366801 0.4716116 0.5022801 0.4242329
+Johnson    0.6009101 0.3650537 0.2918604 0.5664399 0.5489864 0.2875897
+Kennedy    0.5188915 0.3450238 0.2587503 0.5201240 0.4562620 0.2626409
+Lincoln    0.4073671 0.5505713 0.6160195 0.4339642 0.5012508 0.5156492
+Madison    0.3539214 0.4194080 0.4457190 0.3042634 0.4063400 0.3491241
+McKinley   0.4888432 0.5885388 0.6165122 0.5140969 0.6079568 0.6158448
+Monroe     0.4215885 0.5282876 0.6423660 0.4372078 0.5201639 0.5001969
+Nixon      0.6758628 0.3975468 0.3204027 0.6960129 0.6101458 0.3198721
+Obama      1.0000000 0.4555813 0.3479051 0.7238738 0.6693301 0.3763168
+Pierce     0.4555813 1.0000000 0.5577091 0.4514333 0.5358683 0.4821035
+Polk       0.3479051 0.5577091 1.0000000 0.4272639 0.4679975 0.5054036
+Reagan     0.7238738 0.4514333 0.4272639 1.0000000 0.6471233 0.3914582
+Roosevelt  0.6693301 0.5358683 0.4679975 0.6471233 1.0000000 0.4686150
+Taft       0.3763168 0.4821035 0.5054036 0.3914582 0.4686150 1.0000000
+Taylor     0.2876461 0.4334511 0.4640173 0.3004824 0.3814960 0.3981276
+Truman     0.4670587 0.3577692 0.3237000 0.4876946 0.5314781 0.3410372
+Trump      0.5272926 0.3526531 0.3626912 0.5346985 0.5130274 0.3355275
+Van Buren  0.4694838 0.5797207 0.5586508 0.4605456 0.5355435 0.4544789
+Washington 0.3674223 0.4652603 0.4926508 0.3559148 0.4448827 0.4183855
+Wilson     0.5184866 0.5105290 0.3957272 0.4870261 0.6449161 0.4286232
+              Taylor    Truman     Trump Van Buren Washington    Wilson
+Adams      0.4894207 0.3935579 0.4131030 0.6088538  0.5197703 0.4832327
+Biden      0.2354178 0.3609480 0.5422964 0.3426741  0.3013270 0.4093776
+Buchanan   0.4948317 0.3362044 0.3759479 0.5278199  0.4863192 0.4057033
+Bush       0.2747754 0.5133063 0.6086877 0.4354566  0.3949665 0.5106915
+Carter     0.2261070 0.4341225 0.4219106 0.3506874  0.3111043 0.4029028
+Cleveland  0.4783872 0.3348802 0.3715461 0.5832196  0.5130913 0.4411147
+Clinton    0.2413549 0.4263694 0.5563517 0.3968471  0.3149308 0.4587062
+Coolidge   0.3425326 0.5120719 0.4362557 0.5099477  0.4264598 0.5257813
+Eisenhower 0.2860537 0.6464071 0.3920571 0.4209197  0.3281066 0.5146250
+Garfield   0.4238629 0.3638019 0.3837038 0.5156743  0.4445830 0.4663315
+Grant      0.4264233 0.3438063 0.4034018 0.5114717  0.4545489 0.4257876
+Harding    0.2935900 0.4845046 0.4336656 0.3838768  0.3463417 0.4585097
+Harrison   0.5222351 0.3450102 0.4199061 0.6453859  0.5402496 0.5183918
+Hayes      0.4472810 0.3045112 0.3842371 0.5430194  0.4720198 0.4414928
+Hoover     0.3204244 0.4776435 0.3994218 0.4602279  0.3881990 0.4893850
+Jackson    0.5108708 0.3367065 0.3264993 0.5472567  0.5247965 0.3976414
+Jefferson  0.4440410 0.3534853 0.3097094 0.5180486  0.4923633 0.4293998
+Johnson    0.2133394 0.3866471 0.4241016 0.3376866  0.2752103 0.4348741
+Kennedy    0.2553813 0.4171762 0.3455602 0.3155502  0.2895627 0.3818995
+Lincoln    0.4504286 0.3421017 0.3368078 0.5047075  0.4889163 0.4496175
+Madison    0.3194740 0.3495484 0.3229163 0.4662718  0.4037897 0.3487920
+McKinley   0.5030228 0.4235344 0.4347788 0.5867560  0.5059838 0.5539778
+Monroe     0.4492392 0.3457742 0.4125937 0.5827531  0.5096479 0.4728589
+Nixon      0.2819321 0.4943475 0.4760352 0.3786817  0.3015462 0.4885900
+Obama      0.2876461 0.4670587 0.5272926 0.4694838  0.3674223 0.5184866
+Pierce     0.4334511 0.3577692 0.3526531 0.5797207  0.4652603 0.5105290
+Polk       0.4640173 0.3237000 0.3626912 0.5586508  0.4926508 0.3957272
+Reagan     0.3004824 0.4876946 0.5346985 0.4605456  0.3559148 0.4870261
+Roosevelt  0.3814960 0.5314781 0.5130274 0.5355435  0.4448827 0.6449161
+Taft       0.3981276 0.3410372 0.3355275 0.4544789  0.4183855 0.4286232
+Taylor     1.0000000 0.2146382 0.2537153 0.4229689  0.4300833 0.3455783
+Truman     0.2146382 1.0000000 0.3434320 0.3477923  0.2810211 0.4105626
+Trump      0.2537153 0.3434320 1.0000000 0.3960056  0.3574532 0.4038286
+Van Buren  0.4229689 0.3477923 0.3960056 1.0000000  0.5085128 0.4607180
+Washington 0.4300833 0.2810211 0.3574532 0.5085128  1.0000000 0.3753967
+Wilson     0.3455783 0.4105626 0.4038286 0.4607180  0.3753967 1.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="similarities-and-differences-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="similarities-and-differences-over-time">Similarities and differences over time</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>era <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">docvars</span>(corp_inaug, <span class="st">"Year"</span>) <span class="sc">&lt;</span> <span class="dv">1900</span>, <span class="st">"Before1900"</span>, <span class="st">"1900plus"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dfmat_era <span class="ot">&lt;-</span> <span class="fu">dfm_group</span>(dfmat_inaug, <span class="at">groups =</span> era)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(dfmat_era, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    people government         us        can       must       upon      great 
+       592        575        507        489        377        371        354 
+       may     states      world     nation    country      shall      every 
+       343        343        329        324        323        316        309 
+       one      peace        new      power        now     public 
+       274        259        256        246        238        227 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>key_era <span class="ot">&lt;-</span> <span class="fu">textstat_keyness</span>(dfmat_era, <span class="at">target =</span> <span class="st">"1900plus"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(key_era, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     feature      chi2            p n_target n_reference
+1    america 180.67824 0.000000e+00      209          11
+2      world 170.93407 0.000000e+00      282          47
+3        new 114.94895 0.000000e+00      213          43
+4         us 104.59088 0.000000e+00      367         140
+5      today 104.53034 0.000000e+00      112           3
+6  americans  90.97920 0.000000e+00       90           0
+7    freedom  77.95762 0.000000e+00      154          34
+8       know  76.57555 0.000000e+00      102          10
+9       work  64.33573 9.992007e-16      107          18
+10      must  63.91212 1.332268e-15      265         112
+11  together  55.91312 7.571721e-14       83          11
+12    nation  52.04095 5.435652e-13      226          98
+13 democracy  51.06374 8.941736e-13       64           5
+14      help  48.82172 2.803202e-12       54           2
+15      life  47.40356 5.777823e-12      111          30
+16     thank  45.45907 1.558620e-11       45           0
+17       way  45.25572 1.729139e-11       76          13
+18  economic  44.55332 2.475242e-11       47           1
+19       old  43.73156 3.766498e-11       68          10
+20       let  40.36650 2.105205e-10      121          41</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_keyness</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  key_era,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">"#d63384"</span>, <span class="st">"#f3bfd7"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">labelcolor =</span> <span class="st">"#d63384"</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="b.-use-sample-programs-to-analyze-us-department-of-defense-reports" class="level2">
+<h2 class="anchored" data-anchor-id="b.-use-sample-programs-to-analyze-us-department-of-defense-reports">2b. Use sample programs to analyze US Department of Defense reports</h2>
+<p>This section reads the DOD reports from the USDOD folder.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dod_texts <span class="ot">&lt;-</span> <span class="fu">readtext</span>(<span class="st">"USDOD/*.pdf"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dod_texts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>readtext object consisting of 24 documents and 0 docvars.
+# A data frame: 24 × 2
+  doc_id                       text               
+  &lt;chr&gt;                        &lt;chr&gt;              
+1 1999_GPO-CRPT.pdf            "\"  U.S. NAT\"..."
+2 2000_asia_neac_dod_china.pdf "\"          \"..."
+3 2001_DoD_AR.pdf              "\"Annual Rep\"..."
+4 2002_0712china.pdf           "\"          \"..."
+5 2003_chinaex.pdf             "\"          \"..."
+6 2004_0528PRC.pdf             "\"          \"..."
+# ℹ 18 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>corp_dod <span class="ot">&lt;-</span> <span class="fu">corpus</span>(dod_texts)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(corp_dod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corpus consisting of 24 documents, showing 24 documents:
+
+                                                                                Text
+                                                                   1999_GPO-CRPT.pdf
+                                                        2000_asia_neac_dod_china.pdf
+                                                                     2001_DoD_AR.pdf
+                                                                  2002_0712china.pdf
+                                                                    2003_chinaex.pdf
+                                                                    2004_0528PRC.pdf
+                                                                  2005_0719china.pdf
+                                                                        2006_dod.pdf
+                                                                        2007_dod.pdf
+                                                                        2008_dod.pdf
+                                                2009_China_Military_Power_Report.pdf
+                                                                 2010_CMPR_Final.pdf
+                                                                 2011_CMPR_Final.pdf
+                                                                 2012_CMPR_Final.pdf
+                                                         2013_China_Report_FINAL.pdf
+                                                           2014_DoD_China_Report.pdf
+                                                2015_China_Military_Power_Report.pdf
+                                                2016 China Military Power Report.pdf
+                                                2017_China_Military_Power_Report.pdf
+                                                2018_CHINA-MILITARY-POWER-REPORT.pdf
+                                                2019_CHINA_MILITARY_POWER_REPORT.pdf
+                                      2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf
+                                                                 2021-cmpr-final.pdf
+ 2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf
+ Types Tokens Sentences
+ 16068 301499     10250
+  2990  15078       540
+ 14864 186149      6246
+  4178  25908      1051
+  4068  25848       957
+  4056  25091       876
+  3730  20326       746
+  4002  21855       642
+  3669  18144       498
+  4651  26390       679
+  5124  31910       896
+  5002  33621       768
+  5400  35578       933
+  3156  14293       346
+  4955  30563       821
+  4960  31111       850
+  5335  34712       927
+  5524  38929      1009
+  5080  33380       912
+  5759  45684      1201
+  5868  45760      1143
+  7373  74334      2341
+  7727  79375      2400
+  8086  83275      2536</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>toks_dod <span class="ot">&lt;-</span> <span class="fu">tokens</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  corp_dod,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">remove_symbols =</span> <span class="cn">TRUE</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>toks_dod <span class="ot">&lt;-</span> <span class="fu">tokens_remove</span>(toks_dod, <span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">"en"</span>))</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>dfmat_dod <span class="ot">&lt;-</span> <span class="fu">dfm</span>(toks_dod)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>dfmat_dod_trim <span class="ot">&lt;-</span> <span class="fu">dfm_trim</span>(dfmat_dod, <span class="at">min_termfreq =</span> <span class="dv">5</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>dfmat_dod_trim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 24 documents, 9,683 features (60.37% sparse) and 0 docvars.
+                              features
+docs                            u.s national security military commercial
+  1999_GPO-CRPT.pdf            1676      510      701      468        294
+  2000_asia_neac_dod_china.pdf    2       54       32       99          7
+  2001_DoD_AR.pdf               656      323      302      718        139
+  2002_0712china.pdf             35       65       44      192         10
+  2003_chinaex.pdf               41       69       48      189         13
+  2004_0528PRC.pdf               57       58       49      212          6
+                              features
+docs                           concerns people’s republic china volume
+  1999_GPO-CRPT.pdf                  90       93       88   645    416
+  2000_asia_neac_dod_china.pdf        4        9        3   160      0
+  2001_DoD_AR.pdf                    37        0        9    13      3
+  2002_0712china.pdf                  6        5        3   287      0
+  2003_chinaex.pdf                    8        7        2   239      0
+  2004_0528PRC.pdf                   15        7        3   199      1
+[ reached max_ndoc ... 18 more documents, reached max_nfeat ... 9,673 more features ]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">topfeatures</span>(dfmat_dod_trim, <span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       china     military      defense      china’s          prc          pla 
+        9782         8586         6408         5564         5328         4916 
+    security          u.s        force   operations       forces       states 
+        4278         3917         3433         3061         3033         2942 
+        also     national       united       taiwan          air       report 
+        2798         2789         2780         2592         2469         2430 
+  technology capabilities   department      systems  information     people’s 
+        2366         2304         2298         2292         2239         2194 
+   committee      support  development     aircraft          new      missile 
+        2185         2144         2122         1993         1977         1949 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>dod_sim <span class="ot">&lt;-</span> <span class="fu">textstat_simil</span>(dfmat_dod_trim, <span class="at">method =</span> <span class="st">"cosine"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.matrix</span>(dod_sim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                    1999_GPO-CRPT.pdf
+1999_GPO-CRPT.pdf                                                                           1.0000000
+2000_asia_neac_dod_china.pdf                                                                0.3481983
+2001_DoD_AR.pdf                                                                             0.3943513
+2002_0712china.pdf                                                                          0.3803167
+2003_chinaex.pdf                                                                            0.3597342
+2004_0528PRC.pdf                                                                            0.3340067
+2005_0719china.pdf                                                                          0.3072485
+2006_dod.pdf                                                                                0.3106854
+2007_dod.pdf                                                                                0.3175037
+2008_dod.pdf                                                                                0.3436126
+2009_China_Military_Power_Report.pdf                                                        0.3573309
+2010_CMPR_Final.pdf                                                                         0.4107701
+2011_CMPR_Final.pdf                                                                         0.3735564
+2012_CMPR_Final.pdf                                                                         0.3404982
+2013_China_Report_FINAL.pdf                                                                 0.3779515
+2014_DoD_China_Report.pdf                                                                   0.3666091
+2015_China_Military_Power_Report.pdf                                                        0.3671007
+2016 China Military Power Report.pdf                                                        0.3387556
+2017_China_Military_Power_Report.pdf                                                        0.3446960
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                        0.3298707
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                        0.3429062
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                              0.4148291
+2021-cmpr-final.pdf                                                                         0.4970898
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf         0.4970569
+                                                                                    2000_asia_neac_dod_china.pdf
+1999_GPO-CRPT.pdf                                                                                      0.3481983
+2000_asia_neac_dod_china.pdf                                                                           1.0000000
+2001_DoD_AR.pdf                                                                                        0.5420680
+2002_0712china.pdf                                                                                     0.9029535
+2003_chinaex.pdf                                                                                       0.9097451
+2004_0528PRC.pdf                                                                                       0.8854656
+2005_0719china.pdf                                                                                     0.8878635
+2006_dod.pdf                                                                                           0.8678442
+2007_dod.pdf                                                                                           0.8626207
+2008_dod.pdf                                                                                           0.8580827
+2009_China_Military_Power_Report.pdf                                                                   0.8572094
+2010_CMPR_Final.pdf                                                                                    0.8188426
+2011_CMPR_Final.pdf                                                                                    0.8353027
+2012_CMPR_Final.pdf                                                                                    0.7491334
+2013_China_Report_FINAL.pdf                                                                            0.8485673
+2014_DoD_China_Report.pdf                                                                              0.8368275
+2015_China_Military_Power_Report.pdf                                                                   0.8346112
+2016 China Military Power Report.pdf                                                                   0.7783684
+2017_China_Military_Power_Report.pdf                                                                   0.7936206
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                   0.8040499
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                   0.8098639
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                         0.7944054
+2021-cmpr-final.pdf                                                                                    0.6670750
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                    0.7340373
+                                                                                    2001_DoD_AR.pdf
+1999_GPO-CRPT.pdf                                                                         0.3943513
+2000_asia_neac_dod_china.pdf                                                              0.5420680
+2001_DoD_AR.pdf                                                                           1.0000000
+2002_0712china.pdf                                                                        0.5612265
+2003_chinaex.pdf                                                                          0.5796115
+2004_0528PRC.pdf                                                                          0.6000804
+2005_0719china.pdf                                                                        0.5283378
+2006_dod.pdf                                                                              0.5078442
+2007_dod.pdf                                                                              0.4868947
+2008_dod.pdf                                                                              0.5083560
+2009_China_Military_Power_Report.pdf                                                      0.5154203
+2010_CMPR_Final.pdf                                                                       0.5310533
+2011_CMPR_Final.pdf                                                                       0.4845685
+2012_CMPR_Final.pdf                                                                       0.4818252
+2013_China_Report_FINAL.pdf                                                               0.5425123
+2014_DoD_China_Report.pdf                                                                 0.5118708
+2015_China_Military_Power_Report.pdf                                                      0.5024889
+2016 China Military Power Report.pdf                                                      0.4839978
+2017_China_Military_Power_Report.pdf                                                      0.4942990
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                      0.5033696
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                      0.5125134
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                            0.5437493
+2021-cmpr-final.pdf                                                                       0.5521069
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf       0.5596409
+                                                                                    2002_0712china.pdf
+1999_GPO-CRPT.pdf                                                                            0.3803167
+2000_asia_neac_dod_china.pdf                                                                 0.9029535
+2001_DoD_AR.pdf                                                                              0.5612265
+2002_0712china.pdf                                                                           1.0000000
+2003_chinaex.pdf                                                                             0.9671085
+2004_0528PRC.pdf                                                                             0.9300322
+2005_0719china.pdf                                                                           0.8952628
+2006_dod.pdf                                                                                 0.8843905
+2007_dod.pdf                                                                                 0.8642892
+2008_dod.pdf                                                                                 0.8687146
+2009_China_Military_Power_Report.pdf                                                         0.8673775
+2010_CMPR_Final.pdf                                                                          0.8451803
+2011_CMPR_Final.pdf                                                                          0.8508437
+2012_CMPR_Final.pdf                                                                          0.7619074
+2013_China_Report_FINAL.pdf                                                                  0.8733176
+2014_DoD_China_Report.pdf                                                                    0.8618181
+2015_China_Military_Power_Report.pdf                                                         0.8542955
+2016 China Military Power Report.pdf                                                         0.7862431
+2017_China_Military_Power_Report.pdf                                                         0.8032482
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                         0.8144560
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                         0.8164303
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                               0.8045966
+2021-cmpr-final.pdf                                                                          0.6975788
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf          0.7587854
+                                                                                    2003_chinaex.pdf
+1999_GPO-CRPT.pdf                                                                          0.3597342
+2000_asia_neac_dod_china.pdf                                                               0.9097451
+2001_DoD_AR.pdf                                                                            0.5796115
+2002_0712china.pdf                                                                         0.9671085
+2003_chinaex.pdf                                                                           1.0000000
+2004_0528PRC.pdf                                                                           0.9314260
+2005_0719china.pdf                                                                         0.9089779
+2006_dod.pdf                                                                               0.8883956
+2007_dod.pdf                                                                               0.8721075
+2008_dod.pdf                                                                               0.8723433
+2009_China_Military_Power_Report.pdf                                                       0.8670091
+2010_CMPR_Final.pdf                                                                        0.8368248
+2011_CMPR_Final.pdf                                                                        0.8465976
+2012_CMPR_Final.pdf                                                                        0.7690268
+2013_China_Report_FINAL.pdf                                                                0.8638578
+2014_DoD_China_Report.pdf                                                                  0.8528410
+2015_China_Military_Power_Report.pdf                                                       0.8441329
+2016 China Military Power Report.pdf                                                       0.7766079
+2017_China_Military_Power_Report.pdf                                                       0.7961607
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                       0.8099172
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                       0.8098677
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                             0.8014377
+2021-cmpr-final.pdf                                                                        0.7045948
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf        0.7609356
+                                                                                    2004_0528PRC.pdf
+1999_GPO-CRPT.pdf                                                                          0.3340067
+2000_asia_neac_dod_china.pdf                                                               0.8854656
+2001_DoD_AR.pdf                                                                            0.6000804
+2002_0712china.pdf                                                                         0.9300322
+2003_chinaex.pdf                                                                           0.9314260
+2004_0528PRC.pdf                                                                           1.0000000
+2005_0719china.pdf                                                                         0.9121862
+2006_dod.pdf                                                                               0.8856942
+2007_dod.pdf                                                                               0.8703976
+2008_dod.pdf                                                                               0.8823854
+2009_China_Military_Power_Report.pdf                                                       0.8855084
+2010_CMPR_Final.pdf                                                                        0.8469848
+2011_CMPR_Final.pdf                                                                        0.8583526
+2012_CMPR_Final.pdf                                                                        0.7620124
+2013_China_Report_FINAL.pdf                                                                0.8700455
+2014_DoD_China_Report.pdf                                                                  0.8541305
+2015_China_Military_Power_Report.pdf                                                       0.8399202
+2016 China Military Power Report.pdf                                                       0.7752047
+2017_China_Military_Power_Report.pdf                                                       0.7884202
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                       0.8093947
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                       0.8096197
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                             0.8097736
+2021-cmpr-final.pdf                                                                        0.7129472
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf        0.7662433
+                                                                                    2005_0719china.pdf
+1999_GPO-CRPT.pdf                                                                            0.3072485
+2000_asia_neac_dod_china.pdf                                                                 0.8878635
+2001_DoD_AR.pdf                                                                              0.5283378
+2002_0712china.pdf                                                                           0.8952628
+2003_chinaex.pdf                                                                             0.9089779
+2004_0528PRC.pdf                                                                             0.9121862
+2005_0719china.pdf                                                                           1.0000000
+2006_dod.pdf                                                                                 0.9470460
+2007_dod.pdf                                                                                 0.9393306
+2008_dod.pdf                                                                                 0.9225701
+2009_China_Military_Power_Report.pdf                                                         0.9219279
+2010_CMPR_Final.pdf                                                                          0.8745941
+2011_CMPR_Final.pdf                                                                          0.8888788
+2012_CMPR_Final.pdf                                                                          0.8077642
+2013_China_Report_FINAL.pdf                                                                  0.8896390
+2014_DoD_China_Report.pdf                                                                    0.8829745
+2015_China_Military_Power_Report.pdf                                                         0.8788270
+2016 China Military Power Report.pdf                                                         0.8077924
+2017_China_Military_Power_Report.pdf                                                         0.8273200
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                         0.8407295
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                         0.8423845
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                               0.8176947
+2021-cmpr-final.pdf                                                                          0.6738040
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf          0.7439190
+                                                                                    2006_dod.pdf
+1999_GPO-CRPT.pdf                                                                      0.3106854
+2000_asia_neac_dod_china.pdf                                                           0.8678442
+2001_DoD_AR.pdf                                                                        0.5078442
+2002_0712china.pdf                                                                     0.8843905
+2003_chinaex.pdf                                                                       0.8883956
+2004_0528PRC.pdf                                                                       0.8856942
+2005_0719china.pdf                                                                     0.9470460
+2006_dod.pdf                                                                           1.0000000
+2007_dod.pdf                                                                           0.9671583
+2008_dod.pdf                                                                           0.9459564
+2009_China_Military_Power_Report.pdf                                                   0.9412162
+2010_CMPR_Final.pdf                                                                    0.8936735
+2011_CMPR_Final.pdf                                                                    0.9040048
+2012_CMPR_Final.pdf                                                                    0.8199031
+2013_China_Report_FINAL.pdf                                                            0.8951569
+2014_DoD_China_Report.pdf                                                              0.8886064
+2015_China_Military_Power_Report.pdf                                                   0.8835249
+2016 China Military Power Report.pdf                                                   0.8334635
+2017_China_Military_Power_Report.pdf                                                   0.8455626
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                   0.8572332
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                   0.8609203
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                         0.8351425
+2021-cmpr-final.pdf                                                                    0.7001335
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf    0.7683552
+                                                                                    2007_dod.pdf
+1999_GPO-CRPT.pdf                                                                      0.3175037
+2000_asia_neac_dod_china.pdf                                                           0.8626207
+2001_DoD_AR.pdf                                                                        0.4868947
+2002_0712china.pdf                                                                     0.8642892
+2003_chinaex.pdf                                                                       0.8721075
+2004_0528PRC.pdf                                                                       0.8703976
+2005_0719china.pdf                                                                     0.9393306
+2006_dod.pdf                                                                           0.9671583
+2007_dod.pdf                                                                           1.0000000
+2008_dod.pdf                                                                           0.9638745
+2009_China_Military_Power_Report.pdf                                                   0.9535289
+2010_CMPR_Final.pdf                                                                    0.8971013
+2011_CMPR_Final.pdf                                                                    0.9122505
+2012_CMPR_Final.pdf                                                                    0.8177045
+2013_China_Report_FINAL.pdf                                                            0.8885559
+2014_DoD_China_Report.pdf                                                              0.8821004
+2015_China_Military_Power_Report.pdf                                                   0.8783372
+2016 China Military Power Report.pdf                                                   0.8309652
+2017_China_Military_Power_Report.pdf                                                   0.8399809
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                   0.8471383
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                   0.8549972
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                         0.8354231
+2021-cmpr-final.pdf                                                                    0.6921505
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf    0.7646742
+                                                                                    2008_dod.pdf
+1999_GPO-CRPT.pdf                                                                      0.3436126
+2000_asia_neac_dod_china.pdf                                                           0.8580827
+2001_DoD_AR.pdf                                                                        0.5083560
+2002_0712china.pdf                                                                     0.8687146
+2003_chinaex.pdf                                                                       0.8723433
+2004_0528PRC.pdf                                                                       0.8823854
+2005_0719china.pdf                                                                     0.9225701
+2006_dod.pdf                                                                           0.9459564
+2007_dod.pdf                                                                           0.9638745
+2008_dod.pdf                                                                           1.0000000
+2009_China_Military_Power_Report.pdf                                                   0.9779312
+2010_CMPR_Final.pdf                                                                    0.9182833
+2011_CMPR_Final.pdf                                                                    0.9351251
+2012_CMPR_Final.pdf                                                                    0.8214900
+2013_China_Report_FINAL.pdf                                                            0.9096289
+2014_DoD_China_Report.pdf                                                              0.9016357
+2015_China_Military_Power_Report.pdf                                                   0.8936118
+2016 China Military Power Report.pdf                                                   0.8476433
+2017_China_Military_Power_Report.pdf                                                   0.8578922
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                   0.8665645
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                   0.8657235
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                         0.8620491
+2021-cmpr-final.pdf                                                                    0.7358924
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf    0.8010364
+                                                                                    2009_China_Military_Power_Report.pdf
+1999_GPO-CRPT.pdf                                                                                              0.3573309
+2000_asia_neac_dod_china.pdf                                                                                   0.8572094
+2001_DoD_AR.pdf                                                                                                0.5154203
+2002_0712china.pdf                                                                                             0.8673775
+2003_chinaex.pdf                                                                                               0.8670091
+2004_0528PRC.pdf                                                                                               0.8855084
+2005_0719china.pdf                                                                                             0.9219279
+2006_dod.pdf                                                                                                   0.9412162
+2007_dod.pdf                                                                                                   0.9535289
+2008_dod.pdf                                                                                                   0.9779312
+2009_China_Military_Power_Report.pdf                                                                           1.0000000
+2010_CMPR_Final.pdf                                                                                            0.9276158
+2011_CMPR_Final.pdf                                                                                            0.9476823
+2012_CMPR_Final.pdf                                                                                            0.8199729
+2013_China_Report_FINAL.pdf                                                                                    0.9134191
+2014_DoD_China_Report.pdf                                                                                      0.9047890
+2015_China_Military_Power_Report.pdf                                                                           0.8954595
+2016 China Military Power Report.pdf                                                                           0.8447528
+2017_China_Military_Power_Report.pdf                                                                           0.8563321
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                           0.8681603
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                           0.8659221
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                 0.8677986
+2021-cmpr-final.pdf                                                                                            0.7537003
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                            0.8153483
+                                                                                    2010_CMPR_Final.pdf
+1999_GPO-CRPT.pdf                                                                             0.4107701
+2000_asia_neac_dod_china.pdf                                                                  0.8188426
+2001_DoD_AR.pdf                                                                               0.5310533
+2002_0712china.pdf                                                                            0.8451803
+2003_chinaex.pdf                                                                              0.8368248
+2004_0528PRC.pdf                                                                              0.8469848
+2005_0719china.pdf                                                                            0.8745941
+2006_dod.pdf                                                                                  0.8936735
+2007_dod.pdf                                                                                  0.8971013
+2008_dod.pdf                                                                                  0.9182833
+2009_China_Military_Power_Report.pdf                                                          0.9276158
+2010_CMPR_Final.pdf                                                                           1.0000000
+2011_CMPR_Final.pdf                                                                           0.9571743
+2012_CMPR_Final.pdf                                                                           0.8612829
+2013_China_Report_FINAL.pdf                                                                   0.9397778
+2014_DoD_China_Report.pdf                                                                     0.9333896
+2015_China_Military_Power_Report.pdf                                                          0.9238917
+2016 China Military Power Report.pdf                                                          0.9058974
+2017_China_Military_Power_Report.pdf                                                          0.9104504
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                          0.9073173
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                          0.9070941
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                0.9033088
+2021-cmpr-final.pdf                                                                           0.7758844
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf           0.8420765
+                                                                                    2011_CMPR_Final.pdf
+1999_GPO-CRPT.pdf                                                                             0.3735564
+2000_asia_neac_dod_china.pdf                                                                  0.8353027
+2001_DoD_AR.pdf                                                                               0.4845685
+2002_0712china.pdf                                                                            0.8508437
+2003_chinaex.pdf                                                                              0.8465976
+2004_0528PRC.pdf                                                                              0.8583526
+2005_0719china.pdf                                                                            0.8888788
+2006_dod.pdf                                                                                  0.9040048
+2007_dod.pdf                                                                                  0.9122505
+2008_dod.pdf                                                                                  0.9351251
+2009_China_Military_Power_Report.pdf                                                          0.9476823
+2010_CMPR_Final.pdf                                                                           0.9571743
+2011_CMPR_Final.pdf                                                                           1.0000000
+2012_CMPR_Final.pdf                                                                           0.8599993
+2013_China_Report_FINAL.pdf                                                                   0.9414032
+2014_DoD_China_Report.pdf                                                                     0.9382207
+2015_China_Military_Power_Report.pdf                                                          0.9284861
+2016 China Military Power Report.pdf                                                          0.8913932
+2017_China_Military_Power_Report.pdf                                                          0.8969826
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                          0.9011147
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                          0.8979717
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                0.8984795
+2021-cmpr-final.pdf                                                                           0.7765975
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf           0.8421717
+                                                                                    2012_CMPR_Final.pdf
+1999_GPO-CRPT.pdf                                                                             0.3404982
+2000_asia_neac_dod_china.pdf                                                                  0.7491334
+2001_DoD_AR.pdf                                                                               0.4818252
+2002_0712china.pdf                                                                            0.7619074
+2003_chinaex.pdf                                                                              0.7690268
+2004_0528PRC.pdf                                                                              0.7620124
+2005_0719china.pdf                                                                            0.8077642
+2006_dod.pdf                                                                                  0.8199031
+2007_dod.pdf                                                                                  0.8177045
+2008_dod.pdf                                                                                  0.8214900
+2009_China_Military_Power_Report.pdf                                                          0.8199729
+2010_CMPR_Final.pdf                                                                           0.8612829
+2011_CMPR_Final.pdf                                                                           0.8599993
+2012_CMPR_Final.pdf                                                                           1.0000000
+2013_China_Report_FINAL.pdf                                                                   0.8777305
+2014_DoD_China_Report.pdf                                                                     0.8713363
+2015_China_Military_Power_Report.pdf                                                          0.8581659
+2016 China Military Power Report.pdf                                                          0.8806624
+2017_China_Military_Power_Report.pdf                                                          0.8763795
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                          0.8714004
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                          0.8666868
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                0.8482693
+2021-cmpr-final.pdf                                                                           0.7409220
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf           0.7939079
+                                                                                    2013_China_Report_FINAL.pdf
+1999_GPO-CRPT.pdf                                                                                     0.3779515
+2000_asia_neac_dod_china.pdf                                                                          0.8485673
+2001_DoD_AR.pdf                                                                                       0.5425123
+2002_0712china.pdf                                                                                    0.8733176
+2003_chinaex.pdf                                                                                      0.8638578
+2004_0528PRC.pdf                                                                                      0.8700455
+2005_0719china.pdf                                                                                    0.8896390
+2006_dod.pdf                                                                                          0.8951569
+2007_dod.pdf                                                                                          0.8885559
+2008_dod.pdf                                                                                          0.9096289
+2009_China_Military_Power_Report.pdf                                                                  0.9134191
+2010_CMPR_Final.pdf                                                                                   0.9397778
+2011_CMPR_Final.pdf                                                                                   0.9414032
+2012_CMPR_Final.pdf                                                                                   0.8777305
+2013_China_Report_FINAL.pdf                                                                           1.0000000
+2014_DoD_China_Report.pdf                                                                             0.9884742
+2015_China_Military_Power_Report.pdf                                                                  0.9762041
+2016 China Military Power Report.pdf                                                                  0.9432877
+2017_China_Military_Power_Report.pdf                                                                  0.9476017
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                  0.9481904
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                  0.9468704
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                        0.9165439
+2021-cmpr-final.pdf                                                                                   0.7710027
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                   0.8411511
+                                                                                    2014_DoD_China_Report.pdf
+1999_GPO-CRPT.pdf                                                                                   0.3666091
+2000_asia_neac_dod_china.pdf                                                                        0.8368275
+2001_DoD_AR.pdf                                                                                     0.5118708
+2002_0712china.pdf                                                                                  0.8618181
+2003_chinaex.pdf                                                                                    0.8528410
+2004_0528PRC.pdf                                                                                    0.8541305
+2005_0719china.pdf                                                                                  0.8829745
+2006_dod.pdf                                                                                        0.8886064
+2007_dod.pdf                                                                                        0.8821004
+2008_dod.pdf                                                                                        0.9016357
+2009_China_Military_Power_Report.pdf                                                                0.9047890
+2010_CMPR_Final.pdf                                                                                 0.9333896
+2011_CMPR_Final.pdf                                                                                 0.9382207
+2012_CMPR_Final.pdf                                                                                 0.8713363
+2013_China_Report_FINAL.pdf                                                                         0.9884742
+2014_DoD_China_Report.pdf                                                                           1.0000000
+2015_China_Military_Power_Report.pdf                                                                0.9835346
+2016 China Military Power Report.pdf                                                                0.9445530
+2017_China_Military_Power_Report.pdf                                                                0.9501277
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                0.9517577
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                0.9482653
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                      0.9104960
+2021-cmpr-final.pdf                                                                                 0.7556695
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                 0.8295304
+                                                                                    2015_China_Military_Power_Report.pdf
+1999_GPO-CRPT.pdf                                                                                              0.3671007
+2000_asia_neac_dod_china.pdf                                                                                   0.8346112
+2001_DoD_AR.pdf                                                                                                0.5024889
+2002_0712china.pdf                                                                                             0.8542955
+2003_chinaex.pdf                                                                                               0.8441329
+2004_0528PRC.pdf                                                                                               0.8399202
+2005_0719china.pdf                                                                                             0.8788270
+2006_dod.pdf                                                                                                   0.8835249
+2007_dod.pdf                                                                                                   0.8783372
+2008_dod.pdf                                                                                                   0.8936118
+2009_China_Military_Power_Report.pdf                                                                           0.8954595
+2010_CMPR_Final.pdf                                                                                            0.9238917
+2011_CMPR_Final.pdf                                                                                            0.9284861
+2012_CMPR_Final.pdf                                                                                            0.8581659
+2013_China_Report_FINAL.pdf                                                                                    0.9762041
+2014_DoD_China_Report.pdf                                                                                      0.9835346
+2015_China_Military_Power_Report.pdf                                                                           1.0000000
+2016 China Military Power Report.pdf                                                                           0.9445266
+2017_China_Military_Power_Report.pdf                                                                           0.9531281
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                           0.9511046
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                           0.9477175
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                 0.8996845
+2021-cmpr-final.pdf                                                                                            0.7326164
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                            0.8140377
+                                                                                    2016 China Military Power Report.pdf
+1999_GPO-CRPT.pdf                                                                                              0.3387556
+2000_asia_neac_dod_china.pdf                                                                                   0.7783684
+2001_DoD_AR.pdf                                                                                                0.4839978
+2002_0712china.pdf                                                                                             0.7862431
+2003_chinaex.pdf                                                                                               0.7766079
+2004_0528PRC.pdf                                                                                               0.7752047
+2005_0719china.pdf                                                                                             0.8077924
+2006_dod.pdf                                                                                                   0.8334635
+2007_dod.pdf                                                                                                   0.8309652
+2008_dod.pdf                                                                                                   0.8476433
+2009_China_Military_Power_Report.pdf                                                                           0.8447528
+2010_CMPR_Final.pdf                                                                                            0.9058974
+2011_CMPR_Final.pdf                                                                                            0.8913932
+2012_CMPR_Final.pdf                                                                                            0.8806624
+2013_China_Report_FINAL.pdf                                                                                    0.9432877
+2014_DoD_China_Report.pdf                                                                                      0.9445530
+2015_China_Military_Power_Report.pdf                                                                           0.9445266
+2016 China Military Power Report.pdf                                                                           1.0000000
+2017_China_Military_Power_Report.pdf                                                                           0.9867595
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                           0.9721142
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                           0.9732640
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                 0.9383815
+2021-cmpr-final.pdf                                                                                            0.7753363
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                            0.8463202
+                                                                                    2017_China_Military_Power_Report.pdf
+1999_GPO-CRPT.pdf                                                                                              0.3446960
+2000_asia_neac_dod_china.pdf                                                                                   0.7936206
+2001_DoD_AR.pdf                                                                                                0.4942990
+2002_0712china.pdf                                                                                             0.8032482
+2003_chinaex.pdf                                                                                               0.7961607
+2004_0528PRC.pdf                                                                                               0.7884202
+2005_0719china.pdf                                                                                             0.8273200
+2006_dod.pdf                                                                                                   0.8455626
+2007_dod.pdf                                                                                                   0.8399809
+2008_dod.pdf                                                                                                   0.8578922
+2009_China_Military_Power_Report.pdf                                                                           0.8563321
+2010_CMPR_Final.pdf                                                                                            0.9104504
+2011_CMPR_Final.pdf                                                                                            0.8969826
+2012_CMPR_Final.pdf                                                                                            0.8763795
+2013_China_Report_FINAL.pdf                                                                                    0.9476017
+2014_DoD_China_Report.pdf                                                                                      0.9501277
+2015_China_Military_Power_Report.pdf                                                                           0.9531281
+2016 China Military Power Report.pdf                                                                           0.9867595
+2017_China_Military_Power_Report.pdf                                                                           1.0000000
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                           0.9823483
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                           0.9776519
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                 0.9369599
+2021-cmpr-final.pdf                                                                                            0.7755787
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                            0.8475473
+                                                                                    2018_CHINA-MILITARY-POWER-REPORT.pdf
+1999_GPO-CRPT.pdf                                                                                              0.3298707
+2000_asia_neac_dod_china.pdf                                                                                   0.8040499
+2001_DoD_AR.pdf                                                                                                0.5033696
+2002_0712china.pdf                                                                                             0.8144560
+2003_chinaex.pdf                                                                                               0.8099172
+2004_0528PRC.pdf                                                                                               0.8093947
+2005_0719china.pdf                                                                                             0.8407295
+2006_dod.pdf                                                                                                   0.8572332
+2007_dod.pdf                                                                                                   0.8471383
+2008_dod.pdf                                                                                                   0.8665645
+2009_China_Military_Power_Report.pdf                                                                           0.8681603
+2010_CMPR_Final.pdf                                                                                            0.9073173
+2011_CMPR_Final.pdf                                                                                            0.9011147
+2012_CMPR_Final.pdf                                                                                            0.8714004
+2013_China_Report_FINAL.pdf                                                                                    0.9481904
+2014_DoD_China_Report.pdf                                                                                      0.9517577
+2015_China_Military_Power_Report.pdf                                                                           0.9511046
+2016 China Military Power Report.pdf                                                                           0.9721142
+2017_China_Military_Power_Report.pdf                                                                           0.9823483
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                           1.0000000
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                           0.9841578
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                 0.9448051
+2021-cmpr-final.pdf                                                                                            0.7916650
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                            0.8595461
+                                                                                    2019_CHINA_MILITARY_POWER_REPORT.pdf
+1999_GPO-CRPT.pdf                                                                                              0.3429062
+2000_asia_neac_dod_china.pdf                                                                                   0.8098639
+2001_DoD_AR.pdf                                                                                                0.5125134
+2002_0712china.pdf                                                                                             0.8164303
+2003_chinaex.pdf                                                                                               0.8098677
+2004_0528PRC.pdf                                                                                               0.8096197
+2005_0719china.pdf                                                                                             0.8423845
+2006_dod.pdf                                                                                                   0.8609203
+2007_dod.pdf                                                                                                   0.8549972
+2008_dod.pdf                                                                                                   0.8657235
+2009_China_Military_Power_Report.pdf                                                                           0.8659221
+2010_CMPR_Final.pdf                                                                                            0.9070941
+2011_CMPR_Final.pdf                                                                                            0.8979717
+2012_CMPR_Final.pdf                                                                                            0.8666868
+2013_China_Report_FINAL.pdf                                                                                    0.9468704
+2014_DoD_China_Report.pdf                                                                                      0.9482653
+2015_China_Military_Power_Report.pdf                                                                           0.9477175
+2016 China Military Power Report.pdf                                                                           0.9732640
+2017_China_Military_Power_Report.pdf                                                                           0.9776519
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                           0.9841578
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                           1.0000000
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                 0.9543158
+2021-cmpr-final.pdf                                                                                            0.7911453
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                            0.8623109
+                                                                                    2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf
+1999_GPO-CRPT.pdf                                                                                                        0.4148291
+2000_asia_neac_dod_china.pdf                                                                                             0.7944054
+2001_DoD_AR.pdf                                                                                                          0.5437493
+2002_0712china.pdf                                                                                                       0.8045966
+2003_chinaex.pdf                                                                                                         0.8014377
+2004_0528PRC.pdf                                                                                                         0.8097736
+2005_0719china.pdf                                                                                                       0.8176947
+2006_dod.pdf                                                                                                             0.8351425
+2007_dod.pdf                                                                                                             0.8354231
+2008_dod.pdf                                                                                                             0.8620491
+2009_China_Military_Power_Report.pdf                                                                                     0.8677986
+2010_CMPR_Final.pdf                                                                                                      0.9033088
+2011_CMPR_Final.pdf                                                                                                      0.8984795
+2012_CMPR_Final.pdf                                                                                                      0.8482693
+2013_China_Report_FINAL.pdf                                                                                              0.9165439
+2014_DoD_China_Report.pdf                                                                                                0.9104960
+2015_China_Military_Power_Report.pdf                                                                                     0.8996845
+2016 China Military Power Report.pdf                                                                                     0.9383815
+2017_China_Military_Power_Report.pdf                                                                                     0.9369599
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                                     0.9448051
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                                     0.9543158
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                           1.0000000
+2021-cmpr-final.pdf                                                                                                      0.9112284
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                                      0.9516991
+                                                                                    2021-cmpr-final.pdf
+1999_GPO-CRPT.pdf                                                                             0.4970898
+2000_asia_neac_dod_china.pdf                                                                  0.6670750
+2001_DoD_AR.pdf                                                                               0.5521069
+2002_0712china.pdf                                                                            0.6975788
+2003_chinaex.pdf                                                                              0.7045948
+2004_0528PRC.pdf                                                                              0.7129472
+2005_0719china.pdf                                                                            0.6738040
+2006_dod.pdf                                                                                  0.7001335
+2007_dod.pdf                                                                                  0.6921505
+2008_dod.pdf                                                                                  0.7358924
+2009_China_Military_Power_Report.pdf                                                          0.7537003
+2010_CMPR_Final.pdf                                                                           0.7758844
+2011_CMPR_Final.pdf                                                                           0.7765975
+2012_CMPR_Final.pdf                                                                           0.7409220
+2013_China_Report_FINAL.pdf                                                                   0.7710027
+2014_DoD_China_Report.pdf                                                                     0.7556695
+2015_China_Military_Power_Report.pdf                                                          0.7326164
+2016 China Military Power Report.pdf                                                          0.7753363
+2017_China_Military_Power_Report.pdf                                                          0.7755787
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                          0.7916650
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                          0.7911453
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                0.9112284
+2021-cmpr-final.pdf                                                                           1.0000000
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf           0.9780086
+                                                                                    2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf
+1999_GPO-CRPT.pdf                                                                                                                                             0.4970569
+2000_asia_neac_dod_china.pdf                                                                                                                                  0.7340373
+2001_DoD_AR.pdf                                                                                                                                               0.5596409
+2002_0712china.pdf                                                                                                                                            0.7587854
+2003_chinaex.pdf                                                                                                                                              0.7609356
+2004_0528PRC.pdf                                                                                                                                              0.7662433
+2005_0719china.pdf                                                                                                                                            0.7439190
+2006_dod.pdf                                                                                                                                                  0.7683552
+2007_dod.pdf                                                                                                                                                  0.7646742
+2008_dod.pdf                                                                                                                                                  0.8010364
+2009_China_Military_Power_Report.pdf                                                                                                                          0.8153483
+2010_CMPR_Final.pdf                                                                                                                                           0.8420765
+2011_CMPR_Final.pdf                                                                                                                                           0.8421717
+2012_CMPR_Final.pdf                                                                                                                                           0.7939079
+2013_China_Report_FINAL.pdf                                                                                                                                   0.8411511
+2014_DoD_China_Report.pdf                                                                                                                                     0.8295304
+2015_China_Military_Power_Report.pdf                                                                                                                          0.8140377
+2016 China Military Power Report.pdf                                                                                                                          0.8463202
+2017_China_Military_Power_Report.pdf                                                                                                                          0.8475473
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                                                                                          0.8595461
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                                                                                          0.8623109
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                                                                                                0.9516991
+2021-cmpr-final.pdf                                                                                                                                           0.9780086
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf                                                                           1.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-wordfish" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-wordfish">3. What is Wordfish?</h2>
+<p>Wordfish is an unsupervised one-dimensional text scaling method that estimates document positions from observed word frequencies.</p>
+</section>
+<section id="a.-run-wordfish-on-dod-reports" class="level2">
+<h2 class="anchored" data-anchor-id="a.-run-wordfish-on-dod-reports">3a. Run Wordfish on DOD reports</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>wf_dod <span class="ot">&lt;-</span> <span class="fu">textmodel_wordfish</span>(dfmat_dod_trim, <span class="at">dir =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">ndoc</span>(dfmat_dod_trim)))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wf_dod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+textmodel_wordfish.dfm(x = dfmat_dod_trim, dir = c(1, ndoc(dfmat_dod_trim)))
+
+Estimated Document Positions:
+                                                                                        theta
+1999_GPO-CRPT.pdf                                                                   -4.057564
+2000_asia_neac_dod_china.pdf                                                        -0.218192
+2001_DoD_AR.pdf                                                                     -1.757497
+2002_0712china.pdf                                                                  -0.329375
+2003_chinaex.pdf                                                                    -0.190580
+2004_0528PRC.pdf                                                                    -0.114830
+2005_0719china.pdf                                                                   0.006765
+2006_dod.pdf                                                                         0.069931
+2007_dod.pdf                                                                         0.110039
+2008_dod.pdf                                                                         0.153599
+2009_China_Military_Power_Report.pdf                                                 0.173457
+2010_CMPR_Final.pdf                                                                  0.223549
+2011_CMPR_Final.pdf                                                                  0.282610
+2012_CMPR_Final.pdf                                                                  0.320102
+2013_China_Report_FINAL.pdf                                                          0.347907
+2014_DoD_China_Report.pdf                                                            0.394590
+2015_China_Military_Power_Report.pdf                                                 0.430965
+2016 China Military Power Report.pdf                                                 0.512080
+2017_China_Military_Power_Report.pdf                                                 0.565236
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                 0.602621
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                 0.604375
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                       0.626871
+2021-cmpr-final.pdf                                                                  0.632132
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf  0.611208
+                                                                                          se
+1999_GPO-CRPT.pdf                                                                   0.003211
+2000_asia_neac_dod_china.pdf                                                        0.027390
+2001_DoD_AR.pdf                                                                     0.009474
+2002_0712china.pdf                                                                  0.021601
+2003_chinaex.pdf                                                                    0.020675
+2004_0528PRC.pdf                                                                    0.020290
+2005_0719china.pdf                                                                  0.021347
+2006_dod.pdf                                                                        0.019421
+2007_dod.pdf                                                                        0.020605
+2008_dod.pdf                                                                        0.016438
+2009_China_Military_Power_Report.pdf                                                0.014632
+2010_CMPR_Final.pdf                                                                 0.013933
+2011_CMPR_Final.pdf                                                                 0.011882
+2012_CMPR_Final.pdf                                                                 0.018004
+2013_China_Report_FINAL.pdf                                                         0.011477
+2014_DoD_China_Report.pdf                                                           0.010396
+2015_China_Military_Power_Report.pdf                                                0.009035
+2016 China Military Power Report.pdf                                                0.006814
+2017_China_Military_Power_Report.pdf                                                0.006117
+2018_CHINA-MILITARY-POWER-REPORT.pdf                                                0.004508
+2019_CHINA_MILITARY_POWER_REPORT.pdf                                                0.004487
+2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf                                      0.003240
+2021-cmpr-final.pdf                                                                 0.003107
+2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf 0.003292
+
+Estimated Feature Scores:
+         u.s national security military commercial concerns people’s republic
+beta -0.3058  0.04971    0.144   0.3754    -0.2742 -0.06886   0.7861   0.7401
+psi   4.4116  4.50904    4.988   5.7351     2.8172  2.32081   4.3131   4.2009
+      china  volume  select committee  united  states  house representatives
+beta 0.4906 -1.1275 -1.5322    -1.098 -0.3332 -0.3091 -2.106         -1.3561
+psi  5.8630 -0.2886 -0.7359     1.414  4.0160  4.1192 -3.334         -0.3082
+     congress  session   report submitted     mr    cox california chairman
+beta   0.6504 -0.26778 -0.02845   -0.5448 0.1228 -2.304    -0.6157   -0.133
+psi    4.0859  0.01363  4.31115   -0.2717 1.3619 -8.066    -0.8550    2.195
+      january committed   whole   state    union ordered
+beta -0.08828   -0.1374 0.05264 -0.3034 -0.06396  0.4643
+psi   2.08464    0.7439 0.46934  3.0457  1.41665  0.2600</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>wf_plot_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">document =</span> <span class="fu">docnames</span>(dfmat_dod_trim),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wordfish_position =</span> <span class="fu">as.numeric</span>(wf_dod<span class="sc">$</span>theta)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wf_plot_data, <span class="fu">aes</span>(<span class="at">x =</span> wordfish_position, <span class="at">y =</span> <span class="fu">reorder</span>(document, wordfish_position))) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#d63384"</span>) <span class="sc">+</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Wordfish Positions for DOD Reports"</span>,</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Wordfish Position"</span>,</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>)</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dod_wordfish_positions <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">document =</span> <span class="fu">docnames</span>(dfmat_dod_trim),</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wordfish_position =</span> <span class="fu">as.numeric</span>(wf_dod<span class="sc">$</span>theta)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dod_wordfish_positions, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">format =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">document</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">wordfish_position</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1999_GPO-CRPT.pdf</td>
+<td style="text-align: right;">-4.058</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2000_asia_neac_dod_china.pdf</td>
+<td style="text-align: right;">-0.218</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2001_DoD_AR.pdf</td>
+<td style="text-align: right;">-1.757</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2002_0712china.pdf</td>
+<td style="text-align: right;">-0.329</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2003_chinaex.pdf</td>
+<td style="text-align: right;">-0.191</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2004_0528PRC.pdf</td>
+<td style="text-align: right;">-0.115</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2005_0719china.pdf</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2006_dod.pdf</td>
+<td style="text-align: right;">0.070</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2007_dod.pdf</td>
+<td style="text-align: right;">0.110</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2008_dod.pdf</td>
+<td style="text-align: right;">0.154</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2009_China_Military_Power_Report.pdf</td>
+<td style="text-align: right;">0.173</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2010_CMPR_Final.pdf</td>
+<td style="text-align: right;">0.224</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2011_CMPR_Final.pdf</td>
+<td style="text-align: right;">0.283</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2012_CMPR_Final.pdf</td>
+<td style="text-align: right;">0.320</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2013_China_Report_FINAL.pdf</td>
+<td style="text-align: right;">0.348</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2014_DoD_China_Report.pdf</td>
+<td style="text-align: right;">0.395</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2015_China_Military_Power_Report.pdf</td>
+<td style="text-align: right;">0.431</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016 China Military Power Report.pdf</td>
+<td style="text-align: right;">0.512</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2017_China_Military_Power_Report.pdf</td>
+<td style="text-align: right;">0.565</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018_CHINA-MILITARY-POWER-REPORT.pdf</td>
+<td style="text-align: right;">0.603</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2019_CHINA_MILITARY_POWER_REPORT.pdf</td>
+<td style="text-align: right;">0.604</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf</td>
+<td style="text-align: right;">0.627</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2021-cmpr-final.pdf</td>
+<td style="text-align: right;">0.632</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf</td>
+<td style="text-align: right;">0.611</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="how-to-compare-positions" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-compare-positions">4. How to compare positions</h2>
+<p>Positions can be compared by examining the estimated document scores from Wordfish and comparing them to another scaling method such as correspondence analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ca_dod <span class="ot">&lt;-</span> <span class="fu">textmodel_ca</span>(dfmat_dod_trim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dod_positions_compare <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">document =</span> <span class="fu">docnames</span>(dfmat_dod_trim),</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wordfish =</span> <span class="fu">as.numeric</span>(wf_dod<span class="sc">$</span>theta),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ca_dim1 =</span> <span class="fu">as.numeric</span>(<span class="fu">coef</span>(ca_dod, <span class="at">doc_dim =</span> <span class="dv">1</span>)<span class="sc">$</span>coef_document)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dod_positions_compare, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">format =</span> <span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">document</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">wordfish</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ca_dim1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1999_GPO-CRPT.pdf</td>
+<td style="text-align: right;">-4.058</td>
+<td style="text-align: right;">-1.893</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2000_asia_neac_dod_china.pdf</td>
+<td style="text-align: right;">-0.218</td>
+<td style="text-align: right;">0.449</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2001_DoD_AR.pdf</td>
+<td style="text-align: right;">-1.757</td>
+<td style="text-align: right;">0.216</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2002_0712china.pdf</td>
+<td style="text-align: right;">-0.329</td>
+<td style="text-align: right;">0.435</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2003_chinaex.pdf</td>
+<td style="text-align: right;">-0.191</td>
+<td style="text-align: right;">0.493</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2004_0528PRC.pdf</td>
+<td style="text-align: right;">-0.115</td>
+<td style="text-align: right;">0.543</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2005_0719china.pdf</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.551</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2006_dod.pdf</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.552</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2007_dod.pdf</td>
+<td style="text-align: right;">0.110</td>
+<td style="text-align: right;">0.564</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2008_dod.pdf</td>
+<td style="text-align: right;">0.154</td>
+<td style="text-align: right;">0.561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2009_China_Military_Power_Report.pdf</td>
+<td style="text-align: right;">0.173</td>
+<td style="text-align: right;">0.561</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2010_CMPR_Final.pdf</td>
+<td style="text-align: right;">0.224</td>
+<td style="text-align: right;">0.533</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2011_CMPR_Final.pdf</td>
+<td style="text-align: right;">0.283</td>
+<td style="text-align: right;">0.587</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2012_CMPR_Final.pdf</td>
+<td style="text-align: right;">0.320</td>
+<td style="text-align: right;">0.539</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2013_China_Report_FINAL.pdf</td>
+<td style="text-align: right;">0.348</td>
+<td style="text-align: right;">0.579</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2014_DoD_China_Report.pdf</td>
+<td style="text-align: right;">0.395</td>
+<td style="text-align: right;">0.597</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2015_China_Military_Power_Report.pdf</td>
+<td style="text-align: right;">0.431</td>
+<td style="text-align: right;">0.594</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016 China Military Power Report.pdf</td>
+<td style="text-align: right;">0.512</td>
+<td style="text-align: right;">0.649</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2017_China_Military_Power_Report.pdf</td>
+<td style="text-align: right;">0.565</td>
+<td style="text-align: right;">0.670</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2018_CHINA-MILITARY-POWER-REPORT.pdf</td>
+<td style="text-align: right;">0.603</td>
+<td style="text-align: right;">0.674</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2019_CHINA_MILITARY_POWER_REPORT.pdf</td>
+<td style="text-align: right;">0.604</td>
+<td style="text-align: right;">0.657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020_DOD-CHINA-MILITARY-POWER-REPORT-FINAL.pdf</td>
+<td style="text-align: right;">0.627</td>
+<td style="text-align: right;">0.623</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2021-cmpr-final.pdf</td>
+<td style="text-align: right;">0.632</td>
+<td style="text-align: right;">0.575</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2022-military-and-security-developments-involving-the-peoples-republic-of-china.pdf</td>
+<td style="text-align: right;">0.611</td>
+<td style="text-align: right;">0.559</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dod_positions_compare, <span class="fu">aes</span>(<span class="at">x =</span> wordfish, <span class="at">y =</span> ca_dim1, <span class="at">label =</span> document)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"#d63384"</span>) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"#d63384"</span>) <span class="sc">+</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparing Document Positions"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Wordfish Position"</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Correspondence Analysis Dimension 1"</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>),</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#d63384"</span>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="assignment4_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dod_positions_compare<span class="sc">$</span>wordfish, dod_positions_compare<span class="sc">$</span>ca_dim1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9366541</code></pre>
+</div>
+</div>
+<p><strong>AI Disclaimer:</strong> <em>I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
