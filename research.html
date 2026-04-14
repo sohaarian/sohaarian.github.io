@@ -104,6 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.12.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -208,8 +217,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-and-workflow" id="toc-data-and-workflow" class="nav-link" data-scroll-target="#data-and-workflow"><span class="header-section-number">2</span> Data and Workflow</a></li>
   <li><a href="#software-and-references" id="toc-software-and-references" class="nav-link" data-scroll-target="#software-and-references"><span class="header-section-number">3</span> Software and References</a></li>
   <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages"><span class="header-section-number">4</span> Load Packages</a></li>
-  <li><a href="#read-the-pdf" id="toc-read-the-pdf" class="nav-link" data-scroll-target="#read-the-pdf"><span class="header-section-number">5</span> Read the PDF</a></li>
-  <li><a href="#split-the-pdf-into-individual-records" id="toc-split-the-pdf-into-individual-records" class="nav-link" data-scroll-target="#split-the-pdf-into-individual-records"><span class="header-section-number">6</span> Split the PDF into Individual Records</a></li>
+  <li><a href="#read-the-csv" id="toc-read-the-csv" class="nav-link" data-scroll-target="#read-the-csv"><span class="header-section-number">5</span> Read the CSV</a></li>
+  <li><a href="#create-the-record-level-dataset" id="toc-create-the-record-level-dataset" class="nav-link" data-scroll-target="#create-the-record-level-dataset"><span class="header-section-number">6</span> Create the Record-Level Dataset</a></li>
   <li><a href="#create-simple-metadata" id="toc-create-simple-metadata" class="nav-link" data-scroll-target="#create-simple-metadata"><span class="header-section-number">7</span> Create Simple Metadata</a></li>
   <li><a href="#build-the-corpus-and-document-feature-matrix" id="toc-build-the-corpus-and-document-feature-matrix" class="nav-link" data-scroll-target="#build-the-corpus-and-document-feature-matrix"><span class="header-section-number">8</span> Build the Corpus and Document-Feature Matrix</a></li>
   <li><a href="#graph-1-most-common-words" id="toc-graph-1-most-common-words" class="nav-link" data-scroll-target="#graph-1-most-common-words"><span class="header-section-number">9</span> Graph 1: Most Common Words</a></li>
@@ -220,6 +229,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#graph-6-most-common-two-word-phrases" id="toc-graph-6-most-common-two-word-phrases" class="nav-link" data-scroll-target="#graph-6-most-common-two-word-phrases"><span class="header-section-number">14</span> Graph 6: Most Common Two-Word Phrases</a></li>
   <li><a href="#graph-7-word-cloud" id="toc-graph-7-word-cloud" class="nav-link" data-scroll-target="#graph-7-word-cloud"><span class="header-section-number">15</span> Graph 7: Word Cloud</a></li>
   <li><a href="#save-output" id="toc-save-output" class="nav-link" data-scroll-target="#save-output"><span class="header-section-number">16</span> Save Output</a></li>
+  <li><a href="#interactive-topic-modeling" id="toc-interactive-topic-modeling" class="nav-link" data-scroll-target="#interactive-topic-modeling"><span class="header-section-number">17</span> Interactive Topic Modeling</a>
+  <ul class="collapse">
+  <li><a href="#intertopic-map-overview" id="toc-intertopic-map-overview" class="nav-link" data-scroll-target="#intertopic-map-overview"><span class="header-section-number">17.1</span> Intertopic Map Overview</a></li>
+  <li><a href="#step-1-check-required-packages-and-objects" id="toc-step-1-check-required-packages-and-objects" class="nav-link" data-scroll-target="#step-1-check-required-packages-and-objects"><span class="header-section-number">17.2</span> Step 1: Check Required Packages and Objects</a></li>
+  <li><a href="#step-2-trim-the-document-feature-matrix-for-topic-modeling" id="toc-step-2-trim-the-document-feature-matrix-for-topic-modeling" class="nav-link" data-scroll-target="#step-2-trim-the-document-feature-matrix-for-topic-modeling"><span class="header-section-number">17.3</span> Step 2: Trim the Document-Feature Matrix for Topic Modeling</a></li>
+  <li><a href="#step-3-convert-the-matrix-and-fit-the-lda-model" id="toc-step-3-convert-the-matrix-and-fit-the-lda-model" class="nav-link" data-scroll-target="#step-3-convert-the-matrix-and-fit-the-lda-model"><span class="header-section-number">17.4</span> Step 3: Convert the Matrix and Fit the LDA Model</a></li>
+  <li><a href="#step-4-extract-topic-term-and-document-topic-probabilities" id="toc-step-4-extract-topic-term-and-document-topic-probabilities" class="nav-link" data-scroll-target="#step-4-extract-topic-term-and-document-topic-probabilities"><span class="header-section-number">17.5</span> Step 4: Extract Topic-Term and Document-Topic Probabilities</a></li>
+  <li><a href="#step-5-get-the-top-words-for-each-topic" id="toc-step-5-get-the-top-words-for-each-topic" class="nav-link" data-scroll-target="#step-5-get-the-top-words-for-each-topic"><span class="header-section-number">17.6</span> Step 5: Get the Top Words for Each Topic</a></li>
+  <li><a href="#step-6-assign-readable-topic-labels" id="toc-step-6-assign-readable-topic-labels" class="nav-link" data-scroll-target="#step-6-assign-readable-topic-labels"><span class="header-section-number">17.7</span> Step 6: Assign Readable Topic Labels</a></li>
+  <li><a href="#step-7-measure-topic-distances" id="toc-step-7-measure-topic-distances" class="nav-link" data-scroll-target="#step-7-measure-topic-distances"><span class="header-section-number">17.8</span> Step 7: Measure Topic Distances</a></li>
+  <li><a href="#step-8-reduce-topic-distances-to-two-dimensions" id="toc-step-8-reduce-topic-distances-to-two-dimensions" class="nav-link" data-scroll-target="#step-8-reduce-topic-distances-to-two-dimensions"><span class="header-section-number">17.9</span> Step 8: Reduce Topic Distances to Two Dimensions</a></li>
+  <li><a href="#step-9-calculate-dominant-topic-share" id="toc-step-9-calculate-dominant-topic-share" class="nav-link" data-scroll-target="#step-9-calculate-dominant-topic-share"><span class="header-section-number">17.10</span> Step 9: Calculate Dominant Topic Share</a></li>
+  <li><a href="#step-10-build-the-final-topic-map-dataset" id="toc-step-10-build-the-final-topic-map-dataset" class="nav-link" data-scroll-target="#step-10-build-the-final-topic-map-dataset"><span class="header-section-number">17.11</span> Step 10: Build the Final Topic Map Dataset</a></li>
+  <li><a href="#step-11-create-the-interactive-intertopic-map" id="toc-step-11-create-the-interactive-intertopic-map" class="nav-link" data-scroll-target="#step-11-create-the-interactive-intertopic-map"><span class="header-section-number">17.12</span> Step 11: Create the Interactive Intertopic Map</a></li>
+  <li><a href="#what-the-output-means" id="toc-what-the-output-means" class="nav-link" data-scroll-target="#what-the-output-means"><span class="header-section-number">17.13</span> What the Output Means</a></li>
+  <li><a href="#topic-modeling-notes" id="toc-topic-modeling-notes" class="nav-link" data-scroll-target="#topic-modeling-notes"><span class="header-section-number">17.14</span> Topic Modeling Notes</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -251,25 +277,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1</span> Overview</h2>
-<p>This project for my senior capstone analyzes a PDF collection of breach descriptions as a text corpus. The goal is to identify the most common claim language, incident types, PHI categories, and mitigation actions mentioned across the records.</p>
-<p>The workflow follows a text-mining structure that moves from raw text to a corpus, then to tokens, and then to a document-feature matrix for visual analysis. This makes it possible to compare repeated language patterns across breach descriptions.</p>
+<section id="overview" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Overview</h1>
+<p>This project for my senior capstone analyzes a CSV file of breach descriptions as a text corpus. The goal is to identify the most common claim language, incident types, PHI categories, mitigation actions, and broader topic patterns mentioned across the records.</p>
+<p>The workflow follows a text-mining structure that moves from spreadsheet text to a corpus, then to tokens, and then to a document-feature matrix for visual analysis. This makes it possible to compare repeated language patterns across breach descriptions while preserving the full dataset.</p>
 </section>
-<section id="data-and-workflow" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="data-and-workflow"><span class="header-section-number">2</span> Data and Workflow</h2>
+<section id="data-and-workflow" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Data and Workflow</h1>
 <p>The analysis proceeds in six steps:</p>
 <ol type="1">
-<li>Read the PDF into R.</li>
-<li>Split the combined text into individual breach records.</li>
+<li>Read the CSV into R.</li>
+<li>Treat each non-empty CSV row as one breach record.</li>
 <li>Create simple metadata from the text, such as incident type and number of affected individuals.</li>
 <li>Build a quanteda corpus and document-feature matrix.</li>
 <li>Generate visualizations for word frequency, incident patterns, PHI categories, and common phrases.</li>
 <li>Save a clean extracted dataset for future use.</li>
 </ol>
 </section>
-<section id="software-and-references" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="software-and-references"><span class="header-section-number">3</span> Software and References</h2>
+<section id="software-and-references" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Software and References</h1>
 <p>This project used the following tools and references:</p>
 <ul>
 <li><a href="https://tutorials.quanteda.io/">Quanteda Tutorials</a></li>
@@ -279,76 +305,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages Documentation</a></li>
 </ul>
 </section>
-<section id="load-packages" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="load-packages"><span class="header-section-number">4</span> Load Packages</h2>
-<p>This section loads the R packages used for text extraction, cleaning, corpus construction, and plotting.</p>
+<section id="load-packages" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Load Packages</h1>
+<p>This section loads the R packages used for CSV import, cleaning, corpus construction, plotting, and topic modeling.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="read-the-pdf" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="read-the-pdf"><span class="header-section-number">5</span> Read the PDF</h2>
-<p>This section reads the PDF into R and combines all pages into one text object.</p>
+<section id="read-the-csv" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Read the CSV</h1>
+<p>This section reads the CSV into R. Because the CSV already stores the breach descriptions in tabular form, there is no need to reconstruct records from PDF text.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pdf_file <span class="ot">&lt;-</span> <span class="st">"WebDescription - Copy.pdf"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>csv_file <span class="ot">&lt;-</span> <span class="st">"WebDescription (1)(Sheet1).csv"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pdf_pages <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(pdf_file)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>full_text <span class="ot">&lt;-</span> <span class="fu">paste</span>(pdf_pages, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Pages loaded:"</span>, <span class="fu">length</span>(pdf_pages), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>raw_claims <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(csv_file, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Rows loaded from CSV:"</span>, <span class="fu">nrow</span>(raw_claims), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Pages loaded: 1 </code></pre>
+<pre><code>Rows loaded from CSV: 5008 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Characters loaded:"</span>, <span class="fu">nchar</span>(full_text), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Columns found:"</span>, <span class="fu">paste</span>(<span class="fu">names</span>(raw_claims), <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Characters loaded: 50093 </code></pre>
+<pre><code>Columns found: Web Description </code></pre>
 </div>
 </div>
 </section>
-<section id="split-the-pdf-into-individual-records" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="split-the-pdf-into-individual-records"><span class="header-section-number">6</span> Split the PDF into Individual Records</h2>
-<p>Each breach description is treated as its own document. This makes the dataset easier to analyze because each row becomes one claim record.</p>
+<section id="create-the-record-level-dataset" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Create the Record-Level Dataset</h1>
+<p>This step identifies the breach-description column and treats each non-empty CSV row as one claim record. That means the report uses the CSV directly rather than relying on PDF splitting.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>full_text_clean <span class="ot">&lt;-</span> full_text <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">r"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">n+"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>marked_text <span class="ot">&lt;-</span> full_text_clean <span class="sc">%&gt;%</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=The covered entity </span><span class="sc">\\</span><span class="st">(CE</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=The business associate </span><span class="sc">\\</span><span class="st">(BA</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=[A-Z][A-Za-z&amp;'.,</span><span class="sc">\\</span><span class="st">- ]+, the covered entity </span><span class="sc">\\</span><span class="st">(CE</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"(?=[A-Z][A-Za-z&amp;'.,</span><span class="sc">\\</span><span class="st">- ]+, the business associate </span><span class="sc">\\</span><span class="st">(BA</span><span class="sc">\\</span><span class="st">))"</span>, <span class="st">"|||REC|||"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>records <span class="ot">&lt;-</span> marked_text <span class="sc">%&gt;%</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|REC</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|</span><span class="sc">\\</span><span class="st">|"</span>, <span class="at">simplify =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trim</span>()</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>records <span class="ot">&lt;-</span> records[records <span class="sc">!=</span> <span class="st">""</span>]</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>records <span class="ot">&lt;-</span> records[<span class="fu">str_detect</span>(records, <span class="st">"reported that"</span>)]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>text_col <span class="ot">&lt;-</span> <span class="fu">names</span>(raw_claims)[</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(raw_claims),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">"^web</span><span class="sc">\\</span><span class="st">s*description$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>][<span class="dv">1</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.na</span>(text_col) <span class="sc">&amp;&amp;</span> <span class="fu">ncol</span>(raw_claims) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  text_col <span class="ot">&lt;-</span> <span class="fu">names</span>(raw_claims)[<span class="dv">1</span>]</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.na</span>(text_col)) {</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Could not find a 'Web Description' column. Columns found: "</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste</span>(<span class="fu">names</span>(raw_claims), <span class="at">collapse =</span> <span class="st">", "</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>claims <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">doc_id =</span> <span class="fu">paste0</span>(<span class="st">"claim_"</span>, <span class="fu">seq_along</span>(records)),</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> records</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Extracted"</span>, <span class="fu">nrow</span>(claims), <span class="st">"records</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>claims <span class="ot">&lt;-</span> raw_claims <span class="sc">%&gt;%</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> .data[[text_col]]) <span class="sc">%&gt;%</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> stringr<span class="sc">::</span><span class="fu">str_squish</span>(<span class="fu">as.character</span>(text))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(text), text <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">doc_id =</span> <span class="fu">paste0</span>(<span class="st">"claim_"</span>, <span class="fu">row_number</span>())) <span class="sc">%&gt;%</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(doc_id, text)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Non-empty breach records used in analysis:"</span>, <span class="fu">nrow</span>(claims), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Extracted 89 records</code></pre>
+<pre><code>Non-empty breach records used in analysis: 5008 </code></pre>
 </div>
 </div>
 </section>
-<section id="create-simple-metadata" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="create-simple-metadata"><span class="header-section-number">7</span> Create Simple Metadata</h2>
+<section id="create-simple-metadata" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Create Simple Metadata</h1>
 <p>This section creates basic variables directly from the text. These variables help summarize the kinds of incidents and the level of impact described in the records.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>claims <span class="ot">&lt;-</span> claims <span class="sc">%&gt;%</span></span>
@@ -357,40 +387,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"ransomware"</span>) <span class="sc">~</span> <span class="st">"Ransomware"</span>,</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"phishing"</span>) <span class="sc">~</span> <span class="st">"Phishing"</span>,</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"wrong recipient|wrong recipients"</span>) <span class="sc">~</span> <span class="st">"Wrong recipient"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"hacking incident"</span>) <span class="sc">~</span> <span class="st">"Hacking"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"hacking incident|hacking attack"</span>) <span class="sc">~</span> <span class="st">"Hacking"</span>,</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"cybersecurity incident"</span>) <span class="sc">~</span> <span class="st">"Cybersecurity incident"</span>,</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"cyber-attack|cyberattack"</span>) <span class="sc">~</span> <span class="st">"Cyberattack"</span>,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"viewable over the internet"</span>) <span class="sc">~</span> <span class="st">"Internet exposure"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"lost during transport|mailed"</span>) <span class="sc">~</span> <span class="st">"Mailing / transport"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"viewable over the internet|publicly available via the internet"</span>) <span class="sc">~</span> <span class="st">"Internet exposure"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"lost during transport|mailed|postcard"</span>) <span class="sc">~</span> <span class="st">"Mailing / transport"</span>,</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">affected_raw =</span> <span class="fu">str_extract</span>(text, <span class="st">"</span><span class="sc">\\</span><span class="st">d{1,3}(?:,</span><span class="sc">\\</span><span class="st">d{3})*</span><span class="sc">\\</span><span class="st">s+individuals"</span>),</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">affected_individuals =</span> <span class="fu">str_extract</span>(affected_raw, <span class="st">"</span><span class="sc">\\</span><span class="st">d{1,3}(?:,</span><span class="sc">\\</span><span class="st">d{3})*"</span>),</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">affected_individuals =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(affected_individuals, <span class="st">","</span>, <span class="st">""</span>)),</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">credit_monitoring =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"credit monitoring"</span>), <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraining =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"retrained|retraining|training"</span>), <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">technical_safeguards =</span> <span class="fu">if_else</span>(</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"technical safeguards|security safeguards|access controls|encryption"</span>),</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_notice =</span> <span class="fu">if_else</span>(<span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"the media|media</span><span class="sc">\\</span><span class="st">b"</span>), <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(claims<span class="sc">$</span>incident_type)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">credit_monitoring =</span> <span class="fu">if_else</span>(</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_to_lower</span>(text),</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"credit monitoring|free credit monitoring|complimentary credit monitoring"</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraining =</span> <span class="fu">if_else</span>(</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"retrained|retraining|training"</span>),</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">technical_safeguards =</span> <span class="fu">if_else</span>(</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">str_to_lower</span>(text),</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">"technical safeguards|security safeguards|access controls|encryption|multifactor authentication|multi-factor authentication"</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_notice =</span> <span class="fu">if_else</span>(</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(text), <span class="st">"the media|media</span><span class="sc">\\</span><span class="st">b"</span>),</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1</span>, <span class="dv">0</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(claims<span class="sc">$</span>incident_type)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
            Cyberattack Cybersecurity incident                Hacking 
-                    14                      6                      8 
-   Mailing / transport                  Other               Phishing 
-                     2                     20                     17 
-            Ransomware        Wrong recipient 
-                    12                     10 </code></pre>
+                   564                    114                    167 
+     Internet exposure    Mailing / transport                  Other 
+                    11                    158                   1556 
+              Phishing             Ransomware        Wrong recipient 
+                  1041                   1171                    226 </code></pre>
 </div>
 </div>
 </section>
-<section id="build-the-corpus-and-document-feature-matrix" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="build-the-corpus-and-document-feature-matrix"><span class="header-section-number">8</span> Build the Corpus and Document-Feature Matrix</h2>
-<p>This is the main text-mining setup step. The text is converted into a quanteda corpus, tokenized, cleaned, and transformed into a document-feature matrix.</p>
+<section id="build-the-corpus-and-document-feature-matrix" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Build the Corpus and Document-Feature Matrix</h1>
+<p>This is the main text-mining setup step. The CSV text is converted into a quanteda corpus, tokenized, cleaned, and transformed into a document-feature matrix.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>corp_claims <span class="ot">&lt;-</span> <span class="fu">corpus</span>(claims, <span class="at">text_field =</span> <span class="st">"text"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -416,13 +461,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"DFM:"</span>, <span class="fu">ndoc</span>(dfmat), <span class="st">"documents,"</span>, <span class="fu">nfeat</span>(dfmat), <span class="st">"features</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DFM: 89 documents, 94 features</code></pre>
+<pre><code>DFM: 5008 documents, 2855 features</code></pre>
 </div>
 </div>
 </section>
-<section id="graph-1-most-common-words" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="graph-1-most-common-words"><span class="header-section-number">9</span> Graph 1: Most Common Words</h2>
-<p>This graph shows the terms that appear most often across all extracted breach descriptions. It provides a broad overview of the dominant language in the dataset.</p>
+<section id="graph-1-most-common-words" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Graph 1: Most Common Words</h1>
+<p>This graph shows the terms that appear most often across all breach descriptions.<br>
+It provides a broad overview of the dominant language in the dataset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>topfeat <span class="ot">&lt;-</span> <span class="fu">topfeatures</span>(dfmat, <span class="dv">20</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -436,9 +482,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Words in Breach Descriptions"</span>,</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Overall word frequency across all extracted records"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Overall word frequency across all CSV records"</span>,</span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Word frequency across records"</span></span>
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -450,9 +496,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="graph-2-incident-type-distribution" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="graph-2-incident-type-distribution"><span class="header-section-number">10</span> Graph 2: Incident Type Distribution</h2>
-<p>This graph shows how often each type of breach incident appears in the extracted records. It helps identify which incident types are most common in the corpus.</p>
+<section id="graph-2-incident-type-distribution" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Graph 2: Incident Type Distribution</h1>
+<p>This graph shows how often each type of breach incident appears in the records.<br>
+It helps identify which incident types are most common in the corpus.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>claims <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(incident_type, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
@@ -463,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Incident Types in Breach Descriptions"</span>,</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Frequency of broad incident categories"</span>,</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of breach records"</span></span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -475,8 +522,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="graph-3-total-affected-individuals-by-incident-type" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="graph-3-total-affected-individuals-by-incident-type"><span class="header-section-number">11</span> Graph 3: Total Affected Individuals by Incident Type</h2>
+<section id="graph-3-total-affected-individuals-by-incident-type" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Graph 3: Total Affected Individuals by Incident Type</h1>
 <p>This graph moves from record counts to impact. It shows which incident types account for the largest total number of affected individuals.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>claims <span class="sc">%&gt;%</span></span>
@@ -503,9 +550,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="graph-4-mitigation-actions-mentioned" class="level2" data-number="12">
-<h2 data-number="12" class="anchored" data-anchor-id="graph-4-mitigation-actions-mentioned"><span class="header-section-number">12</span> Graph 4: Mitigation Actions Mentioned</h2>
-<p>This graph summarizes the response actions described in the breach narratives. It shows which mitigation steps appear most often after an incident.</p>
+<section id="graph-4-mitigation-actions-mentioned" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Graph 4: Mitigation Actions Mentioned</h1>
+<p>This graph summarizes the response actions described in the breach narratives.<br>
+It shows which mitigation steps appear most often after an incident.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>claims <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
@@ -522,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Mitigation Actions"</span>,</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Response measures described in the records"</span>,</span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of records mentioning action"</span></span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -534,8 +582,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="graph-5-most-frequently-mentioned-phi-categories" class="level2" data-number="13">
-<h2 data-number="13" class="anchored" data-anchor-id="graph-5-most-frequently-mentioned-phi-categories"><span class="header-section-number">13</span> Graph 5: Most Frequently Mentioned PHI Categories</h2>
+<section id="graph-5-most-frequently-mentioned-phi-categories" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Graph 5: Most Frequently Mentioned PHI Categories</h1>
 <p>This graph focuses on the types of protected health information mentioned in the breach descriptions. It highlights which data categories appear most often in the text.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>phi_terms <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -567,7 +615,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Frequently Mentioned PHI Categories"</span>,</span>
 <span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Specific data types referenced in the breach records"</span>,</span>
 <span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of records mentioning PHI category"</span></span>
 <span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -579,9 +627,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="graph-6-most-common-two-word-phrases" class="level2" data-number="14">
-<h2 data-number="14" class="anchored" data-anchor-id="graph-6-most-common-two-word-phrases"><span class="header-section-number">14</span> Graph 6: Most Common Two-Word Phrases</h2>
-<p>Single words are useful, but repeated phrases can show more specific patterns. This graph identifies the most common two-word collocations in the corpus.</p>
+<section id="graph-6-most-common-two-word-phrases" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Graph 6: Most Common Two-Word Phrases</h1>
+<p>Single words are useful, but repeated phrases can show more specific patterns.<br>
+This graph identifies the most common two-word collocations in the corpus.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>col2 <span class="ot">&lt;-</span> <span class="fu">textstat_collocations</span>(toks, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">min_count =</span> <span class="dv">3</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -596,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Two-Word Phrases"</span>,</span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Frequent collocations across breach descriptions"</span>,</span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Collocation frequency"</span></span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -608,8 +657,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="graph-7-word-cloud" class="level2" data-number="15">
-<h2 data-number="15" class="anchored" data-anchor-id="graph-7-word-cloud"><span class="header-section-number">15</span> Graph 7: Word Cloud</h2>
+<section id="graph-7-word-cloud" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Graph 7: Word Cloud</h1>
 <p>The word cloud offers a quick visual summary of the vocabulary used most often in the corpus. It complements the bar chart by emphasizing overall prominence rather than exact counts.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(</span>
@@ -626,15 +675,558 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="save-output" class="level2" data-number="16">
-<h2 data-number="16" class="anchored" data-anchor-id="save-output"><span class="header-section-number">16</span> Save Output</h2>
+<section id="save-output" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Save Output</h1>
 <p>This final step saves the extracted record-level dataset.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(claims, <span class="st">"claims_extracted_from_pdf.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(claims, <span class="st">"claims_extracted_from_csv.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="interactive-topic-modeling" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Interactive Topic Modeling</h1>
+<section id="intertopic-map-overview" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="intertopic-map-overview"><span class="header-section-number">17.1</span> Intertopic Map Overview</h2>
+<p>This section is separate from the earlier graphs because it uses topic modeling rather than simple word-frequency analysis. The goal is to uncover broader themes in the breach descriptions and visualize how similar or different those themes are from one another.</p>
+<p>The labels shown on the map are researcher-assigned summaries based on each topic’s most defining words. This means the model identifies the word patterns first, and the final topic labels are then interpreted in plain language.</p>
+</section>
+<section id="step-1-check-required-packages-and-objects" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="step-1-check-required-packages-and-objects"><span class="header-section-number">17.2</span> Step 1: Check Required Packages and Objects</h2>
+<p>This step confirms that the required packages are installed and that the document-feature matrix from the earlier analysis already exists. The intertopic analysis depends on the cleaned <code>dfmat</code> object created in the main text-analysis section.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"topicmodels"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Package 'topicmodels' is not installed. Run install.packages('topicmodels') in the Console, then render again."</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"plotly"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Package 'plotly' is not installed. Run install.packages('plotly') in the Console, then render again."</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"dfmat"</span>)) {</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"The object 'dfmat' does not exist. Run the earlier corpus and DFM sections first."</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-trim-the-document-feature-matrix-for-topic-modeling" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="step-2-trim-the-document-feature-matrix-for-topic-modeling"><span class="header-section-number">17.3</span> Step 2: Trim the Document-Feature Matrix for Topic Modeling</h2>
+<p>This step creates a version of the document-feature matrix specifically for topic modeling. Very rare terms and overly common terms are trimmed so that the model focuses on words that are more useful for identifying themes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dfmat_topic <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">dfm_trim</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dfmat,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_termfreq =</span> <span class="dv">5</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_docfreq =</span> <span class="dv">2</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_docfreq =</span> <span class="fu">floor</span>(quanteda<span class="sc">::</span><span class="fu">ndoc</span>(dfmat) <span class="sc">*</span> <span class="fl">0.85</span>),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">docfreq_type =</span> <span class="st">"count"</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (quanteda<span class="sc">::</span><span class="fu">nfeat</span>(dfmat_topic) <span class="sc">&lt;</span> <span class="dv">10</span>) {</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"Too few terms remain after trimming for topic modeling. Lower min_termfreq or min_docfreq and try again."</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Topic-modeling DFM:"</span>, quanteda<span class="sc">::</span><span class="fu">ndoc</span>(dfmat_topic), <span class="st">"documents and"</span>, quanteda<span class="sc">::</span><span class="fu">nfeat</span>(dfmat_topic), <span class="st">"features</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Topic-modeling DFM: 5008 documents and 1987 features</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-convert-the-matrix-and-fit-the-lda-model" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="step-3-convert-the-matrix-and-fit-the-lda-model"><span class="header-section-number">17.4</span> Step 3: Convert the Matrix and Fit the LDA Model</h2>
+<p>This step converts the quanteda matrix into the format required by <code>topicmodels</code>, then fits a Latent Dirichlet Allocation model. The model is set to estimate five topics.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dtm_topic <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">convert</span>(dfmat_topic, <span class="at">to =</span> <span class="st">"topicmodels"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>lda_fit <span class="ot">&lt;-</span> topicmodels<span class="sc">::</span><span class="fu">LDA</span>(</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  dtm_topic,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> k,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">1234</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>lda_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A LDA_VEM topic model with 5 topics.</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-extract-topic-term-and-document-topic-probabilities" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="step-4-extract-topic-term-and-document-topic-probabilities"><span class="header-section-number">17.5</span> Step 4: Extract Topic-Term and Document-Topic Probabilities</h2>
+<p>This step pulls out the two main outputs of the topic model:</p>
+<ul>
+<li><code>phi</code>: the probability of each term within each topic</li>
+<li><code>theta</code>: the probability of each topic within each document</li>
+</ul>
+<p>These are the core parts for labeling topics and building the intertopic map.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> topicmodels<span class="sc">::</span><span class="fu">posterior</span>(lda_fit)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> post<span class="sc">$</span>terms</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> post<span class="sc">$</span>topics</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(phi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]    5 1987</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(theta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5007    5</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5-get-the-top-words-for-each-topic" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="step-5-get-the-top-words-for-each-topic"><span class="header-section-number">17.6</span> Step 5: Get the Top Words for Each Topic</h2>
+<p>This step identifies the most important words within each topic. These top words are later used to create readable topic labels and interpretations.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>top_terms_list <span class="ot">&lt;-</span> <span class="fu">apply</span>(phi, <span class="dv">1</span>, <span class="cf">function</span>(x) {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(<span class="fu">sort</span>(x, <span class="at">decreasing =</span> <span class="cn">TRUE</span>))[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>top_terms_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">topic_id =</span> <span class="dv">1</span><span class="sc">:</span>k,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_terms =</span> <span class="fu">vapply</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="cf">function</span>(i) <span class="fu">paste</span>(top_terms_list[, i], <span class="at">collapse =</span> <span class="st">", "</span>), <span class="fu">character</span>(<span class="dv">1</span>))</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  top_terms_df,</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Top defining words for each modeled topic"</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top defining words for each modeled topic</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">topic_id</th>
+<th style="text-align: left;">top_terms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">numbers, services, credit, monitoring, diagnoses, social, complimentary, better</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">obtained, assurances, employee, actions, notification, corrective, procedures, policies</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">substitute, notice, numbers, ransomware, attack, experienced, website, posted</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">email, ephi, phishing, electronic, retrained, employee, numbers, employees</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">s, investigation, access, risk, hipaa, notification, ephi, analysis</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="step-6-assign-readable-topic-labels" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="step-6-assign-readable-topic-labels"><span class="header-section-number">17.7</span> Step 6: Assign Readable Topic Labels</h2>
+<p>The model itself does not produce human-friendly names. This step translates the top words into interpretable labels and short meanings so the output is easier to explain in a research setting.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>infer_topic_info <span class="ot">&lt;-</span> <span class="cf">function</span>(terms) {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  terms_lower <span class="ot">&lt;-</span> <span class="fu">tolower</span>(terms)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(terms_lower <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"ransomware"</span>, <span class="st">"cyberattack"</span>, <span class="st">"hacking"</span>, <span class="st">"attack"</span>, <span class="st">"network"</span>, <span class="st">"threat"</span>, <span class="st">"compromise"</span>))) {</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">"Cyberattacks and Ransomware"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">meaning =</span> <span class="st">"This topic groups records centered on hacking, ransomware, and other network-based intrusions."</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">any</span>(terms_lower <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"phishing"</span>, <span class="st">"email"</span>, <span class="st">"recipient"</span>, <span class="st">"mail"</span>, <span class="st">"mailed"</span>, <span class="st">"transport"</span>))) {</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">"Email, Mailing, and Delivery Errors"</span>,</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">meaning =</span> <span class="st">"This topic captures incidents involving phishing, misdirected emails, mailed records, or delivery mistakes."</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">any</span>(terms_lower <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"clinical"</span>, <span class="st">"diagnoses"</span>, <span class="st">"treatment"</span>, <span class="st">"medications"</span>, <span class="st">"lab"</span>, <span class="st">"insurance"</span>, <span class="st">"claims"</span>, <span class="st">"financial"</span>, <span class="st">"demographic"</span>, <span class="st">"social"</span>, <span class="st">"security"</span>, <span class="st">"birth"</span>))) {</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">"Types of Exposed PHI"</span>,</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">meaning =</span> <span class="st">"This topic emphasizes the kinds of protected health information discussed in the breach descriptions."</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">any</span>(terms_lower <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"credit"</span>, <span class="st">"monitoring"</span>, <span class="st">"retrained"</span>, <span class="st">"training"</span>, <span class="st">"encryption"</span>, <span class="st">"controls"</span>, <span class="st">"safeguards"</span>, <span class="st">"technical"</span>, <span class="st">"administrative"</span>, <span class="st">"password"</span>))) {</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">"Mitigation and Response Actions"</span>,</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">meaning =</span> <span class="st">"This topic focuses on the protective steps taken after a breach, such as training, safeguards, or monitoring."</span></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">any</span>(terms_lower <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"notified"</span>, <span class="st">"notice"</span>, <span class="st">"media"</span>, <span class="st">"entity"</span>, <span class="st">"associate"</span>, <span class="st">"reported"</span>, <span class="st">"covered"</span>))) {</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="st">"Reporting and Notification Process"</span>,</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">meaning =</span> <span class="st">"This topic centers on breach reporting, notifications, and the administrative process surrounding disclosure."</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">label =</span> <span class="fu">paste</span>(stringr<span class="sc">::</span><span class="fu">str_to_title</span>(terms[<span class="dv">1</span><span class="sc">:</span><span class="fu">min</span>(<span class="dv">2</span>, <span class="fu">length</span>(terms))]), <span class="at">collapse =</span> <span class="st">" and "</span>),</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">meaning =</span> <span class="st">"This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes."</span></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>topic_info <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(k), <span class="cf">function</span>(i) <span class="fu">infer_topic_info</span>(top_terms_list[, i]))</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>topic_labels_raw <span class="ot">&lt;-</span> <span class="fu">vapply</span>(topic_info, <span class="cf">function</span>(x) x<span class="sc">$</span>label, <span class="fu">character</span>(<span class="dv">1</span>))</span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>topic_meanings <span class="ot">&lt;-</span> <span class="fu">vapply</span>(topic_info, <span class="cf">function</span>(x) x<span class="sc">$</span>meaning, <span class="fu">character</span>(<span class="dv">1</span>))</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>label_index <span class="ot">&lt;-</span> <span class="fu">ave</span>(<span class="fu">seq_along</span>(topic_labels_raw), topic_labels_raw, <span class="at">FUN =</span> seq_along)</span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a>label_total <span class="ot">&lt;-</span> <span class="fu">ave</span>(<span class="fu">seq_along</span>(topic_labels_raw), topic_labels_raw, <span class="at">FUN =</span> length)</span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>topic_labels <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>  label_total <span class="sc">&gt;</span> <span class="dv">1</span>,</span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(topic_labels_raw, <span class="st">" "</span>, label_index),</span>
+<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a>  topic_labels_raw</span>
+<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a>topic_label_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">topic_id =</span> <span class="dv">1</span><span class="sc">:</span>k,</span>
+<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">topic_label =</span> topic_labels,</span>
+<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">interpretation =</span> topic_meanings</span>
+<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>  topic_label_df,</span>
+<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Readable labels and interpretations for each modeled topic"</span></span>
+<span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Readable labels and interpretations for each modeled topic</caption>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 21%">
+<col style="width: 73%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">topic_id</th>
+<th style="text-align: left;">topic_label</th>
+<th style="text-align: left;">interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Types of Exposed PHI</td>
+<td style="text-align: left;">This topic emphasizes the kinds of protected health information discussed in the breach descriptions.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Obtained and Assurances</td>
+<td style="text-align: left;">This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Cyberattacks and Ransomware</td>
+<td style="text-align: left;">This topic groups records centered on hacking, ransomware, and other network-based intrusions.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Email, Mailing, and Delivery Errors</td>
+<td style="text-align: left;">This topic captures incidents involving phishing, misdirected emails, mailed records, or delivery mistakes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">S and Investigation</td>
+<td style="text-align: left;">This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="step-7-measure-topic-distances" class="level2" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="step-7-measure-topic-distances"><span class="header-section-number">17.8</span> Step 7: Measure Topic Distances</h2>
+<p>To build the intertopic map, the topics need to be compared to one another.<br>
+This step calculates pairwise distances between topics based on their term distributions using Jensen-Shannon divergence.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>js_divergence <span class="ot">&lt;-</span> <span class="cf">function</span>(p, q) {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> p <span class="sc">/</span> <span class="fu">sum</span>(p)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  q <span class="ot">&lt;-</span> q <span class="sc">/</span> <span class="fu">sum</span>(q)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="sc">*</span> (p <span class="sc">+</span> q)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  kl_div <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">0</span>, x <span class="sc">*</span> <span class="fu">log</span>(x <span class="sc">/</span> y)))</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">kl_div</span>(p, m) <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> <span class="fu">kl_div</span>(q, m)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>dist_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> k, <span class="at">ncol =</span> k)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    dist_mat[i, j] <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">js_divergence</span>(phi[i, ], phi[j, ]))</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>dist_mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]      [,2]      [,3]      [,4]      [,5]
+[1,] 0.0000000 0.7369469 0.5393561 0.6365050 0.7663061
+[2,] 0.7369469 0.0000000 0.7000478 0.6547420 0.6111812
+[3,] 0.5393561 0.7000478 0.0000000 0.6474559 0.7280296
+[4,] 0.6365050 0.6547420 0.6474559 0.0000000 0.7345389
+[5,] 0.7663061 0.6111812 0.7280296 0.7345389 0.0000000</code></pre>
+</div>
+</div>
+</section>
+<section id="step-8-reduce-topic-distances-to-two-dimensions" class="level2" data-number="17.9">
+<h2 data-number="17.9" class="anchored" data-anchor-id="step-8-reduce-topic-distances-to-two-dimensions"><span class="header-section-number">17.9</span> Step 8: Reduce Topic Distances to Two Dimensions</h2>
+<p>The distance matrix contains the similarities among all topics, but it is not easy to visualize directly. This step reduces the topic distances into two dimensions so the topics can be plotted on an intertopic map.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">cmdscale</span>(<span class="fu">as.dist</span>(dist_mat), <span class="at">k =</span> <span class="dv">2</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>coords_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">topic_id =</span> <span class="dv">1</span><span class="sc">:</span>k,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> coords[, <span class="dv">1</span>],</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> coords[, <span class="dv">2</span>]</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  coords_df,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Two-dimensional coordinates used for the intertopic map"</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Two-dimensional coordinates used for the intertopic map</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">topic_id</th>
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.3177300</td>
+<td style="text-align: right;">0.1079122</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-0.2795072</td>
+<td style="text-align: right;">-0.1227792</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.2382362</td>
+<td style="text-align: right;">0.1697301</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.0905223</td>
+<td style="text-align: right;">-0.3625596</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">-0.3669813</td>
+<td style="text-align: right;">0.2076965</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="step-9-calculate-dominant-topic-share" class="level2" data-number="17.10">
+<h2 data-number="17.10" class="anchored" data-anchor-id="step-9-calculate-dominant-topic-share"><span class="header-section-number">17.10</span> Step 9: Calculate Dominant Topic Share</h2>
+<p>This step calculates the share of documents assigned most strongly to each topic.<br>
+This makes topic prevalence easier to interpret than simply averaging topic probabilities, which can look artificially even across topics.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dominant_topic <span class="ot">&lt;-</span> <span class="fu">apply</span>(theta, <span class="dv">1</span>, which.max)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>topic_prevalence <span class="ot">&lt;-</span> <span class="fu">round</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">100</span> <span class="sc">*</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(<span class="fu">factor</span>(dominant_topic, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span>k))),</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>topic_prevalence <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(topic_prevalence)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>prevalence_df <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">topic_id =</span> <span class="dv">1</span><span class="sc">:</span>k,</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">prevalence_percent =</span> topic_prevalence</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  prevalence_df,</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Dominant topic share across the corpus"</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Dominant topic share across the corpus</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">topic_id</th>
+<th style="text-align: right;">prevalence_percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">26.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">21.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">22.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">18.9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">9.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="step-10-build-the-final-topic-map-dataset" class="level2" data-number="17.11">
+<h2 data-number="17.11" class="anchored" data-anchor-id="step-10-build-the-final-topic-map-dataset"><span class="header-section-number">17.11</span> Step 10: Build the Final Topic Map Dataset</h2>
+<p>This step combines the topic labels, meanings, coordinates, top terms, and prevalence values into one final dataset for plotting.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pink_palette <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#d63384"</span>, <span class="st">"#e83e8c"</span>, <span class="st">"#f06595"</span>, <span class="st">"#ff85a1"</span>, <span class="st">"#ff99c8"</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>topic_map <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">topic_id =</span> <span class="dv">1</span><span class="sc">:</span>k,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> topic_labels,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> coords[, <span class="dv">1</span>],</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> coords[, <span class="dv">2</span>],</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">prevalence =</span> <span class="fu">as.numeric</span>(topic_prevalence),</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_terms =</span> <span class="fu">vapply</span>(<span class="fu">seq_len</span>(k), <span class="cf">function</span>(i) <span class="fu">paste</span>(top_terms_list[, i], <span class="at">collapse =</span> <span class="st">", "</span>), <span class="fu">character</span>(<span class="dv">1</span>)),</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">meaning =</span> topic_meanings,</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> pink_palette[<span class="fu">seq_len</span>(k)]</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>  topic_map <span class="sc">%&gt;%</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(topic_id, label, prevalence, top_terms, meaning),</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Final topic map dataset used in the interactive plot"</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Final topic map dataset used in the interactive plot</caption>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 13%">
+<col style="width: 4%">
+<col style="width: 32%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">topic_id</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">prevalence</th>
+<th style="text-align: left;">top_terms</th>
+<th style="text-align: left;">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Types of Exposed PHI</td>
+<td style="text-align: right;">26.8</td>
+<td style="text-align: left;">numbers, services, credit, monitoring, diagnoses, social, complimentary, better</td>
+<td style="text-align: left;">This topic emphasizes the kinds of protected health information discussed in the breach descriptions.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Obtained and Assurances</td>
+<td style="text-align: right;">21.6</td>
+<td style="text-align: left;">obtained, assurances, employee, actions, notification, corrective, procedures, policies</td>
+<td style="text-align: left;">This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Cyberattacks and Ransomware</td>
+<td style="text-align: right;">22.9</td>
+<td style="text-align: left;">substitute, notice, numbers, ransomware, attack, experienced, website, posted</td>
+<td style="text-align: left;">This topic groups records centered on hacking, ransomware, and other network-based intrusions.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Email, Mailing, and Delivery Errors</td>
+<td style="text-align: right;">18.9</td>
+<td style="text-align: left;">email, ephi, phishing, electronic, retrained, employee, numbers, employees</td>
+<td style="text-align: left;">This topic captures incidents involving phishing, misdirected emails, mailed records, or delivery mistakes.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">S and Investigation</td>
+<td style="text-align: right;">9.7</td>
+<td style="text-align: left;">s, investigation, access, risk, hipaa, notification, ephi, analysis</td>
+<td style="text-align: left;">This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="step-11-create-the-interactive-intertopic-map" class="level2" data-number="17.12">
+<h2 data-number="17.12" class="anchored" data-anchor-id="step-11-create-the-interactive-intertopic-map"><span class="header-section-number">17.12</span> Step 11: Create the Interactive Intertopic Map</h2>
+<p>This is the final visualization step. Each bubble is a topic, the size reflects prevalence, the placement reflects similarity to other topics, and the hover text shows the topic meaning and top defining words.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bubble_sizes <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">rescale</span>(<span class="fu">as.numeric</span>(topic_map<span class="sc">$</span>prevalence), <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">90</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plotly<span class="sc">::</span><span class="fu">plot_ly</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> topic_map,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="sc">~</span>x,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="sc">~</span>y,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"scatter"</span>,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">"markers+text"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="sc">~</span>label,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">textposition =</span> <span class="st">"top center"</span>,</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">hovertemplate =</span> <span class="sc">~</span><span class="fu">paste0</span>(</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"&lt;b&gt;"</span>, label, <span class="st">"&lt;/b&gt;&lt;br&gt;"</span>,</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Dominant-topic share: "</span>, prevalence, <span class="st">"%&lt;br&gt;"</span>,</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Top terms: "</span>, top_terms, <span class="st">"&lt;br&gt;"</span>,</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Meaning: "</span>, meaning,</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"&lt;extra&gt;&lt;/extra&gt;"</span></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">marker =</span> <span class="fu">list</span>(</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> bubble_sizes,</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> topic_map<span class="sc">$</span>color,</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">opacity =</span> <span class="fl">0.80</span>,</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">"#8a0f4d"</span>, <span class="at">width =</span> <span class="fl">1.5</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  plotly<span class="sc">::</span><span class="fu">layout</span>(</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">list</span>(<span class="at">text =</span> <span class="st">"Interactive Intertopic Distance Map"</span>),</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Dimension 1"</span>),</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Dimension 2"</span>)</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-1b4ff99564eb6e8884a5" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"visdat":{"153997d5243e5":["function () ","plotlyVisDat"]},"cur_data":"153997d5243e5","attrs":{"153997d5243e5":{"x":{},"y":{},"mode":"markers+text","text":{},"textposition":"top center","hovertemplate":{},"marker":{"size":[90,73.274853801169598,77.456140350877178,64.59064327485379,35],"color":["#d63384","#e83e8c","#f06595","#ff85a1","#ff99c8"],"opacity":0.80000000000000004,"line":{"color":"#8a0f4d","width":1.5}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Interactive Intertopic Distance Map"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Dimension 1"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Dimension 2"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[0.31773000657140638,-0.27950720223184145,0.23823618791393766,0.090522343348555218,-0.36698133560205809],"y":[0.10791216818678713,-0.12277919258417323,0.16973014447007134,-0.36255957576446612,0.20769645569178111],"mode":"markers+text","text":["Types of Exposed PHI","Obtained and Assurances","Cyberattacks and Ransomware","Email, Mailing, and Delivery Errors","S and Investigation"],"textposition":["top center","top center","top center","top center","top center"],"hovertemplate":["<b>Types of Exposed PHI<\/b><br>Dominant-topic share: 26.8%<br>Top terms: numbers, services, credit, monitoring, diagnoses, social, complimentary, better<br>Meaning: This topic emphasizes the kinds of protected health information discussed in the breach descriptions.<extra><\/extra>","<b>Obtained and Assurances<\/b><br>Dominant-topic share: 21.6%<br>Top terms: obtained, assurances, employee, actions, notification, corrective, procedures, policies<br>Meaning: This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.<extra><\/extra>","<b>Cyberattacks and Ransomware<\/b><br>Dominant-topic share: 22.9%<br>Top terms: substitute, notice, numbers, ransomware, attack, experienced, website, posted<br>Meaning: This topic groups records centered on hacking, ransomware, and other network-based intrusions.<extra><\/extra>","<b>Email, Mailing, and Delivery Errors<\/b><br>Dominant-topic share: 18.9%<br>Top terms: email, ephi, phishing, electronic, retrained, employee, numbers, employees<br>Meaning: This topic captures incidents involving phishing, misdirected emails, mailed records, or delivery mistakes.<extra><\/extra>","<b>S and Investigation<\/b><br>Dominant-topic share: 9.7%<br>Top terms: s, investigation, access, risk, hipaa, notification, ephi, analysis<br>Meaning: This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.<extra><\/extra>"],"marker":{"color":["#d63384","#e83e8c","#f06595","#ff85a1","#ff99c8"],"size":[90,73.274853801169598,77.456140350877178,64.59064327485379,35],"opacity":0.80000000000000004,"line":{"color":"#8a0f4d","width":1.5}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="what-the-output-means" class="level2" data-number="17.13">
+<h2 data-number="17.13" class="anchored" data-anchor-id="what-the-output-means"><span class="header-section-number">17.13</span> What the Output Means</h2>
+<p>The intertopic map should be read as a visual summary of how the latent topics relate to one another. If two bubbles are close together, that means those topics use similar vocabulary and are thematically related. If two bubbles are farther apart, that means their word distributions are more distinct.</p>
+<p>Bubble size reflects dominant-topic share. A larger bubble means that topic is the main theme in more documents, while a smaller bubble means it is dominant in fewer documents.</p>
+<p>The words shown in the hover text are the highest-probability terms for that topic.<br>
+These are the terms that most strongly define the topic according to the model.</p>
+<p>The topic names are interpretive labels assigned after inspecting those top words.<br>
+In other words, the model discovers the word patterns first, and the final topic name is the human-readable explanation of what that pattern appears to represent.</p>
+</section>
+<section id="topic-modeling-notes" class="level2" data-number="17.14">
+<h2 data-number="17.14" class="anchored" data-anchor-id="topic-modeling-notes"><span class="header-section-number">17.14</span> Topic Modeling Notes</h2>
+<p>This section differs from the earlier graphs because it does not simply count words or categories. Instead, it uses co-occurrence patterns across documents to estimate latent topics, which can reveal broader thematic structure in the breach narratives.</p>
 <p><strong>AI Disclaimer:</strong> <em>I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
