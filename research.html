@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1</span> Overview</a></li>
+  <li><a href="#quantitative-overview" id="toc-quantitative-overview" class="nav-link active" data-scroll-target="#quantitative-overview"><span class="header-section-number">1</span> Quantitative Overview</a></li>
   <li><a href="#data-and-workflow" id="toc-data-and-workflow" class="nav-link" data-scroll-target="#data-and-workflow"><span class="header-section-number">2</span> Data and Workflow</a></li>
   <li><a href="#software-and-references" id="toc-software-and-references" class="nav-link" data-scroll-target="#software-and-references"><span class="header-section-number">3</span> Software and References</a></li>
   <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages"><span class="header-section-number">4</span> Load Packages</a></li>
@@ -246,6 +246,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-the-output-means" id="toc-what-the-output-means" class="nav-link" data-scroll-target="#what-the-output-means"><span class="header-section-number">17.13</span> What the Output Means</a></li>
   <li><a href="#topic-modeling-notes" id="toc-topic-modeling-notes" class="nav-link" data-scroll-target="#topic-modeling-notes"><span class="header-section-number">17.14</span> Topic Modeling Notes</a></li>
   </ul></li>
+  <li><a href="#deductive-content-analysis-overview" id="toc-deductive-content-analysis-overview" class="nav-link" data-scroll-target="#deductive-content-analysis-overview"><span class="header-section-number">18</span> Deductive Content Analysis Overview</a></li>
+  <li><a href="#qualitative-data-and-workflow" id="toc-qualitative-data-and-workflow" class="nav-link" data-scroll-target="#qualitative-data-and-workflow"><span class="header-section-number">19</span> Qualitative Data and Workflow</a></li>
+  <li><a href="#why-this-section-matters" id="toc-why-this-section-matters" class="nav-link" data-scroll-target="#why-this-section-matters"><span class="header-section-number">20</span> Why This Section Matters</a></li>
+  <li><a href="#load-qualitative-packages" id="toc-load-qualitative-packages" class="nav-link" data-scroll-target="#load-qualitative-packages"><span class="header-section-number">21</span> Load Qualitative Packages</a></li>
+  <li><a href="#identify-the-underwriting-pdfs" id="toc-identify-the-underwriting-pdfs" class="nav-link" data-scroll-target="#identify-the-underwriting-pdfs"><span class="header-section-number">22</span> Identify the Underwriting PDFs</a></li>
+  <li><a href="#read-and-clean-the-pdf-pages" id="toc-read-and-clean-the-pdf-pages" class="nav-link" data-scroll-target="#read-and-clean-the-pdf-pages"><span class="header-section-number">23</span> Read and Clean the PDF Pages</a></li>
+  <li><a href="#extract-and-clean-question-level-units" id="toc-extract-and-clean-question-level-units" class="nav-link" data-scroll-target="#extract-and-clean-question-level-units"><span class="header-section-number">24</span> Extract and Clean Question-Level Units</a></li>
+  <li><a href="#review-the-cleaned-question-units" id="toc-review-the-cleaned-question-units" class="nav-link" data-scroll-target="#review-the-cleaned-question-units"><span class="header-section-number">25</span> Review the Cleaned Question Units</a></li>
+  <li><a href="#build-the-deductive-codebook" id="toc-build-the-deductive-codebook" class="nav-link" data-scroll-target="#build-the-deductive-codebook"><span class="header-section-number">26</span> Build the Deductive Codebook</a></li>
+  <li><a href="#apply-deductive-content-coding" id="toc-apply-deductive-content-coding" class="nav-link" data-scroll-target="#apply-deductive-content-coding"><span class="header-section-number">27</span> Apply Deductive Content Coding</a></li>
+  <li><a href="#review-the-coded-qualitative-dataset" id="toc-review-the-coded-qualitative-dataset" class="nav-link" data-scroll-target="#review-the-coded-qualitative-dataset"><span class="header-section-number">28</span> Review the Coded Qualitative Dataset</a></li>
+  <li><a href="#graph-1-most-frequently-emphasized-control-categories" id="toc-graph-1-most-frequently-emphasized-control-categories" class="nav-link" data-scroll-target="#graph-1-most-frequently-emphasized-control-categories"><span class="header-section-number">29</span> Graph 1: Most Frequently Emphasized Control Categories</a></li>
+  <li><a href="#graph-2-control-categories-by-insurer" id="toc-graph-2-control-categories-by-insurer" class="nav-link" data-scroll-target="#graph-2-control-categories-by-insurer"><span class="header-section-number">30</span> Graph 2: Control Categories by Insurer</a></li>
+  <li><a href="#graph-3-broad-theme-distribution" id="toc-graph-3-broad-theme-distribution" class="nav-link" data-scroll-target="#graph-3-broad-theme-distribution"><span class="header-section-number">31</span> Graph 3: Broad Theme Distribution</a></li>
+  <li><a href="#export-qualitative-review-files" id="toc-export-qualitative-review-files" class="nav-link" data-scroll-target="#export-qualitative-review-files"><span class="header-section-number">32</span> Export Qualitative Review Files</a></li>
+  <li><a href="#what-the-qualitative-output-means" id="toc-what-the-qualitative-output-means" class="nav-link" data-scroll-target="#what-the-qualitative-output-means"><span class="header-section-number">33</span> What the Qualitative Output Means</a></li>
+  <li><a href="#methodological-note" id="toc-methodological-note" class="nav-link" data-scroll-target="#methodological-note"><span class="header-section-number">34</span> Methodological Note</a></li>
+  <li><a href="#save-final-qualitative-dataset" id="toc-save-final-qualitative-dataset" class="nav-link" data-scroll-target="#save-final-qualitative-dataset"><span class="header-section-number">35</span> Save Final Qualitative Dataset</a></li>
   </ul>
 </nav>
     </div>
@@ -277,8 +295,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Overview</h1>
+<section id="quantitative-overview" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Quantitative Overview</h1>
 <p>This project for my senior capstone analyzes a CSV file of breach descriptions as a text corpus. The goal is to identify the most common claim language, incident types, PHI categories, mitigation actions, and broader topic patterns mentioned across the records.</p>
 <p>The workflow follows a text-mining structure that moves from spreadsheet text to a corpus, then to tokens, and then to a document-feature matrix for visual analysis. This makes it possible to compare repeated language patterns across breach descriptions while preserving the full dataset.</p>
 </section>
@@ -1207,7 +1225,7 @@ This makes topic prevalence easier to interpret than simply averaging topic prob
 <span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="plotly html-widget html-fill-item" id="htmlwidget-1b4ff99564eb6e8884a5" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"visdat":{"157056304bdde":["function () ","plotlyVisDat"]},"cur_data":"157056304bdde","attrs":{"157056304bdde":{"x":{},"y":{},"mode":"markers+text","text":{},"textposition":"top center","hovertemplate":{},"marker":{"size":[90,73.274853801169598,77.456140350877178,64.59064327485379,35],"color":["#d63384","#e83e8c","#f06595","#ff85a1","#ff99c8"],"opacity":0.80000000000000004,"line":{"color":"#8a0f4d","width":1.5}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Interactive Intertopic Distance Map"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Dimension 1"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Dimension 2"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[0.31773000657140638,-0.27950720223184145,0.23823618791393766,0.090522343348555218,-0.36698133560205809],"y":[0.10791216818678713,-0.12277919258417323,0.16973014447007134,-0.36255957576446612,0.20769645569178111],"mode":"markers+text","text":["Types of Exposed PHI","Obtained and Assurances","Cyberattacks and Ransomware","Email, Mailing, and Delivery Errors","S and Investigation"],"textposition":["top center","top center","top center","top center","top center"],"hovertemplate":["<b>Types of Exposed PHI<\/b><br>Dominant-topic share: 26.8%<br>Top terms: numbers, services, credit, monitoring, diagnoses, social, complimentary, better<br>Meaning: This topic emphasizes the kinds of protected health information discussed in the breach descriptions.<extra><\/extra>","<b>Obtained and Assurances<\/b><br>Dominant-topic share: 21.6%<br>Top terms: obtained, assurances, employee, actions, notification, corrective, procedures, policies<br>Meaning: This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.<extra><\/extra>","<b>Cyberattacks and Ransomware<\/b><br>Dominant-topic share: 22.9%<br>Top terms: substitute, notice, numbers, ransomware, attack, experienced, website, posted<br>Meaning: This topic groups records centered on hacking, ransomware, and other network-based intrusions.<extra><\/extra>","<b>Email, Mailing, and Delivery Errors<\/b><br>Dominant-topic share: 18.9%<br>Top terms: email, ephi, phishing, electronic, retrained, employee, numbers, employees<br>Meaning: This topic captures incidents involving phishing, misdirected emails, mailed records, or delivery mistakes.<extra><\/extra>","<b>S and Investigation<\/b><br>Dominant-topic share: 9.7%<br>Top terms: s, investigation, access, risk, hipaa, notification, ephi, analysis<br>Meaning: This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.<extra><\/extra>"],"marker":{"color":["#d63384","#e83e8c","#f06595","#ff85a1","#ff99c8"],"size":[90,73.274853801169598,77.456140350877178,64.59064327485379,35],"opacity":0.80000000000000004,"line":{"color":"#8a0f4d","width":1.5}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"visdat":{"166be71b37bcd":["function () ","plotlyVisDat"]},"cur_data":"166be71b37bcd","attrs":{"166be71b37bcd":{"x":{},"y":{},"mode":"markers+text","text":{},"textposition":"top center","hovertemplate":{},"marker":{"size":[90,73.274853801169598,77.456140350877178,64.59064327485379,35],"color":["#d63384","#e83e8c","#f06595","#ff85a1","#ff99c8"],"opacity":0.80000000000000004,"line":{"color":"#8a0f4d","width":1.5}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":{"text":"Interactive Intertopic Distance Map"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Dimension 1"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Dimension 2"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[0.31773000657140638,-0.27950720223184145,0.23823618791393766,0.090522343348555218,-0.36698133560205809],"y":[0.10791216818678713,-0.12277919258417323,0.16973014447007134,-0.36255957576446612,0.20769645569178111],"mode":"markers+text","text":["Types of Exposed PHI","Obtained and Assurances","Cyberattacks and Ransomware","Email, Mailing, and Delivery Errors","S and Investigation"],"textposition":["top center","top center","top center","top center","top center"],"hovertemplate":["<b>Types of Exposed PHI<\/b><br>Dominant-topic share: 26.8%<br>Top terms: numbers, services, credit, monitoring, diagnoses, social, complimentary, better<br>Meaning: This topic emphasizes the kinds of protected health information discussed in the breach descriptions.<extra><\/extra>","<b>Obtained and Assurances<\/b><br>Dominant-topic share: 21.6%<br>Top terms: obtained, assurances, employee, actions, notification, corrective, procedures, policies<br>Meaning: This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.<extra><\/extra>","<b>Cyberattacks and Ransomware<\/b><br>Dominant-topic share: 22.9%<br>Top terms: substitute, notice, numbers, ransomware, attack, experienced, website, posted<br>Meaning: This topic groups records centered on hacking, ransomware, and other network-based intrusions.<extra><\/extra>","<b>Email, Mailing, and Delivery Errors<\/b><br>Dominant-topic share: 18.9%<br>Top terms: email, ephi, phishing, electronic, retrained, employee, numbers, employees<br>Meaning: This topic captures incidents involving phishing, misdirected emails, mailed records, or delivery mistakes.<extra><\/extra>","<b>S and Investigation<\/b><br>Dominant-topic share: 9.7%<br>Top terms: s, investigation, access, risk, hipaa, notification, ephi, analysis<br>Meaning: This topic is summarized using its most defining words because it does not clearly match one of the broader preset themes.<extra><\/extra>"],"marker":{"color":["#d63384","#e83e8c","#f06595","#ff85a1","#ff99c8"],"size":[90,73.274853801169598,77.456140350877178,64.59064327485379,35],"opacity":0.80000000000000004,"line":{"color":"#8a0f4d","width":1.5}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -1224,9 +1242,1179 @@ In other words, the model discovers the word patterns first, and the final topic
 <h2 data-number="17.14" class="anchored" data-anchor-id="topic-modeling-notes"><span class="header-section-number">17.14</span> Topic Modeling Notes</h2>
 <p>This section differs from the earlier graphs because it does not simply count words or categories. Instead, it uses co-occurrence patterns across documents to estimate latent topics, which can reveal broader thematic structure in the breach narratives.</p>
 <p><strong>AI Disclaimer:</strong> <em>I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.</em></p>
-
-
 </section>
+</section>
+<section id="deductive-content-analysis-overview" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Deductive Content Analysis Overview</h1>
+<p>This section uses <strong>deductive content analysis</strong> to examine cyber insurance underwriting documents.<br>
+The goal is to identify which cybersecurity controls insurers emphasize most frequently, organize those questions into standardized control categories, and produce a structured qualitative review of underwriting priorities.</p>
+<p>The unit of analysis is each underwriting control-related question. This is important for the qualitative report because it allows the analysis to move from raw underwriting forms to clearly defined control categories that can be counted, compared across insurers, and interpreted in relation to cyber risk.</p>
+</section>
+<section id="qualitative-data-and-workflow" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> Qualitative Data and Workflow</h1>
+<p>The deductive content analysis proceeds in seven steps:</p>
+<ol type="1">
+<li>Read the insurer underwriting PDFs into R.</li>
+<li>Extract question-level units from each document.</li>
+<li>Clean the extracted text so that questions are readable and organized.</li>
+<li>Apply a predefined deductive codebook with explicit definitions and inclusion/exclusion criteria.</li>
+<li>Generate control frequencies and insurer comparisons.</li>
+<li>Export cleaned qualitative review files.</li>
+<li>Save a final dataset for the written qualitative report.</li>
+</ol>
+</section>
+<section id="why-this-section-matters" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> Why This Section Matters</h1>
+<p>This section is important because the qualitative portion of the project is not simply describing documents. Instead, it systematically reviews what insurers ask applicants to do, which controls appear most often, and which kinds of cybersecurity practices seem most emphasized during underwriting.</p>
+<p>By using deductive content analysis, the report can clearly show: - which controls are prioritized, - how those controls are grouped conceptually, - and why those patterns matter for the broader research question.</p>
+</section>
+<section id="load-qualitative-packages" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> Load Qualitative Packages</h1>
+<p>This section loads the packages used for PDF extraction, text cleaning, qualitative coding, exports, and tables.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="identify-the-underwriting-pdfs" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Identify the Underwriting PDFs</h1>
+<p>This section identifies the underwriting forms included in the qualitative review.<br>
+The code looks for the files in the working directory using the names shown in your folder, while also allowing flexible matching if the names vary slightly.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>all_pdfs <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.pdf$"</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>find_pdf <span class="ot">&lt;-</span> <span class="cf">function</span>(patterns) {</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (p <span class="cf">in</span> patterns) {</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    hits <span class="ot">&lt;-</span> all_pdfs[<span class="fu">str_detect</span>(all_pdfs, <span class="fu">regex</span>(p, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>))]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    hits <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(hits, <span class="st">"Figure01.pdf"</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">length</span>(hits) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">return</span>(hits[<span class="dv">1</span>])</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="cn">NA_character_</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>pdf_lookup <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>insurer, <span class="sc">~</span>document_label, <span class="sc">~</span>source_file,</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Beazley"</span>, <span class="st">"Beazley Media E&amp;O Application"</span>,</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_pdf</span>(<span class="fu">c</span>(<span class="st">"^beazley_media_liability_us"</span>, <span class="st">"beazley.*media"</span>, <span class="st">"media.*omissions.*beazley"</span>)),</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Chubb"</span>, <span class="st">"Chubb Cyber Enterprise Application"</span>,</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_pdf</span>(<span class="fu">c</span>(<span class="st">"^chubb cyber 2024"</span>, <span class="st">"chubb.*cyber"</span>)),</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Coalition"</span>, <span class="st">"Coalition Cyber &amp; Technology E&amp;O Application"</span>,</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_pdf</span>(<span class="fu">c</span>(<span class="st">"coalition.*cybertecheo"</span>, <span class="st">"cybertecheo"</span>)),</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Coalition"</span>, <span class="st">"Coalition Cyber Policy Application"</span>,</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_pdf</span>(<span class="fu">c</span>(<span class="st">"^cyber application.*coalition"</span>, <span class="st">"coalition.*cyber policy"</span>)),</span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"The Hartford"</span>, <span class="st">"CyberChoice Underwriting Application"</span>,</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_pdf</span>(<span class="fu">c</span>(<span class="st">"^hartford cyber application"</span>, <span class="st">"hartford.*cyber"</span>, <span class="st">"cyberchoice"</span>)),</span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Beazley"</span>, <span class="st">"Beazley Ransomware Supplemental Application"</span>,</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_pdf</span>(<span class="fu">c</span>(<span class="st">"^beazley ransomware supplemental application"</span>, <span class="st">"beazley.*ransomware"</span>))</span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">file_exists =</span> <span class="sc">!</span><span class="fu">is.na</span>(source_file) <span class="sc">&amp;</span> <span class="fu">file.exists</span>(source_file))</span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">sum</span>(pdf_lookup<span class="sc">$</span>file_exists) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(</span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"No listed underwriting PDFs were found in the working directory. PDF files currently visible: "</span>,</span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste</span>(all_pdfs, <span class="at">collapse =</span> <span class="st">", "</span>)</span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a>pdf_lookup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  insurer      document_label                            source_file file_exists
+  &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;       &lt;lgl&gt;      
+1 Beazley      Beazley Media E&amp;O Application             beazley_me… TRUE       
+2 Chubb        Chubb Cyber Enterprise Application        Chubb Cybe… TRUE       
+3 Coalition    Coalition Cyber &amp; Technology E&amp;O Applica… Coalition-… TRUE       
+4 Coalition    Coalition Cyber Policy Application        Cyber Appl… TRUE       
+5 The Hartford CyberChoice Underwriting Application      Hartford C… TRUE       
+6 Beazley      Beazley Ransomware Supplemental Applicat… Beazley Ra… TRUE       </code></pre>
+</div>
+</div>
+</section>
+<section id="read-and-clean-the-pdf-pages" class="level1" data-number="23">
+<h1 data-number="23"><span class="header-section-number">23</span> Read and Clean the PDF Pages</h1>
+<p>This section reads the insurer PDFs into R and creates a page-level dataset. This is important because the raw PDF text must first be standardized before it can be reviewed as qualitative evidence.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>clean_page_text <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">r"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"[\u00A0</span><span class="sc">\t</span><span class="st">]"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">" +"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">n{2,}"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_trim</span>()</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>pages_df <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_dfr</span>(</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">which</span>(pdf_lookup<span class="sc">$</span>file_exists),</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(i) {</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    txt <span class="ot">&lt;-</span> pdftools<span class="sc">::</span><span class="fu">pdf_text</span>(pdf_lookup<span class="sc">$</span>source_file[i])</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">source_file =</span> pdf_lookup<span class="sc">$</span>source_file[i],</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">insurer =</span> pdf_lookup<span class="sc">$</span>insurer[i],</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">document_label =</span> pdf_lookup<span class="sc">$</span>document_label[i],</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">page =</span> <span class="fu">seq_along</span>(txt),</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">page_text =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(txt, clean_page_text)</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"PDF files read:"</span>, <span class="fu">n_distinct</span>(pages_df<span class="sc">$</span>source_file), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>PDF files read: 6 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Total pages read:"</span>, <span class="fu">nrow</span>(pages_df), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total pages read: 37 </code></pre>
+</div>
+</div>
+</section>
+<section id="extract-and-clean-question-level-units" class="level1" data-number="24">
+<h1 data-number="24"><span class="header-section-number">24</span> Extract and Clean Question-Level Units</h1>
+<p>This section extracts candidate underwriting questions from the PDFs. It also cleans away answer-choice clutter such as Yes, No, Unknown, and legal boilerplate so the questions are readable and usable in the qualitative review.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>drop_line_patterns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^page </span><span class="sc">\\</span><span class="st">d"</span>,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^cb "</span>,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^cyusp"</span>,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^sp "</span>,</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fraud warning"</span>,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"warning statements"</span>,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"please read the policy carefully"</span>,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"all written statements"</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"the undersigned authorized representative"</span>,</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"attention .* applicants"</span>,</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"click here to enter text"</span>,</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"choose an item"</span>,</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"notice: this policy"</span>,</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"if a policy is issued"</span>,</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"any person who knowingly"</span>,</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"page </span><span class="sc">\\</span><span class="st">d of </span><span class="sc">\\</span><span class="st">d"</span>,</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"©"</span>,</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"continued on next page"</span>,</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"please complete this section only"</span>,</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name of applicant"</span>,</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"address city state zip"</span>,</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"policy contains a defense within limits provision"</span>,</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"for businesses with revenue"</span>,</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"headquarters address"</span>,</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"website and email domain"</span>,</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aggregate limit retention"</span>,</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"desired effective date"</span>,</span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"global revenue"</span>,</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"applicant address"</span>,</span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"revenue information"</span>,</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"coverage required"</span>,</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"general information"</span>,</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"please list all website addresses"</span>,</span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gross profit / net revenue"</span>,</span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name of organization or legal entity"</span>,</span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"most recent completed fiscal year revenue"</span>,</span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"current fiscal year"</span>,</span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"website:"</span>,</span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"city state zip"</span>,</span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>  <span class="st">"premium:"</span>,</span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>  <span class="st">"deductible:"</span>,</span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"limit of liability:"</span>,</span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"retroactive date"</span>,</span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"aggregate limit"</span>,</span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>  <span class="st">"requested limit"</span>,</span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"requested retention"</span>,</span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"revenue</span><span class="sc">\\</span><span class="st">*"</span>,</span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gross profit"</span>,</span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"desired coverage"</span>,</span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"current coverage"</span></span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>group_drop_patterns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fraud against an insurer"</span>,</span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">"guilty of a crime"</span>,</span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"criminal penalties"</span>,</span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">"civil penalties"</span>,</span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"notice to .* applicants"</span>,</span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"all written statements"</span>,</span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"the insurer reserves the right"</span>,</span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"material misstatement"</span>,</span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"misrepresentation"</span>,</span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"warning"</span></span>
+<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>question_start_patterns <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^</span><span class="sc">\\</span><span class="st">d+[a-z]?</span><span class="sc">\\</span><span class="st">)?</span><span class="sc">\\</span><span class="st">s"</span>,</span>
+<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^</span><span class="sc">\\</span><span class="st">d+[a-z]?</span><span class="sc">\\</span><span class="st">."</span>,</span>
+<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^[a-z]</span><span class="sc">\\</span><span class="st">."</span>,</span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^[a-z]</span><span class="sc">\\</span><span class="st">)"</span>,</span>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^do you "</span>,</span>
+<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^does "</span>,</span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^what "</span>,</span>
+<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^which "</span>,</span>
+<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^how "</span>,</span>
+<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^is "</span>,</span>
+<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^are "</span>,</span>
+<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^for which "</span>,</span>
+<span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^identify "</span>,</span>
+<span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^within the last"</span>,</span>
+<span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^have you "</span>,</span>
+<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^will "</span>,</span>
+<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^under what circumstances"</span>,</span>
+<span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^please describe"</span>,</span>
+<span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^please provide"</span>,</span>
+<span id="cb44-87"><a href="#cb44-87" aria-hidden="true" tabindex="-1"></a>  <span class="st">"^if yes"</span></span>
+<span id="cb44-88"><a href="#cb44-88" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a>keep_keywords <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a>  <span class="st">"security"</span>, <span class="st">"cyber"</span>, <span class="st">"incident"</span>, <span class="st">"privacy"</span>, <span class="st">"mfa"</span>, <span class="st">"multi-factor"</span>,</span>
+<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"encryption"</span>, <span class="st">"backup"</span>, <span class="st">"recovery"</span>, <span class="st">"patch"</span>, <span class="st">"vulnerability"</span>,</span>
+<span id="cb44-93"><a href="#cb44-93" aria-hidden="true" tabindex="-1"></a>  <span class="st">"firewall"</span>, <span class="st">"edr"</span>, <span class="st">"mdr"</span>, <span class="st">"epp"</span>, <span class="st">"ndr"</span>, <span class="st">"siem"</span>, <span class="st">"soc"</span>, <span class="st">"dns"</span>,</span>
+<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a>  <span class="st">"training"</span>, <span class="st">"phishing"</span>, <span class="st">"email"</span>, <span class="st">"pam"</span>, <span class="st">"password"</span>, <span class="st">"service account"</span>,</span>
+<span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a>  <span class="st">"asset"</span>, <span class="st">"cmdb"</span>, <span class="st">"rdp"</span>, <span class="st">"remote access"</span>, <span class="st">"vpn"</span>, <span class="st">"smb"</span>,</span>
+<span id="cb44-96"><a href="#cb44-96" aria-hidden="true" tabindex="-1"></a>  <span class="st">"endpoint"</span>, <span class="st">"malicious"</span>, <span class="st">"domain"</span>, <span class="st">"dkim"</span>, <span class="st">"spf"</span>, <span class="st">"dmarc"</span>,</span>
+<span id="cb44-97"><a href="#cb44-97" aria-hidden="true" tabindex="-1"></a>  <span class="st">"offline"</span>, <span class="st">"incident response"</span>, <span class="st">"business continuity"</span>, <span class="st">"funds transfer"</span>,</span>
+<span id="cb44-98"><a href="#cb44-98" aria-hidden="true" tabindex="-1"></a>  <span class="st">"banking details"</span>, <span class="st">"pci"</span>, <span class="st">"pii"</span>, <span class="st">"phi"</span>, <span class="st">"hipaa"</span>, <span class="st">"hitech"</span>,</span>
+<span id="cb44-99"><a href="#cb44-99" aria-hidden="true" tabindex="-1"></a>  <span class="st">"legal review"</span>, <span class="st">"takedown"</span>, <span class="st">"content"</span>, <span class="st">"copyright"</span>, <span class="st">"trademark"</span>,</span>
+<span id="cb44-100"><a href="#cb44-100" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mobile devices"</span>, <span class="st">"portable media"</span>, <span class="st">"privileged"</span>, <span class="st">"administrator"</span>,</span>
+<span id="cb44-101"><a href="#cb44-101" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span>, <span class="st">"records"</span>, <span class="st">"payment card"</span>, <span class="st">"protected information"</span>,</span>
+<span id="cb44-102"><a href="#cb44-102" aria-hidden="true" tabindex="-1"></a>  <span class="st">"antivirus"</span>, <span class="st">"firewalls"</span>, <span class="st">"sign off"</span>, <span class="st">"editorial"</span>, <span class="st">"media"</span>,</span>
+<span id="cb44-103"><a href="#cb44-103" aria-hidden="true" tabindex="-1"></a>  <span class="st">"backup"</span>, <span class="st">"fund transfer"</span>, <span class="st">"cloud"</span>, <span class="st">"monitoring"</span>, <span class="st">"social media"</span>,</span>
+<span id="cb44-104"><a href="#cb44-104" aria-hidden="true" tabindex="-1"></a>  <span class="st">"content"</span>, <span class="st">"infringe"</span>, <span class="st">"rights"</span>, <span class="st">"vendor"</span>, <span class="st">"wire"</span>, <span class="st">"ach"</span></span>
+<span id="cb44-105"><a href="#cb44-105" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-106"><a href="#cb44-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-107"><a href="#cb44-107" aria-hidden="true" tabindex="-1"></a>fix_short_mfa_items <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb44-108"><a href="#cb44-108" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb44-109"><a href="#cb44-109" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(x, <span class="fu">regex</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">d+[a-z]?</span><span class="sc">\\</span><span class="st">s*email$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span></span>
+<span id="cb44-110"><a href="#cb44-110" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Do you enforce multi-factor authentication (MFA) for email?"</span>,</span>
+<span id="cb44-111"><a href="#cb44-111" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(x, <span class="fu">regex</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">d+[a-z]?</span><span class="sc">\\</span><span class="st">s*virtual private network </span><span class="sc">\\</span><span class="st">(vpn</span><span class="sc">\\</span><span class="st">)$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span></span>
+<span id="cb44-112"><a href="#cb44-112" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Do you enforce multi-factor authentication (MFA) for virtual private network (VPN) access?"</span>,</span>
+<span id="cb44-113"><a href="#cb44-113" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(x, <span class="fu">regex</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">d+[a-z]?</span><span class="sc">\\</span><span class="st">s*remote desktop protocol </span><span class="sc">\\</span><span class="st">(rdp</span><span class="sc">\\</span><span class="st">).*remote access$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span></span>
+<span id="cb44-114"><a href="#cb44-114" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Do you enforce multi-factor authentication (MFA) for remote desktop protocol (RDP) or other remote access?"</span>,</span>
+<span id="cb44-115"><a href="#cb44-115" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(x, <span class="fu">regex</span>(<span class="st">"^</span><span class="sc">\\</span><span class="st">d+[a-z]?</span><span class="sc">\\</span><span class="st">s*network ?/ ?cloud administration.*privileged user accounts$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span></span>
+<span id="cb44-116"><a href="#cb44-116" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Do you enforce multi-factor authentication (MFA) for network or cloud administration and other privileged user accounts?"</span>,</span>
+<span id="cb44-117"><a href="#cb44-117" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> x</span>
+<span id="cb44-118"><a href="#cb44-118" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-119"><a href="#cb44-119" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-120"><a href="#cb44-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-121"><a href="#cb44-121" aria-hidden="true" tabindex="-1"></a>clean_question_text <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb44-122"><a href="#cb44-122" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb44-123"><a href="#cb44-123" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"[■□▪•☐☑]"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-124"><a href="#cb44-124" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-125"><a href="#cb44-125" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(</span>
+<span id="cb44-126"><a href="#cb44-126" aria-hidden="true" tabindex="-1"></a>      <span class="fu">regex</span>(</span>
+<span id="cb44-127"><a href="#cb44-127" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\\</span><span class="st">s+(?:NO|YES|UNKNOWN|N/?A|SOMETIMES|REMOTE ACCESS NOT PERMITTED|WORKING HOURS ONLY|24/7|INTERNAL|THIRD PARTY|BOTH|ON ADMINISTRATIVE ACCOUNTS AND ALL CLOUD SERVICES WHERE SUPPORTED|N/?A - NO REMOTE ACCESS ALLOWED|N/?A - NO VPN ALLOWED)(?:</span><span class="sc">\\</span><span class="st">s+(?:NO|YES|UNKNOWN|N/?A|SOMETIMES|REMOTE ACCESS NOT PERMITTED|WORKING HOURS ONLY|24/7|INTERNAL|THIRD PARTY|BOTH|ON ADMINISTRATIVE ACCOUNTS AND ALL CLOUD SERVICES WHERE SUPPORTED|N/?A - NO REMOTE ACCESS ALLOWED|N/?A - NO VPN ALLOWED))*</span><span class="sc">\\</span><span class="st">s*$"</span>,</span>
+<span id="cb44-128"><a href="#cb44-128" aria-hidden="true" tabindex="-1"></a>        <span class="at">ignore_case =</span> <span class="cn">TRUE</span></span>
+<span id="cb44-129"><a href="#cb44-129" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb44-130"><a href="#cb44-130" aria-hidden="true" tabindex="-1"></a>      <span class="st">""</span></span>
+<span id="cb44-131"><a href="#cb44-131" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-132"><a href="#cb44-132" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(</span>
+<span id="cb44-133"><a href="#cb44-133" aria-hidden="true" tabindex="-1"></a>      <span class="fu">regex</span>(</span>
+<span id="cb44-134"><a href="#cb44-134" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\\</span><span class="st">s+(?:NEVER/?NOT REGULARLY|ANNUALLY|≥?2X PER YEAR|2-3 TIMES PER YEAR|QUARTERLY OR MORE OFTEN|WEEKLY|MONTHLY)(?:</span><span class="sc">\\</span><span class="st">s+(?:NEVER/?NOT REGULARLY|ANNUALLY|≥?2X PER YEAR|2-3 TIMES PER YEAR|QUARTERLY OR MORE OFTEN|WEEKLY|MONTHLY))*</span><span class="sc">\\</span><span class="st">s*$"</span>,</span>
+<span id="cb44-135"><a href="#cb44-135" aria-hidden="true" tabindex="-1"></a>        <span class="at">ignore_case =</span> <span class="cn">TRUE</span></span>
+<span id="cb44-136"><a href="#cb44-136" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb44-137"><a href="#cb44-137" aria-hidden="true" tabindex="-1"></a>      <span class="st">""</span></span>
+<span id="cb44-138"><a href="#cb44-138" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-139"><a href="#cb44-139" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(</span>
+<span id="cb44-140"><a href="#cb44-140" aria-hidden="true" tabindex="-1"></a>      <span class="fu">regex</span>(</span>
+<span id="cb44-141"><a href="#cb44-141" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\\</span><span class="st">s+(?:NO RECORDS|LESS THAN 100,000|100,000 ?[-–] ?500,000|500,000 ?[-–] ?1,000,000|OVER 1,000,000|0-5,000|5,001-25,000|&gt; ?25,000|1-25|26-50|51-250|251-1,000|</span><span class="sc">\\</span><span class="st">+1,000|0|1-5|6-10|&gt;10)(?:</span><span class="sc">\\</span><span class="st">s+(?:NO RECORDS|LESS THAN 100,000|100,000 ?[-–] ?500,000|500,000 ?[-–] ?1,000,000|OVER 1,000,000|0-5,000|5,001-25,000|&gt; ?25,000|1-25|26-50|51-250|251-1,000|</span><span class="sc">\\</span><span class="st">+1,000|0|1-5|6-10|&gt;10))*</span><span class="sc">\\</span><span class="st">s*$"</span>,</span>
+<span id="cb44-142"><a href="#cb44-142" aria-hidden="true" tabindex="-1"></a>        <span class="at">ignore_case =</span> <span class="cn">TRUE</span></span>
+<span id="cb44-143"><a href="#cb44-143" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb44-144"><a href="#cb44-144" aria-hidden="true" tabindex="-1"></a>      <span class="st">""</span></span>
+<span id="cb44-145"><a href="#cb44-145" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-146"><a href="#cb44-146" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="fu">regex</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+</span><span class="sc">\\</span><span class="st">(If Yes</span><span class="sc">\\</span><span class="st">)</span><span class="sc">\\</span><span class="st">s*$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>), <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-147"><a href="#cb44-147" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="fu">regex</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+If Yes</span><span class="sc">\\</span><span class="st">s*$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>), <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-148"><a href="#cb44-148" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="fu">regex</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+If No</span><span class="sc">\\</span><span class="st">s*$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>), <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-149"><a href="#cb44-149" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace</span>(<span class="fu">regex</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+Please explain</span><span class="sc">\\</span><span class="st">??</span><span class="sc">\\</span><span class="st">s*$"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>), <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-150"><a href="#cb44-150" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+</span><span class="sc">\\</span><span class="st">?+"</span>, <span class="st">"?"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-151"><a href="#cb44-151" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+</span><span class="sc">\\</span><span class="st">.+$"</span>, <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-152"><a href="#cb44-152" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_squish</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-153"><a href="#cb44-153" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fix_short_mfa_items</span>()</span>
+<span id="cb44-154"><a href="#cb44-154" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-155"><a href="#cb44-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-156"><a href="#cb44-156" aria-hidden="true" tabindex="-1"></a>add_terminal_punctuation <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb44-157"><a href="#cb44-157" aria-hidden="true" tabindex="-1"></a>  starts_question <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(</span>
+<span id="cb44-158"><a href="#cb44-158" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_to_lower</span>(x),</span>
+<span id="cb44-159"><a href="#cb44-159" aria-hidden="true" tabindex="-1"></a>    <span class="st">"^(do you|does|what|which|how|is|are|have you|will|under what circumstances|for which|within the last|please describe|please provide|identify)"</span></span>
+<span id="cb44-160"><a href="#cb44-160" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-161"><a href="#cb44-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-162"><a href="#cb44-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(</span>
+<span id="cb44-163"><a href="#cb44-163" aria-hidden="true" tabindex="-1"></a>    starts_question <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">str_detect</span>(x, <span class="st">"[</span><span class="sc">\\</span><span class="st">?</span><span class="sc">\\</span><span class="st">.:]$"</span>),</span>
+<span id="cb44-164"><a href="#cb44-164" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(x, <span class="st">"?"</span>),</span>
+<span id="cb44-165"><a href="#cb44-165" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb44-166"><a href="#cb44-166" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-167"><a href="#cb44-167" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-168"><a href="#cb44-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-169"><a href="#cb44-169" aria-hidden="true" tabindex="-1"></a>extract_questions_from_page <span class="ot">&lt;-</span> <span class="cf">function</span>(page_text, source_file, insurer, document_label, page) {</span>
+<span id="cb44-170"><a href="#cb44-170" aria-hidden="true" tabindex="-1"></a>  lines <span class="ot">&lt;-</span> page_text <span class="sc">%&gt;%</span></span>
+<span id="cb44-171"><a href="#cb44-171" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_split</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-172"><a href="#cb44-172" aria-hidden="true" tabindex="-1"></a>    .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb44-173"><a href="#cb44-173" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_squish</span>()</span>
+<span id="cb44-174"><a href="#cb44-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-175"><a href="#cb44-175" aria-hidden="true" tabindex="-1"></a>  lines <span class="ot">&lt;-</span> lines[lines <span class="sc">!=</span> <span class="st">""</span>]</span>
+<span id="cb44-176"><a href="#cb44-176" aria-hidden="true" tabindex="-1"></a>  lines_lower <span class="ot">&lt;-</span> <span class="fu">str_to_lower</span>(lines)</span>
+<span id="cb44-177"><a href="#cb44-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-178"><a href="#cb44-178" aria-hidden="true" tabindex="-1"></a>  keep_idx <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">str_detect</span>(lines_lower, <span class="fu">paste</span>(drop_line_patterns, <span class="at">collapse =</span> <span class="st">"|"</span>))</span>
+<span id="cb44-179"><a href="#cb44-179" aria-hidden="true" tabindex="-1"></a>  lines <span class="ot">&lt;-</span> lines[keep_idx]</span>
+<span id="cb44-180"><a href="#cb44-180" aria-hidden="true" tabindex="-1"></a>  lines_lower <span class="ot">&lt;-</span> lines_lower[keep_idx]</span>
+<span id="cb44-181"><a href="#cb44-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-182"><a href="#cb44-182" aria-hidden="true" tabindex="-1"></a>  is_start <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(lines_lower, <span class="fu">paste</span>(question_start_patterns, <span class="at">collapse =</span> <span class="st">"|"</span>))</span>
+<span id="cb44-183"><a href="#cb44-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-184"><a href="#cb44-184" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">any</span>(is_start)) {</span>
+<span id="cb44-185"><a href="#cb44-185" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">tibble</span>())</span>
+<span id="cb44-186"><a href="#cb44-186" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb44-187"><a href="#cb44-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-188"><a href="#cb44-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb44-189"><a href="#cb44-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">line =</span> lines,</span>
+<span id="cb44-190"><a href="#cb44-190" aria-hidden="true" tabindex="-1"></a>    <span class="at">line_lower =</span> lines_lower,</span>
+<span id="cb44-191"><a href="#cb44-191" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_start =</span> is_start,</span>
+<span id="cb44-192"><a href="#cb44-192" aria-hidden="true" tabindex="-1"></a>    <span class="at">group_id =</span> <span class="fu">cumsum</span>(is_start)</span>
+<span id="cb44-193"><a href="#cb44-193" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-194"><a href="#cb44-194" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(group_id <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-195"><a href="#cb44-195" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group_id) <span class="sc">%&gt;%</span></span>
+<span id="cb44-196"><a href="#cb44-196" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb44-197"><a href="#cb44-197" aria-hidden="true" tabindex="-1"></a>      <span class="at">question_text =</span> <span class="fu">paste</span>(line, <span class="at">collapse =</span> <span class="st">" "</span>),</span>
+<span id="cb44-198"><a href="#cb44-198" aria-hidden="true" tabindex="-1"></a>      <span class="at">lower_text =</span> <span class="fu">paste</span>(line_lower, <span class="at">collapse =</span> <span class="st">" "</span>),</span>
+<span id="cb44-199"><a href="#cb44-199" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb44-200"><a href="#cb44-200" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-201"><a href="#cb44-201" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb44-202"><a href="#cb44-202" aria-hidden="true" tabindex="-1"></a>      <span class="at">question_text =</span> <span class="fu">clean_question_text</span>(question_text),</span>
+<span id="cb44-203"><a href="#cb44-203" aria-hidden="true" tabindex="-1"></a>      <span class="at">question_text =</span> <span class="fu">add_terminal_punctuation</span>(question_text),</span>
+<span id="cb44-204"><a href="#cb44-204" aria-hidden="true" tabindex="-1"></a>      <span class="at">lower_text =</span> <span class="fu">str_to_lower</span>(question_text)</span>
+<span id="cb44-205"><a href="#cb44-205" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-206"><a href="#cb44-206" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(question_text <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-207"><a href="#cb44-207" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(lower_text, <span class="fu">paste</span>(keep_keywords, <span class="at">collapse =</span> <span class="st">"|"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb44-208"><a href="#cb44-208" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(lower_text, <span class="fu">paste</span>(group_drop_patterns, <span class="at">collapse =</span> <span class="st">"|"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb44-209"><a href="#cb44-209" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_count</span>(question_text, <span class="st">"</span><span class="sc">\\</span><span class="st">S+"</span>) <span class="sc">&lt;=</span> <span class="dv">65</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-210"><a href="#cb44-210" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb44-211"><a href="#cb44-211" aria-hidden="true" tabindex="-1"></a>      <span class="at">source_file =</span> source_file,</span>
+<span id="cb44-212"><a href="#cb44-212" aria-hidden="true" tabindex="-1"></a>      <span class="at">insurer =</span> insurer,</span>
+<span id="cb44-213"><a href="#cb44-213" aria-hidden="true" tabindex="-1"></a>      <span class="at">document_label =</span> document_label,</span>
+<span id="cb44-214"><a href="#cb44-214" aria-hidden="true" tabindex="-1"></a>      <span class="at">page =</span> page</span>
+<span id="cb44-215"><a href="#cb44-215" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-216"><a href="#cb44-216" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(source_file, insurer, document_label, page, question_text)</span>
+<span id="cb44-217"><a href="#cb44-217" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-218"><a href="#cb44-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-219"><a href="#cb44-219" aria-hidden="true" tabindex="-1"></a>question_units <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">pmap_dfr</span>(</span>
+<span id="cb44-220"><a href="#cb44-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb44-221"><a href="#cb44-221" aria-hidden="true" tabindex="-1"></a>    pages_df<span class="sc">$</span>page_text,</span>
+<span id="cb44-222"><a href="#cb44-222" aria-hidden="true" tabindex="-1"></a>    pages_df<span class="sc">$</span>source_file,</span>
+<span id="cb44-223"><a href="#cb44-223" aria-hidden="true" tabindex="-1"></a>    pages_df<span class="sc">$</span>insurer,</span>
+<span id="cb44-224"><a href="#cb44-224" aria-hidden="true" tabindex="-1"></a>    pages_df<span class="sc">$</span>document_label,</span>
+<span id="cb44-225"><a href="#cb44-225" aria-hidden="true" tabindex="-1"></a>    pages_df<span class="sc">$</span>page</span>
+<span id="cb44-226"><a href="#cb44-226" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb44-227"><a href="#cb44-227" aria-hidden="true" tabindex="-1"></a>  extract_questions_from_page</span>
+<span id="cb44-228"><a href="#cb44-228" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-229"><a href="#cb44-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb44-230"><a href="#cb44-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(insurer, source_file, page) <span class="sc">%&gt;%</span></span>
+<span id="cb44-231"><a href="#cb44-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">unit_id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb44-232"><a href="#cb44-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit_id, insurer, document_label, source_file, page, question_text)</span>
+<span id="cb44-233"><a href="#cb44-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-234"><a href="#cb44-234" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(question_units) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb44-235"><a href="#cb44-235" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"No question-level units were extracted. Review the extraction filters."</span>)</span>
+<span id="cb44-236"><a href="#cb44-236" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-237"><a href="#cb44-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-238"><a href="#cb44-238" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Question-level units extracted:"</span>, <span class="fu">nrow</span>(question_units), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question-level units extracted: 157 </code></pre>
+</div>
+</div>
+</section>
+<section id="review-the-cleaned-question-units" class="level1" data-number="25">
+<h1 data-number="25"><span class="header-section-number">25</span> Review the Cleaned Question Units</h1>
+<p>This section shows a readable preview of the extracted underwriting questions.<br>
+This is important because the qualitative review depends on the extracted questions being clean, interpretable, and organized before coding begins.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>review_units_table <span class="ot">&lt;-</span> question_units <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Unit =</span> unit_id,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Insurer =</span> insurer,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Document =</span> document_label,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Page =</span> page,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Question =</span> <span class="fu">str_replace_all</span>(<span class="fu">str_wrap</span>(question_text, <span class="at">width =</span> <span class="dv">85</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"&lt;br&gt;"</span>)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  review_units_table,</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Sample of cleaned underwriting question-level units"</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Sample of cleaned underwriting question-level units</caption>
+<colgroup>
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 12%">
+<col style="width: 1%">
+<col style="width: 82%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Unit</th>
+<th style="text-align: left;">Insurer</th>
+<th style="text-align: left;">Document</th>
+<th style="text-align: right;">Page</th>
+<th style="text-align: left;">Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1. a. Annual IT budget $ b. Percentage of IT budget spent on cybersecurity %</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2. a. Full-time IT employees b. Full-time IT cybersecurity employees</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3. Cybersecurity point of contact (CISO or equivalent role): Name Title Email<br>Telephone Email Security</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">4. What security controls do you have in place for incoming email? Choose all that<br>apply.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">a. Screening for malicious attachments e. Tagging external emails</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">b. Screening for malicious links f.&nbsp;DomainKeys Identified Mail (DKIM)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">c.&nbsp;Quarantine service g. Sender Policy Framework (SPF) strictly enforced</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">d.&nbsp;Detonation and evaluation of attachments h. Domain Based Message Authentication,<br>Reporting in a sandbox and Conformance (DMARC)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">5. How frequently do you conduct the following training for all employees? Type of<br>training</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">a. Interactive phishing training</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">b. Phishing email simulations</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">6. Do you require additional training for employees who fail phishing email<br>simulations?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">b. If you use Microsoft 365, do you use the Microsoft 365 Defender (formerly known<br>as Advanced Threat Protection) add-on or an equivalent cybersecurity product with<br>advanced threat hunting? (Leave blank if you do not use Microsoft 365.)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">9. Have you disabled legacy email protocols that use basic authentication (a username<br>and password only), such as IMAP, POP3, and SMTP?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">11. a. Do you permit users remote access to web-based email (e.g., Outlook Web Access<br>(OWA))?</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">b. If “Yes” to a., do you enforce MFA for access to web-based email?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">12. Do you provide your employees with password management software?</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">13. Do you enforce MFA for all Domain Administrator accounts? Please note any<br>exceptions in the “Other Cybersecurity Controls &amp; Preventative Measures” section,<br>below. “Domain Administrator accounts” does not include service accounts, which are<br>addressed in a separate section below.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">14. Do you permit ordinary users local administrator rights to their devices (e.g.,<br>laptops)?</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">15. a. Do you use a Privileged Access Management (PAM) tool?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="build-the-deductive-codebook" class="level1" data-number="26">
+<h1 data-number="26"><span class="header-section-number">26</span> Build the Deductive Codebook</h1>
+<p>This section creates the deductive codebook used in the qualitative review.<br>
+Each code includes a definition, inclusion criteria, and exclusion criteria so that the report clearly explains what each category means and why it matters.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>codebook <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>code, <span class="sc">~</span>broad_theme, <span class="sc">~</span>definition, <span class="sc">~</span>include_when, <span class="sc">~</span>exclude_when,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Email Security"</span>, <span class="st">"Email and Human Factors"</span>, <span class="st">"Controls designed to filter, authenticate, quarantine, or inspect inbound email."</span>,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include malicious attachment screening, malicious link screening, DKIM, SPF, DMARC, quarantine services, secure email gateways, and external email tagging."</span>,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude general phishing training unless the question is specifically about technical email filtering."</span>,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Security Awareness and Phishing Training"</span>, <span class="st">"Email and Human Factors"</span>, <span class="st">"Employee training or simulation activities designed to reduce phishing and cyber risk."</span>,</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include phishing training, phishing simulations, retraining after failures, and cybersecurity awareness training frequency."</span>,</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude technical email gateway, link screening, or attachment scanning controls."</span>,</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Multi-Factor Authentication"</span>, <span class="st">"Identity and Access Management"</span>, <span class="st">"Use of MFA to secure access to systems, email, remote access, or privileged accounts."</span>,</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include MFA for remote access, VPN, RDP, webmail, email, privileged accounts, domain admin, or cloud administration."</span>,</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude general password policies unless MFA is explicitly mentioned."</span>,</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Password and Privileged Access Management"</span>, <span class="st">"Identity and Access Management"</span>, <span class="st">"Controls governing passwords, password managers, PAM tools, least privilege, and administrator rights."</span>,</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include password managers, PAM, least privilege, local admin rights, privileged account controls, and service account password controls."</span>,</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude MFA unless the question is specifically about privileged password management."</span>,</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Asset and Configuration Management"</span>, <span class="st">"Asset and Vulnerability Management"</span>, <span class="st">"Controls for maintaining inventory and configuration awareness of systems."</span>,</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include asset discovery tools, asset databases, configuration management databases, and hardened baseline configurations."</span>,</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude vulnerability scanning unless the focus is maintaining asset or configuration records."</span>,</span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unsupported Software and Patch Management"</span>, <span class="st">"Asset and Vulnerability Management"</span>, <span class="st">"Controls aimed at patching, segregating, or supporting unsupported or end-of-life software."</span>,</span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include critical patching procedures, unsupported or end-of-life software management, segregation, and extended support."</span>,</span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude general vulnerability scanning if no remediation or unsupported software control is referenced."</span>,</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Backups and Recovery"</span>, <span class="st">"Data Protection and Resilience"</span>, <span class="st">"Controls for backup frequency, offline storage, isolation, and recovery testing."</span>,</span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include weekly backups, offline backups, isolated backups, backup recovery, and recovery testing."</span>,</span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude incident response plans unless backup or recovery is explicitly referenced."</span>,</span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Incident Response and Business Continuity"</span>, <span class="st">"Data Protection and Resilience"</span>, <span class="st">"Preparedness and planning for cyber incidents or system disruption."</span>,</span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include incident response plans, business continuity plans, disruption response plans, and testing of those plans."</span>,</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude prior loss history unless the question directly asks about response planning."</span>,</span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Endpoint and Network Protection"</span>, <span class="st">"Technical Security Controls"</span>, <span class="st">"Technical protections on endpoints, remote access, and network traffic."</span>,</span>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include antivirus, EPP, EDR, MDR, NDR, firewalls, protective DNS, SMB blocking, RDP restrictions, and remote desktop controls."</span>,</span>
+<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude vulnerability scanning unless the emphasis is on endpoint or network defense products."</span>,</span>
+<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Security Monitoring and Operations"</span>, <span class="st">"Technical Security Controls"</span>, <span class="st">"Monitoring, logging, detection, and SOC capabilities."</span>,</span>
+<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include SOC, SIEM, abnormal behavior alerting, monitoring rules, 24/7 monitoring, and remediation authority."</span>,</span>
+<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude general endpoint protection unless the emphasis is on monitoring or operations."</span>,</span>
+<span id="cb47-42"><a href="#cb47-42" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-43"><a href="#cb47-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vulnerability Scanning and Testing"</span>, <span class="st">"Asset and Vulnerability Management"</span>, <span class="st">"Activities used to discover weaknesses in systems."</span>,</span>
+<span id="cb47-44"><a href="#cb47-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include vulnerability scan coverage, scan frequency, scheduled scans, and security testing cadence."</span>,</span>
+<span id="cb47-45"><a href="#cb47-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude patching unless the question focuses on scanning rather than remediation."</span>,</span>
+<span id="cb47-46"><a href="#cb47-46" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-47"><a href="#cb47-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Encryption and Data Protection"</span>, <span class="st">"Data Protection and Resilience"</span>, <span class="st">"Encryption and storage safeguards for sensitive data and devices."</span>,</span>
+<span id="cb47-48"><a href="#cb47-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include encryption of sensitive data, portable devices, laptops, mobile devices, data at rest, data in transit, and secure storage."</span>,</span>
+<span id="cb47-49"><a href="#cb47-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude general privacy compliance questions unless encryption or technical protection is explicit."</span>,</span>
+<span id="cb47-50"><a href="#cb47-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-51"><a href="#cb47-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Funds Transfer and Social Engineering Controls"</span>, <span class="st">"Fraud Prevention Controls"</span>, <span class="st">"Verification controls for ACH, wire, payroll, or banking-detail changes."</span>,</span>
+<span id="cb47-52"><a href="#cb47-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include secondary confirmation, dual authentication, transfer validation, and banking change verification."</span>,</span>
+<span id="cb47-53"><a href="#cb47-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude general MFA unless it is tied to funds transfer or account-change validation."</span>,</span>
+<span id="cb47-54"><a href="#cb47-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-55"><a href="#cb47-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Data Inventory and Sensitive Data Exposure"</span>, <span class="st">"Data Exposure and Compliance"</span>, <span class="st">"Questions quantifying or characterizing PII, PHI, PCI, records, or protected information exposure."</span>,</span>
+<span id="cb47-56"><a href="#cb47-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include number of records, PHI/PII/PCI volume, payment card handling, and protected information storage or transmission."</span>,</span>
+<span id="cb47-57"><a href="#cb47-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude encryption unless the focus is what data is held rather than how it is secured."</span>,</span>
+<span id="cb47-58"><a href="#cb47-58" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-59"><a href="#cb47-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Compliance and Legal Review"</span>, <span class="st">"Data Exposure and Compliance"</span>, <span class="st">"Formal compliance or legal-governance questions relevant to cyber, privacy, or regulated data."</span>,</span>
+<span id="cb47-60"><a href="#cb47-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include HIPAA, HITECH, PCI compliance, legal review of trademarks or domain names, and regulatory responsibilities."</span>,</span>
+<span id="cb47-61"><a href="#cb47-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude content moderation unless it is framed as legal review or compliance."</span>,</span>
+<span id="cb47-62"><a href="#cb47-62" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb47-63"><a href="#cb47-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Media and Content Governance"</span>, <span class="st">"Media, Privacy, and Governance"</span>, <span class="st">"Procedures governing publication, takedown, infringement review, editorial controls, and third-party content."</span>,</span>
+<span id="cb47-64"><a href="#cb47-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Include takedown procedures, editorial controls, third-party content review, written client sign-off, infringement screening, and content complaint handling."</span>,</span>
+<span id="cb47-65"><a href="#cb47-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Exclude core cybersecurity controls such as MFA, backups, or endpoint protection."</span></span>
+<span id="cb47-66"><a href="#cb47-66" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb47-67"><a href="#cb47-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-68"><a href="#cb47-68" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb47-69"><a href="#cb47-69" aria-hidden="true" tabindex="-1"></a>  codebook,</span>
+<span id="cb47-70"><a href="#cb47-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Deductive codebook with definitions and inclusion/exclusion criteria"</span></span>
+<span id="cb47-71"><a href="#cb47-71" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Deductive codebook with definitions and inclusion/exclusion criteria</caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 24%">
+<col style="width: 34%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">code</th>
+<th style="text-align: left;">broad_theme</th>
+<th style="text-align: left;">definition</th>
+<th style="text-align: left;">include_when</th>
+<th style="text-align: left;">exclude_when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Email Security</td>
+<td style="text-align: left;">Email and Human Factors</td>
+<td style="text-align: left;">Controls designed to filter, authenticate, quarantine, or inspect inbound email.</td>
+<td style="text-align: left;">Include malicious attachment screening, malicious link screening, DKIM, SPF, DMARC, quarantine services, secure email gateways, and external email tagging.</td>
+<td style="text-align: left;">Exclude general phishing training unless the question is specifically about technical email filtering.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Security Awareness and Phishing Training</td>
+<td style="text-align: left;">Email and Human Factors</td>
+<td style="text-align: left;">Employee training or simulation activities designed to reduce phishing and cyber risk.</td>
+<td style="text-align: left;">Include phishing training, phishing simulations, retraining after failures, and cybersecurity awareness training frequency.</td>
+<td style="text-align: left;">Exclude technical email gateway, link screening, or attachment scanning controls.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Multi-Factor Authentication</td>
+<td style="text-align: left;">Identity and Access Management</td>
+<td style="text-align: left;">Use of MFA to secure access to systems, email, remote access, or privileged accounts.</td>
+<td style="text-align: left;">Include MFA for remote access, VPN, RDP, webmail, email, privileged accounts, domain admin, or cloud administration.</td>
+<td style="text-align: left;">Exclude general password policies unless MFA is explicitly mentioned.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Password and Privileged Access Management</td>
+<td style="text-align: left;">Identity and Access Management</td>
+<td style="text-align: left;">Controls governing passwords, password managers, PAM tools, least privilege, and administrator rights.</td>
+<td style="text-align: left;">Include password managers, PAM, least privilege, local admin rights, privileged account controls, and service account password controls.</td>
+<td style="text-align: left;">Exclude MFA unless the question is specifically about privileged password management.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Asset and Configuration Management</td>
+<td style="text-align: left;">Asset and Vulnerability Management</td>
+<td style="text-align: left;">Controls for maintaining inventory and configuration awareness of systems.</td>
+<td style="text-align: left;">Include asset discovery tools, asset databases, configuration management databases, and hardened baseline configurations.</td>
+<td style="text-align: left;">Exclude vulnerability scanning unless the focus is maintaining asset or configuration records.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unsupported Software and Patch Management</td>
+<td style="text-align: left;">Asset and Vulnerability Management</td>
+<td style="text-align: left;">Controls aimed at patching, segregating, or supporting unsupported or end-of-life software.</td>
+<td style="text-align: left;">Include critical patching procedures, unsupported or end-of-life software management, segregation, and extended support.</td>
+<td style="text-align: left;">Exclude general vulnerability scanning if no remediation or unsupported software control is referenced.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Backups and Recovery</td>
+<td style="text-align: left;">Data Protection and Resilience</td>
+<td style="text-align: left;">Controls for backup frequency, offline storage, isolation, and recovery testing.</td>
+<td style="text-align: left;">Include weekly backups, offline backups, isolated backups, backup recovery, and recovery testing.</td>
+<td style="text-align: left;">Exclude incident response plans unless backup or recovery is explicitly referenced.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Incident Response and Business Continuity</td>
+<td style="text-align: left;">Data Protection and Resilience</td>
+<td style="text-align: left;">Preparedness and planning for cyber incidents or system disruption.</td>
+<td style="text-align: left;">Include incident response plans, business continuity plans, disruption response plans, and testing of those plans.</td>
+<td style="text-align: left;">Exclude prior loss history unless the question directly asks about response planning.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Endpoint and Network Protection</td>
+<td style="text-align: left;">Technical Security Controls</td>
+<td style="text-align: left;">Technical protections on endpoints, remote access, and network traffic.</td>
+<td style="text-align: left;">Include antivirus, EPP, EDR, MDR, NDR, firewalls, protective DNS, SMB blocking, RDP restrictions, and remote desktop controls.</td>
+<td style="text-align: left;">Exclude vulnerability scanning unless the emphasis is on endpoint or network defense products.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Security Monitoring and Operations</td>
+<td style="text-align: left;">Technical Security Controls</td>
+<td style="text-align: left;">Monitoring, logging, detection, and SOC capabilities.</td>
+<td style="text-align: left;">Include SOC, SIEM, abnormal behavior alerting, monitoring rules, 24/7 monitoring, and remediation authority.</td>
+<td style="text-align: left;">Exclude general endpoint protection unless the emphasis is on monitoring or operations.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Vulnerability Scanning and Testing</td>
+<td style="text-align: left;">Asset and Vulnerability Management</td>
+<td style="text-align: left;">Activities used to discover weaknesses in systems.</td>
+<td style="text-align: left;">Include vulnerability scan coverage, scan frequency, scheduled scans, and security testing cadence.</td>
+<td style="text-align: left;">Exclude patching unless the question focuses on scanning rather than remediation.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Encryption and Data Protection</td>
+<td style="text-align: left;">Data Protection and Resilience</td>
+<td style="text-align: left;">Encryption and storage safeguards for sensitive data and devices.</td>
+<td style="text-align: left;">Include encryption of sensitive data, portable devices, laptops, mobile devices, data at rest, data in transit, and secure storage.</td>
+<td style="text-align: left;">Exclude general privacy compliance questions unless encryption or technical protection is explicit.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Funds Transfer and Social Engineering Controls</td>
+<td style="text-align: left;">Fraud Prevention Controls</td>
+<td style="text-align: left;">Verification controls for ACH, wire, payroll, or banking-detail changes.</td>
+<td style="text-align: left;">Include secondary confirmation, dual authentication, transfer validation, and banking change verification.</td>
+<td style="text-align: left;">Exclude general MFA unless it is tied to funds transfer or account-change validation.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Inventory and Sensitive Data Exposure</td>
+<td style="text-align: left;">Data Exposure and Compliance</td>
+<td style="text-align: left;">Questions quantifying or characterizing PII, PHI, PCI, records, or protected information exposure.</td>
+<td style="text-align: left;">Include number of records, PHI/PII/PCI volume, payment card handling, and protected information storage or transmission.</td>
+<td style="text-align: left;">Exclude encryption unless the focus is what data is held rather than how it is secured.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Compliance and Legal Review</td>
+<td style="text-align: left;">Data Exposure and Compliance</td>
+<td style="text-align: left;">Formal compliance or legal-governance questions relevant to cyber, privacy, or regulated data.</td>
+<td style="text-align: left;">Include HIPAA, HITECH, PCI compliance, legal review of trademarks or domain names, and regulatory responsibilities.</td>
+<td style="text-align: left;">Exclude content moderation unless it is framed as legal review or compliance.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Media and Content Governance</td>
+<td style="text-align: left;">Media, Privacy, and Governance</td>
+<td style="text-align: left;">Procedures governing publication, takedown, infringement review, editorial controls, and third-party content.</td>
+<td style="text-align: left;">Include takedown procedures, editorial controls, third-party content review, written client sign-off, infringement screening, and content complaint handling.</td>
+<td style="text-align: left;">Exclude core cybersecurity controls such as MFA, backups, or endpoint protection.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="apply-deductive-content-coding" class="level1" data-number="27">
+<h1 data-number="27"><span class="header-section-number">27</span> Apply Deductive Content Coding</h1>
+<p>This section applies a first-pass deductive coding procedure using the predefined codebook. This is important because it turns the cleaned qualitative evidence into comparable control categories that can be summarized in the report.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>code_patterns <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>code, <span class="sc">~</span>pattern,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Email Security"</span>, <span class="st">"malicious attachments|malicious links|quarantine|dkim|spf|dmarc|secure email gateway|external emails|external senders|email security"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Security Awareness and Phishing Training"</span>, <span class="st">"phishing training|phishing simulations|cybersecurity awareness training|additional training|fail phishing|antiphishing"</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Multi-Factor Authentication"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">bmfa</span><span class="sc">\\</span><span class="st">b|multi-factor authentication|authenticator|remote access.*mfa|email.*mfa|vpn.*mfa|rdp.*mfa|privileged.*mfa|domain administrator.*mfa|for email</span><span class="sc">\\</span><span class="st">?|for virtual private network|for remote desktop protocol|for network or cloud administration"</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Password and Privileged Access Management"</span>, <span class="st">"password manager|pam</span><span class="sc">\\</span><span class="st">b|password vault|least privilege|local administrator rights|privileged accounts|service account passwords|rotate passwords|deny interactive logins|password management"</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Asset and Configuration Management"</span>, <span class="st">"asset discovery|asset database|cmdb|configuration management|hardened baseline"</span>,</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Unsupported Software and Patch Management"</span>, <span class="st">"patching|end-of-life|end-of-support|unsupported software|additional support|critical software patching"</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Backups and Recovery"</span>, <span class="st">"backup|backups|recovery procedures|recovering data|offline|isolated from production|critical data backup"</span>,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Incident Response and Business Continuity"</span>, <span class="st">"incident response plan|business continuity|computer system disruption|respond to a computer system disruption|remediate security events"</span>,</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Endpoint and Network Protection"</span>, <span class="st">"antivirus|firewall|firewalls|epp|edr|mdr|ndr|protective dns|smb|remote desktop|rdp|vnc|teamviewer|endpoint detection|endpoint protection|network detection|antimalware"</span>,</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Security Monitoring and Operations"</span>, <span class="st">"security operations center|</span><span class="sc">\\</span><span class="st">bsoc</span><span class="sc">\\</span><span class="st">b|siem|monitoring rules|abnormal behavior|24/7|authority and ability to remediate"</span>,</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Vulnerability Scanning and Testing"</span>, <span class="st">"vulnerability scan|vulnerability scanning|scheduled vulnerability scans|scanning frequency|vulnerability"</span>,</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Encryption and Data Protection"</span>, <span class="st">"encryption|encrypted|encrypt|portable media devices|mobile devices|data at rest|data in transit|store securely"</span>,</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Funds Transfer and Social Engineering Controls"</span>, <span class="st">"funds transfer|wire|ach|banking details|dual authentication|secondary means of communication|vendor/partner|validate the authenticity"</span>,</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Data Inventory and Sensitive Data Exposure"</span>, <span class="st">"pii|phi|pci|payment card|number of records|protected information|nonpublic personal records|how many.*records|collect, process, store, transmit|protected health information"</span>,</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Compliance and Legal Review"</span>, <span class="st">"hipaa|hitech|pci compliant|legal review|confidentiality of medical information act|compliance"</span>,</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Media and Content Governance"</span>, <span class="st">"takedown procedures|third party material|content.*published|website procedures|editorial procedures|copyright|trademark|written client sign.?off|complaints concerning the content|social media|content that may infringe"</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>coded_long <span class="ot">&lt;-</span> question_units <span class="sc">%&gt;%</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">crossing</span>(code_patterns) <span class="sc">%&gt;%</span></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match =</span> <span class="fu">str_detect</span>(<span class="fu">str_to_lower</span>(question_text), pattern)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(match) <span class="sc">%&gt;%</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(unit_id, insurer, document_label, source_file, page, question_text, code) <span class="sc">%&gt;%</span></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(coded_long) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"No question-level units were coded. Review the extraction filters or code patterns."</span>)</span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>coded_questions <span class="ot">&lt;-</span> question_units <span class="sc">%&gt;%</span></span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>    coded_long <span class="sc">%&gt;%</span></span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(unit_id) <span class="sc">%&gt;%</span></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">deductive_codes =</span> <span class="fu">paste</span>(<span class="fu">sort</span>(<span class="fu">unique</span>(code)), <span class="at">collapse =</span> <span class="st">"; "</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>),</span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"unit_id"</span></span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">deductive_codes =</span> <span class="fu">replace_na</span>(deductive_codes, <span class="st">"REVIEW_NEEDED"</span>))</span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a>uncoded_questions <span class="ot">&lt;-</span> coded_questions <span class="sc">%&gt;%</span></span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(deductive_codes <span class="sc">==</span> <span class="st">"REVIEW_NEEDED"</span>)</span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Question-level units coded:"</span>, <span class="fu">nrow</span>(coded_questions), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Question-level units coded: 157 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Units needing manual review:"</span>, <span class="fu">nrow</span>(uncoded_questions), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Units needing manual review: 45 </code></pre>
+</div>
+</div>
+</section>
+<section id="review-the-coded-qualitative-dataset" class="level1" data-number="28">
+<h1 data-number="28"><span class="header-section-number">28</span> Review the Coded Qualitative Dataset</h1>
+<p>This section shows a preview of the coded qualitative review file. The text is wrapped to make the table easier to read and more appropriate for a written report.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>review_coded_table <span class="ot">&lt;-</span> coded_questions <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Unit =</span> unit_id,</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Insurer =</span> insurer,</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Document =</span> document_label,</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Page =</span> page,</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Question =</span> <span class="fu">str_replace_all</span>(<span class="fu">str_wrap</span>(question_text, <span class="at">width =</span> <span class="dv">85</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"&lt;br&gt;"</span>),</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Codes =</span> <span class="fu">str_replace_all</span>(<span class="fu">str_wrap</span>(deductive_codes, <span class="at">width =</span> <span class="dv">35</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"&lt;br&gt;"</span>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  review_coded_table,</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Sample of coded underwriting question-level units"</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Sample of coded underwriting question-level units</caption>
+<colgroup>
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 9%">
+<col style="width: 1%">
+<col style="width: 65%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Unit</th>
+<th style="text-align: left;">Insurer</th>
+<th style="text-align: left;">Document</th>
+<th style="text-align: right;">Page</th>
+<th style="text-align: left;">Question</th>
+<th style="text-align: left;">Codes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1. a. Annual IT budget $ b. Percentage of IT budget spent on cybersecurity %</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2. a. Full-time IT employees b. Full-time IT cybersecurity employees</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3. Cybersecurity point of contact (CISO or equivalent role): Name Title Email<br>Telephone Email Security</td>
+<td style="text-align: left;">Email Security</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">4. What security controls do you have in place for incoming email? Choose all that<br>apply.</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">a. Screening for malicious attachments e. Tagging external emails</td>
+<td style="text-align: left;">Email Security; Funds Transfer and<br>Social Engineering Controls</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">b. Screening for malicious links f.&nbsp;DomainKeys Identified Mail (DKIM)</td>
+<td style="text-align: left;">Email Security</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">c.&nbsp;Quarantine service g. Sender Policy Framework (SPF) strictly enforced</td>
+<td style="text-align: left;">Email Security</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">d.&nbsp;Detonation and evaluation of attachments h. Domain Based Message Authentication,<br>Reporting in a sandbox and Conformance (DMARC)</td>
+<td style="text-align: left;">Email Security; Funds Transfer and<br>Social Engineering Controls</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">5. How frequently do you conduct the following training for all employees? Type of<br>training</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">a. Interactive phishing training</td>
+<td style="text-align: left;">Data Inventory and Sensitive Data<br>Exposure; Security Awareness and<br>Phishing Training</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">b. Phishing email simulations</td>
+<td style="text-align: left;">Data Inventory and Sensitive Data<br>Exposure</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">6. Do you require additional training for employees who fail phishing email<br>simulations?</td>
+<td style="text-align: left;">Data Inventory and Sensitive Data<br>Exposure; Security Awareness and<br>Phishing Training</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">b. If you use Microsoft 365, do you use the Microsoft 365 Defender (formerly known<br>as Advanced Threat Protection) add-on or an equivalent cybersecurity product with<br>advanced threat hunting? (Leave blank if you do not use Microsoft 365.)</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">9. Have you disabled legacy email protocols that use basic authentication (a username<br>and password only), such as IMAP, POP3, and SMTP?</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">11. a. Do you permit users remote access to web-based email (e.g., Outlook Web Access<br>(OWA))?</td>
+<td style="text-align: left;">REVIEW_NEEDED</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">b. If “Yes” to a., do you enforce MFA for access to web-based email?</td>
+<td style="text-align: left;">Multi-Factor Authentication</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">12. Do you provide your employees with password management software?</td>
+<td style="text-align: left;">Password and Privileged Access<br>Management</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">13. Do you enforce MFA for all Domain Administrator accounts? Please note any<br>exceptions in the “Other Cybersecurity Controls &amp; Preventative Measures” section,<br>below. “Domain Administrator accounts” does not include service accounts, which are<br>addressed in a separate section below.</td>
+<td style="text-align: left;">Multi-Factor Authentication</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">14. Do you permit ordinary users local administrator rights to their devices (e.g.,<br>laptops)?</td>
+<td style="text-align: left;">Password and Privileged Access<br>Management</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Beazley</td>
+<td style="text-align: left;">Beazley Ransomware Supplemental Application</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">15. a. Do you use a Privileged Access Management (PAM) tool?</td>
+<td style="text-align: left;">Password and Privileged Access<br>Management</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="graph-1-most-frequently-emphasized-control-categories" class="level1" data-number="29">
+<h1 data-number="29"><span class="header-section-number">29</span> Graph 1: Most Frequently Emphasized Control Categories</h1>
+<p>This graph shows which deductive control categories appear most frequently across the underwriting forms. This is important because it provides the clearest summary of what insurers seem to prioritize in their underwriting review.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>control_frequency <span class="ot">&lt;-</span> coded_long <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(code, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(codebook <span class="sc">%&gt;%</span> <span class="fu">select</span>(code, broad_theme), <span class="at">by =</span> <span class="st">"code"</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(control_frequency, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(code, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#d63384"</span>) <span class="sc">+</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Frequently Emphasized Underwriting Control Categories"</span>,</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Deductive content analysis of insurer underwriting questions"</span>,</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency of coded control requirements"</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-2-control-categories-by-insurer" class="level1" data-number="30">
+<h1 data-number="30"><span class="header-section-number">30</span> Graph 2: Control Categories by Insurer</h1>
+<p>This graph compares how frequently each insurer emphasizes the deductive control categories. This is important because it shows whether insurer priorities appear consistent or vary meaningfully across documents.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>control_by_insurer <span class="ot">&lt;-</span> coded_long <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(insurer, code, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(control_by_insurer, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(code, n), <span class="at">y =</span> n, <span class="at">fill =</span> insurer)) <span class="sc">+</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#ff99c8"</span>, <span class="st">"#ff85a1"</span>, <span class="st">"#f06595"</span>, <span class="st">"#e83e8c"</span>)) <span class="sc">+</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Underwriting Control Categories by Insurer"</span>,</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparison of deductively coded control requirements across insurer documents"</span>,</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency within insurer documents"</span>,</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Insurer"</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-3-broad-theme-distribution" class="level1" data-number="31">
+<h1 data-number="31"><span class="header-section-number">31</span> Graph 3: Broad Theme Distribution</h1>
+<p>This graph summarizes the broader thematic families represented in the underwriting materials. This is important because it makes it easier to explain whether insurers focus more on identity and access, resilience, compliance, or technical defenses.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>broad_theme_frequency <span class="ot">&lt;-</span> coded_long <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(codebook <span class="sc">%&gt;%</span> <span class="fu">select</span>(code, broad_theme), <span class="at">by =</span> <span class="st">"code"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(broad_theme, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(broad_theme_frequency, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(broad_theme, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#c9184a"</span>) <span class="sc">+</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Broad Theme Distribution in Underwriting Controls"</span>,</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Higher-level grouping of the deductively coded underwriting questions"</span>,</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency of coded question assignments"</span></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="research_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="export-qualitative-review-files" class="level1" data-number="32">
+<h1 data-number="32"><span class="header-section-number">32</span> Export Qualitative Review Files</h1>
+<p>This section exports the core qualitative review outputs. These files can be used in the written report, appendix materials, or later comparison with the quantitative findings.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">extracted_question_units =</span> question_units,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">deductive_codebook =</span> codebook,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">coded_questions =</span> coded_questions,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">uncoded_questions =</span> uncoded_questions,</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">control_frequency =</span> control_frequency,</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">broad_theme_frequency =</span> broad_theme_frequency</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"deductive_content_analysis_outputs.xlsx"</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(question_units, <span class="st">"deductive_content_analysis_question_units.csv"</span>)</span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(coded_questions, <span class="st">"deductive_content_analysis_coded_questions.csv"</span>)</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(control_frequency, <span class="st">"deductive_content_analysis_control_frequency.csv"</span>)</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(codebook, <span class="st">"deductive_content_analysis_codebook.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="what-the-qualitative-output-means" class="level1" data-number="33">
+<h1 data-number="33"><span class="header-section-number">33</span> What the Qualitative Output Means</h1>
+<p>The question-level dataset represents the qualitative unit of analysis used in the report. Each row is one underwriting control-related question extracted from the insurer forms.</p>
+<p>The deductive coding procedure applies predefined categories to those questions.<br>
+This is important because it makes the qualitative review systematic, transparent, and comparable across insurers.</p>
+<p>The frequency tables and graphs show which control categories appear most often across the underwriting documents.<br>
+These results can be interpreted as indicators of insurer underwriting emphasis.</p>
+<p>The codebook explains what each category means, what should count toward it, and what should not. That is important because it strengthens the methodological clarity of the qualitative review.</p>
+</section>
+<section id="methodological-note" class="level1" data-number="34">
+<h1 data-number="34"><span class="header-section-number">34</span> Methodological Note</h1>
+<p>This section uses <strong>deductive content analysis</strong> rather than interpretive thematic analysis. That means the qualitative review is based on predefined control categories applied systematically to underwriting questions.</p>
+<p>This approach is appropriate because the insurer forms are structured, repetitive, and centered on clearly identifiable cybersecurity control requirements. As a result, the qualitative review can focus on patterns of emphasis rather than open-ended theme discovery.</p>
+</section>
+<section id="save-final-qualitative-dataset" class="level1" data-number="35">
+<h1 data-number="35"><span class="header-section-number">35</span> Save Final Qualitative Dataset</h1>
+<p>This section saves the main cleaned qualitative dataset for future use.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(coded_questions, <span class="st">"deductive_content_analysis_final_dataset.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>AI Disclaimer:</strong> <em>I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.</em></p>
+
+
 </section>
 
 </main> <!-- /main -->
