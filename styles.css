@@ -19,7 +19,7 @@ body {
 
 /* Main content area */
 main, .content {
-  background-color: #ff4a6c1; 
+  background-color: #ff4a6c1;
   border-radius: 18px;
   padding: 2rem;
 }
@@ -61,7 +61,7 @@ a:hover {
   padding: 16px;
   background-color: #fff7fb;
   box-shadow: 0 6px 18px rgba(244, 166, 193, 0.35);
-  
+ 
   /* Dropdown (Assignments) — make it pink + readable */
 .navbar .dropdown-menu {
   background-color: #d63384 !important;   /* darker pink i needdd contrasttt */
@@ -82,4 +82,75 @@ a:hover {
 .navbar .dropdown-menu .dropdown-item:focus {
   background-color: #f4a6c1 !important;  /* lighter pink */
   color: #7a1a44 !important;             /* dark text for contrast */
+}
+
+/* Make navbar look cleaner and more organized */
+.navbar-nav .nav-link,
+.navbar-brand {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Add spacing between navbar items */
+.navbar-nav .nav-item {
+  margin-right: 12px;
+}
+
+/* Make dropdown text clean */
+.navbar .dropdown-menu .dropdown-item {
+  font-weight: 600;
+}
+
+/* Professional resume page */
+.resume-page {
+  background-color: #ffffff;
+  color: #333333;
+  max-width: 850px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+/* Resume name */
+.resume-page h1 {
+  color: #d63384;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+/* Resume section titles */
+.resume-page h2 {
+  color: #d63384;
+  font-weight: 700;
+  border-bottom: 2px solid #f4a6c1;
+  padding-bottom: 0.25rem;
+  margin-top: 2rem;
+}
+
+/* Resume regular text */
+.resume-page p,
+.resume-page li {
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* Resume links */
+.resume-page a {
+  color: #d63384;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.resume-page a:hover {
+  color: #a61e5c;
+  text-decoration: underline;
+}
+
+/* Resume dividers */
+.resume-page hr {
+  border: none;
+  border-top: 1px solid #f4a6c1;
+  margin: 1.5rem 0;
 }
