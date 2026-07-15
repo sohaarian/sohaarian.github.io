@@ -8,7 +8,7 @@
 
 <meta name="author" content="Soha Arian">
 
-<title>Assignment 4 – SOHAARIAN.GITHUB.IO</title>
+<title>Assignment 4 – SOHAARIAN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -76,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a8976c3e89df70b272bdfba3d2fda974.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,6 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SOHAARIAN.GITHUB.IO</span>
+    <span class="navbar-title">SOHAARIAN</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -213,6 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a.-run-wordfish-on-dod-reports" id="toc-a.-run-wordfish-on-dod-reports" class="nav-link" data-scroll-target="#a.-run-wordfish-on-dod-reports">3a. Run Wordfish on DOD reports</a></li>
   <li><a href="#how-to-compare-positions" id="toc-how-to-compare-positions" class="nav-link" data-scroll-target="#how-to-compare-positions">4. How to compare positions</a></li>
   </ul></li>
+  <li><a href="#clean-and-capitalize-document-names" id="toc-clean-and-capitalize-document-names" class="nav-link" data-scroll-target="#clean-and-capitalize-document-names">Clean and capitalize document names</a></li>
+  <li><a href="#create-a-cleaner-graph" id="toc-create-a-cleaner-graph" class="nav-link" data-scroll-target="#create-a-cleaner-graph">Create a cleaner graph</a></li>
   </ul>
 </nav>
     </div>
@@ -1792,12 +1794,228 @@ psi   2.08464    0.7439 0.46934  3.0457  1.41665  0.2600</code></pre>
 </div>
 </div>
 <p><strong>AI Disclaimer:</strong> <em>I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.</em></p>
+<style>
 
+/* Make all Assignment 4 regular text white */
+main.content,
+main.content p,
+main.content li,
+main.content span,
+main.content div,
+main.content label {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
 
+/* Make all Assignment 4 headings white */
+main.content h1,
+main.content h2,
+main.content h3,
+main.content h4,
+main.content h5,
+main.content h6 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Make all R output text white */
+main.content .cell-output,
+main.content .cell-output-stdout,
+main.content .cell-output-display,
+main.content .cell-output-stderr,
+main.content .cell-output pre,
+main.content .cell-output code,
+main.content .cell-output-stdout pre,
+main.content .cell-output-stdout code,
+main.content pre:not(.sourceCode),
+main.content pre:not(.sourceCode) code {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Make printed tables and data output white */
+main.content .cell-output table,
+main.content .cell-output th,
+main.content .cell-output td,
+main.content table,
+main.content th,
+main.content td {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Keep R source code readable */
+main.content pre.sourceCode,
+main.content pre.sourceCode code,
+main.content .sourceCode {
+  color: #f2f2ed !important;
+  -webkit-text-fill-color: #f2f2ed !important;
+}
+
+/* Keep links bright green */
+main.content a {
+  color: #dfff54 !important;
+  -webkit-text-fill-color: #dfff54 !important;
+}
+
+</style>
+<style>
+
+/* Make graph titles and captions white, bold, and uppercase */
+main.content .figure-caption,
+main.content figcaption,
+main.content .cell-output-display {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+/* Style text inside SVG graphs */
+main.content .cell-output-display svg text {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Make graph titles larger */
+main.content .cell-output-display svg .title {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+/* Make graph axis titles bold */
+main.content .cell-output-display svg .axis-title {
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+/* Make graph legend text bold */
+main.content .cell-output-display svg .legend {
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+</style>
+<p>library(ggplot2) library(ggrepel) library(dplyr) library(stringr)</p>
 </section>
+</section>
+<section id="clean-and-capitalize-document-names" class="level1">
+<h1>Clean and capitalize document names</h1>
+<p>plot_data &lt;- plot_data |&gt; mutate( document_label = document |&gt; basename() |&gt; str_remove(“\.pdf$”) |&gt; str_replace_all(“_”, ” “) |&gt; str_squish() |&gt; str_to_upper() )</p>
+</section>
+<section id="create-a-cleaner-graph" class="level1">
+<h1>Create a cleaner graph</h1>
+<p>ggplot( plot_data, aes( x = wordfish_position, y = ca_dimension_1 ) ) + geom_point( color = “#d11973”, size = 4, alpha = 0.9 ) + geom_text_repel( aes(label = document_label), color = “#d11973”, size = 4, fontface = “bold”, box.padding = 0.7, point.padding = 0.5, min.segment.length = 0, max.overlaps = Inf, segment.color = “#8c8c8c”, segment.linewidth = 0.35 ) + labs( title = “COMPARING DOCUMENT POSITIONS”, subtitle = “WORDFISH AND CORRESPONDENCE ANALYSIS RESULTS”, x = “WORDFISH POSITION”, y = “CORRESPONDENCE ANALYSIS — DIMENSION 1” ) + theme_minimal(base_size = 14) + theme( text = element_text( family = “Arial”, face = “bold” ),</p>
+<pre><code>plot.title = element_text(
+  color = "#d11973",
+  size = 24,
+  face = "bold",
+  hjust = 0.5,
+  margin = margin(bottom = 8)
+),
+
+plot.subtitle = element_text(
+  color = "#555555",
+  size = 12,
+  face = "bold",
+  hjust = 0.5,
+  margin = margin(bottom = 20)
+),
+
+axis.title = element_text(
+  color = "#d11973",
+  size = 15,
+  face = "bold"
+),
+
+axis.text = element_text(
+  color = "#333333",
+  size = 11,
+  face = "bold"
+),
+
+panel.grid.major = element_line(
+  color = "#dddddd",
+  linewidth = 0.6
+),
+
+panel.grid.minor = element_blank(),
+
+plot.margin = margin(
+  25,
+  55,
+  25,
+  35
+)</code></pre>
+<p>)</p>
+
+
 </section>
 
 </main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const revealItems =
+    document.querySelectorAll(".reveal");
+
+  revealItems.forEach(function (item, index) {
+
+    const delay =
+      (index % 4) * 100;
+
+    item.style.setProperty(
+      "--animation-delay",
+      delay + "ms"
+    );
+
+  });
+
+  if (!("IntersectionObserver" in window)) {
+
+    revealItems.forEach(function (item) {
+      item.classList.add("visible");
+    });
+
+    return;
+  }
+
+  const observer =
+    new IntersectionObserver(
+
+      function (entries) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -8% 0px"
+      }
+
+    );
+
+  revealItems.forEach(function (item) {
+    observer.observe(item);
+  });
+
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -2203,4 +2421,5 @@ psi   2.08464    0.7439 0.46934  3.0457  1.41665  0.2600</code></pre>
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
