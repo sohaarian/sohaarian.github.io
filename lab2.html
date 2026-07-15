@@ -8,7 +8,7 @@
 
 <meta name="author" content="Soha Arian">
 
-<title>EPPS 6323: Lab02 R programming basics II – SOHAARIAN.GITHUB.IO</title>
+<title>EPPS 6323: Lab02 R programming basics II – SOHAARIAN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -73,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5388f6050e1e8e864ddc20838a0f45d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,6 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SOHAARIAN.GITHUB.IO</span>
+    <span class="navbar-title">SOHAARIAN</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
 The downloaded binary packages are in
-    /var/folders/j2/fnf5s_0x3rv7xfjztkrrrgp80000gn/T//RtmpESePnz/downloaded_packages</code></pre>
+    /var/folders/j2/fnf5s_0x3rv7xfjztkrrrgp80000gn/T//Rtmpisfzil/downloaded_packages</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(ptbu, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -970,6 +970,67 @@ F-statistic: 209.3 on 3 and 502 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 
 </main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const revealItems =
+    document.querySelectorAll(".reveal");
+
+  revealItems.forEach(function (item, index) {
+
+    const delay =
+      (index % 4) * 100;
+
+    item.style.setProperty(
+      "--animation-delay",
+      delay + "ms"
+    );
+
+  });
+
+  if (!("IntersectionObserver" in window)) {
+
+    revealItems.forEach(function (item) {
+      item.classList.add("visible");
+    });
+
+    return;
+  }
+
+  const observer =
+    new IntersectionObserver(
+
+      function (entries) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -8% 0px"
+      }
+
+    );
+
+  revealItems.forEach(function (item) {
+    observer.observe(item);
+  });
+
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1375,4 +1436,5 @@ F-statistic: 209.3 on 3 and 502 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
