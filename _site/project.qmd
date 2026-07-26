@@ -1,0 +1,41 @@
+---
+title: "Group Project"
+format: html
+---
+
+# Soha Arian
+
+## Healthcare Provider Underwriting Standard
+
+<iframe src="Group%205%20U.S.%20Healthcare%20Provider%20Underwriting%20Standard%20(1).pdf" width="100%" height="800px" style="border: 1px solid #eee; border-radius: 12px;">
+
+</iframe>
+
+::: shiny-app-container
+<iframe
+    src="https://sohaarian.shinyapps.io/WorkersCompensation/"
+    title="Workers Compensation Claims Intelligence"
+    loading="lazy"
+    allow="fullscreen"
+  ></iframe>
+:::
+
+```{=html}
+<style>
+.shiny-app-container {
+  width: 100%;
+  height: 900px;
+  margin: 25px 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #d9e3ee;
+  background: #ffffff;
+}
+
+.shiny-app-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+</style>
+```
