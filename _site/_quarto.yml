@@ -1,0 +1,65 @@
+project:
+  type: website
+  resources:
+    - "Soha_Arian_Resume (2).pdf"
+    - "Group 5 U.S. Healthcare Provider Underwriting Standard (1).pdf"
+    - "REPORT Aligning U.S. Healthcare Provider Cyber Insurance Policy with NIST Guidelines:  Standardizing Underwriting Questionnaires.pdf"
+website:
+  title: "SOHAARIAN"
+  search: true
+
+  navbar:
+    pinned: true
+
+    left:
+      - href: index.qmd
+        text: HOME
+
+      - href: about.qmd
+        text: ABOUT
+
+      - text: KNOWLEDGE MINING
+        menu:
+          - href: weekly-reflections.qmd
+            text: WEEKLY REFLECTIONS
+
+          - href: assignment1.qmd
+            text: ASSIGNMENT 1 BRUSH UP R AND QUARTO
+
+          - href: assignment2.qmd
+            text: ASSIGNMENT 2 PROMPT EXERCISE
+
+          - href: assignment3.qmd
+            text: ASSIGNMENT 3 ML EXERCISE
+
+          - href: assignment4.qmd
+            text: ASSIGNMENT 4 TEXT ANALYTICS USING QUANTEDA
+
+          - href: lab1.qmd
+            text: LAB 01 R PROGRAMMING BASICS
+
+          - href: lab2.qmd
+            text: LAB 02 R PROGRAMMING BASICS
+
+    right:
+      - href: research.qmd
+        text: RESEARCH
+
+      - href: project.qmd
+        text: PROJECTS
+
+      - href: cv.qmd
+        text: CV/RESUME
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+    smooth-scroll: true
+    code-copy: true
+    include-after-body: animations.html
+
+editor: visual
+
+
