@@ -1,84 +1,109 @@
 ---
-title: "Resume 2026"
-format: html
+page-layout: full
+toc: false
 ---
 
-::: cv-frame
-# Soha Arian
+```{=html}
+<style>
 
-**Irving, TX 75063**\
-(214) 235-2006\
-[sohaarian1802\@gmail.com](mailto:sohaarian1802@gmail.com)
+/* Remove all Quarto width restrictions from this page */
+html,
+body,
+#quarto-content,
+.quarto-container,
+.page-columns,
+main.content,
+#quarto-document-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-[LinkedIn](https://www.linkedin.com/in/sohaarian)
+/* Remove any empty page-title area */
+.quarto-title-block {
+  display: none !important;
+}
 
-------------------------------------------------------------------------
+/* Make the resume viewer fill the entire screen below the navbar */
+.resume-full-page {
+  position: fixed !important;
+  top: 72px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw !important;
+  height: calc(100vh - 72px) !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 900;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  background-color: #202124;
+  overflow: hidden;
+}
 
-## Academic Experience
+/* Make the actual PDF viewer fill its entire container */
+.resume-full-page iframe {
+  width: 100vw !important;
+  height: 100% !important;
+  min-width: 100vw !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: #202124;
+}
 
-**The University of Texas at Dallas**\
-**B.S. Quantitative Finance** (GPA: 3.5)\
-*August 2023 – December 2025*\
-Concentration: Risk Management and Cybersecurity
+</style>
 
-**M.S. Cybersecurity, Technology & Policy**\
-*January 2026 – May 2027*
+<div class="resume-full-page">
 
-------------------------------------------------------------------------
+  <iframe
+    src="Soha_Arian_Resume%20%282%29.pdf#page=1&zoom=page-width"
+    title="Soha Arian Resume">
+  </iframe>
 
-## Professional Experience
+</div>
 
-**Business Lines Underwriting Intern**\
-*Liberty Mutual Insurance* \| *May 2025 – August 2025*
+<script>
 
--   Ensured compliance with training deadlines and retention requirements\
--   Monitored certificates of insurance and digital documentation for policy renewals\
--   Reviewed underwriting documentation to identify errors and manage risk exposure
+/* Automatically position the PDF directly beneath the real navbar */
+document.addEventListener("DOMContentLoaded", function () {
 
-**President, Gamma Iota Sigma – Beta Phi Chapter**\
-*University of Texas at Dallas* \| *April 2024 – January 2025*
+  const resumeViewer =
+    document.querySelector(".resume-full-page");
 
--   Led initiatives connecting students with professionals in risk management and insurance\
--   Represented UT Dallas at RiskWorld 2025 and the Houston Marine & Energy Conference\
--   Helped organize an RMI Career Fair supporting students pursuing insurance careers
+  const websiteHeader =
+    document.querySelector("#quarto-header");
 
-**Investor Relations Intern**\
-*Lionchase North America* \| *May 2024 – August 2024*
+  function resizeResumeViewer() {
 
--   Organized investment agreements and managed deadlines and renewals\
--   Collaborated with legal teams to resolve contract issues\
--   Updated CRM systems and internal communication logs
+    const headerBottom = websiteHeader
+      ? websiteHeader.getBoundingClientRect().bottom
+      : 72;
 
-**Legal Intern**\
-*Opening Doors* \| *August 2023 – May 2024*
+    resumeViewer.style.top =
+      headerBottom + "px";
 
--   Organized sensitive legal documents in compliance with retention guidelines\
--   Reviewed supporting documentation for immigration cases\
--   Communicated professionally and confidentially with clients
+    resumeViewer.style.height =
+      "calc(100vh - " + headerBottom + "px)";
 
-------------------------------------------------------------------------
+  }
 
-## Certifications
+  resizeResumeViewer();
 
-**Google & IBM Project Management**
+  window.addEventListener(
+    "resize",
+    resizeResumeViewer
+  );
 
--   Developed risk registers and project timelines, improving team efficiency by 20%
+});
 
-**Google Cybersecurity**
-
--   Identified cybersecurity risks relevant to claims investigation and risk assessment
-
-------------------------------------------------------------------------
-
-## Skills
-
-**Relevant Coursework**\
-Principles of Risk Management & Insurance Commercial Property Risk Management Enterprise Risk Management Operational Risk Management Cybersecurity Risk Management\
-Business Liability Risk Management and Insurance
-
-**Finance & Risk Management**\
-Financial Analysis, Risk Assessment, Claims Evaluation
-
-**Technical Skills**\
-Python, Java, Tableau, SIEM Tools, CRM Systems
-:::
+</script>
+```
