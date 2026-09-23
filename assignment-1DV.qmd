@@ -1,3 +1,9 @@
+---
+format:
+  html:
+    embed-resources: true
+---
+
 ```{r}
 #| include: false
 
@@ -85,7 +91,13 @@ Article
 
 Anscombe’s (1973) Graphs in Statistical Analysis showed me that the presentation of results through data visualization facilitates their perception, evaluation, and communication. While the four data sets described in the article have nearly the same mean, variance, correlation, and regression, their graphical presentation reveals significant differences. Therefore, we cannot rely solely on mathematical results when analyzing data since one might miss vital peculiarities. This fact supports the importance of such statistical software packages as R, which allow exploring patterns and relationships between variables visually. By using code, we can construct informative graphics to estimate the connection between two variables, identify influential points, assess the impact of extreme values, and check the data set for nonlinearity. This method is particularly beneficial for constructing and presenting such statistical software products as dashboards visualizing specific insights through graphics. In this product, we might use these considerations to build informative graphics. However, most importantly, Anscombe’s data sets emphasize the importance of not misrepresenting results. By presenting statistical results through graphics, one must remember that they might contain crucial information that might not be revealed in summary statistics.
 
-![NAIC Cyber Insurance Policy Closure Rates](images/Image%209-16-26%20at%201.03%20AM-03.png)
+:::: column-screen
+::: {style="display: flex; justify-content: center; width: 100%;"}
+<iframe src="images/Profitability_and_Risk_Exposure_Figure_8.pdf" style="width: calc(100% - 2in); height: 2500px; border: none; display: block; margin: 0 auto;">
+
+</iframe>
+:::
+::::
 
 Figure 8 from the National Association of Insurance Commissioners’ Report on the Cybersecurity Insurance Market, which compares the percentage of claim closure for primary, excess, endorsement cyber insurance policies, as well as the total has certain strengths and weaknesses (NAIC, 2025). The main strength of this chart is its simplicity since the information is presented in the form of a horizontal bar chart and labeled accordingly. Moreover, the value of each bar is indicated on the chart itself, which allows for faster information retrieval. On the other hand, the key limitation of this graph is the lack of comparison since it only shows the percentage of claims closed for different insurance policies. In the chart, the vertical axis starts at 65%, which narrows the scale and hides the difference in the value of each bar. For instance, compared to endorsement policies, which have a 91.52% closure rate, excess policies only have 76.84%, which is significantly less, but the shrinkage of the bars suggests that the difference between the two is only 15%. The figure above also presents “Total” with an 82.05% closing percentage as if it were another category, which might mislead the interpretation of the data. If I were to develop this chart, I would use a scale that starts at 0% and present the total closing percentage as a reference
 
@@ -167,3 +179,5 @@ ggplot() +
   coord_fixed(ratio = 1) +
   theme_void() # No grid nor axes
 ```
+
+AI Disclaimer: I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.

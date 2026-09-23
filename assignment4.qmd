@@ -1,0 +1,397 @@
+---
+title: "Assignment 4"
+author: "Soha Arian"
+format:
+  html:
+    toc: true
+    theme: cosmo
+    css: styles.css
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Assignment 4
+
+## Text Analytics using quanteda
+
+## 1. Read tutorial of quanteda
+
+The quanteda tutorial provides the workflow used in this assignment: corpus, tokens, and document-feature matrix.
+
+## 2a. Use sample programs to analyze US presidential inaugural speeches
+
+This section uses the built-in inaugural speech corpus in quanteda.
+
+```{r}
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(readtext)
+library(ggplot2)
+
+theme_set(
+  theme_minimal(base_size = 14) +
+    theme(
+      plot.title = element_text(color = "#d63384", face = "bold"),
+      plot.subtitle = element_text(color = "#d63384"),
+      axis.title = element_text(color = "#d63384"),
+      axis.text = element_text(color = "#d63384"),
+      legend.title = element_text(color = "#d63384"),
+      legend.text = element_text(color = "#d63384"),
+      strip.text = element_text(color = "#d63384", face = "bold")
+    )
+)
+
+packageVersion("quanteda")
+```
+
+```{r}
+corp_inaug <- data_corpus_inaugural
+summary(corp_inaug, n = 5)
+head(docvars(corp_inaug))
+```
+
+```{r}
+toks_inaug <- tokens(
+  corp_inaug,
+  remove_punct = TRUE,
+  remove_numbers = TRUE,
+  remove_symbols = TRUE
+)
+
+toks_inaug <- tokens_remove(toks_inaug, pattern = stopwords("en"))
+
+dfmat_inaug <- dfm(toks_inaug)
+dfmat_inaug
+```
+
+### Similarities and differences among presidents
+
+```{r}
+dfmat_pres <- dfm_group(dfmat_inaug, groups = President)
+topfeatures(dfmat_pres, 20)
+```
+
+```{r}
+pres_sim <- textstat_simil(dfmat_pres, method = "cosine")
+as.matrix(pres_sim)
+```
+
+### Similarities and differences over time
+
+```{r}
+era <- ifelse(docvars(corp_inaug, "Year") < 1900, "Before1900", "1900plus")
+dfmat_era <- dfm_group(dfmat_inaug, groups = era)
+topfeatures(dfmat_era, 20)
+```
+
+```{r}
+key_era <- textstat_keyness(dfmat_era, target = "1900plus")
+head(key_era, 20)
+```
+
+```{r}
+textplot_keyness(
+  key_era,
+  color = c("#d63384", "#f3bfd7"),
+  labelcolor = "#d63384"
+) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(color = "#d63384", face = "bold"),
+    axis.text = element_text(color = "#d63384"),
+    axis.title = element_text(color = "#d63384"),
+    legend.text = element_text(color = "#d63384"),
+    legend.title = element_text(color = "#d63384")
+  )
+```
+
+## 2b. Use sample programs to analyze US Department of Defense reports
+
+This section reads the DOD reports from the USDOD folder.
+
+```{r}
+dod_texts <- readtext("USDOD/*.pdf")
+dod_texts
+```
+
+```{r}
+corp_dod <- corpus(dod_texts)
+summary(corp_dod)
+```
+
+```{r}
+toks_dod <- tokens(
+  corp_dod,
+  remove_punct = TRUE,
+  remove_numbers = TRUE,
+  remove_symbols = TRUE
+)
+
+toks_dod <- tokens_remove(toks_dod, pattern = stopwords("en"))
+
+dfmat_dod <- dfm(toks_dod)
+dfmat_dod_trim <- dfm_trim(dfmat_dod, min_termfreq = 5)
+
+dfmat_dod_trim
+```
+
+```{r}
+topfeatures(dfmat_dod_trim, 30)
+```
+
+```{r}
+dod_sim <- textstat_simil(dfmat_dod_trim, method = "cosine")
+as.matrix(dod_sim)
+```
+
+## 3. What is Wordfish?
+
+Wordfish is an unsupervised one-dimensional text scaling method that estimates document positions from observed word frequencies.
+
+## 3a. Run Wordfish on DOD reports
+
+```{r}
+wf_dod <- textmodel_wordfish(dfmat_dod_trim, dir = c(1, ndoc(dfmat_dod_trim)))
+summary(wf_dod)
+```
+
+```{r}
+wf_plot_data <- data.frame(
+  document = docnames(dfmat_dod_trim),
+  wordfish_position = as.numeric(wf_dod$theta)
+)
+
+ggplot(wf_plot_data, aes(x = wordfish_position, y = reorder(document, wordfish_position))) +
+  geom_point(size = 3, color = "#d63384") +
+  labs(
+    title = "Wordfish Positions for DOD Reports",
+    x = "Wordfish Position",
+    y = NULL
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(color = "#d63384", face = "bold"),
+    axis.text = element_text(color = "#d63384"),
+    axis.title = element_text(color = "#d63384")
+  )
+```
+
+```{r}
+dod_wordfish_positions <- data.frame(
+  document = docnames(dfmat_dod_trim),
+  wordfish_position = as.numeric(wf_dod$theta)
+)
+
+knitr::kable(dod_wordfish_positions, digits = 3, format = "html")
+```
+
+## 4. How to compare positions
+
+Positions can be compared by examining the estimated document scores from Wordfish and comparing them to another scaling method such as correspondence analysis.
+
+```{r}
+ca_dod <- textmodel_ca(dfmat_dod_trim)
+```
+
+```{r}
+dod_positions_compare <- data.frame(
+  document = docnames(dfmat_dod_trim),
+  wordfish = as.numeric(wf_dod$theta),
+  ca_dim1 = as.numeric(coef(ca_dod, doc_dim = 1)$coef_document)
+)
+
+knitr::kable(dod_positions_compare, digits = 3, format = "html")
+```
+
+```{r}
+ggplot(dod_positions_compare, aes(x = wordfish, y = ca_dim1, label = document)) +
+  geom_point(size = 3, color = "#d63384") +
+  geom_text(size = 3, vjust = -0.5, check_overlap = TRUE, color = "#d63384") +
+  labs(
+    title = "Comparing Document Positions",
+    x = "Wordfish Position",
+    y = "Correspondence Analysis Dimension 1"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(color = "#d63384", face = "bold"),
+    axis.text = element_text(color = "#d63384"),
+    axis.title = element_text(color = "#d63384")
+  )
+```
+
+```{r}
+cor(dod_positions_compare$wordfish, dod_positions_compare$ca_dim1)
+```
+
+**AI Disclaimer:** *I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.*
+
+```{=html}
+<style>
+
+/* Make all Assignment 4 regular text white */
+main.content,
+main.content p,
+main.content li,
+main.content span,
+main.content div,
+main.content label {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Make all Assignment 4 headings white */
+main.content h1,
+main.content h2,
+main.content h3,
+main.content h4,
+main.content h5,
+main.content h6 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Make all R output text white */
+main.content .cell-output,
+main.content .cell-output-stdout,
+main.content .cell-output-display,
+main.content .cell-output-stderr,
+main.content .cell-output pre,
+main.content .cell-output code,
+main.content .cell-output-stdout pre,
+main.content .cell-output-stdout code,
+main.content pre:not(.sourceCode),
+main.content pre:not(.sourceCode) code {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Make printed tables and data output white */
+main.content .cell-output table,
+main.content .cell-output th,
+main.content .cell-output td,
+main.content table,
+main.content th,
+main.content td {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Keep R source code readable */
+main.content pre.sourceCode,
+main.content pre.sourceCode code,
+main.content .sourceCode {
+  color: #f2f2ed !important;
+  -webkit-text-fill-color: #f2f2ed !important;
+}
+
+/* Keep links bright green */
+main.content a {
+  color: #dfff54 !important;
+  -webkit-text-fill-color: #dfff54 !important;
+}
+
+</style>
+```
+
+```{=html}
+<style>
+
+/* Make graph titles and captions white, bold, and uppercase */
+main.content .figure-caption,
+main.content figcaption,
+main.content .cell-output-display {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+/* Style text inside SVG graphs */
+main.content .cell-output-display svg text {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Make graph titles larger */
+main.content .cell-output-display svg .title {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+/* Make graph axis titles bold */
+main.content .cell-output-display svg .axis-title {
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+/* Make graph legend text bold */
+main.content .cell-output-display svg .legend {
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+</style>
+```
+
+library(ggplot2) library(ggrepel) library(dplyr) library(stringr)
+
+# Clean and capitalize document names
+
+plot_data \<- plot_data \|\> mutate( document_label = document \|\> basename() \|\> str_remove("\\.pdf\$") \|\> str_replace_all("\_", " ") \|\> str_squish() \|\> str_to_upper() )
+
+# Create a cleaner graph
+
+ggplot( plot_data, aes( x = wordfish_position, y = ca_dimension_1 ) ) + geom_point( color = "#d11973", size = 4, alpha = 0.9 ) + geom_text_repel( aes(label = document_label), color = "#d11973", size = 4, fontface = "bold", box.padding = 0.7, point.padding = 0.5, min.segment.length = 0, max.overlaps = Inf, segment.color = "#8c8c8c", segment.linewidth = 0.35 ) + labs( title = "COMPARING DOCUMENT POSITIONS", subtitle = "WORDFISH AND CORRESPONDENCE ANALYSIS RESULTS", x = "WORDFISH POSITION", y = "CORRESPONDENCE ANALYSIS — DIMENSION 1" ) + theme_minimal(base_size = 14) + theme( text = element_text( family = "Arial", face = "bold" ),
+
+```         
+plot.title = element_text(
+  color = "#d11973",
+  size = 24,
+  face = "bold",
+  hjust = 0.5,
+  margin = margin(bottom = 8)
+),
+
+plot.subtitle = element_text(
+  color = "#555555",
+  size = 12,
+  face = "bold",
+  hjust = 0.5,
+  margin = margin(bottom = 20)
+),
+
+axis.title = element_text(
+  color = "#d11973",
+  size = 15,
+  face = "bold"
+),
+
+axis.text = element_text(
+  color = "#333333",
+  size = 11,
+  face = "bold"
+),
+
+panel.grid.major = element_line(
+  color = "#dddddd",
+  linewidth = 0.6
+),
+
+panel.grid.minor = element_blank(),
+
+plot.margin = margin(
+  25,
+  55,
+  25,
+  35
+)
+```
+
+)

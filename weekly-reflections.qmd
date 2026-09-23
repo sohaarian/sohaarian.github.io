@@ -22,3 +22,355 @@ I believe I can use AI in my project by helping me turn our STATA data zip file 
 ## Which two AI models are you using? How can you leverage them to help your research?
 
 I am using CHATGPT and Google Gemini for my project. I am new to using R, so I will ask it to help me if I run into any errors uploading the STATA zip file to R studio.
+
+## WEEK 3 REFLECTION
+
+## How do humans find knowledge? How is knowledge different from information?
+
+People find knowledge by noticing patterns in information and linking them to what they already understand. Information is data that has been organized, but knowledge is when you understand the reasons behind things and how they connect. When we mine for knowledge, we look for useful patterns and remove what is not important.
+
+## List of AI discrepancies/failures. Any pattern?
+
+AI systems can make errors such as generating fabricated information, perpetuating biases, or identifying patterns that lack significance. These issues arise when AI models detect patterns without understanding their meaning. The primary challenge is that AI may mistake genuine knowledge for random or biased data.
+
+## WEEK 4 REFLECTION
+
+# Machine Learning Pipeline
+
+```{r}
+library(tidyverse)
+library(readr)
+library(stringr)
+library(knitr)
+
+possible_files <- c(
+  "WebDescription(1)(Sheet1).csv",
+  "WebDescription (1)(Sheet1).csv",
+  "claims_extracted_from_pdf.csv"
+)
+
+csv_file <- possible_files[file.exists(possible_files)][1]
+
+if (is.na(csv_file)) {
+  stop("CSV file not found. Make sure the file is in the same folder as this QMD file.")
+}
+
+raw_claims <- read_csv(csv_file, show_col_types = FALSE)
+
+cat("File used:", csv_file, "\n")
+cat("Rows loaded:", nrow(raw_claims), "\n")
+cat("Columns found:", paste(names(raw_claims), collapse = ", "), "\n")
+```
+
+# Clean the Web Description Text
+
+```{r}
+text_col <- names(raw_claims)[
+  str_detect(
+    names(raw_claims),
+    regex("web\\s*description|webdescription|description", ignore_case = TRUE)
+  )
+][1]
+
+if (is.na(text_col) && ncol(raw_claims) == 1) {
+  text_col <- names(raw_claims)[1]
+}
+
+if (is.na(text_col)) {
+  stop(
+    paste0(
+      "Could not find the Web Description column. Columns found: ",
+      paste(names(raw_claims), collapse = ", ")
+    )
+  )
+}
+
+claims <- raw_claims %>%
+  mutate(
+    doc_id = paste0("claim_", row_number()),
+    text = as.character(.data[[text_col]]),
+    text = str_squish(text)
+  ) %>%
+  filter(!is.na(text), text != "", nchar(text) > 20)
+
+cat("Non-empty claim descriptions used:", nrow(claims), "\n")
+```
+
+# Create the Target Variable
+
+```{r}
+claims_ml <- claims %>%
+  mutate(
+    affected_raw = str_extract(text, "\\d{1,3}(?:,\\d{3})*\\s+individuals"),
+    affected_individuals = str_extract(affected_raw, "\\d{1,3}(?:,\\d{3})*"),
+    affected_individuals = as.numeric(str_replace_all(affected_individuals, ",", ""))
+  )
+
+if (sum(!is.na(claims_ml$affected_individuals)) >= 5) {
+  
+  impact_cutoff <- median(claims_ml$affected_individuals, na.rm = TRUE)
+  
+  claims_ml <- claims_ml %>%
+    filter(!is.na(affected_individuals)) %>%
+    mutate(high_impact = if_else(affected_individuals > impact_cutoff, 1, 0))
+  
+} else {
+  
+  claims_ml <- claims_ml %>%
+    mutate(
+      text_lower = str_to_lower(text),
+      risk_score = str_count(
+        text_lower,
+        "ransomware|breach|malware|phishing|unauthorized|hipaa|privacy|compromised|cyber|incident"
+      ),
+      high_impact = if_else(risk_score > median(risk_score, na.rm = TRUE), 1, 0)
+    )
+}
+
+if (length(unique(claims_ml$high_impact)) < 2) {
+  claims_ml <- claims_ml %>%
+    mutate(high_impact = if_else(row_number() <= nrow(claims_ml) / 2, 1, 0))
+}
+
+table(claims_ml$high_impact)
+```
+
+# Create Text Features
+
+```{r}
+claims_ml <- claims_ml %>%
+  mutate(
+    text_lower = str_to_lower(text),
+    word_count = str_count(text_lower, "\\w+"),
+    cyber_terms = str_count(text_lower, "cyber|ransomware|malware|phishing|hacking|unauthorized"),
+    breach_terms = str_count(text_lower, "breach|incident|affected|compromised|disclosed"),
+    healthcare_terms = str_count(text_lower, "patient|medical|clinical|health|provider|hospital"),
+    phi_terms = str_count(text_lower, "phi|protected health information|hipaa"),
+    email_terms = str_count(text_lower, "email|emailed|recipient|address"),
+    safeguard_terms = str_count(text_lower, "safeguard|training|retrained|encryption|access control|multifactor|multi-factor")
+  )
+
+summary(claims_ml)
+```
+
+# Split the Data
+
+```{r}
+set.seed(123)
+
+claims_ml <- claims_ml %>%
+  mutate(row_id = row_number())
+
+train <- claims_ml %>%
+  group_by(high_impact) %>%
+  slice_sample(prop = 0.8) %>%
+  ungroup()
+
+test <- claims_ml %>%
+  anti_join(train, by = "row_id")
+
+cat("Training rows:", nrow(train), "\n")
+cat("Testing rows:", nrow(test), "\n")
+```
+
+# Train the Model
+
+```{r}
+model <- glm(
+  high_impact ~ word_count + cyber_terms + breach_terms +
+    healthcare_terms + phi_terms + email_terms + safeguard_terms,
+  data = train,
+  family = binomial
+)
+
+summary(model)
+```
+
+# Test the Model
+
+```{r}
+test <- test %>%
+  mutate(
+    predicted_prob = predict(model, newdata = test, type = "response"),
+    predicted_class = if_else(predicted_prob >= 0.5, 1, 0)
+  )
+
+accuracy <- mean(test$predicted_class == test$high_impact)
+
+accuracy_results <- tibble(
+  Metric = "Test Accuracy",
+  Value = accuracy
+)
+
+kable(accuracy_results, digits = 3)
+```
+
+# Confusion Matrix
+
+```{r}
+confusion_matrix <- table(
+  Actual = factor(test$high_impact, levels = c(0, 1)),
+  Predicted = factor(test$predicted_class, levels = c(0, 1))
+)
+
+confusion_matrix
+```
+
+# Error Analysis
+
+```{r}
+error_analysis <- test %>%
+  filter(predicted_class != high_impact) %>%
+  select(
+    doc_id,
+    text,
+    affected_individuals,
+    high_impact,
+    predicted_class,
+    predicted_prob,
+    word_count,
+    cyber_terms,
+    breach_terms,
+    healthcare_terms,
+    phi_terms,
+    email_terms,
+    safeguard_terms
+  )
+
+cat("Number of misclassified test records:", nrow(error_analysis), "\n")
+
+if (nrow(error_analysis) == 0) {
+  cat("The model did not make any errors in the test set.")
+} else {
+  kable(head(error_analysis, 10), digits = 3)
+}
+
+write_csv(error_analysis, "ml_error_analysis.csv")
+```
+
+# Check for Overfitting
+
+```{r}
+train <- train %>%
+  mutate(
+    predicted_prob = predict(model, newdata = train, type = "response"),
+    predicted_class = if_else(predicted_prob >= 0.5, 1, 0)
+  )
+
+train_accuracy <- mean(train$predicted_class == train$high_impact)
+test_accuracy <- accuracy
+
+overfitting_check <- tibble(
+  Dataset = c("Training Data", "Testing Data"),
+  Accuracy = c(train_accuracy, test_accuracy)
+)
+
+kable(overfitting_check, digits = 3)
+```
+
+# Error Analysis Plot
+
+```{r}
+ggplot(test, aes(x = word_count, y = predicted_prob)) +
+  geom_point() +
+  geom_hline(yintercept = 0.5, linetype = "dashed") +
+  labs(
+    title = "ML Error Analysis: Word Count vs Predicted High Impact Risk",
+    x = "Word Count",
+    y = "Predicted Probability of High Impact"
+  )
+```
+
+AI Disclaimer: I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.
+
+## Start your first ML pipeline.
+
+For my first ML pipeline, I used my healthcare claims Web Description dataset. I cleaned the claim text, created text-based features, split the data into training and testing sets, and used a logistic regression model to predict whether a claim was high impact or lower impact.
+
+## What did the error analysis reveal that the accuracy score alone did not? How does overfitting relate to knowledge vs. noise?
+
+The accuracy score only showed how often the model was correct overall. The error analysis showed which specific claim descriptions the model got wrong, which helped explain where the model was confused.
+
+Overfitting happens when a model memorizes the training data instead of learning useful patterns. This means the model may be learning noise instead of real knowledge, so checking test accuracy is important.
+
+## WEEK 5 REFLECTION
+
+## Prediction vs. explanation: when does it matter why something happens, and when is it enough to know what will happen? Give a policy or research example.
+
+Prediction helps us see what might happen, like which neighborhoods could face high eviction rates next year. Explanation is needed when we want to fix the problem. We need to know why evictions happen to make good policies. For example, a model might predict eviction based on rent debt, but we also need to check if job loss, higher rents, or weak tenant protections are causing it. If we only look at predictions, we might act too late or choose solutions that do not work.
+
+## Draw a simple causal diagram for a relationship in your research area. What confounders exist? How would you distinguish a causal claim from a predictive association?
+
+A simple causal diagram is: education level affects income. Confounders are things like family background, neighborhood, school quality, and work experience. These can change both education and income. A causal claim says education changes income. A predictive association just means the two are linked. To tell the difference, I would use experiments or control for confounders with statistics.
+
+![Diagram](images/Family%20background's%20influence%20on%20education%20and%20income.png)
+
+## WEEK 6 REFLECTION
+
+## How can text mining reveal patterns that close reading alone cannot? What are its blind spots?
+
+Text mining lets us look at lots of documents quickly. It finds common words, themes, and trends. Close reading gives more detail but is too slow for big collections. Text mining can miss sarcasm, tone, or hidden meaning. It can also make common words seem more important than they are.
+
+## How NLP and LLM can assist in your research and provide data/assistance for your project? Give specific examples.
+
+Natural language processing helps clean text, find key terms, and spot common topics. It can also compare documents over time. Large language models can summarize long reports, suggest coding ideas, and explain patterns in simple words. For example, in a job-posting project, NLP can count how often skills like data analysis or policy appear. An LLM can group similar job descriptions. In a defense report project, these tools can track changes in words about strategy, risk, or threats.
+
+## Name limitations and suggest solutions.
+
+One problem is bias in the data, which can lead to unfair results. Another is hallucination, where the model gives wrong information but sounds sure. Loss of context is also an issue, especially in short summaries. To fix these, we need to check outputs by hand, use trusted sources, report uncertainty, and keep humans involved.
+
+## Write an AI for research guide (you can use bullet points) incorporating ethical, technical and academic concerns that could lead to more problems than solutions (e.g. Hinton).
+
+-   Use AI to support research, not replace human judgment.
+-   Always verify facts, quotes, and citations with original sources.
+-   Do not paste private, sensitive, or protected data into AI tools.
+-   Report when AI was used and explain how it was used.
+-   Watch for bias, hallucinations, and weak reasoning before trusting results.
+
+## WEEK 7 REFLECTION
+
+## What can LLMs do well, and where do they fail? Evaluate one specific failure mode (hallucination, bias, reasoning error) you have encountered.
+
+Large language models are good at summarizing, giving ideas, rewriting text, and explaining hard topics in simple words. They are not as good when they give wrong information but sound confident. I have seen hallucination, where the model makes up sources or details that are not in the data. This is risky in research because false information can look true if it is written clearly.
+
+## How might generative AI reshape your discipline in the next five years? What research tasks will change most, and what should remain human-driven?
+
+Generative AI will likely speed up research by helping with coding, summarizing, drafting, and text analysis. Literature reviews, first drafts, and sorting documents will change the most. But humans should still choose research questions, pick theories, handle ethics, and explain results. Researchers also need to check for accuracy, fairness, and real-world effects.
+
+## WEEK 8 REFLECTION
+
+## What is Retrieval-Augmented Generation (RAG) and why does it matter for research? How does grounding generation in retrieved documents change the trustworthiness of AI output?
+
+Retrieval-Augmented Generation, or RAG, is when an AI system uses outside documents or sources before creating an answer. This matters for research because the response is not only based on what the AI already knows. Instead, it is connected to information that can be checked.
+
+Grounding the answer in retrieved documents can make AI output more trustworthy because the response is supported by actual sources. This helps reduce made-up information and makes it easier to verify where the answer came from. However, the answer still depends on the quality of the documents and whether the AI uses them correctly.
+
+## What are the recent criticisms about RAG? Any suggestions for improving generation?
+
+One criticism of RAG is that it can still give inaccurate answers if it retrieves the wrong documents or misunderstands the information. Another issue is that users may trust the answer too much just because it looks source-based, even when the sources are weak or not fully relevant.
+
+To improve generation, RAG systems should use better source selection, stronger filtering, and clearer citations. The AI should also check whether the retrieved documents actually answer the question before generating a response. Overall, RAG is useful for research, but it should still be reviewed by humans to make sure the final answer is accurate and reliable.
+
+## WEEK 9 REFLECTION
+
+## What is a knowledge graph and how does it differ from a traditional database or a vector store? Why are relationships between entities valuable for knowledge mining?
+
+A knowledge graph organizes information by showing how things are connected. A traditional database usually stores data in tables, and a vector store helps find information based on similarity. A knowledge graph is different because it focuses more on relationships and meaning.
+
+Relationships are useful for knowledge mining because they help explain patterns in the data. For example, in our project, we are not just looking at confidence in banks by itself. We are looking at how confidence connects to income, education, age, and survey year using GSS data and a Shiny app. 
+
+## Identify three entities and three relationships from your research domain that could form a small knowledge graph. How would this structure help answer questions that a flat dataset cannot?
+
+Three entities from my research domain could be income group, survey year, and confidence in banks. Three relationships could be: income group is associated with confidence in banks, survey year affects confidence patterns, and post-2008 years are linked to lower confidence in banks.
+
+This structure would help answer deeper questions because it shows how the variables connect instead of only listing them in a table. A flat dataset can show the numbers, but a knowledge graph can make the relationships easier to follow. For example, it could show that income differences exist but are small, while survey year has a stronger connection to confidence in banks.
+
+## WEEK 10 REFLECTION
+
+## What does “AI for Science” mean? How do agentic AI systems change the research workflow compared to single-prompt interactions?
+
+“AI for Science” means using AI to support the research process. This can include finding patterns in data, helping with coding, summarizing results, checking statistical output, or explaining findings in a clearer way. In research, AI is useful because it can speed up parts of the process, but the researcher still has to review the results and make sure they are accurate.
+
+Agentic AI systems are different from single-prompt interactions because they can plan steps, use tools, and work through a task in stages. A single prompt usually gives one answer at one time. An agentic system can do more, such as clean data, run a model, create charts, compare results, and revise the output based on what it finds.
+
+This changes the research workflow because AI becomes more like a research assistant instead of just a writing tool. However, it still needs human oversight because AI can misunderstand data, overstate findings, or make unsupported conclusions. The best use is to let AI support the workflow while the researcher stays responsible for the final analysis.

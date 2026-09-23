@@ -12,12 +12,9 @@ format: html
 </iframe>
 
 ::: shiny-app-container
-<iframe
-    src="https://sohaarian.shinyapps.io/WorkersCompensation/"
-    title="Workers Compensation Claims Intelligence"
-    loading="lazy"
-    allow="fullscreen"
-  ></iframe>
+<iframe src="https://sohaarian.shinyapps.io/WorkersCompensation/" title="Workers Compensation Claims Intelligence" loading="lazy" allow="fullscreen">
+
+</iframe>
 :::
 
 ```{=html}

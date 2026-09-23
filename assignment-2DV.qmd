@@ -1,0 +1,3431 @@
+---
+title: "Assignment 2: Base R Graphics"
+
+format:
+  html:
+    toc: true
+
+execute:
+  echo: true
+  warning: false
+  message: false
+
+knitr:
+  opts_chunk:
+    fig.path: "images/assignment2/"
+    fig.align: "center"
+    out.width: "100%"
+---
+
+```{r}
+#| label: assignment2-setup
+#| include: false
+
+# Keep generated figures in one simple folder with no spaces in its name.
+# This avoids the broken-image paths that can happen when the page/file name
+# contains a leading space or other odd characters.
+dir.create("assignment2-figures", showWarnings = FALSE)
+
+knitr::opts_chunk$set(
+  fig.path = "assignment2-figures/",
+  dev = "png",
+  dpi = 144,
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+# Assignment 2: Base R Graphics
+
+## Murrell's *R Graphics*, Chapter 1
+
+Source: <https://www.stat.auckland.ac.nz/~paul/RG3e/chapter1.html>
+
+
+## Figure 1.1 — A Simple Scatterplot
+
+```{r}
+plot(pressure)
+text(150, 600,
+     "Pressure (mm Hg)\nversus\nTemperature (Celsius)")
+```
+
+**What I noticed.** When I ran `plot(pressure)`, basically the whole scatterplot showed up at once: the plotting area, axes, labels, and points were all there. Then `text(...)` just added the three-line note on top of the plot that was already open. It did not start a new plot.
+
+## Figure 1.2 — Some Standard Plots
+
+```{r}
+
+#
+# Comment:
+#
+# Examples of the use of standard high-level plotting functions.
+#
+# In each case, extra output is also added using low-level
+# plotting functions.
+#
+
+par(mfrow=c(3, 2))
+
+# Scatterplot
+x <- c(0.5, 2, 4, 8, 12, 16)
+y1 <- c(1, 1.3, 1.9, 3.4, 3.9, 4.8)
+y2 <- c(4, .8, .5, .45, .4, .3)
+
+par(las=1, mar=c(4, 4, 2, 4), cex=.7)
+
+plot.new()
+plot.window(range(x), c(0, 6))
+
+lines(x, y1)
+lines(x, y2)
+
+points(x, y1, pch=16, cex=2)
+points(x, y2, pch=21, bg="white", cex=2)
+
+par(col="gray50", fg="gray50", col.axis="gray50")
+
+axis(1, at=seq(0, 16, 4))
+axis(2, at=seq(0, 6, 2))
+axis(4, at=seq(0, 6, 2))
+
+box(bty="u")
+
+mtext("Travel Time (s)", side=1, line=2, cex=0.8)
+mtext("Responses per Travel", side=2, line=2, las=0, cex=0.8)
+mtext("Responses per Second", side=4, line=2, las=0, cex=0.8)
+
+text(4, 5, "Bird 131")
+
+par(mar=c(5.1, 4.1, 4.1, 2.1),
+    col="black",
+    fg="black",
+    col.axis="black")
+
+
+# Histogram
+# Random data
+
+Y <- rnorm(50)
+
+# Make sure no Y exceed [-3.5, 3.5]
+Y[Y < -3.5 | Y > 3.5] <- NA
+
+x <- seq(-3.5, 3.5, .1)
+dn <- dnorm(x)
+
+par(mar=c(4.5, 4.1, 3.1, 0))
+
+hist(Y,
+     breaks=seq(-3.5, 3.5),
+     ylim=c(0, 0.5),
+     col="gray80",
+     freq=FALSE)
+
+lines(x, dnorm(x), lwd=2)
+
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+
+
+# Barplot
+# Modified from example(barplot)
+
+par(mar=c(2, 3.1, 2, 2.1))
+
+midpts <- barplot(
+  VADeaths,
+  col=gray(0.1 + seq(1, 9, 2)/11),
+  names=rep("", 4)
+)
+
+mtext(
+  sub(" ", "\n", colnames(VADeaths)),
+  at=midpts,
+  side=1,
+  line=0.5,
+  cex=0.5
+)
+
+text(
+  rep(midpts, each=5),
+  apply(VADeaths, 2, cumsum) - VADeaths/2,
+  VADeaths,
+  col=rep(c("white", "black"), times=3:2),
+  cex=0.8
+)
+
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+
+
+# Boxplot
+# Modified example(boxplot)
+# Originally from suggestion by Roger Bivand
+
+par(mar=c(3, 4.1, 2, 0))
+
+boxplot(
+  len ~ dose,
+  data=ToothGrowth,
+  boxwex=0.25,
+  at=1:3 - 0.2,
+  subset=supp == "VC",
+  col="white",
+  xlab="",
+  ylab="tooth length",
+  ylim=c(0, 35)
+)
+
+mtext(
+  "Vitamin C dose (mg)",
+  side=1,
+  line=2.5,
+  cex=0.8
+)
+
+boxplot(
+  len ~ dose,
+  data=ToothGrowth,
+  add=TRUE,
+  boxwex=0.25,
+  at=1:3 + 0.2,
+  subset=supp == "OJ"
+)
+
+legend(
+  1.5,
+  9,
+  c("Ascorbic acid", "Orange juice"),
+  fill=c("white", "gray"),
+  bty="n"
+)
+
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+
+
+# Persp
+# Almost exactly example(persp)
+
+x <- seq(-10, 10, length=30)
+y <- x
+
+f <- function(x, y) {
+  r <- sqrt(x^2 + y^2)
+  10 * sin(r) / r
+}
+
+z <- outer(x, y, f)
+z[is.na(z)] <- 1
+
+# 0.5 to include z axis label
+par(mar=c(0, 0.5, 0, 0), lwd=0.5)
+
+persp(
+  x,
+  y,
+  z,
+  theta=30,
+  phi=30,
+  expand=0.5
+)
+
+par(mar=c(5.1, 4.1, 4.1, 2.1), lwd=1)
+
+
+# Piechart
+# Example 4 from help(pie)
+
+par(mar=c(0, 2, 1, 2), xpd=FALSE, cex=0.5)
+
+pie.sales <- c(
+  0.12,
+  0.3,
+  0.26,
+  0.16,
+  0.04,
+  0.12
+)
+
+names(pie.sales) <- c(
+  "Blueberry",
+  "Cherry",
+  "Apple",
+  "Boston Cream",
+  "Other",
+  "Vanilla"
+)
+
+pie(
+  pie.sales,
+  col=gray(seq(0.3, 1.0, length=6))
+)
+
+```
+
+**What I noticed.** This one made the difference between setting up a plot and actually drawing on it pretty obvious. `par(mfrow=c(3,2))` split the device into six spots. For the scatterplot, `plot.new()` gave me a blank frame and `plot.window()` set the coordinates, but the actual graph started filling in when the `lines()` and `points()` calls ran. The three `axis()` calls added the bottom, left, and right axes, then `box()`, `mtext()`, and `text()` filled in the border and labels. The same idea showed up in the other panels: `hist()`, `barplot()`, `boxplot()`, `persp()`, and `pie()` made the main plots, while functions like `lines()`, `mtext()`, `text()`, and `legend()` added extra pieces. The assignments and calculations did not visibly change the device. Also, `names()` only gave the pie values their category names; it did not draw anything.
+
+## Figure 1.3 — A Customized Scatterplot
+
+```{r}
+
+#
+# Comment:
+#
+# A sophisticated example of adding further output to a basic plot.
+#
+# Most of the functions defined are just for calculating values
+# relevant to the data analysis.
+#
+# The function plotPars() is the one of interest for seeing how
+# the drawing of the plot is done.
+#
+
+params <- function(N, breaks, p=seq(0.001, 1, length=100)) {
+  list(
+    N=N,
+    T=1/breaks,
+    p=p,
+    q=1-p
+  )
+}
+
+pdfcomp <- function(comp, params) {
+  n <- params$T
+  p <- params$p
+  q <- params$q
+  y <- round(comp/n)
+
+  choose(n, comp) * p^comp * q^(n-comp) / (1 - q^n)
+}
+
+# Expected num sherds (for a vessel) [=completeness]
+expcomp <- function(params) {
+  params$T * params$p / (1 - params$q^params$T)
+}
+
+# Variance of num sherds (for a vessel)
+varcomp <- function(params) {
+  n <- params$T
+  p <- params$p
+  q <- params$q
+
+  # From Johnson & Kotz
+  (n*p*q / (1 - q^n)) -
+    (n^2*p^2*q^n / (1 - q^n)^2)
+
+  # n^2 times Thomas Yee's formula
+  # n^2*((p*(1 + p*(n - 1)) / (n*(1 - q^n))) -
+  #       (p^2 / (1 - q^n)^2))
+}
+
+# Expected value of completeness (for a sample of vessels)
+expmeancomp <- function(params) {
+  expcomp(params)
+}
+
+# Variance of completeness (for a sample of vessels)
+# Use the expected number of vessels in sample as denominator
+varmeancomp <- function(params) {
+  varcomp(params) / numvess(params)
+}
+
+numvess <- function(params) {
+  params$N * (1 - params$q^params$T)
+}
+
+ecomp <- function(p, T, comp) {
+  q <- 1 - p
+  T*p / (1 - q^T) - comp
+}
+
+estN <- function(comp, broke, n) {
+  T <- 1/broke
+
+  n / (
+    1 -
+      (
+        1 -
+          uniroot(
+            ecomp,
+            c(0.00001, 1),
+            T=T,
+            comp=comp
+          )$root
+      )^T
+  )
+}
+
+nvessscale <- function(params, xlim, ylim, new=TRUE) {
+
+  if (new)
+    par(new=TRUE)
+
+  plot(
+    0:1,
+    c(1, params$N),
+    type="n",
+    axes=!new,
+    ann=FALSE,
+    xlim=xlim,
+    ylim=ylim
+  )
+}
+
+compscale <- function(params, xlim, ylim, new=TRUE) {
+
+  if (new)
+    par(new=TRUE)
+
+  plot(
+    0:1,
+    c(1, params$T),
+    type="n",
+    axes=!new,
+    ann=FALSE,
+    xlim=xlim,
+    ylim=ylim
+  )
+}
+
+lowerCI <- function(p, N, breaks, lb) {
+
+  params <- params(N, breaks, p)
+
+  expmeancomp(params) -
+    2*sqrt(varmeancomp(params)) -
+    lb
+}
+
+upperCI <- function(p, N, breaks, lb) {
+
+  params <- params(N, breaks, p)
+
+  expmeancomp(params) +
+    2*sqrt(varmeancomp(params)) -
+    lb
+}
+
+critP <- function(comp, params) {
+
+  c(
+    uniroot(
+      lowerCI,
+      c(0.00001, 1),
+      N=params$N,
+      breaks=1/params$T,
+      lb=max(comp)
+    )$root,
+
+    if (
+      upperCI(
+        0.00001,
+        params$N,
+        1/params$T,
+        min(comp)
+      ) > 0
+    ) {
+      0
+    } else {
+      uniroot(
+        upperCI,
+        c(0.00001, 1),
+        N=params$N,
+        breaks=1/params$T,
+        lb=min(comp)
+      )$root
+    }
+  )
+}
+
+anncomp <- function(params, comp, xlim, ylim, cylim) {
+
+  cp <- critP(comp, params)
+
+  nv <- numvess(
+    params(
+      params$N,
+      1/params$T,
+      cp
+    )
+  )
+
+  nvessscale(
+    params,
+    xlim,
+    ylim
+  )
+
+  polygon(
+    c(cp[2], cp[2], 0, 0, cp[1], cp[1]),
+    c(0, nv[2], nv[2], nv[1], nv[1], 0),
+    col="gray90",
+    border=NA
+  )
+
+  text(
+    0,
+    nv[1],
+    paste(
+      round(nv[1]),
+      " (",
+      round(100*nv[1]/params$N),
+      "%)",
+      sep=""
+    ),
+    adj=c(0, 0),
+    col="gray"
+  )
+
+  text(
+    0,
+    nv[2],
+    paste(
+      round(nv[2]),
+      " (",
+      round(100*nv[2]/params$N),
+      "%)",
+      sep=""
+    ),
+    adj=c(0, 1),
+    col="gray"
+  )
+
+  compscale(
+    params,
+    xlim,
+    cylim
+  )
+
+  segments(
+    1,
+    min(comp),
+    cp[2],
+    comp,
+    col="gray"
+  )
+
+  segments(
+    1,
+    max(comp),
+    cp[1],
+    comp,
+    col="gray"
+  )
+
+  text(
+    1,
+    comp,
+    paste(comp, collapse="-"),
+    adj=c(1, 0),
+    col="gray"
+  )
+}
+
+plotPars <- function(params, comp, xlim=NULL, ylim=NULL) {
+
+  mean <- expmeancomp(params)
+
+  var <- 2*sqrt(
+    varmeancomp(params)
+  )
+
+  lb <- mean - var
+  ub <- mean + var
+
+  par(
+    mar=c(5, 4, 4, 4)
+  )
+
+  if (is.null(ylim)) {
+
+    cylim <- ylim
+
+  } else {
+
+    cylim <- c(
+      1 +
+        ((ylim[1] - 1) /
+           (params$N - 1)) *
+        (params$T - 1),
+
+      1 +
+        ((ylim[2] - 1) /
+           (params$N - 1)) *
+        (params$T - 1)
+    )
+  }
+
+  nvessscale(
+    params,
+    xlim,
+    ylim,
+    new=FALSE
+  )
+
+  compscale(
+    params,
+    xlim,
+    cylim
+  )
+
+  polygon(
+    c(params$p, rev(params$p)),
+    c(lb, rev(ub)),
+    col="gray90",
+    border=NA
+  )
+
+  anncomp(
+    params,
+    comp,
+    xlim,
+    ylim,
+    cylim
+  )
+
+  nvessscale(
+    params,
+    xlim,
+    ylim
+  )
+
+  mtext(
+    "Number of Vessels",
+    side=2,
+    line=3
+  )
+
+  mtext(
+    "Sampling Fraction",
+    side=1,
+    line=3
+  )
+
+  lines(
+    params$p,
+    numvess(params)
+  )
+
+  par(new=TRUE)
+
+  compscale(
+    params,
+    xlim,
+    cylim
+  )
+
+  mtext(
+    "Completeness",
+    side=4,
+    line=3
+  )
+
+  axis(4)
+
+  lines(
+    params$p,
+    mean,
+    lty="dashed"
+  )
+
+  lines(
+    params$p,
+    lb,
+    lty="dotted"
+  )
+
+  lines(
+    params$p,
+    ub,
+    lty="dotted"
+  )
+
+  mtext(
+    paste(
+      "N = ",
+      round(params$N),
+      "     brokenness = ",
+      round(1/params$T, 3),
+      sep=""
+    ),
+    side=3,
+    line=2
+  )
+}
+
+par(
+  cex=0.8,
+  mar=c(3, 3, 3, 3)
+)
+
+p6 <- params(
+  estN(1.2, 0.5, 200),
+  0.5
+)
+
+plotPars(
+  p6,
+  1.2
+)
+
+nvessscale(
+  p6,
+  NULL,
+  NULL
+)
+
+pcrit <- 1 -
+  (
+    1 -
+      200 /
+      estN(1.2, 0.5, 200)
+  )^(1/p6$T)
+
+lines(
+  c(0, pcrit),
+  c(200, 200)
+)
+
+lines(
+  c(pcrit, pcrit),
+  c(200, 0)
+)
+
+```
+
+**What I noticed.** A lot of this code looks busy, but most of the early part is really just math and helper functions, so the plot window does not change yet. The drawing starts once `plotPars()` gets involved. `nvessscale(..., new=FALSE)` sets up the first plot, `compscale()` gives it the second scale, `polygon()` adds the gray band, and `anncomp()` adds the shaded area plus the extra lines and text. Then the `mtext()`, `axis()`, and `lines()` calls keep building on that same figure. The comment saying `plotPars()` is the part to watch makes sense after running it line by line because that is where most of the visible action happens.
+
+## Figure 1.4 — A Dramatized Barplot
+
+```{r}
+# Produce a plot of tiger populations with picture as background
+# Source: http://www.globaltiger.org/population.html
+
+year <- c(1993, 1996, 1998, 2001)
+minpop <- c(20, 50, 50, 115)
+maxpop <- c(50, 240, 240, 150)
+
+library(grid)
+library(grImport)
+require(colorspace)
+
+# Get the original tiger.ps.xml and grayify.R files
+# from the older RGraphics package
+old_pkg <- tempfile(fileext = ".tar.gz")
+old_dir <- file.path(tempdir(), "RGraphics_old")
+
+dir.create(old_dir, showWarnings = FALSE, recursive = TRUE)
+
+download.file(
+  "https://cran.r-project.org/src/contrib/Archive/RGraphics/RGraphics_2.0-14.tar.gz",
+  old_pkg,
+  mode = "wb"
+)
+
+untar(
+  old_pkg,
+  files = c(
+    "RGraphics/inst/extra/tiger.ps.xml",
+    "RGraphics/inst/extra/grayify.R"
+  ),
+  exdir = old_dir
+)
+
+tiger_file <- file.path(
+  old_dir,
+  "RGraphics",
+  "inst",
+  "extra",
+  "tiger.ps.xml"
+)
+
+grayify_file <- file.path(
+  old_dir,
+  "RGraphics",
+  "inst",
+  "extra",
+  "grayify.R"
+)
+
+tiger <- grImport::readPicture(tiger_file)[-1]
+
+source(grayify_file)
+
+grid.newpage()
+
+pushViewport(plotViewport(c(3, 2, 2, 1)),
+             viewport(xscale=c(1991, 2003), yscale=c(0, 250)))
+
+grid.rect()
+
+# tiger backdrop in gray
+grImport::grid.picture(tiger, x=0.45, FUN=grayify, min=.8)
+
+grid.xaxis(at=year, gp=gpar(cex=0.7))
+grid.yaxis(gp=gpar(cex=0.7))
+
+# black bars
+grid.rect(x=unit(year, "native"), y=0,
+          width=unit(1, "native"), height=unit(maxpop, "native"),
+          just="bottom", gp=gpar(fill="black"))
+
+# tiger in bars
+tigerGrob <- grImport::pictureGrob(tiger, x=0.45,
+                                   FUN=grImport::grobify)
+
+# Start from 2 because bar 1 does not overlap with tiger
+for (i in 2:length(year)) {
+    grid.clip(x=unit(year[i], "native"), y=0,
+              width=unit(1, "native"),
+              height=unit(maxpop[i], "native"),
+              just="bottom")
+
+    # tiger backdrop (shift slightly to left so get one eye in one bar)
+    grid.draw(tigerGrob)
+}
+
+grid.clip()
+
+# redo bar borders
+grid.rect(x=unit(year, "native"), y=0,
+          width=unit(1, "native"), height=unit(maxpop, "native"),
+          just="bottom", gp=gpar(fill=NA))
+
+grid.text("Estimated Population (max.) of Bengal Tigers\n(in Bhutan)",
+          y=unit(1, "npc") + unit(1, "lines"))
+
+popViewport(2)
+```
+
+**What I noticed.** The first part is mostly setup. The population values are created, the old tiger files are pulled in, and the picture object gets prepared. Nothing really appears until `grid.newpage()` and the viewport are set up. From there, `grid.rect()` gives the plot its frame, `grid.picture()` puts the gray tiger in the background, and the axis calls add the years and population scale. The black bars come next, and then the loop clips the tiger image to each bar so parts of the tiger show inside them. The last rectangle call redraws the bar outlines and `grid.text()` puts the title on top. I had to use Murrell's already-converted tiger files from the archived RGraphics package because the old PostScript tracing step was not working with the current Ghostscript setup, but the actual drawing idea stays the same.
+
+## Figure 1.5 — A Trellis Dotplot
+
+```{r}
+#
+# Comment:
+#
+# A slightly modified version of Figure 1.1 from
+# Cleveland's book "Visualizing Data"
+#
+
+library(lattice)
+
+trellis.par.set(
+  list(
+    fontsize = list(text = 6),
+    par.xlab.text = list(cex = 1.5),
+    add.text = list(cex = 1.5),
+    superpose.symbol = list(cex = 0.5)
+  )
+)
+
+key <- simpleKey(
+  levels(lattice::barley$year),
+  space = "right"
+)
+
+key$text$cex <- 1.5
+
+print(
+  dotplot(
+    variety ~ yield | site,
+    data = lattice::barley,
+    groups = year,
+    key = key,
+    xlab = "Barley Yield (bushels/acre)",
+    aspect = 0.5,
+    layout = c(1, 6),
+    ylab = NULL
+  )
+)
+```
+
+**What I noticed.** Loading `lattice` and setting up the theme and key did not put anything on the device by themselves. `dotplot()` builds the Trellis plot object, and `print(...)` is the part that actually sends it to the graphics device. That is when the six site panels and legend showed up.
+
+## Figure 1.6 — A ggplot2 Facetted Scatterplot
+
+```{r}
+#
+# Comment:
+#
+# Inspired by Figure 3.3 from
+# Wickham's book "ggplot2"
+#
+
+library(ggplot2)
+
+print(
+  ggplot(
+    data = ggplot2::mpg,
+    aes(
+      x = displ,
+      y = hwy,
+      shape = factor(cyl)
+    )
+  ) +
+    geom_point() +
+    stat_smooth(
+      method = "lm",
+      colour = "black"
+    ) +
+    scale_shape_manual(
+      values = c(1, 16, 3, 17)
+    ) +
+    theme_bw()
+)
+```
+
+**What I noticed.** This worked a little differently from the base R examples because the pieces build a ggplot object first. `ggplot()` sets the data and mappings, then `geom_point()`, `stat_smooth()`, `scale_shape_manual()`, and `theme_bw()` keep adding pieces to that object. The finished graph does not actually hit the graphics device until the outer `print(...)` runs.
+
+## Figure 1.7 — A Map of New Zealand
+
+```{r}
+#| fig-width: 6.5
+#| fig-height: 4.5
+
+#
+# Comment:
+#
+# A bit of mucking around is required to get the second (whole-world)
+# map positioned correctly; this provides an example of calling a
+# plotting function to perform calculations but do no drawing (see the
+# second call to the map() function).
+#
+# Makes use of the "maps", "mapdata", and "mapproj" packages to draw the maps.
+#
+
+library(maps)
+library(mapdata)
+library(mapproj)
+
+par(mar=rep(1, 4))
+
+maps::map("nzHires", fill=TRUE, col="gray80",
+          regions=c("North Island", "South Island", "Stewart Island"))
+
+points(174.75, -36.87, pch=16, cex=2,
+       col=rgb(0,0,0,.5))
+
+arrows(172, -36.87, 174, -36.87, lwd=3)
+
+text(172, -36.87, "Auckland  ",
+     adj=1, cex=2, xpd=NA)
+
+# mini world map as guide
+maplocs <- maps::map(
+  projection="sp_mercator",
+  wrap=TRUE,
+  lwd=0.1,
+  col="gray",
+  ylim=c(-60, 75),
+  interior=FALSE,
+  orientation=c(90, 180, 0),
+  add=TRUE,
+  plot=FALSE
+)
+
+xrange <- range(maplocs$x, na.rm=TRUE)
+yrange <- range(maplocs$y, na.rm=TRUE)
+aspect <- abs(diff(yrange))/abs(diff(xrange))
+
+# customised to 6.5 by 4.5 figure size
+par(
+  fig=c(0.99 - 0.5,
+        0.99,
+        0.01,
+        0.01 + 0.5*aspect*4.5/6.5),
+  mar=rep(0, 4),
+  new=TRUE
+)
+
+plot.new()
+
+plot.window(
+  xlim=xrange,
+  ylim=yrange
+)
+
+maps::map(
+  projection="sp_mercator",
+  wrap=TRUE,
+  lwd=0.5,
+  ylim=c(-60, 75),
+  interior=FALSE,
+  orientation=c(90, 180, 0),
+  add=TRUE
+)
+
+symbols(
+  -.13,
+  -0.8,
+  circles=1,
+  inches=0.1,
+  add=TRUE,
+  bg=rgb(0,0,0,.2)
+)
+
+box()
+```
+
+**What I noticed.** The first `map()` immediately drew New Zealand, and then `points()`, `arrows()`, and `text()` added the Auckland marker, arrow, and label. The interesting part was the next `map(..., plot=FALSE)` call because, even though it is a plotting function, nothing new showed up. It was only calculating and returning the projected world-map coordinates. After that, `par(fig=..., new=TRUE)`, `plot.new()`, and `plot.window()` made room for the inset, and the next `map()` actually drew the little world map. `symbols()` marked New Zealand and `box()` finished the inset border. So that original comment is basically pointing out that a plotting function can still be used just for calculations.
+
+## Figure 1.8 — A Plot of Financial Data
+
+```{r}
+suppressPackageStartupMessages(library(quantmod))
+
+options("getSymbols.warning4.0" = FALSE)
+options("getSymbols.yahoo.warning" = FALSE)
+
+# Murrell's original example used AABA, which is now delisted.
+# AAPL is used as a current replacement so the example still renders.
+stock_data <- quantmod::getSymbols(
+  "AAPL",
+  src = "yahoo",
+  auto.assign = FALSE
+)
+
+quantmod::chartSeries(
+  stock_data,
+  subset = "last 4 months"
+)
+```
+
+**What I noticed.** Loading `quantmod`, changing the warning settings, and pulling the stock data did not draw anything. The chart only appeared when `chartSeries()` ran. Murrell's original code used AABA, but that ticker is gone now, so I used AAPL so the same kind of example would still run.
+
+## Figure 1.9 — A Novel Decision Tree Plot
+
+```{r}
+library(grid)
+library(party)
+library(ipred)
+
+# CLASSIFICATION
+# fitting
+data("GlaucomaM", package = "TH.data")
+
+glau <- GlaucomaM
+
+levels(glau$Class) <- c("glau", "norm")
+
+fm.class <- party::ctree(
+  Class ~ .,
+  data = glau
+)
+
+# visualization
+pushViewport(
+  viewport(
+    gp = gpar(cex = 0.6)
+  )
+)
+
+plot(
+  fm.class,
+  newpage = FALSE
+)
+
+popViewport()
+```
+
+**What I noticed.** Everything up through `ctree()` is really just getting the data and model ready, so the graphics device stays unchanged. `pushViewport()` sets up the Grid drawing area, and `plot(fm.class, newpage=FALSE)` is where the tree actually appears. `popViewport()` just backs out of that drawing area afterward. The published snippet also refers to a custom `myNode` panel that is not defined in the Chapter 1 snippet, so I used the tree's regular terminal-node display instead of inventing a missing function.
+
+## Figure 1.10 — A Table-Like Plot
+
+```{r}
+library(grid)
+
+#
+# Comment:
+#
+# Some simple ideas as a basis for meta-analysis plots.
+#
+# The code is modular so that something similar could be achieved
+# with different data quite simply. The actual drawing for these data
+# only occurs in the last 10 or so lines of code.
+#
+
+# The horizontal gap between columns with content
+colgap <- unit(3, "mm")
+
+# The data for column 1
+col1 <- list(
+  labels = list(
+    textGrob(
+      "Centre",
+      x = 0,
+      just = "left",
+      gp = gpar(fontface = "bold", col = "white")
+    ),
+    textGrob("Thailand", x = 0, just = "left"),
+    textGrob("Philippines", x = 0, just = "left"),
+    textGrob(
+      "All in situ",
+      x = 0,
+      just = "left",
+      gp = gpar(fontface = "bold.italic")
+    ),
+    textGrob("Colombia", x = 0, just = "left"),
+    textGrob("Spain", x = 0, just = "left"),
+    textGrob(
+      "All invasive",
+      x = 0,
+      just = "left",
+      gp = gpar(fontface = "bold.italic")
+    ),
+    textGrob(
+      "All",
+      x = 0,
+      just = "left",
+      gp = gpar(fontface = "bold")
+    )
+  ),
+  rows = c(1, 5, 6, 8, 11, 12, 14, 16)
+)
+
+# Labels in col 1 which are not used to calculate the
+# column width (they spill over into col 2)
+col1plus <- list(
+  labels = list(
+    textGrob(
+      "Carcinoma in situ",
+      x = 0,
+      just = "left",
+      gp = gpar(fontface = "bold.italic")
+    ),
+    textGrob(
+      "Invasive cancer",
+      x = 0,
+      just = "left",
+      gp = gpar(fontface = "bold.italic")
+    )
+  ),
+  rows = c(4, 10)
+)
+
+# Data for column 2
+col2 <- list(
+  labels = list(
+    textGrob(
+      "Cases",
+      x = 1,
+      just = "right",
+      gp = gpar(fontface = "bold", col = "white")
+    ),
+    textGrob("327", x = 1, just = "right"),
+    textGrob("319", x = 1, just = "right"),
+    textGrob(
+      "1462",
+      x = 1,
+      just = "right",
+      gp = gpar(fontface = "bold")
+    ),
+    textGrob("96", x = 1, just = "right"),
+    textGrob("115", x = 1, just = "right"),
+    textGrob(
+      "211",
+      x = 1,
+      just = "right",
+      gp = gpar(fontface = "bold")
+    ),
+    textGrob(
+      "1673",
+      x = 1,
+      just = "right",
+      gp = gpar(fontface = "bold")
+    )
+  ),
+  rows = c(1, 5, 6, 8, 11, 12, 14, 16)
+)
+
+# Data for column 3
+col3 <- list(
+  OR = c(0.72, 1.27, 1.17, 2.97, 1.86, 2.01, 1.20),
+  LL = c(0.52, 0.87, 1.03, 1.42, 0.46, 1.09, 1.07),
+  UL = c(1.00, 1.85, 1.32, 6.21, 7.51, 3.71, 1.35),
+  rows = c(5, 6, 8, 11, 12, 14, 16),
+  type = c("n", "n", "s", "n", "n", "s", "s")
+)
+
+# Sizes of boxes
+information <- sqrt(
+  1 / ((log(col3$UL) - log(col3$OR)) / 1.96)
+)
+
+col3$sizes <- information / max(information)
+
+# Width of column 3
+col3width <- unit(1.5, "inches")
+
+# Range on the x-axis for column 3
+col3$range <- c(0, 4)
+
+# Function to draw a cell in a text column
+drawLabelCol <- function(col, j) {
+  for (i in 1:length(col$rows)) {
+    pushViewport(
+      viewport(
+        layout.pos.row = col$rows[i],
+        layout.pos.col = j
+      )
+    )
+
+    grid.draw(col$labels[[i]])
+
+    popViewport()
+  }
+}
+
+# Function to draw a non-summary rect-plus-CI
+drawNormalCI <- function(LL, OR, UL, size) {
+
+  grid.rect(
+    x = unit(OR, "native"),
+    width = unit(size, "snpc"),
+    height = unit(size, "snpc"),
+    gp = gpar(fill = "black")
+  )
+
+  # Draw arrow if exceed col range
+  if (
+    convertX(
+      unit(UL, "native"),
+      "npc",
+      valueOnly = TRUE
+    ) > 1
+  ) {
+
+    grid.lines(
+      x = unit(c(LL, 1), c("native", "npc")),
+      y = 0.5,
+      arrow = arrow(
+        length = unit(0.05, "inches")
+      )
+    )
+
+  } else {
+
+    lineCol <- if (
+      (
+        convertX(
+          unit(OR, "native") + unit(0.5 * size, "lines"),
+          "native",
+          valueOnly = TRUE
+        ) > UL
+      ) &&
+      (
+        convertX(
+          unit(OR, "native") - unit(0.5 * size, "lines"),
+          "native",
+          valueOnly = TRUE
+        ) < LL
+      )
+    ) {
+      "white"
+    } else {
+      "black"
+    }
+
+    grid.lines(
+      x = unit(c(LL, UL), "native"),
+      y = 0.5,
+      gp = gpar(col = lineCol)
+    )
+  }
+}
+
+# Function to draw a summary "diamond"
+drawSummaryCI <- function(LL, OR, UL, size) {
+
+  grid.polygon(
+    x = unit(
+      c(LL, OR, UL, OR),
+      "native"
+    ),
+    y = unit(
+      0.5 + c(
+        0,
+        0.25 * size,
+        0,
+        -0.25 * size
+      ),
+      "npc"
+    )
+  )
+}
+
+# Function to draw a "data" column
+drawDataCol <- function(col, j) {
+
+  pushViewport(
+    viewport(
+      layout.pos.col = j,
+      xscale = col$range
+    )
+  )
+
+  grid.lines(
+    x = unit(1, "native"),
+    y = 0:1
+  )
+
+  # Assume that last value in col is "All"
+  grid.lines(
+    x = unit(
+      col$OR[length(col$OR)],
+      "native"
+    ),
+    y = 0:1,
+    gp = gpar(lty = "dashed")
+  )
+
+  grid.xaxis(
+    gp = gpar(cex = 0.6)
+  )
+
+  grid.text(
+    "OR",
+    y = unit(-2, "lines")
+  )
+
+  popViewport()
+
+  for (i in 1:length(col$rows)) {
+
+    pushViewport(
+      viewport(
+        layout.pos.row = col$rows[i],
+        layout.pos.col = j,
+        xscale = col$range
+      )
+    )
+
+    if (col$type[i] == "n") {
+      drawNormalCI(
+        col$LL[i],
+        col$OR[i],
+        col$UL[i],
+        col$sizes[i]
+      )
+    } else {
+      drawSummaryCI(
+        col$LL[i],
+        col$OR[i],
+        col$UL[i],
+        col$sizes[i]
+      )
+    }
+
+    popViewport()
+  }
+}
+
+# Draw the table
+pushViewport(
+  viewport(
+    layout = grid.layout(
+      16,
+      5,
+      widths = unit.c(
+        max(
+          unit(
+            rep(1, 8),
+            "grobwidth",
+            col1$labels
+          )
+        ),
+        colgap,
+        max(
+          unit(
+            rep(1, 8),
+            "grobwidth",
+            col2$labels
+          )
+        ),
+        colgap,
+        col3width
+      ),
+      heights = unit(
+        c(1, 0, rep(1, 14)),
+        "lines"
+      )
+    )
+  )
+)
+
+pushViewport(
+  viewport(
+    layout.pos.row = 1
+  )
+)
+
+grid.rect(
+  gp = gpar(
+    col = NA,
+    fill = "black"
+  )
+)
+
+popViewport()
+
+for (i in c(8, 14, 16)) {
+
+  pushViewport(
+    viewport(
+      layout.pos.row = i
+    )
+  )
+
+  grid.rect(
+    gp = gpar(
+      col = NA,
+      fill = "gray80"
+    )
+  )
+
+  popViewport()
+}
+
+drawLabelCol(col1, 1)
+drawLabelCol(col1plus, 1)
+drawLabelCol(col2, 3)
+drawDataCol(col3, 5)
+
+popViewport()
+```
+
+**What I noticed.** Most of this chunk is basically building all the pieces before anything gets drawn. The lists store the labels and numbers, and the helper functions explain how each part should be drawn later. The actual figure comes together near the end, which matches the comment in the code. The big `pushViewport()` makes the table layout, `grid.rect()` creates the dark header and gray summary rows, `drawLabelCol()` fills in the text columns, and `drawDataCol()` handles the odds-ratio side with the confidence intervals, boxes, arrows, and diamonds. Inside those helper functions, the `grid.*` calls are the ones actually changing what I see.
+
+## Figure 1.11 — Didactic Diagrams
+
+```{r}
+#| fig-width: 7
+#| fig-height: 10
+
+#
+# Comment:
+#
+# Code by Arden Miller (Department of Statistics, The University of Auckland).
+#
+# Lots of coordinate transformations being done "by hand".
+# This code is not really reusable; just a demonstration that very
+# pretty results are possible if you're sufficiently keen.
+#
+
+par(mfrow=c(2, 1), pty="s", mar=rep(1, 4))
+
+# Create plotting region and plot outer circle
+plot(c(-1.1, 1.2), c(-1.1, 1.2),
+     type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", cex.lab=2.5)
+
+angs <- seq(0, 2*pi, length=500)
+XX <- sin(angs)
+YY <- cos(angs)
+lines(XX, YY, type="l")
+
+# Set constants
+phi1 <- pi*2/9
+k1 <- sin(phi1)
+k2 <- cos(phi1)
+
+# Create gray regions
+obsphi <- pi/12
+lambdas <- seq(-pi, pi, length=500)
+
+xx <- cos(pi/2 - obsphi)*sin(lambdas)
+yy <- k2*sin(pi/2 - obsphi) -
+      k1*cos(pi/2 - obsphi)*cos(lambdas)
+
+polygon(xx, yy, col="gray")
+lines(xx, yy, lwd=2)
+
+theta1sA <- seq(-obsphi, obsphi, length=500)
+theta2sA <- acos(cos(obsphi)/cos(theta1sA))
+
+theta1sB <- seq(obsphi, -obsphi, length=500)
+theta2sB <- -acos(cos(obsphi)/cos(theta1sB))
+
+theta1s <- c(theta1sA, theta1sB)
+theta2s <- c(theta2sA, theta2sB)
+
+xx <- cos(theta1s)*sin(theta2s + pi/4)
+yy <- k2*sin(theta1s) -
+      k1*cos(theta1s)*cos(theta2s + pi/4)
+
+polygon(xx, yy, col="gray")
+lines(xx, yy, lwd=2)
+
+xx <- cos(theta1s)*sin(theta2s - pi/4)
+yy <- k2*sin(theta1s) -
+      k1*cos(theta1s)*cos(theta2s - pi/4)
+
+polygon(xx, yy, col="gray")
+lines(xx, yy, lwd=2)
+
+# Plot longitudes
+vals <- seq(0, 7, 1)*pi/8
+
+for (lambda in vals) {
+  sl <- sin(lambda)
+  cl <- cos(lambda)
+
+  phi <- atan(((0-1)*k2*cl)/(k1))
+
+  angs <- seq(phi, pi + phi, length=500)
+
+  xx <- cos(angs)*sl
+  yy <- k2*sin(angs) - k1*cos(angs)*cl
+
+  lines(xx, yy, lwd=.5)
+}
+
+# Grey out polar cap
+phi <- 5.6*pi/12
+lambdas <- seq(-pi, pi, length=500)
+
+xx <- cos(phi)*sin(lambdas)
+yy <- k2*sin(phi) - k1*cos(phi)*cos(lambdas)
+
+polygon(xx, yy, col="gray")
+
+# Plot Latitudes
+vals2 <- seq(-2.8, 5.6, 1.4)*pi/12
+
+for (phi in vals2) {
+
+  if (k1*sin(phi) > k2*cos(phi)) {
+    crit <- pi
+  } else {
+    crit <- acos((-k1*sin(phi))/(k2*cos(phi)))
+  }
+
+  lambdas <- seq(-crit, crit, length=500)
+
+  xx <- cos(phi)*sin(lambdas)
+  yy <- k2*sin(phi) - k1*cos(phi)*cos(lambdas)
+
+  lines(xx, yy, lwd=.5)
+}
+
+# Plot axes and label
+lines(c(0.00, 0.00),
+      c(k2*sin(pi/2), 1.11),
+      lwd=4)
+
+lines(c(0.00, 0.00),
+      c(-1, -1.12),
+      lwd=4)
+
+a2x <- sin(-pi/4)
+a2y <- cos(-pi/4)*(-k1)
+
+lines(c(a2x, 1.5*a2x),
+      c(a2y, 1.5*a2y),
+      lwd=4)
+
+k <- sqrt(a2x^2 + a2y^2)
+
+lines(c(-a2x/k, 1.2*(-a2x/k)),
+      c(-a2y/k, 1.2*(-a2y/k)),
+      lwd=4)
+
+a3x <- sin(pi/4)
+a3y <- cos(pi/4)*(-k1)
+
+lines(c(a3x, 1.5*a3x),
+      c(a3y, 1.5*a3y),
+      lwd=4)
+
+k <- sqrt(a3x^2 + a3y^2)
+
+lines(c(-a3x/k, 1.2*(-a3x/k)),
+      c(-a3y/k, 1.2*(-a3y/k)),
+      lwd=4)
+
+text(0.1, 1.12, expression(bold(X[1])))
+text(-1.07, -.85, expression(bold(X[2])))
+text(1.11, -.85, expression(bold(X[3])))
+
+# Set plot region and draw outer circle
+plot(c(-1.1, 1.2), c(-1.1, 1.2),
+     type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", cex.lab=2.5)
+
+angs <- seq(0, 2*pi, length=500)
+XX <- sin(angs)
+YY <- cos(angs)
+
+lines(XX, YY, type="l")
+
+# Set constants
+phi1 <- pi*2/9
+k1 <- sin(phi1)
+k2 <- cos(phi1)
+obsphi <- pi/24
+
+# Create X2X3 gray region and plot boundary
+crit <- acos((-k1*sin(obsphi))/(k2*cos(obsphi)))
+
+lambdas <- seq(-crit, crit, length=500)
+
+xx1 <- cos(obsphi)*sin(lambdas)
+yy1 <- k2*sin(obsphi) -
+       k1*cos(obsphi)*cos(lambdas)
+
+obsphi <- -pi/24
+
+crit <- acos((-k1*sin(obsphi))/(k2*cos(obsphi)))
+
+lambdas <- seq(crit, -crit, length=500)
+
+xx3 <- cos(obsphi)*sin(lambdas)
+yy3 <- k2*sin(obsphi) -
+       k1*cos(obsphi)*cos(lambdas)
+
+ang1 <- atan(xx1[500]/yy1[500])
+ang2 <- pi + atan(xx3[1]/yy3[1])
+
+angs <- seq(ang1, ang2, length=50)
+
+xx2 <- sin(angs)
+yy2 <- cos(angs)
+
+ang4 <- atan(xx1[1]/yy1[1])
+ang3 <- -pi + atan(xx3[500]/yy3[500])
+
+angs <- seq(ang3, ang4, length=50)
+
+xx4 <- sin(angs)
+yy4 <- cos(angs)
+
+xxA <- c(xx1, xx2, xx3, xx4)
+yyA <- c(yy1, yy2, yy3, yy4)
+
+polygon(xxA, yyA, border="gray", col="gray")
+
+xx1A <- xx1
+yy1A <- yy1
+xx3A <- xx3
+yy3A <- yy3
+
+# Create X1X3 gray region and plot boundary
+obsphi <- pi/24
+
+crit <- pi/2 - obsphi
+
+theta1sA <- c(
+  seq(-crit, crit/2, length=200),
+  seq(crit/2, crit, length=500)
+)
+
+theta2sA <- asin(cos(crit)/cos(theta1sA))
+
+theta1sB <- seq(crit, crit/2, length=500)
+
+theta2sB <- pi -
+            asin(cos(crit)/cos(theta1sB))
+
+theta1s <- c(theta1sA, theta1sB)
+theta2s <- c(theta2sA, theta2sB)
+
+vals <- k1*sin(theta1s) +
+        k2*cos(theta1s)*cos(theta2s + pi/4)
+
+xx1 <- cos(theta1s[vals >= 0]) *
+       sin(theta2s[vals >= 0] + pi/4)
+
+yy1 <- k2*sin(theta1s[vals >= 0]) -
+       k1*cos(theta1s[vals >= 0]) *
+       cos(theta2s[vals >= 0] + pi/4)
+
+theta2s <- -theta2s
+
+vals <- k1*sin(theta1s) +
+        k2*cos(theta1s)*cos(theta2s + pi/4)
+
+xx3 <- cos(theta1s[vals >= 0]) *
+       sin(theta2s[vals >= 0] + pi/4)
+
+yy3 <- k2*sin(theta1s[vals >= 0]) -
+       k1*cos(theta1s[vals >= 0]) *
+       cos(theta2s[vals >= 0] + pi/4)
+
+rev <- seq(length(xx3), 1, -1)
+
+xx3 <- xx3[rev]
+yy3 <- yy3[rev]
+
+ang1 <- pi +
+        atan(xx1[length(xx1)]/yy1[length(yy1)])
+
+ang2 <- pi +
+        atan(xx3[1]/yy3[1])
+
+angs <- seq(ang1, ang2, length=50)
+
+xx2 <- sin(angs)
+yy2 <- cos(angs)
+
+ang4 <- pi +
+        atan(xx1[1]/yy1[1])
+
+ang3 <- pi +
+        atan(xx3[length(xx3)]/yy3[length(yy3)])
+
+angs <- seq(ang3, ang4, length=50)
+
+xx4 <- sin(angs)
+yy4 <- cos(angs)
+
+xxB <- c(xx1, -xx2, xx3, xx4)
+yyB <- c(yy1, -yy2, yy3, yy4)
+
+polygon(xxB, yyB, border="gray", col="gray")
+
+xx1B <- xx1
+yy1B <- yy1
+xx3B <- xx3
+yy3B <- yy3
+
+# Create X1X2 gray region and plot boundary
+vals <- k1*sin(theta1s) +
+        k2*cos(theta1s)*cos(theta2s - pi/4)
+
+xx1 <- cos(theta1s[vals >= 0]) *
+       sin(theta2s[vals >= 0] - pi/4)
+
+yy1 <- k2*sin(theta1s[vals >= 0]) -
+       k1*cos(theta1s[vals >= 0]) *
+       cos(theta2s[vals >= 0] - pi/4)
+
+theta2s <- -theta2s
+
+vals <- k1*sin(theta1s) +
+        k2*cos(theta1s)*cos(theta2s - pi/4)
+
+xx3 <- cos(theta1s[vals >= 0]) *
+       sin(theta2s[vals >= 0] - pi/4)
+
+yy3 <- k2*sin(theta1s[vals >= 0]) -
+       k1*cos(theta1s[vals >= 0]) *
+       cos(theta2s[vals >= 0] - pi/4)
+
+rev <- seq(length(xx3), 1, -1)
+
+xx3 <- xx3[rev]
+yy3 <- yy3[rev]
+
+ang1 <- pi +
+        atan(xx1[length(xx1)]/yy1[length(yy1)])
+
+ang2 <- pi +
+        atan(xx3[1]/yy3[1])
+
+angs <- seq(ang1, ang2, length=50)
+
+xx2 <- sin(angs)
+yy2 <- cos(angs)
+
+ang4 <- pi +
+        atan(xx1[1]/yy1[1])
+
+ang3 <- pi +
+        atan(xx3[length(xx3)]/yy3[length(yy3)])
+
+angs <- seq(ang3, ang4, length=50)
+
+xx4 <- sin(angs)
+yy4 <- cos(angs)
+
+xx <- c(xx1, -xx2, xx3, xx4)
+yy <- c(yy1, -yy2, yy3, yy4)
+
+polygon(xx, yy, border="gray", col="gray")
+
+xx1C <- xx1
+yy1C <- yy1
+xx3C <- xx3
+yy3C <- yy3
+
+# Plot boundaries to gray regions
+lines(xx1C[2:45], yy1C[2:45], lwd=2)
+lines(xx1C[69:583], yy1C[69:583], lwd=2)
+lines(xx1C[660:1080], yy1C[660:1080], lwd=2)
+
+lines(xx3C[13:455], yy3C[13:455], lwd=2)
+lines(xx3C[538:1055], yy3C[538:1055], lwd=2)
+lines(xx3C[1079:1135], yy3C[1079:1135], lwd=2)
+
+lines(xx1A[6:113], yy1A[6:113], lwd=2)
+lines(xx1A[153:346], yy1A[153:346], lwd=2)
+lines(xx1A[389:484], yy1A[389:484], lwd=2)
+
+lines(xx3A[1:93], yy3A[1:93], lwd=2)
+lines(xx3A[140:362], yy3A[140:362], lwd=2)
+lines(xx3A[408:497], yy3A[408:497], lwd=2)
+
+lines(xx1B[2:45], yy1B[2:45], lwd=2)
+lines(xx1B[69:583], yy1B[69:583], lwd=2)
+lines(xx1B[660:1080], yy1B[660:1080], lwd=2)
+
+lines(xx3B[13:455], yy3B[13:455], lwd=2)
+lines(xx3B[538:1055], yy3B[538:1055], lwd=2)
+lines(xx3B[1079:1135], yy3B[1079:1135], lwd=2)
+
+# Plot longitudes
+vals <- seq(-7, 8, 1)*pi/8
+
+for (lambda in vals) {
+
+  sl <- sin(lambda)
+  cl <- cos(lambda)
+
+  phi <- atan(((0-1)*k2*cl)/(k1))
+
+  angs <- seq(phi, 5.6*pi/12, length=500)
+
+  xx <- cos(angs)*sl
+  yy <- k2*sin(angs) - k1*cos(angs)*cl
+
+  lines(xx, yy, lwd=.5)
+}
+
+# Plot Latitudes
+vals2 <- c(-1.5, 0, 1.5, 3.0, 4.5, 5.6)*pi/12
+
+for (phi in vals2) {
+
+  if (k1*sin(phi) > k2*cos(phi)) {
+    crit <- pi
+  } else {
+    crit <- acos((-k1*sin(phi))/(k2*cos(phi)))
+  }
+
+  lambdas <- seq(-crit, crit, length=500)
+
+  xx <- cos(phi)*sin(lambdas)
+  yy <- k2*sin(phi) -
+        k1*cos(phi)*cos(lambdas)
+
+  lines(xx, yy, lwd=.5)
+}
+
+# Create lines for X1X2- and X1X3-planes
+lambda <- pi/4
+
+sl <- sin(lambda)
+cl <- cos(lambda)
+
+phi <- atan(((0-1)*k2*cl)/(k1))
+
+angs <- seq(phi, pi + phi, length=500)
+
+xx <- cos(angs)*sl
+yy <- k2*sin(angs) - k1*cos(angs)*cl
+
+lines(xx, yy, lwd=2)
+
+lambda <- 3*pi/4
+
+sl <- sin(lambda)
+cl <- cos(lambda)
+
+phi <- atan(((0-1)*k2*cl)/(k1))
+
+angs <- seq(phi, pi + phi, length=500)
+
+xx <- cos(angs)*sl
+yy <- k2*sin(angs) - k1*cos(angs)*cl
+
+lines(xx, yy, lwd=2)
+
+# Create line for X2X3-plane
+phi <- 0
+
+crit <- acos((-k1*sin(phi))/(k2*cos(phi)))
+
+lambdas <- seq(-crit, crit, length=500)
+
+xx <- cos(phi)*sin(lambdas)
+yy <- k2*sin(phi) -
+      k1*cos(phi)*cos(lambdas)
+
+lines(xx, yy, lwd=2)
+
+# Create axes
+lines(c(0.00, 0.00),
+      c(k2*sin(pi/2), 1.11),
+      lwd=4)
+
+lines(c(0.00, 0.00),
+      c(-1, -1.12),
+      lwd=4)
+
+a2x <- sin(-pi/4)
+a2y <- cos(-pi/4)*(-k1)
+
+lines(c(a2x, 1.5*a2x),
+      c(a2y, 1.5*a2y),
+      lwd=4)
+
+a3x <- sin(pi/4)
+a3y <- cos(pi/4)*(-k1)
+
+lines(c(a3x, 1.5*a3x),
+      c(a3y, 1.5*a3y),
+      lwd=4)
+
+k <- sqrt(a3x^2 + a3y^2)
+
+lines(c(-a3x/k, 1.2*(-a3x/k)),
+      c(-a3y/k, 1.2*(-a3y/k)),
+      lwd=4)
+
+k <- sqrt(a2x^2 + a2y^2)
+
+lines(c(-a2x/k, 1.2*(-a2x/k)),
+      c(-a2y/k, 1.2*(-a2y/k)),
+      lwd=4)
+
+# Add text
+text(-1.07, -.85, expression(bold(X[2])))
+text(1.11, -.85, expression(bold(X[3])))
+text(0.1, 1.12, expression(bold(X[1])))
+
+lines(XX, YY, type="l")
+```
+
+**What I noticed.** There is a lot of coordinate math in this one, but most of that math does not change the device at all. `par(mfrow=c(2,1), ...)` first splits the page into two panels, and each `plot(..., type="n")` gives the next panel an empty coordinate system. From there the outer circles, gray areas, latitude and longitude curves, planes, and thick axes are added little by little with `lines()` and `polygon()`. The loops are basically repeating those drawing calls for a bunch of calculated coordinates. The `text()` calls label the X1, X2, and X3 axes. This one made a lot more sense once I separated the coordinate calculations from the lines that actually draw.
+
+## Figure 1.12 — A Flow Diagram
+
+```{r}
+library(grid)
+library(colorspace)
+
+uoaBlue <- "#00467f"
+
+uoaLCH <- colorspace::coords(
+  as(colorspace::hex2RGB(uoaBlue), "polarLUV")
+)
+
+hues <- c(
+  uoaLCH[3],
+  uoaLCH[3] + 90,
+  uoaLCH[3] + 180,
+  uoaLCH[3] + 270
+)
+
+darks <- hcl(
+  hues,
+  uoaLCH[2],
+  uoaLCH[1]
+)
+
+lights <- hcl(
+  hues,
+  uoaLCH[2],
+  80
+)
+
+arr <- arrow(
+  length = unit(2, "mm"),
+  type = "closed"
+)
+
+document <- function(
+  label,
+  x = .5,
+  y = .5,
+  w = unit(2, "cm"),
+  h = unit(3, "cm"),
+  d = unit(6, "mm"),
+  ann = TRUE,
+  border = NA,
+  fill = NULL,
+  name = "script"
+) {
+
+  if (is.null(fill)) {
+    fill <- lights[1]
+  }
+
+  pushViewport(
+    viewport(
+      x,
+      y,
+      w,
+      h,
+      name = "scriptvp"
+    )
+  )
+
+  grid.polygon(
+    unit.c(
+      unit(0, "npc"),
+      unit(0, "npc"),
+      unit(1, "npc"),
+      unit(1, "npc"),
+      d,
+      d,
+      unit(0, "npc")
+    ),
+    unit.c(
+      unit(1, "npc") - d,
+      unit(0, "npc"),
+      unit(0, "npc"),
+      unit(1, "npc"),
+      unit(1, "npc"),
+      unit(1, "npc") - d,
+      unit(1, "npc") - d
+    ),
+    gp = gpar(
+      col = border,
+      fill = fill
+    ),
+    name = name
+  )
+
+  grid.polygon(
+    unit.c(
+      unit(0, "npc"),
+      d,
+      d
+    ),
+    unit.c(
+      unit(1, "npc") - d,
+      unit(1, "npc") - d,
+      unit(1, "npc")
+    ),
+    gp = gpar(
+      col = NA,
+      fill = darks[1]
+    )
+  )
+
+  grid.text(label)
+
+  if (ann) {
+
+    grid.rect(
+      y = 0,
+      height = unit(2, "lines"),
+      just = "top",
+      gp = gpar(
+        col = NA,
+        fill = darks[1]
+      )
+    )
+
+    grid.segments(
+      0,
+      0,
+      1,
+      0,
+      gp = gpar(
+        col = "white",
+        lwd = 2
+      )
+    )
+
+    grid.text(
+      "SCRIPT",
+      gp = gpar(col = "white"),
+      y = unit(-1, "lines")
+    )
+  }
+
+  upViewport()
+}
+
+module <- function(
+  label,
+  nin,
+  nout,
+  x = .5,
+  y = .5,
+  w = unit(3, "cm"),
+  h = unit(4, "cm"),
+  ann = TRUE,
+  border = NA,
+  labelin = TRUE,
+  labelout = TRUE,
+  inoutext = .2,
+  arrowsin = TRUE,
+  arrowsout = TRUE
+) {
+
+  pushViewport(
+    viewport(
+      x,
+      y,
+      w,
+      h,
+      name = "modulevp"
+    )
+  )
+
+  grid.rect(
+    gp = gpar(
+      col = border,
+      fill = lights[2]
+    )
+  )
+
+  document(
+    label,
+    ann = FALSE,
+    border = darks[1],
+    name = label
+  )
+
+  if (arrowsin) {
+    arrin <- arr
+  } else {
+    arrin <- NULL
+  }
+
+  if (arrowsout) {
+    arrout <- arr
+  } else {
+    arrout <- NULL
+  }
+
+  if (nin > 0) {
+
+    grid.segments(
+      -inoutext,
+      1:nin/(nin + 1),
+      grobX(
+        rectGrob(vp = "scriptvp"),
+        180
+      ),
+      1:nin/(nin + 1),
+      gp = gpar(
+        lwd = 3,
+        col = "black"
+      ),
+      arrow = arrin
+    )
+
+    if (is.character(labelin)) {
+      lab <- labelin
+      fam <- "mono"
+
+    } else if (labelin) {
+      lab <- "IN"
+      fam <- "sans"
+
+    } else {
+      lab <- NULL
+    }
+
+    if (!is.null(lab)) {
+
+      grid.text(
+        lab,
+        unit(-inoutext, "npc") - unit(2, "mm"),
+        1:nin/(nin + 1),
+        just = "right",
+        gp = gpar(
+          cex = .7,
+          fontfamily = fam
+        )
+      )
+    }
+  }
+
+  if (nout > 0) {
+
+    grid.segments(
+      grobX(
+        rectGrob(vp = "scriptvp"),
+        0
+      ),
+      1:nout/(nout + 1),
+      1 + inoutext,
+      1:nout/(nout + 1),
+      gp = gpar(
+        lwd = 3,
+        col = "black"
+      ),
+      arrow = arrout
+    )
+
+    if (is.character(labelout)) {
+      lab <- labelout
+      fam <- "mono"
+
+    } else if (labelout) {
+      lab <- "OUT"
+      fam <- "sans"
+
+    } else {
+      lab <- NULL
+    }
+
+    if (!is.null(lab)) {
+
+      grid.text(
+        lab,
+        unit(1 + inoutext, "npc") + unit(2, "mm"),
+        1:nout/(nout + 1),
+        just = "left",
+        gp = gpar(
+          cex = .7,
+          fontfamily = fam
+        )
+      )
+    }
+  }
+
+  if (ann) {
+
+    grid.rect(
+      y = 0,
+      height = unit(2, "lines"),
+      just = "top",
+      gp = gpar(
+        col = NA,
+        fill = darks[2]
+      )
+    )
+
+    grid.segments(
+      0,
+      0,
+      1,
+      0,
+      gp = gpar(
+        col = "white",
+        lwd = 2
+      )
+    )
+
+    grid.text(
+      "MODULE",
+      gp = gpar(col = "white"),
+      y = unit(0, "npc") - unit(1, "lines")
+    )
+  }
+
+  upViewport()
+}
+
+pipeline <- function(
+  x = .5,
+  y = .5,
+  width = unit(10, "cm"),
+  height = unit(6, "cm"),
+  modules = TRUE
+) {
+
+  pushViewport(
+    viewport(
+      x,
+      y,
+      width = width,
+      height = height,
+      name = "pipelinevp"
+    )
+  )
+
+  grid.rect(
+    gp = gpar(
+      col = NA,
+      fill = lights[4]
+    )
+  )
+
+  if (modules) {
+
+    module(
+      "R",
+      1,
+      2,
+      x = 1/4,
+      labelout = FALSE,
+      inoutext = .5,
+      arrowsout = FALSE,
+      ann = FALSE,
+      border = darks[2]
+    )
+
+    module(
+      "Python",
+      2,
+      1,
+      x = 3/4,
+      labelin = FALSE,
+      inoutext = .5,
+      ann = FALSE,
+      border = darks[2]
+    )
+  }
+
+  grid.rect(
+    y = 0,
+    height = unit(2, "lines"),
+    just = "top",
+    gp = gpar(
+      col = NA,
+      fill = darks[4]
+    )
+  )
+
+  grid.segments(
+    0,
+    0,
+    1,
+    0,
+    gp = gpar(
+      col = "white",
+      lwd = 2
+    )
+  )
+
+  grid.text(
+    "PIPELINE",
+    gp = gpar(col = "white"),
+    y = unit(0, "npc") - unit(1, "lines")
+  )
+
+  upViewport()
+}
+
+grid.newpage()
+
+pipeline(
+  modules = FALSE,
+  width = unit(10, "cm"),
+  height = unit(10, "cm")
+)
+
+downViewport("pipelinevp")
+
+# Module 1
+module(
+  "R",
+  0,
+  0,
+  x = .2,
+  labelin = FALSE,
+  labelout = FALSE,
+  ann = FALSE,
+  border = darks[2]
+)
+
+downViewport("scriptvp")
+
+# inputs
+document(
+  ".csv",
+  x = -.95,
+  y = .4,
+  w = unit(1, "cm"),
+  h = unit(1.5, "cm"),
+  d = unit(3, "mm"),
+  ann = FALSE,
+  border = "black",
+  fill = "grey80"
+)
+
+grid.segments(
+  -.55,
+  .4,
+  0,
+  .4,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+# outputs
+grid.curve(
+  1,
+  .7,
+  1.6,
+  .9,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+grid.rect(
+  x = 1.6,
+  y = 1.05,
+  width = unit(1, "cm"),
+  height = unit(1, "lines"),
+  gp = gpar(fill = "black")
+)
+
+grid.text(
+  "01011",
+  x = 1.6,
+  y = 1.05,
+  gp = gpar(
+    cex = .7,
+    fontfamily = "mono",
+    col = "white"
+  )
+)
+
+upViewport(2)
+
+# MARK
+memtopx <- convertX(
+  grobX(
+    nullGrob(
+      x = 1.6,
+      y = 1.2,
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    0
+  ),
+  "in"
+)
+
+memtopy <- convertY(
+  grobY(
+    nullGrob(
+      x = 1.6,
+      y = 1.2,
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    0
+  ),
+  "in"
+)
+
+csvbotx <- convertX(
+  grobX(
+    nullGrob(
+      x = 1.9,
+      y = -.5,
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    0
+  ),
+  "in"
+)
+
+csvboty <- convertY(
+  grobY(
+    nullGrob(
+      x = 1.9,
+      y = -.5,
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    0
+  ),
+  "in"
+)
+
+downViewport("scriptvp")
+
+grid.curve(
+  1,
+  .3,
+  1.9,
+  .1,
+  curv = -1,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+document(
+  ".csv",
+  x = 1.9,
+  y = -.2,
+  w = unit(1, "cm"),
+  h = unit(1.5, "cm"),
+  d = unit(3, "mm"),
+  ann = FALSE,
+  border = "black",
+  fill = "grey80"
+)
+
+upViewport(2)
+
+# Module 2
+module(
+  "R",
+  0,
+  0,
+  x = .65,
+  y = .75,
+  labelin = FALSE,
+  labelout = FALSE,
+  ann = FALSE,
+  border = darks[2]
+)
+
+grid.curve(
+  memtopx,
+  memtopy,
+  grobX(
+    rectGrob(
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    180
+  ),
+  grobY(
+    rectGrob(
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    180
+  ),
+  curv = -1,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+downViewport("scriptvp")
+
+grid.curve(
+  1,
+  .7,
+  1.75,
+  .5,
+  curv = -1,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+document(
+  ".xml",
+  x = 1.75,
+  y = .2,
+  w = unit(1, "cm"),
+  h = unit(1.5, "cm"),
+  d = unit(3, "mm"),
+  ann = FALSE,
+  border = "black",
+  fill = "grey80"
+)
+
+grid.curve(
+  1.75,
+  -.1,
+  .2,
+  -.5,
+  curv = -1,
+  inflect = TRUE,
+  gp = gpar(lwd = 3)
+)
+
+upViewport(2)
+
+# MARK
+curvex <- convertX(
+  grobX(
+    nullGrob(
+      x = .2,
+      y = -.5,
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    0
+  ),
+  "in"
+)
+
+curvey <- convertY(
+  grobY(
+    nullGrob(
+      x = .2,
+      y = -.5,
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    0
+  ),
+  "in"
+)
+
+# Module 3
+module(
+  "Python",
+  0,
+  0,
+  x = .8,
+  y = .25,
+  labelin = FALSE,
+  labelout = FALSE,
+  ann = FALSE,
+  border = darks[2]
+)
+
+grid.curve(
+  csvbotx,
+  csvboty,
+  grobX(
+    rectGrob(
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    220
+  ),
+  grobY(
+    rectGrob(
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    220
+  ),
+  curv = 1,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+grid.curve(
+  curvex,
+  curvey,
+  grobX(
+    rectGrob(
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    160
+  ),
+  grobY(
+    rectGrob(
+      vp = vpPath("modulevp", "scriptvp")
+    ),
+    160
+  ),
+  curv = 1,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+downViewport("scriptvp")
+
+grid.segments(
+  1,
+  .4,
+  1.55,
+  .4,
+  arrow = arr,
+  gp = gpar(lwd = 3)
+)
+
+document(
+  ".pdf",
+  x = 1.95,
+  y = .4,
+  w = unit(1, "cm"),
+  h = unit(1.5, "cm"),
+  d = unit(3, "mm"),
+  ann = FALSE,
+  border = "black",
+  fill = "grey80"
+)
+
+upViewport(2)
+
+upViewport()
+```
+
+**What I noticed.** The color setup and the `document()`, `module()`, and `pipeline()` definitions are just preparation, so nothing shows up from defining them. `grid.newpage()` starts the blank page, and then calling `pipeline()` actually draws the large background. After that, the `module()` calls make the R and Python boxes, `document()` makes the little folded file icons, and the segment and curve calls connect everything with arrows. `downViewport()` and `upViewport()` are useful to notice too because they change where the next thing gets drawn even though they do not draw anything themselves.
+
+## Figure 1.13 — An Infographic
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+
+library(grid)
+library(jpeg)
+
+# Find the original AfterTheBombs.jpg image
+pic_file <- system.file(
+  "extra",
+  "AfterTheBombs.jpg",
+  package = "RGraphics"
+)
+
+# If the current RGraphics package does not contain the image,
+# get the original image from an older RGraphics release
+if (pic_file == "" || !file.exists(pic_file)) {
+
+  old_pkg <- tempfile(fileext = ".tar.gz")
+  old_dir <- file.path(tempdir(), "RGraphics_image")
+
+  dir.create(
+    old_dir,
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
+
+  download.file(
+    "https://cran.r-project.org/src/contrib/Archive/RGraphics/RGraphics_3.0-1.tar.gz",
+    old_pkg,
+    mode = "wb"
+  )
+
+  untar(
+    old_pkg,
+    files = "RGraphics/inst/extra/AfterTheBombs.jpg",
+    exdir = old_dir
+  )
+
+  pic_file <- file.path(
+    old_dir,
+    "RGraphics",
+    "inst",
+    "extra",
+    "AfterTheBombs.jpg"
+  )
+}
+
+pic <- jpeg::readJPEG(pic_file)
+
+w <- 1024 # 578
+h <- 768 # 500
+bg <- pic # [1:h, (1024 - w):1024]
+
+unknown <- 8.7
+total <- 9.1
+known <- total - unknown
+
+theta0 <- pi/4
+thetaN <- theta0 + 2*pi*unknown/total
+theta <- seq(theta0, thetaN, length.out=100)
+
+x <- 0.3*c(0, cos(theta)) + 0.5
+y <- 0.3*c(0, sin(theta)) + 0.35
+
+grid.newpage()
+
+grid.raster(bg)
+
+pushViewport(
+  viewport(
+    width=unit(1, "snpc"),
+    height=unit(1, "snpc"),
+    gp=gpar(cex=1.2)
+  )
+)
+
+grid.polygon(
+  x,
+  y,
+  gp=gpar(
+    col=NA,
+    fill=rgb(.67, 0, .11, .7)
+  )
+)
+
+label1 <- textGrob(
+  "UNACCOUNTED\nFOR",
+  unit(.2, "npc") - unit(2, "mm"),
+  unit(.6, "npc") + unit(2, "mm"),
+  gp=gpar(
+    cex=1.4,
+    fontface="bold"
+  ),
+  just=c("right", "bottom")
+)
+
+grid.rect(
+  .2,
+  .6,
+  just=c("right", "bottom"),
+  width=grobWidth(label1) + unit(4, "mm"),
+  height=grobHeight(label1) + unit(4, "mm"),
+  gp=gpar(
+    col=NA,
+    fill=rgb(1, 1, 1, .5)
+  )
+)
+
+grid.draw(label1)
+
+label2 <- textGrob(
+  "ACCOUNTED\nFOR",
+  unit(.8, "npc") + unit(2, "mm"),
+  unit(.6, "npc") + unit(2, "mm"),
+  gp=gpar(
+    cex=1.4,
+    fontface="bold"
+  ),
+  just=c("left", "bottom")
+)
+
+grid.rect(
+  .8,
+  .6,
+  just=c("left", "bottom"),
+  width=grobWidth(label2) + unit(4, "mm"),
+  height=grobHeight(label2) + unit(4, "mm"),
+  gp=gpar(
+    col=NA,
+    fill=rgb(1, 1, 1, .5)
+  )
+)
+
+grid.draw(label2)
+
+grid.segments(
+  c(.2, .8),
+  .6,
+  c(.3, .7),
+  .5,
+  gp=gpar(
+    lty="dotted",
+    lwd=2
+  )
+)
+
+heading <- textGrob(
+  "The Department of Defense is unable to account for the use of
+$8.7 billion of the $9.1 billion it spent on reconstruction in Iraq",
+  x=unit(0.5, "cm"),
+  y=unit(3, "lines"),
+  just=c("left", "top"),
+  gp=gpar(
+    cex=1,
+    col="white"
+  )
+)
+
+pushViewport(
+  viewport(
+    x=0,
+    y=1,
+    just=c("left", "top"),
+    height=grobHeight(heading) + unit(4, "lines"),
+    width=grobWidth(heading) + unit(1, "cm")
+  )
+)
+
+grid.rect(
+  gp=gpar(fill="black")
+)
+
+grid.segments(
+  x0=unit(0.5, "cm"),
+  x1=unit(1, "npc") - unit(0.5, "cm"),
+  y0=unit(1, "npc") - unit(2, "lines"),
+  y1=unit(1, "npc") - unit(2, "lines"),
+  gp=gpar(
+    col="grey50",
+    lwd=2
+  )
+)
+
+grid.text(
+  "That's 96 Percent",
+  x=unit(0.5, "cm"),
+  y=unit(1, "npc") - unit(1, "lines"),
+  just="left",
+  gp=gpar(
+    fontface="bold",
+    col="white"
+  )
+)
+
+grid.draw(heading)
+
+popViewport(2)
+```
+
+**What I noticed.** Reading the JPEG and calculating the red sector happens in the background first, so there is still no figure yet. `grid.newpage()` starts the page and `grid.raster()` is when the photo finally appears. Then `grid.polygon()` puts the transparent red section over it. The rectangle and text-grob calls build the two white label boxes, the dotted segments point them toward the graphic, and the last viewport creates the black headline area at the top. I also use the archived RGraphics copy of `AfterTheBombs.jpg` if the installed package does not have it. That only changes how the image file is found, not how the figure itself is drawn.
+
+## Figure 1.14 — The Structure of the R Graphics System
+
+```{r}
+library(grid)
+
+size <- unit(.5, "in")
+
+node <- function(text, x, y, fill = "grey") {
+  grid.circle(
+    x, y,
+    r = size,
+    gp = gpar(fill = fill),
+    name = text
+  )
+  grid.text(text, x, y)
+}
+
+edge <- function(from, fangle, to, tangle, ends = "last") {
+  grid.segments(
+    grobX(from, fangle), grobY(from, fangle),
+    grobX(to, tangle), grobY(to, tangle),
+    arrow = arrow(angle = 15, type = "closed", ends = ends),
+    gp = gpar(fill = "black")
+  )
+}
+
+curve <- function(from, fangle, to, tangle, curv, ends = "last") {
+  x1 <- convertX(grobX(from, fangle), "in")
+  y1 <- convertY(grobY(from, fangle), "in")
+  x2 <- convertX(grobX(to, tangle), "in")
+  y2 <- convertY(grobY(to, tangle), "in")
+
+  grid.curve(
+    x1, y1, x2, y2,
+    curvature = curv,
+    ncp = 5,
+    square = FALSE,
+    arrow = arrow(angle = 15, type = "closed", ends = ends),
+    gp = gpar(fill = "black")
+  )
+}
+
+grid.newpage()
+
+node("grDevices", .5, 3/5)
+node("graphics", .5, 4/5)
+node("grid", .5, 2/5)
+node("lattice", 2/5, 1/5)
+node("ggplot2", 3/5, 1/5)
+node("grImport", 1/5, 3/5, fill = "white")
+node("grImport2", 1/5, 1.5/5, fill = "white")
+node("gridBase", 3.5/5, 3/5, fill = "white")
+node("gridGraphics", 4.5/5, 2.5/5, fill = "white")
+node("gridSVG", 4/5, 1.5/5, fill = "white")
+
+edge("grDevices", 90, "graphics", 270)
+edge("grDevices", 270, "grid", 90)
+edge("grid", 240, "lattice", 70)
+edge("grid", 300, "ggplot2", 110)
+edge("grImport2", 20, "grid", 200)
+edge("grid", 340, "gridSVG", 160)
+edge("grImport", 35, "graphics", 215)
+edge("grImport", 325, "grid", 145)
+edge("grid", 45, "gridBase", 225, ends = "both")
+edge("graphics", 315, "gridBase", 135, ends = "both")
+edge("gridGraphics", 190, "grid", 10)
+curve("graphics", 20, "gridGraphics", 90, -.5)
+```
+
+**What I noticed.** The first few lines just decide the node size and define the helper functions, so the page stays blank. `grid.newpage()` starts the actual figure. Every `node()` call then adds one circle with its label, every `edge()` call adds a straight arrow between two packages, and the calls with `ends="both"` put arrows on both ends. The final `curve()` call is the only curved connection, linking `graphics` to `gridGraphics`.
+
+# Exercise the Plotting Functions with Happy Planet Index Data
+
+## Data setup before plotting
+
+For the plotting-function exercises, I used the **Happy Planet Index** data. I downloaded the current public workbook from <https://happyplanetindex.org/countries/> and uploaded the `.xlsx` file into my RStudio project myself. The code below does **not** download the file from the internet; it only looks for the workbook that I uploaded.
+
+The July 2026 release covers **2006 through 2025** and is published by the Hot or Cool Institute. I filtered the workbook to **2025 before making any of the plots**. I picked 2025 because it is the newest year in the workbook, so it felt like the most straightforward year to use instead of randomly choosing an older one.
+
+```{r}
+library(readxl)
+
+# I upload the HPI workbook to my RStudio project myself.
+# This looks for it either beside this QMD file or inside a data folder.
+preferred_files <- c(
+  "Happy-Planet-Index-2006-2025-public-data-set.xlsx",
+  file.path("data", "Happy-Planet-Index-2006-2025-public-data-set.xlsx")
+)
+
+existing_preferred <- preferred_files[file.exists(preferred_files)]
+
+if (length(existing_preferred) > 0) {
+  hpi_file <- existing_preferred[1]
+} else {
+  root_xlsx <- list.files(
+    ".",
+    pattern = "\\.xlsx$",
+    full.names = TRUE,
+    ignore.case = TRUE
+  )
+
+  data_xlsx <- if (dir.exists("data")) {
+    list.files(
+      "data",
+      pattern = "\\.xlsx$",
+      full.names = TRUE,
+      ignore.case = TRUE
+    )
+  } else {
+    character(0)
+  }
+
+  xlsx_files <- unique(c(root_xlsx, data_xlsx))
+
+  hpi_matches <- xlsx_files[
+    grepl(
+      "happy|planet|hpi|2006.*2025",
+      basename(xlsx_files),
+      ignore.case = TRUE
+    )
+  ]
+
+  if (length(hpi_matches) == 0) {
+    stop(
+      paste(
+        "I could not find the HPI .xlsx file.",
+        "Upload the 2006-2025 Happy Planet Index workbook",
+        "beside this QMD file or into the data folder, then render again."
+      )
+    )
+  }
+
+  hpi_file <- hpi_matches[1]
+}
+
+# The current workbook normally has an 'All Data' sheet.
+sheet_names <- excel_sheets(hpi_file)
+
+hpi_sheet <- if ("All Data" %in% sheet_names) {
+  "All Data"
+} else {
+  sheet_names[1]
+}
+
+# The public workbook currently has a title row above the real headers,
+# so I first read it with skip = 1.
+hpi_raw <- read_excel(
+  hpi_file,
+  sheet = hpi_sheet,
+  skip = 1
+)
+
+clean_hpi_name <- function(x) {
+  x <- tolower(trimws(x))
+  x <- gsub("[^a-z0-9]+", "_", x)
+  x <- gsub("^_+|_+$", "", x)
+  x
+}
+
+names(hpi_raw) <- clean_hpi_name(names(hpi_raw))
+
+# If the workbook layout ever comes in without that title row,
+# reread it without skipping anything.
+if (!any(names(hpi_raw) == "year")) {
+  hpi_raw <- read_excel(
+    hpi_file,
+    sheet = hpi_sheet
+  )
+  names(hpi_raw) <- clean_hpi_name(names(hpi_raw))
+}
+
+find_hpi_col <- function(patterns) {
+  for (pattern in patterns) {
+    hit <- grep(
+      pattern,
+      names(hpi_raw),
+      value = TRUE
+    )
+
+    if (length(hit) > 0) {
+      return(hit[1])
+    }
+  }
+
+  NA_character_
+}
+
+year_col <- find_hpi_col(c("^year$"))
+country_col <- find_hpi_col(c("^country$", "^country_name$", "country"))
+group_col <- find_hpi_col(c("^region$", "world_region", "continent", "region"))
+hpi_col <- find_hpi_col(c("^hpi$", "hpi_score", "happy_planet_index"))
+life_col <- find_hpi_col(c("^life_expectancy$", "life_expectancy"))
+well_col <- find_hpi_col(
+  c("^wellbeing$", "well_being", "wellbeing", "life_satisfaction")
+)
+foot_col <- find_hpi_col(
+  c("^ecological_footprint$", "ecological_footprint", "footprint")
+)
+
+required_cols <- c(
+  year_col,
+  country_col,
+  group_col,
+  hpi_col,
+  life_col,
+  well_col,
+  foot_col
+)
+
+if (any(is.na(required_cols))) {
+  stop(
+    paste(
+      "I found the workbook, but I could not match all of the columns I need.",
+      "These are the column names I found:",
+      paste(names(hpi_raw), collapse = ", ")
+    )
+  )
+}
+
+# Filter to one year BEFORE any plotting.
+year_values <- suppressWarnings(
+  as.numeric(hpi_raw[[year_col]])
+)
+
+hpi_year <- hpi_raw[
+  year_values == 2025,
+  ,
+  drop = FALSE
+]
+
+if (nrow(hpi_year) == 0) {
+  stop("The workbook loaded, but I could not find any rows for 2025.")
+}
+
+hpi2025 <- data.frame(
+  country = as.character(hpi_year[[country_col]]),
+  group = as.character(hpi_year[[group_col]]),
+  hpi = suppressWarnings(as.numeric(hpi_year[[hpi_col]])),
+  life_expectancy = suppressWarnings(as.numeric(hpi_year[[life_col]])),
+  wellbeing = suppressWarnings(as.numeric(hpi_year[[well_col]])),
+  ecological_footprint = suppressWarnings(
+    as.numeric(hpi_year[[foot_col]])
+  ),
+  stringsAsFactors = FALSE
+)
+
+hpi2025 <- hpi2025[
+  complete.cases(
+    hpi2025[, c(
+      "country",
+      "group",
+      "hpi",
+      "life_expectancy",
+      "wellbeing",
+      "ecological_footprint"
+    )]
+  ),
+]
+
+hpi2025$group <- factor(hpi2025$group)
+
+head(hpi2025)
+```
+
+## A. Set Up the Canvas
+
+### `par()`
+
+```{r}
+oldpar <- par(no.readonly = TRUE)
+
+par(
+  mar = c(5, 5, 3, 1),
+  las = 1,
+  cex.axis = 0.8
+)
+
+plot(
+  hpi2025$life_expectancy,
+  hpi2025$hpi,
+  pch = 19,
+  xlab = "Life expectancy",
+  ylab = "Happy Planet Index",
+  main = "Life Expectancy and HPI, 2025"
+)
+
+par(oldpar)
+```
+
+`par()` is basically where I control the overall plot setup, like the margins, label direction, text size, or whether I want more than one panel.
+
+### `box()`
+
+```{r}
+plot(
+  hpi2025$wellbeing,
+  hpi2025$hpi,
+  pch = 19,
+  bty = "n",
+  xlab = "Wellbeing",
+  ylab = "Happy Planet Index",
+  main = "Wellbeing and HPI, 2025"
+)
+
+box(lwd = 2)
+```
+
+`box()` controls the border around a plot, so I can add the frame after the plotting area is already there.
+
+### `axis()`
+
+```{r}
+plot(
+  hpi2025$ecological_footprint,
+  hpi2025$hpi,
+  pch = 19,
+  axes = FALSE,
+  xlab = "Ecological footprint",
+  ylab = "Happy Planet Index",
+  main = "Ecological Footprint and HPI, 2025"
+)
+
+axis(
+  side = 1,
+  at = pretty(hpi2025$ecological_footprint)
+)
+
+axis(
+  side = 2,
+  at = pretty(hpi2025$hpi),
+  las = 1
+)
+
+box()
+```
+
+`axis()` lets me control where an axis goes and what tick marks and labels show up on it.
+
+## B. Draw Whole Plots
+
+### `hist()`
+
+```{r}
+hist(
+  hpi2025$hpi,
+  breaks = 12,
+  main = "Distribution of Happy Planet Index Scores, 2025",
+  xlab = "Happy Planet Index",
+  ylab = "Number of countries"
+)
+```
+
+`hist()` makes the full histogram, so it controls how a numeric variable gets grouped into bars and shown as a distribution.
+
+### `boxplot()`
+
+```{r}
+oldpar <- par(no.readonly = TRUE)
+
+par(
+  mar = c(8, 4, 3, 1)
+)
+
+boxplot(
+  hpi ~ group,
+  data = hpi2025,
+  las = 2,
+  xlab = "",
+  ylab = "Happy Planet Index",
+  main = "Happy Planet Index by Region, 2025"
+)
+
+par(oldpar)
+```
+
+`boxplot()` makes the full box-and-whisker plot, which is useful for comparing the middle, spread, and possible outliers across groups.
+
+### `pie()`
+
+```{r}
+region_table <- table(hpi2025$group)
+region_table <- sort(
+  region_table,
+  decreasing = TRUE
+)
+
+pie_values <- as.numeric(region_table)
+
+# names() is part of the workflow, but it is NOT a graphics function.
+names(pie_values) <- names(region_table)
+
+pie(
+  pie_values,
+  main = "Countries in the 2025 HPI Data by Region"
+)
+```
+
+`pie()` makes the whole pie chart, with each slice showing how much of the total comes from each category.
+
+### `persp()`
+
+```{r}
+surface_model <- lm(
+  hpi ~ life_expectancy + wellbeing,
+  data = hpi2025
+)
+
+x_surface <- seq(
+  min(hpi2025$life_expectancy),
+  max(hpi2025$life_expectancy),
+  length.out = 30
+)
+
+y_surface <- seq(
+  min(hpi2025$wellbeing),
+  max(hpi2025$wellbeing),
+  length.out = 30
+)
+
+b <- coef(surface_model)
+
+z_surface <- outer(
+  x_surface,
+  y_surface,
+  function(x, y) {
+    b[1] + b[2] * x + b[3] * y
+  }
+)
+
+persp(
+  x_surface,
+  y_surface,
+  z_surface,
+  theta = 35,
+  phi = 25,
+  expand = 0.7,
+  ticktype = "detailed",
+  xlab = "Life expectancy",
+  ylab = "Wellbeing",
+  zlab = "Predicted HPI",
+  main = "Predicted HPI Surface, 2025"
+)
+```
+
+`persp()` controls the 3-D perspective view of a surface made from x, y, and z values.
+
+## C. Add to an Existing Plot
+
+### `points()`
+
+```{r}
+plot(
+  range(hpi2025$life_expectancy),
+  range(hpi2025$hpi),
+  type = "n",
+  xlab = "Life expectancy",
+  ylab = "Happy Planet Index",
+  main = "Life Expectancy and HPI, 2025"
+)
+
+points(
+  hpi2025$life_expectancy,
+  hpi2025$hpi,
+  pch = 19
+)
+```
+
+`points()` adds individual points onto a plot that is already open instead of starting a brand-new plot.
+
+### `lines()`
+
+```{r}
+plot(
+  hpi2025$life_expectancy,
+  hpi2025$hpi,
+  pch = 19,
+  xlab = "Life expectancy",
+  ylab = "Happy Planet Index",
+  main = "Life Expectancy and HPI with Fitted Line, 2025"
+)
+
+hpi_fit <- lm(
+  hpi ~ life_expectancy,
+  data = hpi2025
+)
+
+x_line <- seq(
+  min(hpi2025$life_expectancy),
+  max(hpi2025$life_expectancy),
+  length.out = 100
+)
+
+y_line <- predict(
+  hpi_fit,
+  newdata = data.frame(
+    life_expectancy = x_line
+  )
+)
+
+lines(
+  x_line,
+  y_line,
+  lwd = 2
+)
+```
+
+`lines()` adds a line onto a plot that already exists; here I used it to lay the fitted HPI relationship over the scatterplot.
+
+## D. Annotate
+
+### `text()`
+
+```{r}
+plot(
+  hpi2025$life_expectancy,
+  hpi2025$hpi,
+  pch = 19,
+  xlab = "Life expectancy",
+  ylab = "Happy Planet Index",
+  main = "Highest HPI Countries, 2025"
+)
+
+top5 <- order(
+  hpi2025$hpi,
+  decreasing = TRUE
+)[1:min(5, nrow(hpi2025))]
+
+text(
+  hpi2025$life_expectancy[top5],
+  hpi2025$hpi[top5],
+  labels = hpi2025$country[top5],
+  pos = 4,
+  cex = 0.7
+)
+```
+
+`text()` lets me drop a label right inside the plotting area at specific x- and y-coordinates.
+
+### `mtext()`
+
+```{r}
+oldpar <- par(no.readonly = TRUE)
+
+par(
+  oma = c(0, 0, 2, 0)
+)
+
+plot(
+  hpi2025$wellbeing,
+  hpi2025$hpi,
+  pch = 19,
+  xlab = "Wellbeing",
+  ylab = "Happy Planet Index",
+  main = "Wellbeing and HPI"
+)
+
+mtext(
+  "Happy Planet Index data, 2025",
+  side = 3,
+  outer = TRUE,
+  line = 0.5
+)
+
+par(oldpar)
+```
+
+`mtext()` adds text out in the plot margin, which is handy when I want a note or label outside the actual data area.
+
+### `legend()`
+
+```{r}
+region_levels <- levels(hpi2025$group)
+region_id <- as.integer(hpi2025$group)
+
+plot(
+  hpi2025$life_expectancy,
+  hpi2025$hpi,
+  pch = 19,
+  col = region_id,
+  xlab = "Life expectancy",
+  ylab = "Happy Planet Index",
+  main = "Life Expectancy and HPI by Region, 2025"
+)
+
+legend(
+  "topleft",
+  legend = region_levels,
+  pch = 19,
+  col = seq_along(region_levels),
+  cex = 0.7,
+  bty = "n"
+)
+```
+
+`legend()` adds the key that tells the reader what the different colors, symbols, or line styles in the graph mean.
+
+## Note on `names()`
+
+I used `names()` in the pie-chart setup to attach the region labels to `pie_values`, but I am not counting it as a graphics function. It only changes the object's `names` attribute; it does not actually draw anything on the graphics device.
+
+AI Disclaimer: I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.
+

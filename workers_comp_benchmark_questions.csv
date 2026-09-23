@@ -1,0 +1,9 @@
+question_id,question,expected_answer,expected_terms,expected_refs,difficulty
+Q01,"Which claim had lumbar surgery followed by a major reserve increase?","WC-1001; reserve increased to $128,000 after lumbar surgery.","lumbar|surgery|reserve|128000","WC-1001|RW-1001|MED-1001",Cross-reference
+Q02,"Which provider submitted duplicate physical therapy bills, and on which claim?","PRV-204 on WC-1002.","duplicate|physical|therapy|provider","PRV-204|WC-1002|B-8821|B-8822",Cross-reference
+Q03,"Which claim has disputed compensability and attorney representation?","WC-1003.","disputed|compensability|attorney|represented","WC-1003|ATT-773",Direct
+Q04,"What is the latest return-to-work estimate for WC-1001?","2026-10-15.","latest|return|work|2026|10|15","WC-1001|2026-10-15",Temporal
+Q05,"Which claim has an IME that challenges causation because the condition is degenerative?","WC-1004.","ime|causation|degenerative","WC-1004|IME-1004",Direct
+Q06,"Which claim should receive the earliest litigation-specialist review based on disputes, representation, and reserve movement?","WC-1003.","dispute|attorney|reserve|litigation|hearing","WC-1003|RR-1003|ATT-773",Synthesis
+Q07,"Which claim has the greatest medical severity without current attorney involvement?","WC-1005.","severe|surgery|fractures|285000|no attorney","WC-1005|SD-1005",Synthesis
+Q08,"What amount of duplicate billing is under review for WC-1002?","$3,480.","duplicate|3480|billing","WC-1002|PRV-204",Numeric

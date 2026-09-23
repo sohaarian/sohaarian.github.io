@@ -112,3 +112,5 @@ ggplot(TEDS_clean, aes(x = Tondu)) +
   geom_bar(fill = "deeppink") +
   facet_wrap(~ votetsai)
 ```
+
+**AI Disclaimer:** *I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.*

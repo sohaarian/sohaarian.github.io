@@ -1,10 +1,14 @@
 project:
   type: website
+
+  render:
+    - "*.qmd"
+
   resources:
     - "Soha_Arian_Resume (2).pdf"
     - "Group 5 U.S. Healthcare Provider Underwriting Standard (1).pdf"
     - "REPORT Aligning U.S. Healthcare Provider Cyber Insurance Policy with NIST Guidelines:  Standardizing Underwriting Questionnaires.pdf"
-
+    - "images/**"
 website:
   title: "SOHAARIAN"
   search: true
@@ -47,6 +51,14 @@ website:
           - href: assignment-1DV.qmd
             text: ASSIGNMENT 1
 
+          - href: assignment-2DV.qmd
+            text: ASSIGNMENT 2
+
+      - text: MALWARE ANALYSIS
+        menu:
+          - href: Arian_Soha_Number_Systems.qmd
+            text: NUMBER SYSTEMS
+
     right:
       - href: research.qmd
         text: RESEARCH
@@ -67,5 +79,4 @@ format:
     include-after-body: animations.html
 
 editor: visual
-
 

@@ -1,0 +1,17 @@
+code,n,broad_theme
+Data Inventory and Sensitive Data Exposure,20,Data Exposure and Compliance
+Endpoint and Network Protection,15,Technical Security Controls
+Multi-Factor Authentication,14,Identity and Access Management
+Backups and Recovery,13,Data Protection and Resilience
+Funds Transfer and Social Engineering Controls,13,Fraud Prevention Controls
+Encryption and Data Protection,10,Data Protection and Resilience
+Media and Content Governance,10,"Media, Privacy, and Governance"
+Password and Privileged Access Management,10,Identity and Access Management
+Email Security,7,Email and Human Factors
+Security Monitoring and Operations,5,Technical Security Controls
+Compliance and Legal Review,4,Data Exposure and Compliance
+Incident Response and Business Continuity,4,Data Protection and Resilience
+Asset and Configuration Management,3,Asset and Vulnerability Management
+Security Awareness and Phishing Training,2,Email and Human Factors
+Unsupported Software and Patch Management,2,Asset and Vulnerability Management
+Vulnerability Scanning and Testing,2,Asset and Vulnerability Management

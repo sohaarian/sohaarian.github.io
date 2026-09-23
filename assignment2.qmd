@@ -20,23 +20,19 @@ The prompt was submitted to ChatGPT, Copilot, and Grok 3.
 Each model response was evaluated using the following criteria:
 
 **Structure**\
-Did it include a methodology section and follow a
-systematic review format?
+Did it include a methodology section and follow a systematic review format?
 
 **Synthesis**\
-Were key findings from data mining and machine learning
-applications well-summarized?
+Were key findings from data mining and machine learning applications well-summarized?
 
 **Trends and Gaps**\
-Did it identify meaningful trends and research
-gaps?
+Did it identify meaningful trends and research gaps?
 
 **Hypothesis Quality**\
 Was the proposed hypothesis testable and relevant?
 
 **References**\
-Are the citations accurate (check using Google Scholar or
-Semantic Scholar)
+Are the citations accurate (check using Google Scholar or Semantic Scholar)
 
 ## **Analyze Model Responses**
 
@@ -100,7 +96,7 @@ After collecting revised outputs, I used this synthesis prompt:
 
 I am giving you three different drafts for a literature review on Data Mining and Machine Learning. Please combine them into one final 2,000-word systematic review. Use the real-world citations and the methodology from the first draft, the clear headings and organization from the second draft, and the modern technical insights from the third draft. Make sure the final document flows smoothly, maintains a formal tone, and ends with the most realistic and testable hypothesis. \[I insert the three model outputs here.\]
 
-## **Reflection** 
+## **Reflection**
 
 **How did the models respond differently?\
 **Each model handled the systematic review in a different way. ChatGPT focused on the technical history and professional structure of data mining, making sure to connect old methods with new ones. Microsoft Copilot focused more on the layout and organization of the report, though it struggled to stay on the correct topic at the beginning. Grok 3 focused on the newest trends and how AI affects the real world right now, but it had a hard time finishing long responses and often stopped before the end.
@@ -110,3 +106,5 @@ The prompt refinements that worked best were the ones that added very specific r
 
 **What did this exercise demonstrate?**\
 I learned that using AI for academic reviews requires a lot of back-and-forth work to get a good result. You cannot just use the first answer the AI gives you; you have to check for missing parts and fix the instructions to get better details. I also learned that it is best to use multiple models because one might be better at organizing while another is better at finding modern trends. The most important lesson is that a human must guide the AI and verify all the facts to make sure the final paper is correct and complete.
+
+**AI Disclaimer:** *I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.*
