@@ -9,6 +9,7 @@ project:
     - "Group 5 U.S. Healthcare Provider Underwriting Standard (1).pdf"
     - "REPORT Aligning U.S. Healthcare Provider Cyber Insurance Policy with NIST Guidelines:  Standardizing Underwriting Questionnaires.pdf"
     - "images/**"
+
 website:
   title: "SOHAARIAN"
   search: true
@@ -53,7 +54,10 @@ website:
 
           - href: assignment-2DV.qmd
             text: ASSIGNMENT 2
-
+            
+          - href: assignment-3DV.qmd
+            text: ASSIGNMENT 3
+            
       - text: MALWARE ANALYSIS
         menu:
           - href: Arian_Soha_Number_Systems.qmd
