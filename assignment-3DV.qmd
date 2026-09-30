@@ -2,9 +2,7 @@
 title: "Assignment 3"
 format:
   html:
-    theme: darkly
-    highlight-style: zenburn
-    toc: false
+    embed-resources: true
 ---
 
 <style>
