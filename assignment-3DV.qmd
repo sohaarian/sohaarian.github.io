@@ -1,0 +1,641 @@
+---
+title: "Assignment 3"
+format:
+  html:
+    theme: darkly
+    highlight-style: zenburn
+    toc: false
+---
+
+<style>
+
+html, body {
+  background-color: #060709 !important;
+  color: #f2f2ed !important;
+}
+
+body {
+  margin: 0 !important;
+  font-family: "Courier New", Courier, monospace !important;
+  overflow-x: hidden !important;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px) !important;
+  background-size: 42px 42px !important;
+}
+
+.main-container {
+  max-width: 1000px !important;
+  margin: auto !important;
+  padding: 35px 55px 60px 55px !important;
+  background-color: transparent !important;
+}
+
+.author,
+.date,
+.quarto-title-meta,
+.quarto-title-meta-contents {
+  display: none !important;
+}
+
+h1.title {
+  color: #f2f2ed !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: clamp(2.8rem, 7vw, 6rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -5px !important;
+  line-height: 0.95 !important;
+  text-transform: uppercase !important;
+  text-align: left !important;
+  margin-bottom: 2rem !important;
+}
+
+h1 {
+  color: #f2f2ed !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: clamp(2.4rem, 6vw, 4.5rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -4px !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid rgba(255,255,255,0.16) !important;
+  padding-bottom: 12px !important;
+}
+
+h2 {
+  margin-top: 4rem !important;
+  padding-top: 1rem !important;
+  color: #f2f2ed !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: clamp(1.5rem, 4vw, 2.6rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -2px !important;
+  border-top: 1px solid rgba(255,255,255,0.16) !important;
+}
+
+h3 {
+  margin: 3rem 0 1rem !important;
+  color: #dfff54 !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+}
+
+p {
+  margin-bottom: 2rem !important;
+  color: #9ca5ae !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+}
+
+code {
+  color: #dfff54 !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  background-color: transparent !important;
+}
+
+pre {
+  background-color: #080b0e !important;
+  color: #f2f2ed !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  border-radius: 0 !important;
+  padding: 16px !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  overflow-x: auto !important;
+}
+
+pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+table {
+  width: 100% !important;
+  color: #f2f2ed !important;
+  font-family: "Courier New", Courier, monospace !important;
+  background-color: #080b0e !important;
+  border-collapse: collapse !important;
+}
+
+th {
+  color: #dfff54 !important;
+  background-color: #0d1115 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.20) !important;
+  text-align: center !important;
+  padding: 10px !important;
+}
+
+td {
+  color: #f2f2ed !important;
+  background-color: #080b0e !important;
+  border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+  text-align: center !important;
+  padding: 10px !important;
+}
+
+caption {
+  color: #9ca5ae !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  padding-bottom: 10px !important;
+}
+
+img {
+  display: block !important;
+  margin: 22px auto 32px auto !important;
+  max-width: 95% !important;
+}
+
+a {
+  color: #dfff54 !important;
+}
+
+a:hover {
+  color: #ffffff !important;
+}
+
+</style>
+
+
+# 1. Documenting a Chart
+
+## 1.a: Re-running murrell01.R from Assignment 2
+
+```{r}
+#| label: murrell01
+#| echo: true
+#| results: hide
+#| fig-show: hold
+#| fig-width: 8
+#| fig-height: 6
+
+source("murrell01.R")
+```
+
+
+## 1.b: Documenting one chart
+
+I chose the boxplot. The comments explain how each part contributes to the finished chart.
+
+```{r}
+#| label: boxplot
+#| echo: true
+#| fig-width: 8
+#| fig-height: 5.5
+
+# Boxplot
+
+# Set margins
+par(mar=c(3, 4.1, 2, 0))
+
+# VC boxplots
+boxplot(len ~ dose, data=ToothGrowth,
+        boxwex=0.25, at=1:3 - 0.2,
+        subset=supp == "VC", col="white",
+        xlab="",
+        ylab="Tooth Length", ylim=c(0,35))
+
+# Add x-axis label
+mtext("Vitamin C dose (mg)", side=1, line=2.5, cex=0.8)
+
+# Add OJ boxplots
+boxplot(len ~ dose, data=ToothGrowth, add=TRUE,
+        boxwex=0.25, at=1:3 + 0.2,
+        subset=supp == "OJ")
+
+# Add legend
+legend(1.5, 9, c("Ascorbic acid", "Orange juice"),
+       fill=c("white", "gray"),
+       bty="n")
+
+# Reset margins
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+```
+
+
+# 2. Anscombe's Quartet
+
+## 2.a: Re-running anscombe01.R
+
+```{r}
+#| label: anscombe-original
+#| echo: true
+#| results: hide
+#| fig-show: hide
+
+# Run anscombe01.R without opening the RStudio data viewer
+local({
+  View <- function(...) invisible(NULL)
+  source("anscombe01.R", local=environment())
+})
+```
+
+```{r}
+#| label: anscombe-data
+#| echo: true
+
+## Anscombe (1973) Quartet
+
+data(anscombe)
+summary(anscombe)
+
+## Fit all four models
+
+lm1 <- lm(y1 ~ x1, data=anscombe)
+lm2 <- lm(y2 ~ x2, data=anscombe)
+lm3 <- lm(y3 ~ x3, data=anscombe)
+lm4 <- lm(y4 ~ x4, data=anscombe)
+```
+
+
+### Anscombe I
+
+```{r}
+#| label: anscombe1
+#| echo: true
+#| fig-width: 7
+#| fig-height: 5
+
+plot(anscombe$x1, anscombe$y1)
+abline(coefficients(lm1))
+```
+
+
+### Anscombe II
+
+```{r}
+#| label: anscombe2
+#| echo: true
+#| fig-width: 7
+#| fig-height: 5
+
+plot(anscombe$x2, anscombe$y2)
+abline(coefficients(lm2))
+```
+
+
+### Anscombe III
+
+```{r}
+#| label: anscombe3
+#| echo: true
+#| fig-width: 7
+#| fig-height: 5
+
+plot(anscombe$x3, anscombe$y3)
+abline(coefficients(lm3))
+```
+
+
+### Anscombe IV
+
+```{r}
+#| label: anscombe4
+#| echo: true
+#| fig-width: 7
+#| fig-height: 5
+
+plot(anscombe$x4, anscombe$y4)
+abline(coefficients(lm4))
+```
+
+
+### Four plots together
+
+```{r}
+#| label: anscombe-four
+#| echo: true
+#| fig-width: 9
+#| fig-height: 7
+
+par(mfrow=c(2,2))
+
+plot(anscombe$x1, anscombe$y1,
+     col="red", pch=21, bg="orange",
+     xlim=c(3,19), ylim=c(3,13),
+     main="Anscombe I")
+abline(lm1, col="blue")
+
+plot(anscombe$x2, anscombe$y2,
+     col="red", pch=21, bg="orange",
+     xlim=c(3,19), ylim=c(3,13),
+     main="Anscombe II")
+abline(lm2, col="blue")
+
+plot(anscombe$x3, anscombe$y3,
+     col="red", pch=21, bg="orange",
+     xlim=c(3,19), ylim=c(3,13),
+     main="Anscombe III")
+abline(lm3, col="blue")
+
+plot(anscombe$x4, anscombe$y4,
+     col="red", pch=21, bg="orange",
+     xlim=c(3,19), ylim=c(3,13),
+     main="Anscombe IV")
+abline(lm4, col="blue")
+
+par(mfrow=c(1,1))
+```
+
+
+## 2.b: Comparing the regression models
+
+```{r}
+#| label: regression-table
+#| echo: true
+#| results: asis
+
+results <- data.frame(
+  Model=c("Model 1", "Model 2", "Model 3", "Model 4"),
+  Intercept=c(coef(lm1)[1],
+              coef(lm2)[1],
+              coef(lm3)[1],
+              coef(lm4)[1]),
+  Slope=c(coef(lm1)[2],
+          coef(lm2)[2],
+          coef(lm3)[2],
+          coef(lm4)[2]),
+  R_Squared=c(summary(lm1)$r.squared,
+              summary(lm2)$r.squared,
+              summary(lm3)$r.squared,
+              summary(lm4)$r.squared),
+  Residual_SE=c(summary(lm1)$sigma,
+                summary(lm2)$sigma,
+                summary(lm3)$sigma,
+                summary(lm4)$sigma)
+)
+
+rownames(results) <- NULL
+results[, -1] <- round(results[, -1], 3)
+
+knitr::kable(results,
+             format="html",
+             caption="Comparison of Anscombe's Four Regression Models",
+             align="c")
+```
+
+The four regression models have almost identical results. Each model has an intercept around 3.00, a slope around 0.50, an R-squared value around 0.67, and a residual standard error around 1.24. Based only on these statistics, the four datasets look almost the same.
+
+
+## 2.c: Comparing ways of drawing them
+
+```{r}
+#| label: anscombe-different
+#| echo: true
+#| fig-width: 9
+#| fig-height: 7
+
+par(mfrow=c(2,2))
+
+plot(anscombe$x1, anscombe$y1,
+     col="deeppink",
+     pch=16,
+     main="Anscombe I")
+abline(lm1, col="navy", lty=1, lwd=2)
+
+plot(anscombe$x2, anscombe$y2,
+     col="darkgreen",
+     pch=17,
+     main="Anscombe II")
+abline(lm2, col="purple", lty=2, lwd=2)
+
+plot(anscombe$x3, anscombe$y3,
+     col="darkorange",
+     pch=15,
+     main="Anscombe III")
+abline(lm3, col="darkred", lty=3, lwd=2)
+
+plot(anscombe$x4, anscombe$y4,
+     col="steelblue",
+     pch=18,
+     main="Anscombe IV")
+abline(lm4, col="gray40", lty=4, lwd=2)
+
+par(mfrow=c(1,1))
+```
+
+Although the four datasets have almost identical regression statistics, their plots show very different relationships. Anscombe I has a mostly linear relationship. Anscombe II has a curved pattern. Anscombe III is mostly linear but has an influential outlier. Anscombe IV has most of the observations around the same x-value with one point strongly affecting the regression line. The summary statistics hide these differences in shape, outliers, and influential observations.
+
+
+# 3. Finetune Without Leaving Base R
+
+## 3.a: Serif font
+
+`par(family="serif")`
+
+## 3.b: Non-default colours
+
+`col="deeppink"` and `col="darkblue"`
+
+## 3.c: My own plotting character
+
+`pch=18`
+
+```{r}
+#| label: finetune
+#| echo: true
+#| fig-width: 8
+#| fig-height: 5.5
+
+par(mfrow=c(1,1))
+
+# Serif font
+par(family="serif")
+
+# Pressure plot
+plot(pressure,
+     pch=18,
+     col="deeppink",
+     main="Pressure versus Temperature",
+     xlab="Temperature (Celsius)",
+     ylab="Pressure (mm Hg)")
+
+# Add text
+text(150, 600,
+     "Pressure (mm Hg)\nversus\nTemperature (Celsius)",
+     col="darkblue",
+     family="serif")
+```
+
+
+# 4. Now Doing It in ggplot2
+
+```{r}
+#| label: ggplot2
+#| echo: true
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 5.5
+
+library(tidyverse)
+
+# Convert pressure to data frame
+df <- as.data.frame(pressure)
+
+# Create ggplot
+ggplot(df, aes(x=temperature, y=pressure)) +
+  geom_point(shape=18,
+             color="deeppink",
+             size=2.5) +
+  annotate("text",
+           x=150,
+           y=600,
+           label="Pressure (mm Hg)\nversus\nTemperature (Celsius)",
+           color="darkblue",
+           family="serif") +
+  labs(title="Pressure versus Temperature",
+       x="Temperature (Celsius)",
+       y="Pressure (mm Hg)") +
+  theme_minimal(base_family="serif")
+```
+
+
+## Base R and ggplot2 Comparison
+
+In base R, I used `par(family="serif")` for the font. In ggplot2, this became `theme_minimal(base_family="serif")`.
+
+The base R plotting character `pch=18` became `shape=18` in `geom_point()`. The base R point colour `col="deeppink"` became `color="deeppink"`.
+
+I did not need to use a `scale_*()` function because the colours and plotting characters were assigned directly instead of being mapped to a variable. If they were mapped to categories, I could use functions such as `scale_color_manual()` or `scale_shape_manual()`.
+
+The base R arguments `main`, `xlab`, and `ylab` became the `title`, `x`, and `y` arguments in `labs()`.
+
+The base R `text()` function became `annotate("text", ...)` in ggplot2.
+
+There is not one exact ggplot2 replacement for `par()`. In ggplot2, those settings are handled through `theme()`, geoms, scales, and other plot settings.
+
+
+# 5. Pre-hackathon — Team Task
+
+The goal of this task is to replicate the Daily COVID Deaths in Europe chart using the Our World in Data dataset.
+
+
+## 5.a: Acquire the data
+
+```{r}
+#| label: covid-data
+#| echo: true
+#| message: false
+#| warning: false
+
+# Daily COVID counts, Our World in Data
+
+url <- paste0(
+  "https://raw.githubusercontent.com/owid/covid-19-data/",
+  "master/public/data/owid-covid-data.csv"
+)
+
+# Download data
+download.file(url, "owid-covid-data.csv")
+
+# Read data
+owidall <- read.csv("owid-covid-data.csv")
+
+# Remove OWID aggregate rows
+owidall <- owidall[!grepl("^OWID", owidall$iso_code), ]
+
+# Keep Europe only
+owideu <- subset(owidall, continent == "Europe")
+```
+
+
+## 5.b: Replicate the chart
+
+```{r}
+#| label: covid-chart
+#| echo: true
+#| fig-width: 10
+#| fig-height: 6.5
+
+# Convert date column to Date
+owideu$date <- as.Date(owideu$date)
+
+# Keep dates shown in target chart
+eu_plot <- subset(
+  owideu,
+  date >= as.Date("2020-01-01") &
+  date <= as.Date("2023-08-31") &
+  !is.na(new_deaths)
+)
+
+# Set margins and serif font
+par(mar=c(7, 6, 2, 2), family="serif")
+
+# Create scatterplot
+plot(
+  eu_plot$date,
+  eu_plot$new_deaths,
+  pch=16,
+  cex=0.45,
+  col="deeppink",
+  xaxt="n",
+  xlab="",
+  ylab="COVID Deaths in Europe (Daily)",
+  ylim=c(-200, 6700)
+)
+
+# Create dates for x-axis
+date_ticks <- seq(
+  as.Date("2020-01-01"),
+  as.Date("2023-08-01"),
+  by="2 months"
+)
+
+# Add rotated date labels
+axis(
+  1,
+  at=date_ticks,
+  labels=format(date_ticks, "%Y-%m"),
+  las=2,
+  cex.axis=0.7
+)
+
+# Add x-axis title
+mtext("Date", side=1, line=5)
+
+# Find high points
+label_data <- subset(
+  eu_plot,
+  new_deaths >= 5000 &
+  new_deaths <= 6500
+)
+
+# Sort highest to lowest
+label_data <- label_data[
+  order(label_data$new_deaths, decreasing=TRUE),
+]
+
+# Keep one high point per country
+label_data <- label_data[
+  !duplicated(label_data$location),
+]
+
+# Keep highest eight countries
+label_data <- head(label_data, 8)
+
+# Label high points by country
+text(
+  label_data$date,
+  label_data$new_deaths,
+  labels=label_data$location,
+  pos=3,
+  cex=0.7
+)
+
+# Reset margins
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+```
+
+The date column is converted into R's `Date` format so that it can be plotted correctly on the x-axis. The data is limited to observations from January 2020 through August 2023, and observations with missing daily death values are removed.
+
+The bottom margin is increased to make room for the rotated date labels. I used a serif font and `deeppink` points to match the target chart. The default x-axis is removed with `xaxt="n"` so that I could create date labels every two months and rotate them vertically.
+
+Finally, I selected the high points in the visible range of the chart, kept the highest observation for each country, and used `text()` to label those observations by country. The labels are placed directly next to the observations instead of being displayed as a legend.
+
+
+AI Disclaimer: I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.

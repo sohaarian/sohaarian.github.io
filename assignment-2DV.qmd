@@ -21,17 +21,19 @@ knitr:
 #| label: assignment2-setup
 #| include: false
 
-# Keep generated figures in one simple folder with no spaces in its name.
-# This avoids the broken-image paths that can happen when the page/file name
-# contains a leading space or other odd characters.
-dir.create("assignment2-figures", showWarnings = FALSE)
+dir.create(
+  "images/assignment2",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 knitr::opts_chunk$set(
-  fig.path = "assignment2-figures/",
   dev = "png",
   dpi = 144,
   fig.width = 7,
-  fig.height = 5
+  fig.height = 5,
+  fig.align = "center",
+  out.width = "100%"
 )
 ```
 
