@@ -1,0 +1,1838 @@
+---
+title: "assignment-5DV"
+format: html
+---
+
+---
+title: "Assignment 5"
+subtitle: "EPPS 6356 | Data Visualization"
+format:
+  html:
+    embed-resources: true
+    page-layout: full
+    code-fold: true
+    code-summary: "View R code"
+    toc: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+
+# Large, high-resolution figures
+knitr::opts_chunk$set(
+  fig.width = 13,
+  fig.height = 7.5,
+  out.width = "100%",
+  fig.align = "center",
+  dpi = 220,
+  warning = FALSE,
+  message = FALSE
+)
+
+options(
+  repos = c(CRAN = "https://cloud.r-project.org")
+)
+```
+
+<style>
+body {
+  background: #080D15 !important;
+  color: #EAF1F7 !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#quarto-content {
+  max-width: 1650px !important;
+  margin: auto;
+  padding: 0 3%;
+}
+
+#quarto-content h1,
+#quarto-content h2,
+#quarto-content h3 {
+  color: #FFFFFF !important;
+  font-weight: 750;
+}
+
+#quarto-content h2 {
+  margin-top: 3rem;
+  border-bottom: 2px solid #526476;
+  padding-bottom: 14px;
+}
+
+#quarto-content p {
+  color: #D5E0EA !important;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.cell-output-display {
+  width: 100%;
+  max-width: 1500px;
+  margin: 20px auto 35px;
+}
+
+.cell-output-display img {
+  width: 100%;
+  max-width: 1500px;
+  height: auto;
+  border-radius: 8px;
+}
+
+table {
+  color: #EAF1F7 !important;
+}
+</style>
+
+# Assignment 5
+
+**Visualizing Fuel Efficiency, Vehicle Weight, and Engine Configuration**
+
+This assignment uses the built-in Motor Trend dataset to compare Base R graphics and ggplot2. The visualizations use the same 32 automobiles, consistent category colors and symbols, and identical analytical measurements.
+
+The findings show variation in fuel efficiency, differences among cylinder groups, and the negative association between vehicle weight and miles per gallon.
+
+## 1. Base Graphics
+
+### Data Preparation and Visual Design
+
+```{r}
+# Load dataset
+data(mtcars)
+
+cars <- mtcars
+
+# Prepare variables
+cars$Model <- rownames(cars)
+cars$Weight <- cars$wt * 1000
+
+cars$Cylinders <- factor(
+  cars$cyl,
+  levels = c(4, 6, 8),
+  labels = c(
+    "4 cylinders",
+    "6 cylinders",
+    "8 cylinders"
+  )
+)
+
+cars$Transmission <- factor(
+  cars$am,
+  levels = c(0, 1),
+  labels = c(
+    "Automatic",
+    "Manual"
+  )
+)
+
+# Calculate summary statistics
+mean_mpg <- mean(cars$mpg)
+median_mpg <- median(cars$mpg)
+
+means <- aggregate(
+  mpg ~ Cylinders,
+  data = cars,
+  FUN = mean
+)
+
+medians <- aggregate(
+  mpg ~ Cylinders,
+  data = cars,
+  FUN = median
+)
+
+counts <- table(cars$Transmission)
+
+percent <- 100 * counts / sum(counts)
+
+# Correlation
+correlation <- cor(
+  cars$Weight,
+  cars$mpg
+)
+
+# Linear regression
+model <- lm(
+  mpg ~ Weight,
+  data = cars
+)
+
+slope_1000 <- coef(model)[2] * 1000
+
+# Average MPG gap
+mpg_gap <- means$mpg[1] - means$mpg[3]
+
+# Histogram intervals
+mpg_breaks <- seq(5, 35, by = 5)
+
+hist_data <- hist(
+  cars$mpg,
+  breaks = mpg_breaks,
+  right = FALSE,
+  plot = FALSE
+)
+
+# Number of cars with 15 <= MPG < 25
+central_count <- sum(
+  cars$mpg >= 15 & cars$mpg < 25
+)
+
+central_percent <- 100 *
+  central_count / nrow(cars)
+
+# -------------------------------------------------
+# CONSISTENT VISUAL IDENTITY
+# -------------------------------------------------
+
+navy <- "#122B45"
+teal <- "#007D87"
+grayblue <- "#7894A9"
+coral <- "#D94B40"
+lightgray <- "#E5EBF0"
+white <- "#FFFFFF"
+muted <- "#526476"
+
+# Color means the same thing in every chart
+engine_colors <- c(
+  "4 cylinders" = teal,
+  "6 cylinders" = grayblue,
+  "8 cylinders" = coral
+)
+
+# Symbols mean the same thing in every chart
+engine_shapes <- c(
+  "4 cylinders" = 21,
+  "6 cylinders" = 22,
+  "8 cylinders" = 24
+)
+
+# Transmission colors
+trans_colors <- c(
+  "Automatic" = teal,
+  "Manual" = grayblue
+)
+
+# Source
+source_note <- paste(
+  "SOURCE: Motor Trend (1974) |",
+  "mtcars | 32 automobiles"
+)
+
+# -------------------------------------------------
+# BASE R STYLE
+# -------------------------------------------------
+
+my_style <- function() {
+
+  par(
+    family = "sans",
+    bg = white,
+    fg = navy,
+    col.lab = navy,
+    col.axis = navy,
+    col.main = navy,
+    font.lab = 2,
+    font.main = 2,
+    cex.lab = 1.35,
+    cex.axis = 1.2,
+    cex.main = 1.45,
+    las = 1,
+    bty = "n",
+    lwd = 2,
+    mar = c(7.5, 7.5, 6.5, 3.5),
+    mgp = c(3.5, 0.9, 0),
+    tcl = -0.25
+  )
+
+}
+
+# -------------------------------------------------
+# TITLES AND NOTES
+# -------------------------------------------------
+
+add_title <- function(headline, subtitle) {
+
+  mtext(
+    headline,
+    side = 3,
+    line = 3.1,
+    adj = 0,
+    col = navy,
+    cex = 1.4,
+    font = 2
+  )
+
+  mtext(
+    subtitle,
+    side = 3,
+    line = 1.45,
+    adj = 0,
+    col = muted,
+    cex = 1.05
+  )
+
+}
+
+add_source <- function() {
+
+  mtext(
+    source_note,
+    side = 1,
+    line = 5.6,
+    adj = 0,
+    col = muted,
+    cex = 0.9
+  )
+
+}
+
+# -------------------------------------------------
+# COMBINED ENGINE SYMBOL KEY
+# -------------------------------------------------
+
+# One key combines shape AND color.
+# No duplicate color and symbol legends.
+
+engine_key <- function(
+  position = "topright",
+  size = 1.1
+) {
+
+  legend(
+    position,
+    legend = names(engine_colors),
+    pch = unname(engine_shapes),
+    pt.bg = unname(engine_colors),
+    col = navy,
+    pt.cex = 2,
+    cex = size,
+    bty = "n",
+    title = "ENGINE GROUP",
+    text.col = navy,
+    title.col = navy
+  )
+
+}
+
+# -------------------------------------------------
+# LINE KEY
+# -------------------------------------------------
+
+trend_key <- function(position = "topright") {
+
+  legend(
+    position,
+    legend = "Dashed line = linear regression",
+    col = navy,
+    lty = 2,
+    lwd = 3.5,
+    bty = "n",
+    cex = 1.05,
+    text.col = navy
+  )
+
+}
+```
+
+### 1.a: Histogram
+
+**Key message:** `r central_count` of the 32 automobiles, or `r round(central_percent, 1)`%, achieve between 15 and 25 MPG.
+
+```{r}
+# Save original graphics settings
+op <- par(no.readonly = TRUE)
+
+my_style()
+
+# Draw chart
+plot(
+  NA,
+  xlim = c(5, 35),
+  ylim = c(0, 17),
+  axes = FALSE,
+  xlab = "Fuel efficiency (miles per gallon)",
+  ylab = "Number of automobiles"
+)
+
+# Background reference lines
+abline(
+  h = seq(0, 15, by = 3),
+  col = lightgray,
+  lwd = 1.2
+)
+
+# Draw histogram bars
+hist(
+  cars$mpg,
+  breaks = mpg_breaks,
+  right = FALSE,
+  col = grayblue,
+  border = white,
+  lwd = 3,
+  add = TRUE
+)
+
+# Highlight the central two bins
+rect(
+  xleft = c(15, 20),
+  ybottom = 0,
+  xright = c(20, 25),
+  ytop = hist_data$counts[3:4],
+  col = teal,
+  border = white,
+  lwd = 3
+)
+
+# Mean reference
+abline(
+  v = mean_mpg,
+  col = coral,
+  lty = 2,
+  lwd = 4
+)
+
+axis(1, at = seq(5, 35, 5))
+axis(2, at = seq(0, 15, 3))
+
+# Direct labels inside highlighted bars
+text(
+  x = c(17.5, 22.5),
+  y = hist_data$counts[3:4] / 2,
+  labels = hist_data$counts[3:4],
+  col = white,
+  font = 2,
+  cex = 1.7
+)
+
+add_title(
+  paste0(
+    round(central_percent, 0),
+    "% of cars achieve 15-25 MPG"
+  ),
+  "Teal bars highlight the central range | each bar spans 5 MPG"
+)
+
+# Simple legend explaining color and line
+legend(
+  "topright",
+  legend = c(
+    "Teal = 15-25 MPG",
+    paste0(
+      "Dashed line = mean ",
+      round(mean_mpg, 1),
+      " MPG"
+    )
+  ),
+  fill = c(teal, NA),
+  border = NA,
+  lty = c(0, 2),
+  col = c(teal, coral),
+  lwd = c(NA, 4),
+  bty = "n",
+  cex = 1.1,
+  text.col = navy
+)
+
+add_source()
+par(op)
+```
+
+### 1.b.i: Vertical Bar Chart
+
+**Key message:** Four-cylinder automobiles average `r round(mpg_gap, 1)` more MPG than eight-cylinder automobiles.
+
+```{r}
+op <- par(no.readonly = TRUE)
+
+my_style()
+
+values <- means$mpg
+
+groups <- as.character(
+  means$Cylinders
+)
+
+# Draw bars
+bp <- barplot(
+  values,
+  names.arg = groups,
+  col = unname(engine_colors[groups]),
+  border = NA,
+  space = 0.7,
+  ylim = c(0, 35),
+  axes = FALSE,
+  xlab = "Engine configuration",
+  ylab = "Average fuel efficiency (MPG)"
+)
+
+# Axis starts at zero
+axis(
+  2,
+  at = seq(0, 30, 5)
+)
+
+# Large value labels
+text(
+  bp,
+  values + 1.1,
+  sprintf("%.1f MPG", values),
+  col = navy,
+  font = 2,
+  cex = 1.45
+)
+
+# Comparison bracket
+bracket_y <- 31.2
+
+segments(
+  bp[1],
+  bracket_y,
+  bp[3],
+  bracket_y,
+  col = navy,
+  lwd = 2.7
+)
+
+segments(
+  c(bp[1], bp[3]),
+  bracket_y - 0.6,
+  c(bp[1], bp[3]),
+  bracket_y + 0.6,
+  col = navy,
+  lwd = 2.7
+)
+
+text(
+  mean(c(bp[1], bp[3])),
+  bracket_y + 1.4,
+  paste0(
+    "+",
+    round(mpg_gap, 1),
+    " MPG"
+  ),
+  col = teal,
+  font = 2,
+  cex = 1.45
+)
+
+add_title(
+  "Four-cylinder cars outperform eight-cylinder cars by 11.6 MPG",
+  "Average MPG by engine group | bracket shows the comparison"
+)
+
+# Categories are labeled directly;
+# no redundant legend needed.
+add_source()
+
+par(op)
+```
+
+### 1.b.ii: Horizontal Bar Chart
+
+**Key message:** Four-cylinder automobiles rank first, with the highest average fuel efficiency.
+
+```{r}
+op <- par(no.readonly = TRUE)
+
+my_style()
+
+par(
+  mar = c(7.5, 10, 6.5, 3)
+)
+
+# Order bars highest at top
+horizontal_data <- means[
+  order(means$mpg),
+]
+
+values <- horizontal_data$mpg
+
+groups <- as.character(
+  horizontal_data$Cylinders
+)
+
+# Draw bars
+bp <- barplot(
+  values,
+  horiz = TRUE,
+  names.arg = groups,
+  col = unname(engine_colors[groups]),
+  border = NA,
+  space = 0.65,
+  xlim = c(0, 36),
+  axes = FALSE,
+  xlab = "Average fuel efficiency (MPG)",
+  cex.names = 1.25
+)
+
+axis(
+  1,
+  at = seq(0, 35, 5)
+)
+
+# Large values
+text(
+  values + 1.0,
+  bp,
+  sprintf("%.1f MPG", values),
+  pos = 4,
+  font = 2,
+  col = navy,
+  cex = 1.45
+)
+
+add_title(
+  "Four-cylinder cars lead the fuel-efficiency ranking",
+  "Higher average MPG appears at the top | same values as vertical chart"
+)
+
+# No duplicate legend:
+# cylinder labels identify each colored bar.
+add_source()
+
+par(op)
+```
+
+### 1.c: Pie Chart
+
+**Key message:** `r round(percent["Automatic"], 1)`% of automobiles in the sample have automatic transmissions.
+
+```{r}
+op <- par(no.readonly = TRUE)
+
+my_style()
+
+par(
+  mar = c(7.5, 3, 6.5, 3)
+)
+
+# Create pie chart
+pie(
+  counts,
+  labels = paste0(
+    names(counts),
+    "\n",
+    round(percent, 1),
+    "%"
+  ),
+  col = unname(
+    trans_colors[names(counts)]
+  ),
+  border = white,
+  lwd = 5,
+  clockwise = TRUE,
+  init.angle = 90,
+  radius = 0.76,
+  cex = 1.45,
+  main = ""
+)
+
+add_title(
+  "Nearly 6 in 10 cars have automatic transmissions",
+  "Two-category composition | the slices represent 100% of the sample"
+)
+
+# Clear category key
+legend(
+  "bottom",
+  legend = paste0(
+    names(counts),
+    " = ",
+    as.integer(counts),
+    " cars"
+  ),
+  fill = unname(
+    trans_colors[names(counts)]
+  ),
+  border = NA,
+  horiz = TRUE,
+  bty = "n",
+  cex = 1.18,
+  text.col = navy,
+  inset = -0.02,
+  xpd = NA
+)
+
+mtext(
+  "Share of automobiles (%)",
+  side = 1,
+  line = 3.4,
+  cex = 1.2,
+  col = navy
+)
+
+add_source()
+
+par(op)
+```
+
+### 1.d: Boxplot
+
+**Key message:** Four-cylinder automobiles have the highest median fuel efficiency, but fuel efficiency also varies within each engine group.
+
+```{r}
+op <- par(no.readonly = TRUE)
+
+my_style()
+
+par(
+  mar = c(7.5, 7.5, 6.5, 4)
+)
+
+# Draw boxplots
+boxplot(
+  mpg ~ Cylinders,
+  data = cars,
+  col = adjustcolor(
+    unname(engine_colors),
+    alpha.f = 0.55
+  ),
+  border = navy,
+  medcol = navy,
+  medlwd = 4,
+  boxwex = 0.5,
+  whisklwd = 2,
+  outline = FALSE,
+  ylim = c(8, 40),
+  xlab = "Engine configuration",
+  ylab = "Fuel efficiency (MPG)"
+)
+
+# Add individual cars
+set.seed(6356)
+
+for (i in 1:3) {
+
+  group <- levels(cars$Cylinders)[i]
+
+  y <- cars$mpg[
+    cars$Cylinders == group
+  ]
+
+  points(
+    jitter(
+      rep(i, length(y)),
+      amount = 0.17
+    ),
+    y,
+    pch = unname(engine_shapes[group]),
+    bg = unname(engine_colors[group]),
+    col = white,
+    lwd = 1.6,
+    cex = 1.65
+  )
+
+}
+
+# Direct median annotations
+for (i in 1:3) {
+
+  text(
+    x = i,
+    y = 38,
+    labels = paste0(
+      "Median ",
+      round(medians$mpg[i], 1)
+    ),
+    font = 2,
+    col = navy,
+    cex = 1.05
+  )
+
+}
+
+add_title(
+  "Four-cylinder cars have the highest median MPG",
+  "Boxes show the middle 50% | thick center line shows median"
+)
+
+# Combined color and shape key
+engine_key(
+  position = "topright",
+  size = 1.12
+)
+
+add_source()
+
+par(op)
+```
+
+### 1.e: Scatterplot
+
+**Key message:** Heavier automobiles tend to have lower fuel efficiency, with a Pearson correlation of `r round(correlation, 2)`.
+
+```{r}
+# Reusable scatterplot
+base_scatter <- function(compact = FALSE) {
+
+  op <- par(no.readonly = TRUE)
+  on.exit(par(op))
+
+  my_style()
+
+  if (compact) {
+
+    par(
+      mar = c(5.2, 4.7, 3.6, 1),
+      cex.lab = 0.85,
+      cex.axis = 0.8
+    )
+
+  }
+
+  plot(
+    NA,
+    xlim = c(1200, 5700),
+    ylim = c(8, 38),
+    axes = FALSE,
+    xlab = "Vehicle weight (pounds)",
+    ylab = "Fuel efficiency (MPG)"
+  )
+
+  # Background gridlines
+  abline(
+    h = seq(10, 35, 5),
+    col = lightgray,
+    lwd = 1.2
+  )
+
+  # Axes
+  axis(
+    1,
+    at = c(
+      1500, 2500, 3500, 4500, 5500
+    ),
+    labels = c(
+      "1,500",
+      "2,500",
+      "3,500",
+      "4,500",
+      "5,500"
+    )
+  )
+
+  axis(
+    2,
+    at = seq(10, 35, 5)
+  )
+
+  # Regression line
+  abline(
+    model,
+    col = navy,
+    lwd = 4,
+    lty = 2
+  )
+
+  # Colored symbols
+  for (group in levels(cars$Cylinders)) {
+
+    selected <- cars[
+      cars$Cylinders == group,
+    ]
+
+    points(
+      selected$Weight,
+      selected$mpg,
+      pch = unname(engine_shapes[group]),
+      bg = unname(engine_colors[group]),
+      col = navy,
+      lwd = 1.3,
+      cex = if (compact) 1.4 else 2.1
+    )
+
+  }
+
+  if (compact) {
+
+    title(
+      main = "Heavier cars tend to have lower MPG",
+      adj = 0,
+      cex.main = 1.12,
+      line = 1.6
+    )
+
+    legend(
+      "topright",
+      legend = c(
+        names(engine_shapes),
+        "Linear trend"
+      ),
+      pch = c(
+        unname(engine_shapes),
+        NA
+      ),
+      pt.bg = c(
+        unname(engine_colors),
+        NA
+      ),
+      col = navy,
+      lty = c(0, 0, 0, 2),
+      lwd = c(NA, NA, NA, 3),
+      bty = "n",
+      cex = 0.70
+    )
+
+    mtext(
+      source_note,
+      side = 1,
+      line = 4,
+      adj = 0,
+      cex = 0.65,
+      col = muted
+    )
+
+  } else {
+
+    add_title(
+      "Heavier automobiles tend to have lower MPG",
+      "Larger symbols = individual cars | dashed line = fitted regression"
+    )
+
+    # One combined key inside the chart
+    legend(
+      "topright",
+      legend = c(
+        names(engine_shapes),
+        "Linear regression"
+      ),
+      pch = c(
+        unname(engine_shapes),
+        NA
+      ),
+      pt.bg = c(
+        unname(engine_colors),
+        NA
+      ),
+      col = navy,
+      lty = c(0, 0, 0, 2),
+      lwd = c(NA, NA, NA, 4),
+      pt.cex = 2,
+      bty = "n",
+      cex = 1.1,
+      title = "SYMBOL AND LINE KEY"
+    )
+
+    add_source()
+
+  }
+
+}
+
+base_scatter()
+```
+
+**Interpretation:** The association is strongly negative (Pearson's r = `r round(correlation, 2)`). The fitted regression corresponds to approximately `r round(abs(slope_1000), 1)` fewer MPG per additional 1,000 pounds. This is a descriptive association, not proof of causation.
+
+## 2. ggplot2
+
+### Custom ggplot2 Theme
+
+```{r}
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+
+library(ggplot2)
+
+theme_mine <- function() {
+
+  theme_classic(
+    base_family = "sans",
+    base_size = 19
+  ) +
+
+  theme(
+    plot.title = element_text(
+      color = navy,
+      size = 25,
+      face = "bold",
+      margin = margin(b = 12)
+    ),
+
+    plot.subtitle = element_text(
+      color = muted,
+      size = 16,
+      margin = margin(b = 20)
+    ),
+
+    axis.title = element_text(
+      color = navy,
+      size = 19,
+      face = "bold"
+    ),
+
+    axis.text = element_text(
+      color = navy,
+      size = 17
+    ),
+
+    panel.grid.major.y = element_line(
+      color = lightgray,
+      linewidth = 0.8
+    ),
+
+    panel.grid.major.x = element_blank(),
+
+    panel.grid.minor = element_blank(),
+
+    legend.position = "bottom",
+
+    legend.box = "vertical",
+
+    legend.title = element_text(
+      color = navy,
+      size = 15,
+      face = "bold"
+    ),
+
+    legend.text = element_text(
+      color = navy,
+      size = 16
+    ),
+
+    legend.key.size = grid::unit(0.85, "cm"),
+
+    plot.caption = element_text(
+      color = muted,
+      size = 12,
+      hjust = 0,
+      margin = margin(t = 20)
+    ),
+
+    plot.background = element_rect(
+      fill = white,
+      color = NA
+    ),
+
+    panel.background = element_rect(
+      fill = white,
+      color = NA
+    ),
+
+    legend.background = element_rect(
+      fill = white,
+      color = NA
+    ),
+
+    legend.key = element_rect(
+      fill = white,
+      color = NA
+    ),
+
+    plot.margin = margin(
+      28, 35, 28, 35
+    )
+  )
+
+}
+```
+
+### 2.a: Histogram
+
+```{r}
+gg_histogram <- ggplot(
+  cars,
+  aes(x = mpg)
+) +
+
+  geom_histogram(
+    breaks = mpg_breaks,
+    closed = "left",
+    fill = grayblue,
+    color = white,
+    linewidth = 1.4
+  ) +
+
+  # Highlight the central 15-25 MPG bins
+  geom_rect(
+    data = data.frame(
+      xmin = c(15, 20),
+      xmax = c(20, 25),
+      ymin = 0,
+      ymax = hist_data$counts[3:4]
+    ),
+    aes(
+      xmin = xmin,
+      xmax = xmax,
+      ymin = ymin,
+      ymax = ymax
+    ),
+    inherit.aes = FALSE,
+    fill = teal,
+    color = white,
+    linewidth = 1.4
+  ) +
+
+  geom_vline(
+    xintercept = mean_mpg,
+    color = coral,
+    linetype = "dashed",
+    linewidth = 1.7
+  ) +
+
+  geom_text(
+    data = data.frame(
+      mpg = c(17.5, 22.5),
+      count = hist_data$counts[3:4]
+    ),
+    aes(
+      x = mpg,
+      y = count / 2,
+      label = count
+    ),
+    inherit.aes = FALSE,
+    color = white,
+    fontface = "bold",
+    size = 8
+  ) +
+
+  scale_x_continuous(
+    limits = c(5, 35),
+    breaks = seq(5, 35, 5)
+  ) +
+
+  scale_y_continuous(
+    limits = c(0, 17),
+    breaks = seq(0, 15, 3)
+  ) +
+
+  labs(
+    title = paste0(
+      round(central_percent, 0),
+      "% of cars achieve 15-25 MPG"
+    ),
+    subtitle = "Teal bars highlight the central range | each bar spans 5 MPG",
+    x = "Fuel efficiency (miles per gallon)",
+    y = "Number of automobiles",
+    caption = source_note
+  ) +
+
+  theme_mine()
+
+print(gg_histogram)
+```
+
+**Comparison:** ggplot2 makes it easier to layer the highlighted intervals, reference line, and numerical labels. Base R required several separate graphics commands.
+
+### 2.b.i: Vertical Bar Chart
+
+```{r}
+gg_vertical <- ggplot(
+  means,
+  aes(
+    x = Cylinders,
+    y = mpg,
+    fill = Cylinders
+  )
+) +
+
+  geom_col(
+    width = 0.6,
+    show.legend = FALSE
+  ) +
+
+  geom_text(
+    aes(
+      label = sprintf("%.1f MPG", mpg)
+    ),
+    vjust = -0.7,
+    color = navy,
+    fontface = "bold",
+    size = 7
+  ) +
+
+  # Comparison bracket
+  annotate(
+    "segment",
+    x = 1,
+    xend = 3,
+    y = 31.2,
+    yend = 31.2,
+    color = navy,
+    linewidth = 1.2
+  ) +
+
+  annotate(
+    "segment",
+    x = c(1, 3),
+    xend = c(1, 3),
+    y = 30.6,
+    yend = 31.8,
+    color = navy,
+    linewidth = 1.2
+  ) +
+
+  annotate(
+    "text",
+    x = 2,
+    y = 33.5,
+    label = paste0(
+      "+",
+      round(mpg_gap, 1),
+      " MPG"
+    ),
+    color = teal,
+    fontface = "bold",
+    size = 7
+  ) +
+
+  scale_fill_manual(
+    values = engine_colors
+  ) +
+
+  scale_y_continuous(
+    limits = c(0, 35),
+    breaks = seq(0, 30, 5),
+    expand = expansion(mult = c(0, 0))
+  ) +
+
+  labs(
+    title = "Four-cylinder cars outperform eight-cylinder cars by 11.6 MPG",
+    subtitle = "Average MPG by engine group | bracket shows the comparison",
+    x = "Engine configuration",
+    y = "Average fuel efficiency (MPG)",
+    caption = source_note
+  ) +
+
+  theme_mine()
+
+print(gg_vertical)
+```
+
+### 2.b.ii: Horizontal Bar Chart
+
+```{r}
+# Prepare ordering
+horizontal_gg <- means
+
+horizontal_gg$Cylinders <- factor(
+  horizontal_gg$Cylinders,
+  levels = rev(levels(cars$Cylinders))
+)
+
+gg_horizontal <- ggplot(
+  horizontal_gg,
+  aes(
+    x = mpg,
+    y = Cylinders,
+    fill = Cylinders
+  )
+) +
+
+  geom_col(
+    width = 0.65,
+    show.legend = FALSE
+  ) +
+
+  geom_text(
+    aes(
+      label = sprintf("%.1f MPG", mpg)
+    ),
+    hjust = -0.3,
+    color = navy,
+    fontface = "bold",
+    size = 7
+  ) +
+
+  scale_fill_manual(
+    values = engine_colors
+  ) +
+
+  scale_x_continuous(
+    limits = c(0, 36),
+    breaks = seq(0, 35, 5),
+    expand = expansion(mult = c(0, 0))
+  ) +
+
+  labs(
+    title = "Four-cylinder cars lead the fuel-efficiency ranking",
+    subtitle = "Higher average MPG appears at the top | same values as vertical chart",
+    x = "Average fuel efficiency (MPG)",
+    y = NULL,
+    caption = source_note
+  ) +
+
+  theme_mine() +
+
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(
+      color = lightgray,
+      linewidth = 0.8
+    )
+  )
+
+print(gg_horizontal)
+```
+
+**Comparison:** ggplot2 made it easier to maintain consistent colors and direct numerical labels. Base R required more manual work for text placement and the comparison bracket.
+
+### 2.c: Pie Chart
+
+```{r}
+# Prepare pie chart data
+pie_data <- data.frame(
+  Transmission = factor(
+    names(counts),
+    levels = names(counts)
+  ),
+  Count = as.numeric(counts)
+)
+
+pie_data$Percent <- round(
+  100 * pie_data$Count /
+    sum(pie_data$Count),
+  1
+)
+
+gg_pie <- ggplot(
+  pie_data,
+  aes(
+    x = 1,
+    y = Count,
+    fill = Transmission
+  )
+) +
+
+  geom_col(
+    width = 1,
+    color = white,
+    linewidth = 2
+  ) +
+
+  coord_polar(
+    theta = "y",
+    start = 0,
+    direction = -1
+  ) +
+
+  geom_text(
+    aes(
+      label = paste0(
+        Transmission,
+        "\n",
+        Percent,
+        "%"
+      )
+    ),
+    position = position_stack(
+      vjust = 0.5
+    ),
+    color = navy,
+    fontface = "bold",
+    size = 7
+  ) +
+
+  scale_fill_manual(
+    values = trans_colors,
+    labels = paste0(
+      pie_data$Transmission,
+      " = ",
+      pie_data$Count,
+      " cars"
+    )
+  ) +
+
+  labs(
+    title = "Nearly 6 in 10 cars have automatic transmissions",
+    subtitle = "Two-category composition | the slices represent 100% of the sample",
+    x = NULL,
+    y = NULL,
+    fill = "TRANSMISSION KEY",
+    caption = paste(
+      "Share of automobiles (%) |",
+      source_note
+    )
+  ) +
+
+  theme_mine() +
+
+  theme(
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line = element_blank(),
+    panel.grid = element_blank()
+  )
+
+print(gg_pie)
+```
+
+**Comparison:** Base R creates the pie chart more directly with `pie()`. ggplot2 requires polar coordinates but offers a consistent layered styling system.
+
+### 2.d: Boxplot
+
+```{r}
+set.seed(6356)
+
+gg_boxplot <- ggplot(
+  cars,
+  aes(
+    x = Cylinders,
+    y = mpg,
+    fill = Cylinders
+  )
+) +
+
+  geom_boxplot(
+    width = 0.5,
+    alpha = 0.6,
+    color = navy,
+    linewidth = 1.2,
+    outlier.shape = NA,
+    show.legend = FALSE
+  ) +
+
+  # Larger colored observations
+  geom_jitter(
+    aes(
+      shape = Cylinders,
+      fill = Cylinders
+    ),
+    width = 0.17,
+    height = 0,
+    size = 5,
+    color = navy,
+    stroke = 1.2,
+    show.legend = TRUE
+  ) +
+
+  # Median annotations
+  geom_text(
+    data = medians,
+    aes(
+      x = Cylinders,
+      y = 38,
+      label = paste0(
+        "Median ",
+        round(mpg, 1)
+      )
+    ),
+    inherit.aes = FALSE,
+    fontface = "bold",
+    color = navy,
+    size = 5.2
+  ) +
+
+  scale_fill_manual(
+    values = engine_colors
+  ) +
+
+  scale_shape_manual(
+    values = engine_shapes
+  ) +
+
+  guides(
+    fill = "none",
+    shape = guide_legend(
+      title = "ENGINE GROUP",
+      override.aes = list(
+        size = 6,
+        fill = unname(engine_colors)
+      )
+    )
+  ) +
+
+  scale_y_continuous(
+    limits = c(8, 40),
+    breaks = seq(10, 40, 5)
+  ) +
+
+  labs(
+    title = "Four-cylinder cars have the highest median MPG",
+    subtitle = "Boxes show the middle 50% | thick center line shows median",
+    x = "Engine configuration",
+    y = "Fuel efficiency (MPG)",
+    caption = source_note
+  ) +
+
+  theme_mine()
+
+print(gg_boxplot)
+```
+
+**Comparison:** ggplot2 makes it easier to layer boxplots, individual observations, and median annotations. Base R requires separate calls for these elements.
+
+### 2.e: Scatterplot
+
+```{r}
+gg_scatter <- ggplot(
+  cars,
+  aes(
+    x = Weight,
+    y = mpg
+  )
+) +
+
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = FALSE,
+    color = navy,
+    linetype = "dashed",
+    linewidth = 1.6
+  ) +
+
+  geom_point(
+    aes(
+      shape = Cylinders,
+      fill = Cylinders
+    ),
+    color = navy,
+    size = 6.2,
+    stroke = 1.2
+  ) +
+
+  scale_fill_manual(
+    values = engine_colors
+  ) +
+
+  scale_shape_manual(
+    values = engine_shapes
+  ) +
+
+  guides(
+    fill = "none",
+    shape = guide_legend(
+      title = "ENGINE GROUP",
+      override.aes = list(
+        size = 7,
+        fill = unname(engine_colors)
+      )
+    )
+  ) +
+
+  scale_x_continuous(
+    limits = c(1200, 5700),
+    breaks = c(
+      1500, 2500, 3500, 4500, 5500
+    ),
+    labels = c(
+      "1,500",
+      "2,500",
+      "3,500",
+      "4,500",
+      "5,500"
+    )
+  ) +
+
+  scale_y_continuous(
+    limits = c(8, 38),
+    breaks = seq(10, 35, 5)
+  ) +
+
+  labs(
+    title = "Heavier automobiles tend to have lower MPG",
+    subtitle = "Larger symbols = individual cars | dashed line = fitted regression",
+    x = "Vehicle weight (pounds)",
+    y = "Fuel efficiency (MPG)",
+    caption = source_note
+  ) +
+
+  theme_mine()
+
+print(gg_scatter)
+```
+
+**Comparison:** ggplot2 makes it easier to combine large colored symbols and a fitted trend line while maintaining a consistent legend. Base R requires more individual plotting commands.
+
+**Interpretation:** The weight–fuel efficiency correlation is `r round(correlation, 2)`. The fitted linear regression predicts approximately `r round(abs(slope_1000), 1)` fewer MPG per 1,000 additional pounds, although this association should not be interpreted causally.
+
+## 3. Output Formats
+
+### 3.a: Export Base Graphics
+
+```{r}
+# Output folder
+output_folder <- "assignment05_outputs"
+
+dir.create(
+  output_folder,
+  showWarnings = FALSE
+)
+
+# Six required formats
+formats <- c(
+  "pdf",
+  "svg",
+  "png",
+  "jpg",
+  "tiff",
+  "bmp"
+)
+
+# Export scatterplot
+for (fmt in formats) {
+
+  filename <- file.path(
+    output_folder,
+    paste0(
+      "base_scatter.",
+      fmt
+    )
+  )
+
+  if (fmt == "pdf") {
+
+    pdf(
+      filename,
+      width = 6.5,
+      height = 4,
+      bg = white,
+      family = "Helvetica"
+    )
+
+  } else if (fmt == "svg") {
+
+    svg(
+      filename,
+      width = 6.5,
+      height = 4,
+      bg = white
+    )
+
+  } else if (fmt == "png") {
+
+    png(
+      filename,
+      width = 6.5,
+      height = 4,
+      units = "in",
+      res = 300,
+      bg = white
+    )
+
+  } else if (fmt == "jpg") {
+
+    jpeg(
+      filename,
+      width = 6.5,
+      height = 4,
+      units = "in",
+      res = 300,
+      quality = 95,
+      bg = white
+    )
+
+  } else if (fmt == "tiff") {
+
+    tiff(
+      filename,
+      width = 6.5,
+      height = 4,
+      units = "in",
+      res = 300,
+      compression = "lzw",
+      bg = white
+    )
+
+  } else if (fmt == "bmp") {
+
+    bmp(
+      filename,
+      width = 6.5,
+      height = 4,
+      units = "in",
+      res = 300,
+      bg = white
+    )
+
+  }
+
+  base_scatter(compact = TRUE)
+
+  dev.off()
+}
+```
+
+### 3.b: Export ggplot2
+
+```{r}
+# Compact typography for 6.5 x 4 inch output
+gg_scatter_export <- gg_scatter +
+
+  labs(
+    title = "Heavier cars tend to have lower MPG",
+    subtitle = NULL
+  ) +
+
+  theme(
+    plot.title = element_text(size = 14),
+    axis.title = element_text(size = 10),
+    axis.text = element_text(size = 9),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 9),
+    legend.key.size = grid::unit(0.4, "cm"),
+    plot.caption = element_text(size = 7),
+    plot.margin = margin(10, 12, 10, 12)
+  )
+
+# Export six formats
+for (fmt in formats) {
+
+  filename <- file.path(
+    output_folder,
+    paste0(
+      "ggplot_scatter.",
+      fmt
+    )
+  )
+
+  if (fmt == "svg") {
+
+    ggsave(
+      filename,
+      plot = gg_scatter_export,
+      device = grDevices::svg,
+      width = 6.5,
+      height = 4,
+      units = "in",
+      bg = white
+    )
+
+  } else {
+
+    ggsave(
+      filename,
+      plot = gg_scatter_export,
+      device = fmt,
+      width = 6.5,
+      height = 4,
+      units = "in",
+      dpi = 300,
+      bg = white
+    )
+
+  }
+
+}
+```
+
+### 3.c: File Format Comparison
+
+```{r}
+# Build comparison table
+format_info <- data.frame(
+
+  Format = toupper(formats),
+
+  Type = c(
+    "Vector",
+    "Vector",
+    "Raster",
+    "Raster",
+    "Raster",
+    "Raster"
+  ),
+
+  Compression = c(
+    "Lossless",
+    "Lossless",
+    "Lossless",
+    "Lossy",
+    "Lossless",
+    "Lossless"
+  ),
+
+  Transparency = c(
+    "Supported",
+    "Supported",
+    "Supported",
+    "No",
+    "Supported",
+    "No"
+  )
+
+)
+
+# Actual Base R file sizes
+format_info$Base_KB <- round(
+  file.size(
+    file.path(
+      output_folder,
+      paste0(
+        "base_scatter.",
+        formats
+      )
+    )
+  ) / 1024,
+  1
+)
+
+# Actual ggplot2 file sizes
+format_info$ggplot2_KB <- round(
+  file.size(
+    file.path(
+      output_folder,
+      paste0(
+        "ggplot_scatter.",
+        formats
+      )
+    )
+  ) / 1024,
+  1
+)
+
+# Display table
+knitr::kable(
+  format_info,
+  caption = "Comparison of Output Formats"
+)
+
+# Save CSV
+write.csv(
+  format_info,
+  file.path(
+    output_folder,
+    "format_comparison.csv"
+  ),
+  row.names = FALSE
+)
+```
+
+### 3.d: Visual Inspection at 400%
+
+The following are expected technical differences. Open the actual twelve exported files at 400% magnification to confirm how text and lines appear.
+
+| Format | Expected appearance at 400% |
+|---|---|
+| PDF | Vector text and lines remain sharp. |
+| SVG | Scalable paths stay sharp; text rendering depends on fonts and viewer. |
+| PNG | Raster pixels may become visible. |
+| JPG | Lossy compression can produce artifacts around text and thin lines. |
+| TIFF | Lossless raster detail is preserved, but magnification still reveals pixels. |
+| BMP | Pixels are preserved without lossy compression, but enlargement does not add detail. |
+
+### 3.e: Recommended Output Formats
+
+**Journal article:** PDF when vector artwork is accepted; TIFF when the journal requires a high-resolution raster submission.
+
+**Web page:** SVG for scalable graphics, with PNG as a compatible raster alternative.
+
+**PowerPoint slide:** SVG for clean scaling in compatible applications or PNG for broader compatibility.
+
+## Reflection
+
+Cleveland and McGill (1984) demonstrate that people generally judge values using position along a common scale more accurately than they estimate angles or areas. Consequently, bar charts are usually preferable when precise comparisons are required.
+
+However, a pie chart can be appropriate when the goal is to communicate a simple part-to-whole relationship involving very few categories. My pie chart compares automatic and manual transmissions across 32 automobiles. The two categories are mutually exclusive and together represent the entire sample. Direct percentage and category labels make it possible to identify the majority without estimating slice angles.
+
+A pie chart would be inappropriate for comparing average fuel efficiency across cylinder groups because those averages do not form parts of one meaningful total. The bar charts are more effective for comparing those values.
+
+Therefore, pie charts are defensible when there are few categories, the total is meaningful, and the primary message is proportional rather than a precise difference.
+
+## References
+
+Cleveland, W. S., & McGill, R. (1984). Graphical perception: Theory, experimentation, and application to the development of graphical methods. *Journal of the American Statistical Association, 79*(387), 531–554.
+
+Henderson, H. V., & Velleman, P. F. (1981). Building multiple regression models interactively. *Biometrics, 37*(2), 391–411.
+
+Murrell, P. (2018). *R graphics* (3rd ed.). CRC Press.
+
+## AI Disclaimer
+
+I used ChatGPT to assist with interpreting the assignment requirements, developing and troubleshooting R code, and improving visualization design. I reviewed the final code, figures, and interpretations before submission.
+
