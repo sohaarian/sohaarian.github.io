@@ -58,10 +58,12 @@ website:
           - href: assignment-3DV.qmd
             text: ASSIGNMENT 3
             
-      - text: MALWARE ANALYSIS
-        menu:
-          - href: Arian_Soha_Number_Systems.qmd
-            text: NUMBER SYSTEMS
+          - href: assignment-4DV.qmd
+            text: ASSIGNMENT 4
+          
+          - href: assignment-5DV.qmd
+            text: ASSIGNMENT 5
+            
 
     right:
       - href: research.qmd
