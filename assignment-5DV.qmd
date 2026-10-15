@@ -37,6 +37,7 @@ options(
 )
 ```
 
+```{=html}
 <style>
 body {
   background: #080D15 !important;
@@ -86,6 +87,7 @@ table {
   color: #EAF1F7 !important;
 }
 </style>
+```
 
 # Assignment 5
 
@@ -1798,7 +1800,7 @@ write.csv(
 The following are expected technical differences. Open the actual twelve exported files at 400% magnification to confirm how text and lines appear.
 
 | Format | Expected appearance at 400% |
-|---|---|
+|----|----|
 | PDF | Vector text and lines remain sharp. |
 | SVG | Scalable paths stay sharp; text rendering depends on fonts and viewer. |
 | PNG | Raster pixels may become visible. |
@@ -1835,4 +1837,3 @@ Murrell, P. (2018). *R graphics* (3rd ed.). CRC Press.
 ## AI Disclaimer
 
 I used ChatGPT to assist with interpreting the assignment requirements, developing and troubleshooting R code, and improving visualization design. I reviewed the final code, figures, and interpretations before submission.
-
