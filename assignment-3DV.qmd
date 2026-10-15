@@ -5,6 +5,7 @@ format:
     embed-resources: true
 ---
 
+```{=html}
 <style>
 
 html, body {
@@ -157,7 +158,7 @@ a:hover {
 }
 
 </style>
-
+```
 
 # 1. Documenting a Chart
 
@@ -173,7 +174,6 @@ a:hover {
 
 source("murrell01.R")
 ```
-
 
 ## 1.b: Documenting one chart
 
@@ -214,7 +214,6 @@ legend(1.5, 9, c("Ascorbic acid", "Orange juice"),
 par(mar=c(5.1, 4.1, 4.1, 2.1))
 ```
 
-
 # 2. Anscombe's Quartet
 
 ## 2.a: Re-running anscombe01.R
@@ -249,7 +248,6 @@ lm3 <- lm(y3 ~ x3, data=anscombe)
 lm4 <- lm(y4 ~ x4, data=anscombe)
 ```
 
-
 ### Anscombe I
 
 ```{r}
@@ -261,7 +259,6 @@ lm4 <- lm(y4 ~ x4, data=anscombe)
 plot(anscombe$x1, anscombe$y1)
 abline(coefficients(lm1))
 ```
-
 
 ### Anscombe II
 
@@ -275,7 +272,6 @@ plot(anscombe$x2, anscombe$y2)
 abline(coefficients(lm2))
 ```
 
-
 ### Anscombe III
 
 ```{r}
@@ -288,7 +284,6 @@ plot(anscombe$x3, anscombe$y3)
 abline(coefficients(lm3))
 ```
 
-
 ### Anscombe IV
 
 ```{r}
@@ -300,7 +295,6 @@ abline(coefficients(lm3))
 plot(anscombe$x4, anscombe$y4)
 abline(coefficients(lm4))
 ```
-
 
 ### Four plots together
 
@@ -338,7 +332,6 @@ abline(lm4, col="blue")
 
 par(mfrow=c(1,1))
 ```
-
 
 ## 2.b: Comparing the regression models
 
@@ -378,7 +371,6 @@ knitr::kable(results,
 
 The four regression models have almost identical results. Each model has an intercept around 3.00, a slope around 0.50, an R-squared value around 0.67, and a residual standard error around 1.24. Based only on these statistics, the four datasets look almost the same.
 
-
 ## 2.c: Comparing ways of drawing them
 
 ```{r}
@@ -417,7 +409,6 @@ par(mfrow=c(1,1))
 ```
 
 Although the four datasets have almost identical regression statistics, their plots show very different relationships. Anscombe I has a mostly linear relationship. Anscombe II has a curved pattern. Anscombe III is mostly linear but has an influential outlier. Anscombe IV has most of the observations around the same x-value with one point strongly affecting the regression line. The summary statistics hide these differences in shape, outliers, and influential observations.
-
 
 # 3. Finetune Without Leaving Base R
 
@@ -459,7 +450,6 @@ text(150, 600,
      family="serif")
 ```
 
-
 # 4. Now Doing It in ggplot2
 
 ```{r}
@@ -492,7 +482,6 @@ ggplot(df, aes(x=temperature, y=pressure)) +
   theme_minimal(base_family="serif")
 ```
 
-
 ## Base R and ggplot2 Comparison
 
 In base R, I used `par(family="serif")` for the font. In ggplot2, this became `theme_minimal(base_family="serif")`.
@@ -507,11 +496,9 @@ The base R `text()` function became `annotate("text", ...)` in ggplot2.
 
 There is not one exact ggplot2 replacement for `par()`. In ggplot2, those settings are handled through `theme()`, geoms, scales, and other plot settings.
 
-
 # 5. Pre-hackathon — Team Task
 
 The goal of this task is to replicate the Daily COVID Deaths in Europe chart using the Our World in Data dataset.
-
 
 ## 5.a: Acquire the data
 
@@ -540,7 +527,6 @@ owidall <- owidall[!grepl("^OWID", owidall$iso_code), ]
 # Keep Europe only
 owideu <- subset(owidall, continent == "Europe")
 ```
-
 
 ## 5.b: Replicate the chart
 
@@ -634,6 +620,5 @@ The date column is converted into R's `Date` format so that it can be plotted co
 The bottom margin is increased to make room for the rotated date labels. I used a serif font and `deeppink` points to match the target chart. The default x-axis is removed with `xaxt="n"` so that I could create date labels every two months and rotate them vertically.
 
 Finally, I selected the high points in the visible range of the chart, kept the highest observation for each country, and used `text()` to label those observations by country. The labels are placed directly next to the observations instead of being displayed as a legend.
-
 
 AI Disclaimer: I used ChatGPT as a tutor to clarify instructions, troubleshoot errors, and better understand mistakes encountered during the process. It also assisted with wording and formatting; however, the final submission reflects my own work and judgment.
